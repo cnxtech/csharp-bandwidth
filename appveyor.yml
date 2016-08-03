@@ -1,0 +1,12 @@
+version: 3.0.{build}
+build: off
+
+before_test:
+    - cd src\Bandwidth.Net
+    - dotnet restore
+    - cd ..\..\test\Bandwidth.Net.Test
+    - dotnet restore
+    - cd ..\..
+test:
+    - cd test\Bandwidth.Net.Test
+    - dotnet test
