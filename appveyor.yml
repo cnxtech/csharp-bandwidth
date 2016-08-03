@@ -7,6 +7,6 @@ before_test:
     - cd ..\..\test\Bandwidth.Net.Test
     - dotnet restore
     - cd ..\..
-test:
+test_script:
     - cd test\Bandwidth.Net.Test
     - dotnet test
