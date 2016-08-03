@@ -15,7 +15,9 @@
       "dependencies": {
         "LightMock": "1.0.0.6",
         "OpenCover": "4.6.519",
-        "xunit.runner.console":  "2.1.0"
+        "xunit.runner.console": "2.1.0",
+        "System.Runtime": "4.0.0.0",
+        "System.Threading.Tasks": "4.0.0.0"
       }
     },
     "netcoreapp1.0": {

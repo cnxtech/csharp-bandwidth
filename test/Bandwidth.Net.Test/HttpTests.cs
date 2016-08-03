@@ -7,7 +7,7 @@ using System.Net.Http;
 
 namespace Bandwidth.Net.Test
 {
-  public class HttpTests
+  /*public class HttpTests
   {
     [Fact]
     public async void TestSendAsync()
@@ -26,5 +26,5 @@ namespace Bandwidth.Net.Test
       task.Wait();
       listener.Stop();
     }
-  }
+  }*/
 }
