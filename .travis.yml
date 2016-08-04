@@ -10,4 +10,4 @@ install:
   - cd ./src/Bandwidth.Net && dotnet restore
   - cd ../../test/Bandwidth.Net.Test && dotnet restore    
 script:
-  - dotnet test    
+  - dotnet test -f netcoreapp1.0   
