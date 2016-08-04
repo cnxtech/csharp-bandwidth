@@ -1,5 +1,4 @@
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,11 +9,11 @@ namespace Bandwidth.Net
     Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationToken cancellationToken);
   }
 
-  internal class Http : IHttp
+  internal class Http<THandler> : IHttp where THandler : HttpMessageHandler, new()
   {
     public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationToken cancellationToken)
     {
-      using (var client = new HttpClient())
+      using (var client = new HttpClient(new THandler(), true))
       {
         return await client.SendAsync(request, completionOption, cancellationToken);
       }

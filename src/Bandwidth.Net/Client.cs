@@ -25,7 +25,7 @@ namespace Bandwidth.Net
         throw new MissingCredentialsException();
       }
       UserId = userId;
-      _http = http ?? new Http();
+      _http = http ?? new Http<HttpClientHandler>();
       _authentication =
           new AuthenticationHeaderValue("Basic",
               Convert.ToBase64String(Encoding.UTF8.GetBytes($"{apiToken}:{apiSecret}")));

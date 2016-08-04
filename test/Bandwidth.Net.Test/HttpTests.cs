@@ -1,30 +1,29 @@
 using Xunit;
 using System.Net;
-using System.Threading;
-using System.Net.Sockets;
-using System.Text;
 using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Bandwidth.Net.Test
 {
-  /*public class HttpTests
+  public class HttpTests
   {
     [Fact]
     public async void TestSendAsync()
     {
-      var http = new Http();
-      var request = new HttpRequestMessage(HttpMethod.Get, "http://localhost:9988");
-      var listener = new TcpListener(IPAddress.Loopback, 9988);
-      listener.Start();
-      var task = listener.AcceptSocketAsync().ContinueWith(t =>
-      {
-        var socket = t.Result;
-        socket.Send(Encoding.UTF8.GetBytes("HTTP/1.1 204 OK\n\n"));
-      });
-      var response = await http.SendAsync(request, HttpCompletionOption.ResponseContentRead, CancellationToken.None);
-      Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
-      task.Wait();
-      listener.Stop();
+      var http = new Http<TestMessageHandler>();
+      var response = await http.SendAsync(new HttpRequestMessage(HttpMethod.Get, "http://localhost/"), HttpCompletionOption.ResponseContentRead, CancellationToken.None);
+      Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
-  }*/
+
+    private class TestMessageHandler : HttpMessageHandler
+    {
+      protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+      {
+        Assert.Equal(HttpMethod.Get, request.Method);
+        Assert.Equal("http://localhost/", request.RequestUri.ToString());
+        return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("Test") });
+      }
+    }
+  }
 }
