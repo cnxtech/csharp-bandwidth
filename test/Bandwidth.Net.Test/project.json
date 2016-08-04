@@ -12,6 +12,9 @@
   "testRunner": "xunit",
   "frameworks": {
     "net45": {
+      "buildOptions": {
+        "debugType": "full"
+      },
       "dependencies": {
         "LightMock": "1.0.0.6",
         "OpenCover": "4.6.519",

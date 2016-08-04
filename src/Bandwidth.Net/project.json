@@ -13,11 +13,17 @@
       }
     },
     "net45": {
+      "buildOptions": {
+        "debugType": "full"
+      },
       "dependencies": {
         "System.Net.Http": "4.*"
       }
     },
     "net46": {
+      "buildOptions": {
+        "debugType": "full"
+      },
       "dependencies": {
         "System.Net.Http": "4.*"
       }
