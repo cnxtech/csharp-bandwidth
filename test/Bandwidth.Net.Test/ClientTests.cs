@@ -20,7 +20,8 @@ namespace Bandwidth.Net.Test
         [Fact]
         public void TestConstructorWithBaseUrl()
         {
-            var api = new Client("userId", "apiToken", "apiSecret", "url");
+            var api = new Client("userId", "apiToken", "apiSecret", "http://host");
+            Assert.Equal("http://host/v1/", api.CreateRequest(HttpMethod.Get, "/").RequestUri.ToString());
         }
 
         [Fact]
