@@ -1,7 +1,7 @@
-# Client Methods
+﻿# Client Methods
  
 
-The <a href="T_Bandwidth_Net_Client">Client</a> type exposes the following members.
+The <a href ="T_Bandwidth_Net_Client.md">Client</a> type exposes the following members.
 
 
 ## Methods
@@ -24,4 +24,4 @@ Returns a string that represents the current object.
 
 
 #### Reference
-<a href="T_Bandwidth_Net_Client">Client Class</a><br /><a href="N_Bandwidth_Net">Bandwidth.Net Namespace</a><br />
+<a href ="T_Bandwidth_Net_Client.md">Client Class</a><br /><a href ="N_Bandwidth_Net.md">Bandwidth.Net Namespace</a><br />

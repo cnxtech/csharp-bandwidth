@@ -1,7 +1,7 @@
-# BandwidthException Methods
+﻿# BandwidthException Methods
  
 
-The <a href="T_Bandwidth_Net_BandwidthException">BandwidthException</a> type exposes the following members.
+The <a href ="T_Bandwidth_Net_BandwidthException.md">BandwidthException</a> type exposes the following members.
 
 
 ## Methods
@@ -24,4 +24,4 @@ Creates and returns a string representation of the current exception.
 
 
 #### Reference
-<a href="T_Bandwidth_Net_BandwidthException">BandwidthException Class</a><br /><a href="N_Bandwidth_Net">Bandwidth.Net Namespace</a><br />
+<a href ="T_Bandwidth_Net_BandwidthException.md">BandwidthException Class</a><br /><a href ="N_Bandwidth_Net.md">Bandwidth.Net Namespace</a><br />

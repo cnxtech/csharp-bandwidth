@@ -1,11 +1,11 @@
-# BandwidthException Properties
+﻿# BandwidthException Properties
  
 
-The <a href="T_Bandwidth_Net_BandwidthException">BandwidthException</a> type exposes the following members.
+The <a href ="T_Bandwidth_Net_BandwidthException.md">BandwidthException</a> type exposes the following members.
 
 
 ## Properties
-&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="P_Bandwidth_Net_BandwidthException_Code">Code</a></td><td>
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_BandwidthException_Code.md">Code</a></td><td>
 Status code</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="http://msdn2.microsoft.com/en-us/library/2wyfbc48" target="_blank">Data</a></td><td>
 Gets a collection of key/value pairs that provide additional user-defined information about the exception.
  (Inherited from <a href="http://msdn2.microsoft.com/en-us/library/c18k6c59" target="_blank">Exception</a>.)</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="http://msdn2.microsoft.com/en-us/library/71tawy4s" target="_blank">HelpLink</a></td><td>
@@ -29,4 +29,4 @@ Gets the method that throws the current exception.
 
 
 #### Reference
-<a href="T_Bandwidth_Net_BandwidthException">BandwidthException Class</a><br /><a href="N_Bandwidth_Net">Bandwidth.Net Namespace</a><br />
+<a href ="T_Bandwidth_Net_BandwidthException.md">BandwidthException Class</a><br /><a href ="N_Bandwidth_Net.md">Bandwidth.Net Namespace</a><br />

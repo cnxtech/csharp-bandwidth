@@ -1,9 +1,9 @@
-# IHttp.SendAsync Method 
+﻿# IHttp.SendAsync Method 
  
 
 Send http request and return response message
 
-**Namespace:**&nbsp;<a href="N_Bandwidth_Net">Bandwidth.Net</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 1.0.0
+**Namespace:**&nbsp;<a href ="N_Bandwidth_Net.md">Bandwidth.Net</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 1.0.0
 
 ## Syntax
 
@@ -27,4 +27,4 @@ Type: <a href="http://msdn2.microsoft.com/en-us/library/dd321424" target="_blank
 
 
 #### Reference
-<a href="T_Bandwidth_Net_IHttp">IHttp Interface</a><br /><a href="N_Bandwidth_Net">Bandwidth.Net Namespace</a><br />
+<a href ="T_Bandwidth_Net_IHttp.md">IHttp Interface</a><br /><a href ="N_Bandwidth_Net.md">Bandwidth.Net Namespace</a><br />

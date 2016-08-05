@@ -1,4 +1,4 @@
-- [Bandwidth.Net Namespace](N_Bandwidth_Net)
+﻿- [Bandwidth.Net Namespace](N_Bandwidth_Net)
   - [BandwidthException Class](T_Bandwidth_Net_BandwidthException)
     - [BandwidthException Constructor](M_Bandwidth_Net_BandwidthException__ctor)
     - [BandwidthException Properties](Properties_T_Bandwidth_Net_BandwidthException)

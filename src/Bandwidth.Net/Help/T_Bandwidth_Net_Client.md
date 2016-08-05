@@ -1,4 +1,4 @@
-# Client Class
+﻿# Client Class
  
 
 Catapult API client
@@ -6,7 +6,7 @@ Catapult API client
 
 ## Inheritance Hierarchy
 <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">System.Object</a><br />&nbsp;&nbsp;Bandwidth.Net.Client<br />
-**Namespace:**&nbsp;<a href="N_Bandwidth_Net">Bandwidth.Net</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 1.0.0
+**Namespace:**&nbsp;<a href ="N_Bandwidth_Net.md">Bandwidth.Net</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 1.0.0
 
 ## Syntax
 
@@ -19,7 +19,7 @@ The Client type exposes the following members.
 
 
 ## Constructors
-&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="M_Bandwidth_Net_Client__ctor">Client</a></td><td>
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href ="M_Bandwidth_Net_Client__ctor.md">Client</a></td><td>
 Constructor</td></tr></table>&nbsp;
 <a href="#client-class">Back to Top</a>
 
@@ -43,4 +43,4 @@ Returns a string that represents the current object.
 
 
 #### Reference
-<a href="N_Bandwidth_Net">Bandwidth.Net Namespace</a><br />
+<a href ="N_Bandwidth_Net.md">Bandwidth.Net Namespace</a><br />
