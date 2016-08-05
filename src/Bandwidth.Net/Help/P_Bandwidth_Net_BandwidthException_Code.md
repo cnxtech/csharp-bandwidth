@@ -1,7 +1,7 @@
 # BandwidthException.Code Property 
  
 
-\[Missing <summary> documentation for "P:Bandwidth.Net.BandwidthException.Code"\]
+Status code
 
 **Namespace:**&nbsp;<a href="N_Bandwidth_Net">Bandwidth.Net</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 1.0.0
 

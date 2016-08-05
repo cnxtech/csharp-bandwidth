@@ -1,7 +1,7 @@
 # Client Class
  
 
-\[Missing <summary> documentation for "T:Bandwidth.Net.Client"\]
+Catapult API client
 
 
 ## Inheritance Hierarchy
@@ -20,7 +20,7 @@ The Client type exposes the following members.
 
 ## Constructors
 &nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="M_Bandwidth_Net_Client__ctor">Client</a></td><td>
-Initializes a new instance of the Client class</td></tr></table>&nbsp;
+Constructor</td></tr></table>&nbsp;
 <a href="#client-class">Back to Top</a>
 
 ## Methods

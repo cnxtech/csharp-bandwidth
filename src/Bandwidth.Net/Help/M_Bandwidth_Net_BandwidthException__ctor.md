@@ -17,7 +17,7 @@ public BandwidthException(
 
 
 #### Parameters
-&nbsp;<dl><dt>message</dt><dd>Type: <a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">System.String</a><br />\[Missing <param name="message"/> documentation for "M:Bandwidth.Net.BandwidthException.#ctor(System.String,System.Net.HttpStatusCode)"\]</dd><dt>code</dt><dd>Type: <a href="http://msdn2.microsoft.com/en-us/library/f92ssyy1" target="_blank">System.Net.HttpStatusCode</a><br />\[Missing <param name="code"/> documentation for "M:Bandwidth.Net.BandwidthException.#ctor(System.String,System.Net.HttpStatusCode)"\]</dd></dl>
+&nbsp;<dl><dt>message</dt><dd>Type: <a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">System.String</a><br />Error message</dd><dt>code</dt><dd>Type: <a href="http://msdn2.microsoft.com/en-us/library/f92ssyy1" target="_blank">System.Net.HttpStatusCode</a><br />Status code</dd></dl>
 
 ## See Also
 

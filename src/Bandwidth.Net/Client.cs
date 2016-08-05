@@ -9,6 +9,9 @@ using System.Linq;
 
 namespace Bandwidth.Net
 {
+  /// <summary>
+  /// Catapult API client
+  /// </summary>
   public class Client
   {
     internal readonly string UserId;
@@ -18,6 +21,13 @@ namespace Bandwidth.Net
     private const string _baseUrl = "https://api.catapult.inetwork.com";
     private const string _version = "v1";
 
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="userId">Id of user on Catapult API</param>
+    /// <param name="apiToken">Authorization token of Catapult API</param>
+    /// <param name="apiSecret">Authorization secret of Catapult API</param>
+    /// <param name="http">Optional processor of http requests. Use it to owerwrite default http request processing (useful for test, logs, etc)</param>
     public Client(string userId, string apiToken, string apiSecret, IHttp http = null)
     {
       if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(apiToken) || string.IsNullOrEmpty(apiSecret))

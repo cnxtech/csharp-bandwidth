@@ -24,11 +24,16 @@ namespace Bandwidth.Net
   /// </summary>
   public sealed class BandwidthException : Exception
   {
+    /// <summary>
+    /// Status code
+    /// </summary>
     public HttpStatusCode Code { get; private set; }
 
     /// <summary>
     /// BandwidthException
     /// </summary>
+    /// <param name="message">Error message</param>
+    /// <param name="code">Status code</param>
     public BandwidthException(string message, HttpStatusCode code) : base(message)
     {
       Code = code;
