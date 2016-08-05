@@ -1,10 +1,15 @@
 {
   "version": "1.0.0-*",
   "buildOptions": {
-    "debugType": "portable"
+    "debugType": "portable",
+    "xmlDoc": true
   },
   "dependencies": {
     "Newtonsoft.Json": "9.0.1"
+  },
+  "tools": {
+      "EWSoftware.SHFB": "2016.5.28",
+      "EWSoftware.SHFB.NETFramework": "4.6.1"
   },
   "frameworks": {
     "netstandard1.6": {
