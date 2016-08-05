@@ -18,23 +18,21 @@ namespace Bandwidth.Net
     private readonly IHttp _http;
     private static readonly ProductInfoHeaderValue _userAgent = BuildUserAgent();
     private readonly AuthenticationHeaderValue _authentication;
-    private const string _baseUrl = "https://api.catapult.inetwork.com";
+    private readonly string _baseUrl;
     private const string _version = "v1";
 
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="userId">Id of user on Catapult API</param>
-    /// <param name="apiToken">Authorization token of Catapult API</param>
-    /// <param name="apiSecret">Authorization secret of Catapult API</param>
-    /// <param name="http">Optional processor of http requests. Use it to owerwrite default http request processing (useful for test, logs, etc)</param>
-    public Client(string userId, string apiToken, string apiSecret, IHttp http = null)
+    public Client(string userId, string apiToken, string apiSecret, string baseUrl = "https://api.catapult.inetwork.com", IHttp http = null)
     {
       if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(apiToken) || string.IsNullOrEmpty(apiSecret))
       {
         throw new MissingCredentialsException();
       }
+      if (string.IsNullOrEmpty(baseUrl))
+      {
+        throw new InvalidBaseUrlException();
+      }
       UserId = userId;
+      _baseUrl = baseUrl;
       _http = http ?? new Http<HttpClientHandler>();
       _authentication =
           new AuthenticationHeaderValue("Basic",
