@@ -18,9 +18,21 @@ namespace Bandwidth.Net.Test
         }
 
         [Fact]
-        public void TestConstructorWithEmptyParams()
+        public void TestConstructorWithBaseUrl()
+        {
+            var api = new Client("userId", "apiToken", "apiSecret", "url");
+        }
+
+        [Fact]
+        public void TestConstructorWithEmptyCredentialParams()
         {
             Assert.Throws<MissingCredentialsException>(() => new Client("", "apiToken", "apiSecret"));
+        }
+
+        [Fact]
+        public void TestConstructorWithEmptyBaseUrl()
+        {
+            Assert.Throws<InvalidBaseUrlException>(() => new Client("userId", "apiToken", "apiSecret", ""));
         }
 
         [Fact]
@@ -49,7 +61,7 @@ namespace Bandwidth.Net.Test
         public async void TestMakeRequest()
         {
             var context = new MockContext<IHttp>();
-            var api = new Client("userId", "apiToken", "apiSecret", new Mocks.Http(context));
+            var api = new Client("userId", "apiToken", "apiSecret", "url", new Mocks.Http(context));
             var request = new HttpRequestMessage(HttpMethod.Get, "/test");
             context.Arrange(c => c.SendAsync(request, HttpCompletionOption.ResponseContentRead, CancellationToken.None))
                 .Returns(Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK)));

@@ -20,6 +20,21 @@ namespace Bandwidth.Net
   }
 
   /// <summary>
+  /// InvalidBaseUrlException
+  /// </summary>
+  public sealed class InvalidBaseUrlException : Exception
+  {
+
+    /// <summary>
+    /// InvalidBaseUrlException
+    /// </summary>
+    public InvalidBaseUrlException()
+        : base("Base url should be non-empty string")
+    {
+    } 
+  }
+
+  /// <summary>
   /// BandwidthException
   /// </summary>
   public sealed class BandwidthException : Exception
