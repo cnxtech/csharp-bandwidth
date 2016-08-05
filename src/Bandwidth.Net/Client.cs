@@ -21,6 +21,14 @@ namespace Bandwidth.Net
     private readonly string _baseUrl;
     private const string _version = "v1";
 
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="userId">Id of user on Catapult API</param>
+    /// <param name="apiToken">Authorization token of Catapult API</param>
+    /// <param name="apiSecret">Authorization secret of Catapult API</param>
+    /// <param name="baseUrl">Base url of Catapult API server</param>
+    /// <param name="http">Optional processor of http requests. Use it to owerwrite default http request processing (useful for test, logs, etc)</param>
     public Client(string userId, string apiToken, string apiSecret, string baseUrl = "https://api.catapult.inetwork.com", IHttp http = null)
     {
       if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(apiToken) || string.IsNullOrEmpty(apiSecret))
