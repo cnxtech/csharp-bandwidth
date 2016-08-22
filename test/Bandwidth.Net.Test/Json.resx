@@ -250,7 +250,7 @@
     "content": "api.catapult.inetwork.com/.../media/mediaName1"
     }
     </value>
-  </data>  
+  </data>
   <data name="Error" xml:space="preserve">
     <value>{
       "time" : "2012-11-15T01:30:16.208Z",
@@ -335,7 +335,15 @@
   <data name="Recording" xml:space="preserve">
     <value>TODO</value>
   </data>
-  <data name="Transciption" xml:space="preserve">
-    <value>TODO</value>
+  <data name="Transcription" xml:space="preserve">
+    <value>{
+    "chargeableDuration": 11,
+    "id": "transcriptionId",
+    "state": "completed",
+    "text": "Hey there, I was calling to talk about plans for this saturday. ",
+    "textSize": 63,
+    "textUrl": "https://api.catapult.inetwork.com/.../media/{transcriptionId}",
+    "time": "2014-12-23T23:08:59Z"
+}</value>
   </data>
 </root>
