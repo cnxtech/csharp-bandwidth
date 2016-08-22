@@ -22,26 +22,30 @@ namespace Bandwidth.Net
 
     public IEnumerator<T> GetEnumerator()
     {
-      var response = _getFirstPageFunc().Result;
+      var getData = _getFirstPageFunc;
+      var nextPageUrl = "";
       while (true)
       {
-        var list = response.ReadAsJsonAsync<T[]>().Result;
-        foreach (var item in list)
+        using (var response = getData().Result)
         {
-          yield return item;
-        }
-        var nextPageUrl = "";
-        IEnumerable<string> linkValues;
-        if (response.Headers.TryGetValues("Link", out linkValues))
-        {
-          var links = linkValues.First().Split(',');
-          foreach (var link in links)
+
+          var list = response.ReadAsJsonAsync<T[]>().Result;
+          foreach (var item in list)
           {
-            var values = link.Split(';');
-            if (values.Length == 2 && values[1].Trim() == "rel=\"next\"")
+            yield return item;
+          }
+          IEnumerable<string> linkValues;
+          if (response.Headers.TryGetValues("Link", out linkValues))
+          {
+            var links = linkValues.First().Split(',');
+            foreach (var link in links)
             {
-              nextPageUrl = values[0].Replace('<', ' ').Replace('>', ' ').Trim();
-              break;
+              var values = link.Split(';');
+              if (values.Length == 2 && values[1].Trim() == "rel=\"next\"")
+              {
+                nextPageUrl = values[0].Replace('<', ' ').Replace('>', ' ').Trim();
+                break;
+              }
             }
           }
         }
@@ -50,7 +54,7 @@ namespace Bandwidth.Net
           yield break;
         }
         var request = _client.CreateGetRequest(nextPageUrl);
-        response = _client.MakeRequestAsync(request).Result;
+        getData = () => _client.MakeRequestAsync(request);
       }
     }
 
