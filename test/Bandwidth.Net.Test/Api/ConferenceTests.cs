@@ -9,7 +9,7 @@ using Xunit;
 
 namespace Bandwidth.Net.Test.Api
 {
-  public class ConferenceTest
+  public class ConferenceTests
   {
 
     [Fact]

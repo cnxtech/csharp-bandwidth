@@ -9,7 +9,7 @@ using Xunit;
 
 namespace Bandwidth.Net.Test.Api
 {
-  public class ApplicationTest
+  public class BridgeTests
   {
     [Fact]
     public void TestList()
@@ -17,16 +17,16 @@ namespace Bandwidth.Net.Test.Api
       var response = new HttpResponseMessage
       {
         Content =
-          new JsonContent($"[{Helpers.GetJsonResourse("Application")}]")
+          new JsonContent($"[{Helpers.GetJsonResourse("Bridge")}]")
       };
       var context = new MockContext<IHttp>();
       context.Arrange(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidListRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Application;
-      var applications = api.List();
-      ValidateApplication(applications.First());
+      var api = Helpers.GetClient(context).Bridge;
+      var bridges = api.List();
+      ValidateBridge(bridges.First());
     }
 
     [Fact]
@@ -36,7 +36,7 @@ namespace Bandwidth.Net.Test.Api
       response.Headers.Location = new Uri("http://localhost/path/id");
       var getResponse = new HttpResponseMessage
       {
-        Content = Helpers.GetJsonContent("Application")
+        Content = Helpers.GetJsonContent("Bridge")
       };
       var context = new MockContext<IHttp>();
       context.Arrange(
@@ -47,14 +47,14 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(getResponse));
-      var api = Helpers.GetClient(context).Application;
-      var application = await api.CreateAsync(new CreateApplicationData {Name = "MyFirstApp"});
+      var api = Helpers.GetClient(context).Bridge;
+      var bridge = await api.CreateAsync(new CreateBridgeData {CallIds = new []{"callId"}});
       context.Assert(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null), Invoked.Never);
-      Assert.Equal("id", application.Id);
-      ValidateApplication(application.Instance);
+      Assert.Equal("id", bridge.Id);
+      ValidateBridge(bridge.Instance);
       context.Assert(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
@@ -66,16 +66,16 @@ namespace Bandwidth.Net.Test.Api
     {
       var response = new HttpResponseMessage
       {
-        Content = Helpers.GetJsonContent("Application")
+        Content = Helpers.GetJsonContent("Bridge")
       };
       var context = new MockContext<IHttp>();
       context.Arrange(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Application;
-      var application = await api.GetAsync("id");
-      ValidateApplication(application);
+      var api = Helpers.GetClient(context).Bridge;
+      var bridge = await api.GetAsync("id");
+      ValidateBridge(bridge);
     }
 
     [Fact]
@@ -86,59 +86,81 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidUpdateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Application;
-      await api.UpdateAsync("id", new UpdateApplicationData {Name = "NewName"});
+      var api = Helpers.GetClient(context).Bridge;
+      await api.UpdateAsync("id", new UpdateBridgeData {CallIds = new []{"callId"}});
     }
 
     [Fact]
-    public async void TestDelete()
+    public async void TestPlayAudio()
     {
       var context = new MockContext<IHttp>();
       context.Arrange(
         m =>
-          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidDeleteRequest(r)), HttpCompletionOption.ResponseContentRead,
+          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidPlayAudioRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Application;
-      await api.DeleteAsync("id");
+      var api = Helpers.GetClient(context).Bridge;
+      await api.PlayAudioAsync("id", new PlayAudioData {FileUrl = "url"});
     }
+
+    [Fact]
+    public void TestGetCalls()
+    {
+      var context = new MockContext<IHttp>();
+      var response = new HttpResponseMessage
+      {
+        Content = new JsonContent($"[{Helpers.GetJsonResourse("Call")}]")
+      };
+      context.Arrange(
+        m =>
+          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetCallsRequest(r)), HttpCompletionOption.ResponseContentRead,
+            null)).Returns(Task.FromResult(response));
+      var api = Helpers.GetClient(context).Bridge;
+      var calls = api.GetCalls("id");
+      Assert.Equal("callId", calls.First().Id);
+    }
+
 
     public static bool IsValidListRequest(HttpRequestMessage request)
     {
-      return request.Method == HttpMethod.Get && request.RequestUri.PathAndQuery == "/v1/users/userId/applications";
+      return request.Method == HttpMethod.Get && request.RequestUri.PathAndQuery == "/v1/users/userId/bridges";
     }
 
     public static bool IsValidCreateRequest(HttpRequestMessage request)
     {
-      return request.Method == HttpMethod.Post && request.RequestUri.PathAndQuery == "/v1/users/userId/applications" &&
+      return request.Method == HttpMethod.Post && request.RequestUri.PathAndQuery == "/v1/users/userId/bridges" &&
              request.Content.Headers.ContentType.MediaType == "application/json" &&
-             request.Content.ReadAsStringAsync().Result == "{\"name\":\"MyFirstApp\"}";
+             request.Content.ReadAsStringAsync().Result == "{\"callIds\":[\"callId\"]}";
     }
 
     public static bool IsValidGetRequest(HttpRequestMessage request)
     {
-      return request.Method == HttpMethod.Get && request.RequestUri.PathAndQuery == "/v1/users/userId/applications/id";
+      return request.Method == HttpMethod.Get && request.RequestUri.PathAndQuery == "/v1/users/userId/bridges/id";
     }
 
     public static bool IsValidUpdateRequest(HttpRequestMessage request)
     {
-      return request.Method == HttpMethod.Post && request.RequestUri.PathAndQuery == "/v1/users/userId/applications/id" &&
+      return request.Method == HttpMethod.Post && request.RequestUri.PathAndQuery == "/v1/users/userId/bridges/id" &&
              request.Content.Headers.ContentType.MediaType == "application/json" &&
-             request.Content.ReadAsStringAsync().Result == "{\"name\":\"NewName\"}";
+             request.Content.ReadAsStringAsync().Result == "{\"callIds\":[\"callId\"]}";
     }
 
-    public static bool IsValidDeleteRequest(HttpRequestMessage request)
+    public static bool IsValidPlayAudioRequest(HttpRequestMessage request)
     {
-      return request.Method == HttpMethod.Delete &&
-             request.RequestUri.PathAndQuery == "/v1/users/userId/applications/id";
+      return request.Method == HttpMethod.Post && request.RequestUri.PathAndQuery == "/v1/users/userId/bridges/id/audio" &&
+             request.Content.Headers.ContentType.MediaType == "application/json" &&
+             request.Content.ReadAsStringAsync().Result == "{\"fileUrl\":\"url\"}";
     }
 
-    private static void ValidateApplication(Application item)
+    public static bool IsValidGetCallsRequest(HttpRequestMessage request)
     {
-      Assert.Equal("applicationId", item.Id);
-      Assert.Equal("MyFirstApp", item.Name);
-      Assert.Equal("http://example.com/calls.php", item.IncomingCallUrl);
-      Assert.Equal("http://example.com/messages.php", item.IncomingMessageUrl);
-      Assert.True(item.AutoAnswer);
+      return request.Method == HttpMethod.Get && request.RequestUri.PathAndQuery == "/v1/users/userId/bridges/id/calls";
+    }
+
+    private static void ValidateBridge(Bridge item)
+    {
+      Assert.Equal("bridgeId", item.Id);
+      Assert.True(item.BridgeAudio);
+      Assert.Equal(BridgeState.Completed, item.State);
     }
   }
 }

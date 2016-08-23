@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Bandwidth.Net.Test.Api
 {
-  public class ErrorTest
+  public class ErrorTests
   {
     [Fact]
     public void TestList()

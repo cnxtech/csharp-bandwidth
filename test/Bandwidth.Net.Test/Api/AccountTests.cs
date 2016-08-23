@@ -10,7 +10,7 @@ using Xunit.Sdk;
 
 namespace Bandwidth.Net.Test.Api
 {
-  public class AccountTest
+  public class AccountTests
   {
     [Fact]
     public async void TestGet()
