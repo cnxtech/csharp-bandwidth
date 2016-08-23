@@ -58,6 +58,8 @@ namespace Bandwidth.Net.Test.Api
     {
       Assert.Equal("recordingId", item.Id);
       Assert.Equal(RecordingStates.Complete, item.State);
+      Assert.Equal("{callId1}", item.CallId);
+      Assert.Equal("{callId1}-1.wav", item.MediaName);
     }
   }
 }

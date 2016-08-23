@@ -98,6 +98,7 @@ namespace Bandwidth.Net.Test.Api
     {
       Assert.Equal("transcriptionId", item.Id);
       Assert.Equal(TranscriptionStates.Completed, item.State);
+      Assert.Equal("{transcriptionId}", item.TextMediaName);
     }
   }
 }
