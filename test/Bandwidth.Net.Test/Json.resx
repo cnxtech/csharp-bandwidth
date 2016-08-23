@@ -250,7 +250,7 @@
     "content": "api.catapult.inetwork.com/.../media/mediaName1"
     }
     </value>
-  </data>  
+  </data>
   <data name="Error" xml:space="preserve">
     <value>{
       "time" : "2012-11-15T01:30:16.208Z",
@@ -330,12 +330,38 @@
 }</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
-    <value>TODO</value>
+    <value>{
+   "id": "numberId",
+   "application": "https://catapult.inetwork.com/.../applications/{applicationId}",
+   "number":"{number}",
+   "nationalNumber":"{national_number}",
+   "name": "home phone",
+   "createdTime": "2013-02-13T17:46:08.374Z",
+   "city": "Raleigh",
+   "state": "NC",
+   "price": "0.60",
+   "numberState": "enabled"
+}</value>
   </data>
   <data name="Recording" xml:space="preserve">
-    <value>TODO</value>
+    <value>{
+    "endTime": "2013-02-08T13:17:12.181Z",
+    "id": "recordingId",
+    "media": "https://.../v1/users/.../media/{callId1}-1.wav",
+    "call": "https://.../v1/users/.../calls/{callId1}",
+    "startTime": "2013-02-08T13:15:47.587Z",
+    "state": "complete"
+  }</value>
   </data>
-  <data name="Transciption" xml:space="preserve">
-    <value>TODO</value>
+  <data name="Transcription" xml:space="preserve">
+    <value>{
+    "chargeableDuration": 11,
+    "id": "transcriptionId",
+    "state": "completed",
+    "text": "Hey there, I was calling to talk about plans for this saturday. ",
+    "textSize": 63,
+    "textUrl": "https://api.catapult.inetwork.com/.../media/{transcriptionId}",
+    "time": "2014-12-23T23:08:59Z"
+}</value>
   </data>
 </root>
