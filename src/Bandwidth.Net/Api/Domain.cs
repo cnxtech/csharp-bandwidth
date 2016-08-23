@@ -69,7 +69,7 @@ namespace Bandwidth.Net.Api
 
     public Task DeleteAsync(string domainId, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync(HttpMethod.Delete,
+      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Delete,
         $"/users/{Client.UserId}/domains/{domainId}", cancellationToken);
     }
   }

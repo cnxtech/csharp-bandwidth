@@ -105,7 +105,7 @@ namespace Bandwidth.Net.Api
     public Task UpdateAsync(string bridgeId, UpdateBridgeData data,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync(HttpMethod.Post,
+      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
         $"/users/{Client.UserId}/bridges/{bridgeId}", cancellationToken, null, data);
     }
 
@@ -120,7 +120,7 @@ namespace Bandwidth.Net.Api
     public Task PlayAudioAsync(string bridgeId, PlayAudioData data, CancellationToken? cancellationToken = null)
     {
       return
-        Client.MakeJsonRequestAsync(HttpMethod.Post,
+        Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
           $"/users/{Client.UserId}/bridges/{bridgeId}/audio", cancellationToken, null, data);
     }
   }

@@ -142,7 +142,7 @@ namespace Bandwidth.Net.Api
 
     public Task UpdateAsync(string conferenceId, UpdateConferenceData data, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync(HttpMethod.Post,
+      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
         $"/users/{Client.UserId}/conferences/{conferenceId}", cancellationToken, null, data);
     }
 
@@ -175,7 +175,7 @@ namespace Bandwidth.Net.Api
     public Task UpdateMemberAsync(string conferenceId, string memberId, UpdateConferenceMemberData data,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync(HttpMethod.Post,
+      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
         $"/users/{Client.UserId}/conferences/{conferenceId}/members/{memberId}", cancellationToken, null, data);
     }
 
@@ -183,14 +183,14 @@ namespace Bandwidth.Net.Api
       CancellationToken? cancellationToken = null)
     {
       return
-        Client.MakeJsonRequestAsync(HttpMethod.Post,
+        Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
           $"/users/{Client.UserId}/conferences/{conferenceId}/members/{memberId}/audio", cancellationToken, null, data);
     }
 
     public Task PlayAudioAsync(string conferenceId, PlayAudioData data, CancellationToken? cancellationToken = null)
     {
       return
-        Client.MakeJsonRequestAsync(HttpMethod.Post,
+        Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
           $"/users/{Client.UserId}/conferences/{conferenceId}/audio", cancellationToken, null, data);
     }
   }

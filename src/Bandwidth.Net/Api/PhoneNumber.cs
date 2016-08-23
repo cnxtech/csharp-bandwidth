@@ -106,13 +106,13 @@ namespace Bandwidth.Net.Api
     public Task UpdateAsync(string phoneNumberId, UpdatePhoneNumberData data,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync(HttpMethod.Post,
+      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
         $"/users/{Client.UserId}/phoneNumbers/{phoneNumberId}", cancellationToken, null, data);
     }
 
     public Task DeleteAsync(string phoneNumberId, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync(HttpMethod.Delete,
+      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Delete,
         $"/users/{Client.UserId}/phoneNumbers/{phoneNumberId}", cancellationToken);
     }
   }

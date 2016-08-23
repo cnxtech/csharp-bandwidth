@@ -35,6 +35,7 @@ namespace Bandwidth.Net
             yield return item;
           }
           IEnumerable<string> linkValues;
+          nextPageUrl = "";
           if (response.Headers.TryGetValues("Link", out linkValues))
           {
             var links = linkValues.First().Split(',');

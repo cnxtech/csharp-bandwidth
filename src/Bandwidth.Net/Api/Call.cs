@@ -59,13 +59,14 @@ namespace Bandwidth.Net.Api
     /// <param name="callId">Id of call to change</param>
     /// <param name="data">Changed data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <param name="disposeResponse">Set false if you are going to free response resources yourselves</param>
     /// <returns>Http response message</returns>
     /// <example>
     ///   <code>
     /// await client.Call.UpdateAsync("callId", new UpdateCallData {CallAudio = true});
     /// </code>
     /// </example>
-    Task<HttpResponseMessage> UpdateAsync(string callId, UpdateCallData data, CancellationToken? cancellationToken = null);
+    Task<HttpResponseMessage> UpdateAsync(string callId, UpdateCallData data, CancellationToken? cancellationToken = null, bool disposeResponse = true);
 
     /// <summary>
     ///   Send DTMF (phone keypad digit presses)
@@ -201,16 +202,21 @@ namespace Bandwidth.Net.Api
         $"/users/{Client.UserId}/calls/{callId}", cancellationToken);
     }
 
-    public Task<HttpResponseMessage> UpdateAsync(string callId, UpdateCallData data,
-      CancellationToken? cancellationToken = null)
+    public async Task<HttpResponseMessage> UpdateAsync(string callId, UpdateCallData data,
+      CancellationToken? cancellationToken = null, bool disposeResponse = true)
     {
-      return Client.MakeJsonRequestAsync(HttpMethod.Post,
+      var response =  await Client.MakeJsonRequestAsync(HttpMethod.Post,
         $"/users/{Client.UserId}/calls/{callId}", cancellationToken, null, data);
+      if (disposeResponse)
+      {
+        response.Dispose();
+      }
+      return response;
     }
 
     public Task SendDtmfAsync(string callId, SendDtmfData data, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync(HttpMethod.Post,
+      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
         $"/users/{Client.UserId}/calls/{callId}/dtmf", cancellationToken, null, data);
     }
 
@@ -256,14 +262,14 @@ namespace Bandwidth.Net.Api
     public Task UpdateGatherAsync(string callId, string gatherId, UpdateGatherData data,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync(HttpMethod.Post,
+      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
         $"/users/{Client.UserId}/calls/{callId}/gather/{gatherId}", cancellationToken, null, data);
     }
 
     public Task PlayAudioAsync(string callId, PlayAudioData data, CancellationToken? cancellationToken = null)
     {
       return
-        Client.MakeJsonRequestAsync(HttpMethod.Post,
+        Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
           $"/users/{Client.UserId}/calls/{callId}/audio", cancellationToken, null, data);
     }
   }
@@ -372,15 +378,17 @@ namespace Bandwidth.Net.Api
     /// </example>
     public static async Task<string> TransferAsync(this ICall call, string callId, string to, string callerId = null, WhisperAudio whisperAudio = null, string callbackUrl = null, CancellationToken ? cancellationToken = null)
     {
-      var response = await call.UpdateAsync(callId, new UpdateCallData
+      using (var response = await call.UpdateAsync(callId, new UpdateCallData
       {
         State = CallState.Transferring,
         TransferTo = to,
         TransferCallerId = callerId,
         CallbackUrl = callbackUrl,
         WhisperAudio = whisperAudio
-      }, cancellationToken);
-      return response.Headers.Location.AbsolutePath.Split('/').Last();
+      }, cancellationToken, false))
+      {
+        return response.Headers.Location.AbsolutePath.Split('/').Last();
+      }
     }
   }
 

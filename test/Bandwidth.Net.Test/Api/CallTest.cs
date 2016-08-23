@@ -343,7 +343,7 @@ namespace Bandwidth.Net.Test.Api
     {
       var context = new MockContext<ICall>(); 
       var call = new Mocks.Call(context);
-      context.Arrange(m => m.UpdateAsync("id", The<UpdateCallData>.Is(d => d.State == CallState.Active), null)).Returns(Task.FromResult(new HttpResponseMessage()));
+      context.Arrange(m => m.UpdateAsync("id", The<UpdateCallData>.Is(d => d.State == CallState.Active), null, true)).Returns(Task.FromResult(new HttpResponseMessage()));
       await call.AnswerAsync("id");
     }
 
@@ -352,7 +352,7 @@ namespace Bandwidth.Net.Test.Api
     {
       var context = new MockContext<ICall>(); 
       var call = new Mocks.Call(context);
-      context.Arrange(m => m.UpdateAsync("id", The<UpdateCallData>.Is(d => d.State == CallState.Rejected), null)).Returns(Task.FromResult(new HttpResponseMessage()));
+      context.Arrange(m => m.UpdateAsync("id", The<UpdateCallData>.Is(d => d.State == CallState.Rejected), null, true)).Returns(Task.FromResult(new HttpResponseMessage()));
       await call.RejectAsync("id");
     }
 
@@ -361,7 +361,7 @@ namespace Bandwidth.Net.Test.Api
     {
       var context = new MockContext<ICall>(); 
       var call = new Mocks.Call(context);
-      context.Arrange(m => m.UpdateAsync("id", The<UpdateCallData>.Is(d => d.State == CallState.Completed), null)).Returns(Task.FromResult(new HttpResponseMessage()));
+      context.Arrange(m => m.UpdateAsync("id", The<UpdateCallData>.Is(d => d.State == CallState.Completed), null, true)).Returns(Task.FromResult(new HttpResponseMessage()));
       await call.HangupAsync("id");
     }
 
@@ -370,7 +370,7 @@ namespace Bandwidth.Net.Test.Api
     {
       var context = new MockContext<ICall>(); 
       var call = new Mocks.Call(context);
-      context.Arrange(m => m.UpdateAsync("id", The<UpdateCallData>.Is(d => d.RecordingEnabled), null)).Returns(Task.FromResult(new HttpResponseMessage()));
+      context.Arrange(m => m.UpdateAsync("id", The<UpdateCallData>.Is(d => d.RecordingEnabled), null, true)).Returns(Task.FromResult(new HttpResponseMessage()));
       await call.TurnCallRecordingAsync("id", true);
     }
     
@@ -381,7 +381,7 @@ namespace Bandwidth.Net.Test.Api
       var response = new HttpResponseMessage(HttpStatusCode.Created);
       response.Headers.Location = new Uri("http://localhost/path/transferedId");
       var call = new Mocks.Call(context);
-      context.Arrange(m => m.UpdateAsync("id", The<UpdateCallData>.Is(d => d.State == CallState.Transferring && d.TransferTo == "to"), null)).Returns(Task.FromResult(response));
+      context.Arrange(m => m.UpdateAsync("id", The<UpdateCallData>.Is(d => d.State == CallState.Transferring && d.TransferTo == "to"), null, false)).Returns(Task.FromResult(response));
       var callId = await call.TransferAsync("id", "to");
       Assert.Equal("transferedId", callId);
     }

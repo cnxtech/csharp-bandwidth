@@ -36,9 +36,9 @@ namespace Bandwidth.Net.Test.Mocks
         throw new System.NotImplementedException();
       }
 
-      public Task<HttpResponseMessage> UpdateAsync(string callId, UpdateCallData data, CancellationToken? cancellationToken = null)
+      public Task<HttpResponseMessage> UpdateAsync(string callId, UpdateCallData data, CancellationToken? cancellationToken = null, bool disposeResponse = true)
       {
-        return _context.Invoke(m => m.UpdateAsync(callId, data, cancellationToken));
+        return _context.Invoke(m => m.UpdateAsync(callId, data, cancellationToken, disposeResponse));
       }
 
       public Task SendDtmfAsync(string callId, SendDtmfData data, CancellationToken? cancellationToken = null)

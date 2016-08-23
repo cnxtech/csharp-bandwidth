@@ -136,7 +136,6 @@ namespace Bandwidth.Net
       }
     }
 
-    //TODO check all usage calls Dispose()
     internal async Task<HttpResponseMessage> MakeJsonRequestAsync(HttpMethod method, string path, CancellationToken? cancellationToken = null, object query = null, object body = null)
     {
       var request = CreateRequest(method, path, query);
@@ -148,7 +147,7 @@ namespace Bandwidth.Net
       return await MakeRequestAsync(request, cancellationToken);
     }
 
-    internal async Task MakeJsonRequestWithoutReponseAsync(HttpMethod method, string path,
+    internal async Task MakeJsonRequestWithoutResponseAsync(HttpMethod method, string path,
       CancellationToken? cancellationToken = null, object query = null, object body = null)
     {
       using (await MakeJsonRequestAsync(method, path, cancellationToken, query, body))
@@ -158,8 +157,10 @@ namespace Bandwidth.Net
 
     internal async Task<string> MakePostJsonRequestAsync(string path, CancellationToken? cancellationToken = null, object body = null)
     {
-      var response = await MakeJsonRequestAsync(HttpMethod.Post, path, cancellationToken, null, body);
-      return (response.Headers.Location ?? new Uri("http://localhost") ).AbsolutePath.Split('/').LastOrDefault();
+      using (var response = await MakeJsonRequestAsync(HttpMethod.Post, path, cancellationToken, null, body))
+      {
+        return (response.Headers.Location ?? new Uri("http://localhost")).AbsolutePath.Split('/').LastOrDefault();
+      }
     }
   }
 }

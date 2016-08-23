@@ -131,13 +131,13 @@ namespace Bandwidth.Net.Api
     public Task UpdateAsync(string domainId, string endpointId, UpdateEndpointData data,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync(HttpMethod.Post,
+      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
         $"/users/{Client.UserId}/domains/{domainId}/endpoints/{endpointId}", cancellationToken, null, data);
     }
 
     public Task DeleteAsync(string domainId, string endpointId, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync(HttpMethod.Delete,
+      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Delete,
         $"/users/{Client.UserId}/domains/{domainId}/endpoints/{endpointId}", cancellationToken);
     }
 

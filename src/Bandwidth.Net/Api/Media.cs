@@ -107,9 +107,10 @@ namespace Bandwidth.Net.Api
       }
       if (request.Content == null) throw new ArgumentException("Path, Stream, Buffer or String is required. Please fill one of them.");
       request.Content.Headers.ContentType = new MediaTypeHeaderValue(data.ContentType ?? "application/octet-stream");
-      var response = await Client.MakeRequestAsync(request, cancellationToken);
-      resourceToClean?.Dispose();
-      await response.CheckResponseAsync();
+      using (await Client.MakeRequestAsync(request, cancellationToken))
+      {
+        resourceToClean?.Dispose();
+      }
     }
 
     public async Task<DownloadMediaFileData> DownloadAsync(string mediaName, CancellationToken? cancellationToken = null)
@@ -124,7 +125,7 @@ namespace Bandwidth.Net.Api
 
     public Task DeleteAsync(string mediaName, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync(HttpMethod.Delete,
+      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Delete,
         $"/users/{Client.UserId}/media/{Uri.EscapeDataString(mediaName)}", cancellationToken);
     }
   }
