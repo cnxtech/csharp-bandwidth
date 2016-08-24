@@ -25,7 +25,7 @@ namespace Bandwidth.Net
     /// <summary>
     ///   Event type
     /// </summary>
-    public CallbackEventTypes EventType { get; set; }
+    public CallbackEventType EventType { get; set; }
 
     /// <summary>
     ///   Message direction
@@ -70,7 +70,7 @@ namespace Bandwidth.Net
     /// <summary>
     ///   State
     /// </summary>
-    public CallbackEventStates State { get; set; }
+    public CallbackEventState State { get; set; }
 
     /// <summary>
     ///   Delivery state of message
@@ -224,7 +224,7 @@ namespace Bandwidth.Net
   /// <summary>
   ///   Possible event types
   /// </summary>
-  public enum CallbackEventTypes
+  public enum CallbackEventType
   {
     /// <summary>
     ///   Unknown type
@@ -351,7 +351,7 @@ namespace Bandwidth.Net
   /// <summary>
   ///   Callback event states
   /// </summary>
-  public enum CallbackEventStates
+  public enum CallbackEventState
   {
     /// <summary>
     ///   Active

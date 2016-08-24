@@ -10,15 +10,15 @@ namespace Bandwidth.Net.Test
     public void TestCreateFromJson()
     {
       var callbackEvent = CallbackEvent.CreateFromJson("{\"eventType\": \"speak\", \"state\": \"PLAYBACK_STOP\"}");
-      Assert.Equal(CallbackEventTypes.Speak, callbackEvent.EventType);
-      Assert.Equal(CallbackEventStates.PlaybackStop, callbackEvent.State);
+      Assert.Equal(CallbackEventType.Speak, callbackEvent.EventType);
+      Assert.Equal(CallbackEventState.PlaybackStop, callbackEvent.State);
     }
 
     [Fact]
     public void TestCreateFromJson2()
     {
       var callbackEvent = CallbackEvent.CreateFromJson("{\"eventType\": \"sms\", \"deliveryState\": \"not-delivered\"}");
-      Assert.Equal(CallbackEventTypes.Sms, callbackEvent.EventType);
+      Assert.Equal(CallbackEventType.Sms, callbackEvent.EventType);
       Assert.Equal(MessageDeliveryState.NotDelivered, callbackEvent.DeliveryState);
     }
 
@@ -26,7 +26,7 @@ namespace Bandwidth.Net.Test
     public void TestCreateFromJson3()
     {
       var callbackEvent = CallbackEvent.CreateFromJson("{}");
-      Assert.Equal(CallbackEventTypes.Unknown, callbackEvent.EventType);
+      Assert.Equal(CallbackEventType.Unknown, callbackEvent.EventType);
     }
   }
 
@@ -41,8 +41,8 @@ namespace Bandwidth.Net.Test
       };
 
       var callbackEvent = await response.Content.ReadAsCallbackEventAsync();
-      Assert.Equal(CallbackEventTypes.Speak, callbackEvent.EventType);
-      Assert.Equal(CallbackEventStates.PlaybackStop, callbackEvent.State);
+      Assert.Equal(CallbackEventType.Speak, callbackEvent.EventType);
+      Assert.Equal(CallbackEventState.PlaybackStop, callbackEvent.State);
     }
   }
 }
