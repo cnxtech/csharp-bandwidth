@@ -16,4 +16,5 @@
 | 4.5 | Supported |
 | 4.6 | Supported |
 | .Net Core (netstandard1.6)  | Supported |
-| PCL | Coming soon |
+| PCL | Supported |
+| Xamarin (IOS, Android, MonoTouch) | Supported |
