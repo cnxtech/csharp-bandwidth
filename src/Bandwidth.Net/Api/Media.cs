@@ -84,15 +84,17 @@ namespace Bandwidth.Net.Api
     {
       if (data == null) throw new ArgumentNullException(nameof(data));
       if (string.IsNullOrEmpty(data.MediaName)) throw new ArgumentException("data.MediaName is required");
-      IDisposable resourceToClean = null;
       var request = Client.CreateRequest(HttpMethod.Put,
         $"/users/{Client.UserId}/media/{Uri.EscapeDataString(data.MediaName)}");
+#if !WithoutFileIO
+      IDisposable resourceToClean = null;
       if (data.Path != null)
       {
         var stream = File.OpenRead(data.Path);
         resourceToClean = stream;
         request.Content = new StreamContent(stream);
       }
+#endif
       if (data.Stream != null)
       {
         request.Content = new StreamContent(data.Stream);
@@ -109,7 +111,9 @@ namespace Bandwidth.Net.Api
       request.Content.Headers.ContentType = new MediaTypeHeaderValue(data.ContentType ?? "application/octet-stream");
       using (await Client.MakeRequestAsync(request, cancellationToken))
       {
+#if !WithoutFileIO
         resourceToClean?.Dispose();
+#endif
       }
     }
 
@@ -163,11 +167,13 @@ namespace Bandwidth.Net.Api
     /// </summary>
     public string ContentType { get; set; }
 
+#if !WithoutFileIO
+
     /// <summary>
     ///   Path to file to upload
     /// </summary>
     public string Path { get; set; }
-
+#endif
     /// <summary>
     ///   Byte array to upload
     /// </summary>

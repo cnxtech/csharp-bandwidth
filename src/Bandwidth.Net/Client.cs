@@ -77,8 +77,8 @@ namespace Bandwidth.Net
       {
         return "";
       }
-      var type = query.GetType().GetTypeInfo();
-      return string.Join("&", from p in type.GetProperties()
+      var type = query.GetType();
+      return string.Join("&", from p in type.GetRuntimeProperties()
                               let v = p.GetValue(query)
                               where v != null
                               let tv = TransformQueryParameterValue(v)
@@ -93,7 +93,7 @@ namespace Bandwidth.Net
 
     private static string TransformQueryParameterValue(object value)
     {
-      if (value is DateTime || value is DateTime?)
+      if (value is DateTime)
       {
         return ((DateTime)value).ToUniversalTime().ToString("o");
       }
