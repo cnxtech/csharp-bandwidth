@@ -14,7 +14,7 @@ namespace Bandwidth.Net
     /// <summary>
     /// Event type
     /// </summary>
-    public EventTypes EventType { get; set; }
+    public CallbackEventTypes EventType { get; set; }
 
     /// <summary>
     /// Message direction
@@ -213,7 +213,7 @@ namespace Bandwidth.Net
   /// <summary>
   /// Possible event types
   /// </summary>
-  public enum EventTypes
+  public enum CallbackEventTypes
   {
     /// <summary>
     /// Unknown type

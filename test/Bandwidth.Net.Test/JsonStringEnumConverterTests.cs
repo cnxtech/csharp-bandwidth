@@ -26,6 +26,14 @@ namespace Bandwidth.Net.Test
     }
 
     [Fact]
+    public void TestReadJson3()
+    {
+      var item = JsonConvert.DeserializeObject<TestItem>("{\"Item\":\"SOME_ANOTHER_VALUE\"}");
+      Assert.Equal(TestEnum.SomeAnotherValue, item.Item);
+    }
+
+
+    [Fact]
     public void TestWriteJson()
     {
       var item = new TestItem {Item = TestEnum.SomeValue};
