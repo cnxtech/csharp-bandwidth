@@ -7,202 +7,213 @@ using Newtonsoft.Json;
 namespace Bandwidth.Net
 {
   /// <summary>
-  /// Catapult Api callback event
+  ///   Catapult Api callback event
   /// </summary>
+  /// <example>
+  /// <code>
+  /// var callbackEvent = CallbackEvent.CreateFromJson("{\"eventType\": \"sms\"}");
+  /// switch(callbackEvent.EventType)
+  /// {
+  ///   case CallbackEventTypes.Sms:
+  ///     Console.WriteLine($"Sms {callbackEvent.From} -> {callbackEvent.To}: {callbackEvent.Text}");
+  ///     break;
+  /// }
+  /// </code>
+  /// </example>
   public class CallbackEvent
   {
     /// <summary>
-    /// Event type
+    ///   Event type
     /// </summary>
     public CallbackEventTypes EventType { get; set; }
 
     /// <summary>
-    /// Message direction
+    ///   Message direction
     /// </summary>
     public MessageDirection Direction { get; set; }
 
     /// <summary>
-    /// From
+    ///   From
     /// </summary>
     public string From { get; set; }
 
     /// <summary>
-    /// To
+    ///   To
     /// </summary>
     public string To { get; set; }
 
     /// <summary>
-    /// Id of message
+    ///   Id of message
     /// </summary>
     public string MessageId { get; set; }
 
     /// <summary>
-    /// Url to message
+    ///   Url to message
     /// </summary>
     public string MessageUri { get; set; }
 
     /// <summary>
-    /// Text of message or transcription
+    ///   Text of message or transcription
     /// </summary>
     public string Text { get; set; }
 
     /// <summary>
-    /// Application Id
+    ///   Application Id
     /// </summary>
     public string ApplicationId { get; set; }
 
     /// <summary>
-    /// Time
+    ///   Time
     /// </summary>
     public DateTime Time { get; set; }
 
     /// <summary>
-    /// State
+    ///   State
     /// </summary>
     public CallbackEventStates State { get; set; }
 
     /// <summary>
-    /// Delivery state of message
+    ///   Delivery state of message
     /// </summary>
     public MessageDeliveryState DeliveryState { get; set; }
 
     /// <summary>
-    /// Delivery code of message
+    ///   Delivery code of message
     /// </summary>
     public int DeliveryCode { get; set; }
 
     /// <summary>
-    /// Delivery description of message
+    ///   Delivery description of message
     /// </summary>
     public string DeliveryDescription { get; set; }
 
     /// <summary>
-    /// Urls to attached media files to message
+    ///   Urls to attached media files to message
     /// </summary>
     public string[] Media { get; set; }
 
     /// <summary>
-    /// Call state
+    ///   Call state
     /// </summary>
     public CallState CallState { get; set; }
 
     /// <summary>
-    /// Id of call
+    ///   Id of call
     /// </summary>
     public string CallId { get; set; }
 
     /// <summary>
-    /// Url to the call
+    ///   Url to the call
     /// </summary>
     public string CallUri { get; set; }
 
     /// <summary>
-    /// Tag
+    ///   Tag
     /// </summary>
     public string Tag { get; set; }
 
     /// <summary>
-    /// Status
+    ///   Status
     /// </summary>
     public CallbackEventStatus Status { get; set; }
 
     /// <summary>
-    /// If of conference
+    ///   If of conference
     /// </summary>
     public string ConferenceId { get; set; }
 
     /// <summary>
-    /// Url to the conference
+    ///   Url to the conference
     /// </summary>
     public string ConferenceUri { get; set; }
 
     /// <summary>
-    /// Created time of the conference
+    ///   Created time of the conference
     /// </summary>
     public DateTime CreatedTime { get; set; }
 
     /// <summary>
-    /// Completed time of the conference
+    ///   Completed time of the conference
     /// </summary>
     public DateTime CompletedTime { get; set; }
 
     /// <summary>
-    /// Active mebers count of the conference
+    ///   Active mebers count of the conference
     /// </summary>
     public int ActiveMembers { get; set; }
 
     /// <summary>
-    /// Id of conference member
+    ///   Id of conference member
     /// </summary>
     public string MemberId { get; set; }
 
     /// <summary>
-    /// Url to the conference member
+    ///   Url to the conference member
     /// </summary>
     public string MemberUri { get; set; }
 
     /// <summary>
-    /// Members is on hold in conference and can not hear or speak.
+    ///   Members is on hold in conference and can not hear or speak.
     /// </summary>
     public bool Hold { get; set; }
 
     /// <summary>
-    /// Members audio is muted in conference.
+    ///   Members audio is muted in conference.
     /// </summary>
     public bool Mute { get; set; }
 
     /// <summary>
-    /// The digit pressed
+    ///   The digit pressed
     /// </summary>
     public string DtmfDigit { get; set; }
 
     /// <summary>
-    /// Id of gather
+    ///   Id of gather
     /// </summary>
     public string GatherId { get; set; }
 
     /// <summary>
-    /// Reason
+    ///   Reason
     /// </summary>
     public CallbackEventReason Reason { get; set; }
 
     /// <summary>
-    /// Cause of call termination
+    ///   Cause of call termination
     /// </summary>
     public string Cause { get; set; }
 
     /// <summary>
-    /// Id of recording
+    ///   Id of recording
     /// </summary>
     public string RecordingId { get; set; }
 
     /// <summary>
-    /// Url to the recording
+    ///   Url to the recording
     /// </summary>
     public string RecordingUri { get; set; }
 
     /// <summary>
-    /// Id of transcription
+    ///   Id of transcription
     /// </summary>
     public string TranscriptionId { get; set; }
 
     /// <summary>
-    /// Url to the transcription
+    ///   Url to the transcription
     /// </summary>
     public string TranscriptionUri { get; set; }
 
     /// <summary>
-    /// Total character count of text.
+    ///   Total character count of text.
     /// </summary>
     public int TextSize { get; set; }
 
     /// <summary>
-    /// The full URL of the entire text content of the transcription.
+    ///   The full URL of the entire text content of the transcription.
     /// </summary>
     public string TextUrl { get; set; }
 
     /// <summary>
-    /// Create instance from JSON string
+    ///   Create instance from JSON string
     /// </summary>
     /// <param name="json">JSON string with callback event data</param>
     /// <returns>New instance of CallbackEvent</returns>
@@ -211,227 +222,236 @@ namespace Bandwidth.Net
   }
 
   /// <summary>
-  /// Possible event types
+  ///   Possible event types
   /// </summary>
   public enum CallbackEventTypes
   {
     /// <summary>
-    /// Unknown type
+    ///   Unknown type
     /// </summary>
     Unknown,
 
     /// <summary>
-    /// Sms
+    ///   Sms
     /// </summary>
     Sms,
 
     /// <summary>
-    /// Mms
+    ///   Mms
     /// </summary>
     Mms,
 
     /// <summary>
-    /// Answer call
+    ///   Answer call
     /// </summary>
     Answer,
 
     /// <summary>
-    /// Playback uadio
+    ///   Playback uadio
     /// </summary>
     Playback,
 
     /// <summary>
-    /// Call timeout
+    ///   Call timeout
     /// </summary>
     Timeout,
 
     /// <summary>
-    /// Conference
+    ///   Conference
     /// </summary>
     Conference,
 
     /// <summary>
-    /// Play audio to the conference
+    ///   Play audio to the conference
     /// </summary>
     ConferencePlayback,
 
     /// <summary>
-    /// Conference member
+    ///   Conference member
     /// </summary>
     ConferenceMember,
 
     /// <summary>
-    /// Speak text to the conference
+    ///   Speak text to the conference
     /// </summary>
     ConferenceSpeak,
 
     /// <summary>
-    /// DTMF
+    ///   DTMF
     /// </summary>
     Dtmf,
 
     /// <summary>
-    /// Gather
+    ///   Gather
     /// </summary>
     Gather,
 
     /// <summary>
-    /// Incoming call
+    ///   Incoming call
     /// </summary>
     Incomingcall,
 
     /// <summary>
-    /// Call completed
+    ///   Call completed
     /// </summary>
     Hangup,
 
     /// <summary>
-    /// Recording
+    ///   Recording
     /// </summary>
     Recording,
 
     /// <summary>
-    /// Speak text
+    ///   Speak text
     /// </summary>
     Speak,
 
     /// <summary>
-    /// Transcription
+    ///   Transcription
     /// </summary>
     Transcription
   }
 
   /// <summary>
-  /// Possible statuses of calback events
+  ///   Possible statuses of calback events
   /// </summary>
   public enum CallbackEventStatus
   {
     /// <summary>
-    /// Started
+    ///   Started
     /// </summary>
     Started,
 
     /// <summary>
-    /// Done
+    ///   Done
     /// </summary>
     Done,
 
     /// <summary>
-    /// Created
+    ///   Created
     /// </summary>
     Created,
 
     /// <summary>
-    /// Completed
+    ///   Completed
     /// </summary>
     Completed,
 
     /// <summary>
-    /// Complete
+    ///   Complete
     /// </summary>
     Complete,
 
     /// <summary>
-    /// Error
+    ///   Error
     /// </summary>
     Error
   }
 
   /// <summary>
-  /// Callback event states
+  ///   Callback event states
   /// </summary>
   public enum CallbackEventStates
   {
     /// <summary>
-    /// Active
+    ///   Active
     /// </summary>
     Active,
 
     /// <summary>
-    /// Completed
+    ///   Completed
     /// </summary>
     Completed,
 
     /// <summary>
-    /// Received
+    ///   Received
     /// </summary>
     Received,
 
     /// <summary>
-    /// Queued
+    ///   Queued
     /// </summary>
     Queued,
 
     /// <summary>
-    /// Sending
+    ///   Sending
     /// </summary>
     Sending,
 
     /// <summary>
-    /// Sent
+    ///   Sent
     /// </summary>
     Sent,
 
     /// <summary>
-    /// Complete
+    ///   Complete
     /// </summary>
     Complete,
 
     /// <summary>
-    /// Error
+    ///   Error
     /// </summary>
     Error,
 
     /// <summary>
-    /// Start of playback
+    ///   Start of playback
     /// </summary>
     PlaybackStart,
 
     /// <summary>
-    /// End of playback
+    ///   End of playback
     /// </summary>
     PlaybackStop
   }
 
   /// <summary>
-  /// Possible reasons of calback events
+  ///   Possible reasons of calback events
   /// </summary>
   public enum CallbackEventReason
   {
     /// <summary>
-    /// Max digits reached
+    ///   Max digits reached
     /// </summary>
     MaxDigits,
 
     /// <summary>
-    /// Terminating digit
+    ///   Terminating digit
     /// </summary>
     TerminatingDigit,
 
     /// <summary>
-    /// Interdigit timeout
+    ///   Interdigit timeout
     /// </summary>
     InterDigitTimeout,
 
     /// <summary>
-    /// Hung up
+    ///   Hung up
     /// </summary>
     HungUp
   }
 
   /// <summary>
-  /// Helper for HttpContent to parse CallbackEvent
+  ///   Helper for HttpContent to parse CallbackEvent
   /// </summary>
   public static class CallbackEventHelpers
   {
     /// <summary>
-    /// Read CallbackEvent instance from http content
+    ///   Read CallbackEvent instance from http content
     /// </summary>
     /// <param name="content">Content</param>
     /// <returns>Callback event data or null if response content is not json</returns>
+    /// <example>
+    /// <code>
+    /// var callbackEvent = await response.Content.ReadAsCallbackEventAsync(); // response is instance of HttpResponseEvent
+    /// switch(callbackEvent.EventType)
+    /// {
+    ///   case CallbackEventTypes.Sms:
+    ///     Console.WriteLine($"Sms {callbackEvent.From} -> {callbackEvent.To}: {callbackEvent.Text}");
+    ///     break;
+    /// }
+    /// </code>
+    /// </example>
     public static Task<CallbackEvent> ReadAsCallbackEventAsync(this HttpContent content)
-    {
-      return content.ReadAsJsonAsync<CallbackEvent>();
-    }
+      => content.ReadAsJsonAsync<CallbackEvent>();
   }
 }
