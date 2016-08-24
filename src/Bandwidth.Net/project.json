@@ -30,7 +30,6 @@
         "debugType": "full"
       },
       "dependencies": {
-        "System.IO.FileSystem": "4.0.1",
         "System.Net.Http": "4.*"
       }
     },
