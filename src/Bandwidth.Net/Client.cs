@@ -132,7 +132,7 @@ namespace Bandwidth.Net
     {
       using (var response = await MakeJsonRequestAsync(method, path, cancellationToken, query, body))
       {
-        return await response.ReadAsJsonAsync<T>();
+        return await response.Content.ReadAsJsonAsync<T>();
       }
     }
 

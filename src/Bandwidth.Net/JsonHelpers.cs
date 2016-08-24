@@ -50,11 +50,11 @@ namespace Bandwidth.Net
       }
     }
 
-    public static async Task<TResult> ReadAsJsonAsync<TResult>(this HttpResponseMessage response)
+    public static async Task<TResult> ReadAsJsonAsync<TResult>(this HttpContent content)
     {
-      if (response.Content.Headers.ContentType.MediaType == "application/json")
+      if (content.Headers.ContentType.MediaType == "application/json")
       {
-        var json = await response.Content.ReadAsStringAsync();
+        var json = await content.ReadAsStringAsync();
         return json.Length > 0
             ? JsonConvert.DeserializeObject<TResult>(json, GetSerializerSettings())
             : default(TResult);

@@ -29,7 +29,7 @@ namespace Bandwidth.Net
         using (var response = getData().Result)
         {
 
-          var list = response.ReadAsJsonAsync<T[]>().Result;
+          var list = response.Content.ReadAsJsonAsync<T[]>().Result;
           foreach (var item in list)
           {
             yield return item;

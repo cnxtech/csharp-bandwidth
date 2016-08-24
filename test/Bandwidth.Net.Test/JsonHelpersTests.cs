@@ -32,24 +32,18 @@ namespace Bandwidth.Net.Test
     [Fact]
     public async void TestReadAsJsonAsync()
     {
-      using (var response = new HttpResponseMessage())
-      {
-        response.Content = new StringContent("{\"field1\": 100}", Encoding.UTF8, "application/json");
-        var item = await response.ReadAsJsonAsync<TestItem>();
-        Assert.NotNull(item);
-        Assert.Equal(100, item.Field1);
-      }
+      var content = new StringContent("{\"field1\": 100}", Encoding.UTF8, "application/json");
+      var item = await content.ReadAsJsonAsync<TestItem>();
+      Assert.NotNull(item);
+      Assert.Equal(100, item.Field1);
     }
 
     [Fact]
     public async void TestReadAsJsonAsyncForNonJsonContent()
     {
-      using (var response = new HttpResponseMessage())
-      {
-        response.Content = new StringContent("text", Encoding.UTF8, "plain/text");
-        var item = await response.ReadAsJsonAsync<TestItem>();
-        Assert.Null(item);
-      }
+      var content = new StringContent("text", Encoding.UTF8, "plain/text");
+      var item = await content.ReadAsJsonAsync<TestItem>();
+      Assert.Null(item);
     }
 
     [Fact]

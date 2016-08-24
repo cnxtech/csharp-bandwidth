@@ -420,18 +420,18 @@ namespace Bandwidth.Net
   }
 
   /// <summary>
-  /// Helper for HttpResponseMessage to parse CallbackEvent
+  /// Helper for HttpContent to parse CallbackEvent
   /// </summary>
   public static class CallbackEventHelpers
   {
     /// <summary>
-    /// Read CallbackEvent instance from response content
+    /// Read CallbackEvent instance from http content
     /// </summary>
-    /// <param name="response">Response</param>
+    /// <param name="content">Content</param>
     /// <returns>Callback event data or null if response content is not json</returns>
-    public static Task<CallbackEvent> ReadAsCallbackEventAsync(this HttpResponseMessage response)
+    public static Task<CallbackEvent> ReadAsCallbackEventAsync(this HttpContent content)
     {
-      return response.ReadAsJsonAsync<CallbackEvent>();
+      return content.ReadAsJsonAsync<CallbackEvent>();
     }
   }
 }

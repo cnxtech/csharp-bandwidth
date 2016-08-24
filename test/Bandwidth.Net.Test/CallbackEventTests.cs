@@ -40,7 +40,7 @@ namespace Bandwidth.Net.Test
         Content = new JsonContent("{\"eventType\": \"speak\", \"state\": \"PLAYBACK_STOP\"}")
       };
 
-      var callbackEvent = await response.ReadAsCallbackEventAsync();
+      var callbackEvent = await response.Content.ReadAsCallbackEventAsync();
       Assert.Equal(CallbackEventTypes.Speak, callbackEvent.EventType);
       Assert.Equal(CallbackEventStates.PlaybackStop, callbackEvent.State);
     }
