@@ -14,7 +14,7 @@ namespace Bandwidth.Net
   /// var callbackEvent = CallbackEvent.CreateFromJson("{\"eventType\": \"sms\"}");
   /// switch(callbackEvent.EventType)
   /// {
-  ///   case CallbackEventTypes.Sms:
+  ///   case CallbackEventType.Sms:
   ///     Console.WriteLine($"Sms {callbackEvent.From} -> {callbackEvent.To}: {callbackEvent.Text}");
   ///     break;
   /// }
@@ -445,7 +445,7 @@ namespace Bandwidth.Net
     /// var callbackEvent = await response.Content.ReadAsCallbackEventAsync(); // response is instance of HttpResponseEvent
     /// switch(callbackEvent.EventType)
     /// {
-    ///   case CallbackEventTypes.Sms:
+    ///   case CallbackEventType.Sms:
     ///     Console.WriteLine($"Sms {callbackEvent.From} -> {callbackEvent.To}: {callbackEvent.Text}");
     ///     break;
     /// }
