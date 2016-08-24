@@ -51,7 +51,7 @@
         "System.Reflection.Primitives": "4.0.0.0"
       }
     },
-    "MonoAndroid10": {
+    "monoandroid10": {
       "dependencies": {
         "System.Net.Http": "4.*",
         "System.Net.Primitives": "4.*",
@@ -64,7 +64,20 @@
         "mscorlib": "2.0.5.0"
       }
     },
-    "MonoTouch10": {
+    "monotouch10": {
+      "dependencies": {
+        "System.Net.Http": "4.*",
+        "System.Net.Primitives": "4.*",
+        "System.IO": "4.*",
+        "System.Reflection": "4.*"
+      },
+      "frameworkAssemblies": {
+        "System.Core": "2.0.5.0",
+        "System": "2.0.5.0",
+        "mscorlib": "2.0.5.0"
+      }
+    },
+    "xamarinios10": {
       "dependencies": {
         "System.Net.Http": "4.*",
         "System.Net.Primitives": "4.*",
