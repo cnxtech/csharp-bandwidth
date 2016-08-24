@@ -57,7 +57,7 @@ namespace Bandwidth.Net.Test.Api
     private static void ValidateRecording(Recording item)
     {
       Assert.Equal("recordingId", item.Id);
-      Assert.Equal(RecordingStates.Complete, item.State);
+      Assert.Equal(RecordingState.Complete, item.State);
       Assert.Equal("{callId1}", item.CallId);
       Assert.Equal("{callId1}-1.wav", item.MediaName);
     }

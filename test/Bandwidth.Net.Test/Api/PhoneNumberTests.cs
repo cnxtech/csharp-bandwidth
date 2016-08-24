@@ -135,7 +135,7 @@ namespace Bandwidth.Net.Test.Api
     private static void ValidatePhoneNumber(PhoneNumber item)
     {
       Assert.Equal("numberId", item.Id);
-      Assert.Equal(PhoneNumberStates.Enabled, item.NumberState);
+      Assert.Equal(PhoneNumberState.Enabled, item.NumberState);
     }
   }
 }

@@ -100,7 +100,7 @@ namespace Bandwidth.Net.Api
     /// <summary>
     /// The state of the recording,
     /// </summary>
-    public RecordingStates State { get; set; }
+    public RecordingState State { get; set; }
   }
 
   /// <summary>
@@ -118,7 +118,7 @@ namespace Bandwidth.Net.Api
   /// <summary>
   /// States of recording
   /// </summary>
-  public enum RecordingStates
+  public enum RecordingState
   {
     /// <summary>
     /// Recording is currently active.

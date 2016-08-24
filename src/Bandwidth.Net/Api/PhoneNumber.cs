@@ -176,7 +176,7 @@ namespace Bandwidth.Net.Api
     /// <summary>
     ///   The phone number state
     /// </summary>
-    public PhoneNumberStates NumberState { get; set; }
+    public PhoneNumberState NumberState { get; set; }
   }
 
 
@@ -230,7 +230,7 @@ namespace Bandwidth.Net.Api
   /// <summary>
   ///   Phone number states
   /// </summary>
-  public enum PhoneNumberStates
+  public enum PhoneNumberState
   {
     /// <summary>
     ///   Active number
@@ -277,6 +277,6 @@ namespace Bandwidth.Net.Api
     /// <summary>
     ///   Used to filter the retrieved list of numbers allocated for the authenticated user by the number state.
     /// </summary>
-    public PhoneNumberStates? NumberState { get; set; }
+    public PhoneNumberState? NumberState { get; set; }
   }
 }

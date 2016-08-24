@@ -98,7 +98,7 @@ namespace Bandwidth.Net.Api
     /// <summary>
     /// The state of the transcription
     /// </summary>
-    public TranscriptionStates State { get; set; }
+    public TranscriptionState State { get; set; }
 
     /// <summary>
     /// The transcribed text.
@@ -146,7 +146,7 @@ namespace Bandwidth.Net.Api
   /// <summary>
   /// States of transcription
   /// </summary>
-  public enum TranscriptionStates
+  public enum TranscriptionState
   {
     /// <summary>
     /// Transcribing

@@ -97,7 +97,7 @@ namespace Bandwidth.Net.Test.Api
     private static void ValidateTranscription(Transcription item)
     {
       Assert.Equal("transcriptionId", item.Id);
-      Assert.Equal(TranscriptionStates.Completed, item.State);
+      Assert.Equal(TranscriptionState.Completed, item.State);
       Assert.Equal("{transcriptionId}", item.TextMediaName);
     }
   }
