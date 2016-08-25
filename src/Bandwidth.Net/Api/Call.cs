@@ -34,7 +34,7 @@ namespace Bandwidth.Net.Api
     /// <returns>Instance of created call</returns>
     /// <example>
     ///   <code>
-    /// var call = await client.Call.CreateAsync(new CreateCallData{ CallIds = new[]{"callId"}});
+    /// var call = await client.Call.CreateAsync(new CreateCallData{ From = "+1234567890", To = "+1234567891"});
     /// </code>
     /// </example>
     Task<ILazyInstance<Call>> CreateAsync(CreateCallData data, CancellationToken? cancellationToken = null);

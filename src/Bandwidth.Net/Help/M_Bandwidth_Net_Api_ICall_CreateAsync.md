@@ -25,7 +25,7 @@ Type: <a href="http://msdn2.microsoft.com/en-us/library/dd321424" target="_blank
 ## Examples
 
 ```
-var call = await client.Call.CreateAsync(new CreateCallData{ CallIds = new[]{"callId"}});
+var call = await client.Call.CreateAsync(new CreateCallData{ From = "+1234567890", To = "+1234567891"});
 ```
 
 
