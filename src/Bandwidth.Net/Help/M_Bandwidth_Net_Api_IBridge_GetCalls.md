@@ -25,7 +25,7 @@ Type: <a href="http://msdn2.microsoft.com/en-us/library/9eekhta0" target="_blank
 ## Examples
 
 ```
-var bridges = client.Bridge.List();
+var calls = client.Bridge.GetCalls();
 ```
 
 

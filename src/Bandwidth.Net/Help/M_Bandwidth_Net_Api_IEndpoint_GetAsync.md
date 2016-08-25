@@ -1,0 +1,37 @@
+﻿# IEndpoint.GetAsync Method 
+ 
+
+Get information about a endpoint
+
+**Namespace:**&nbsp;<a href ="N_Bandwidth_Net_Api.md">Bandwidth.Net.Api</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.0-preview
+
+## Syntax
+
+**C#**<br />
+``` C#
+Task<Endpoint> GetAsync(
+	string domainId,
+	string endpointId,
+	Nullable<CancellationToken> cancellationToken = null
+)
+```
+
+
+#### Parameters
+&nbsp;<dl><dt>domainId</dt><dd>Type: <a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">System.String</a><br />Id of endpoint's domain</dd><dt>endpointId</dt><dd>Type: <a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">System.String</a><br />Id of endpoint to get</dd><dt>cancellationToken (Optional)</dt><dd>Type: <a href="http://msdn2.microsoft.com/en-us/library/b3h38hb0" target="_blank">System.Nullable</a>(<a href="http://msdn2.microsoft.com/en-us/library/dd384802" target="_blank">CancellationToken</a>)<br />Optional token to cancel async operation</dd></dl>
+
+#### Return Value
+Type: <a href="http://msdn2.microsoft.com/en-us/library/dd321424" target="_blank">Task</a>(<a href ="T_Bandwidth_Net_Api_Endpoint.md">Endpoint</a>)<br />Task with <a href ="T_Bandwidth_Net_Api_Endpoint.md">Endpoint</a>Endpoint instance
+
+## Examples
+
+```
+var endpoint = await client.Endpoint.GetAsync("domainId", "endpointId");
+```
+
+
+## See Also
+
+
+#### Reference
+<a href ="T_Bandwidth_Net_Api_IEndpoint.md">IEndpoint Interface</a><br /><a href ="N_Bandwidth_Net_Api.md">Bandwidth.Net.Api Namespace</a><br />
