@@ -75,6 +75,8 @@ Console.WriteLine(application.Instance.Name); //will make request to Catapult AP
 
 Console.WriteLine(application.Instance.Name); //will use cached application's data
 
+```
+
 #### Get list of objects
 
 Executing of methods which returns collections of objects will not execute Catapult API request immediately. THis request will be executed only when you try enumerate items of the collection.
