@@ -8,6 +8,8 @@ before_test:
     - dotnet restore
     - cd ..\..
 test_script:
+    - cd src\Bandwidth.Net
+    - dotnet build
     - cd test\Bandwidth.Net.Test
     - dotnet build
     - cd bin\Debug\net45\win7-x64
