@@ -16,3 +16,7 @@ test_script:
     - type html\Summary.txt
     - cd ..\..\..\..\..\..
     - '%HOMEDRIVE%%HOMEPATH%\.nuget\packages\coveralls.net\0.6.0\tools\csmacnz.Coveralls.exe --opencover -i test\Bandwidth.Net.Test\bin\Debug\net45\win7-x64\coverage.xml --useRelativePaths'
+
+after_test:
+    - cd src\Bandwidth.Net
+    - deployGHPages.cmd

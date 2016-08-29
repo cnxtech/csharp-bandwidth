@@ -1,5 +1,7 @@
 @echo off
-rem if "%APPVEYOR_REPO_BRANCH%" == "master"
+if "%APPVEYOR_REPO_BRANCH%" == "v3-preview" goto cont
+goto exit
+:cont
 rd /s /q Help Pages
 %SystemRoot%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe Bandwidth.Net.Html.shfbproj
 git clone https://github.com/bandwidthcom/csharp-bandwidth.git Pages
@@ -15,3 +17,4 @@ COMMIT_MESSAGE="%COMMIT_MESSAGE%: %APPVEYOR_PULL_REQUEST_TITLE%"
 git commit -m "%COMMIT_MESSAGE%"
 git push origin gh-pages
 cd ..
+:exit
