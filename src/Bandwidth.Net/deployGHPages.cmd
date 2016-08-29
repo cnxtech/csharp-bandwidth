@@ -10,7 +10,6 @@ if not %APPVEYOR_REPO_BRANCH% == %BRANCH% (
 )
 rd /s /q Help Pages
 %SystemRoot%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe Bandwidth.Net.Html.shfbproj
-type Help\LastBuild.log
 git clone https://github.com/bandwidthcom/csharp-bandwidth.git Pages
 cd Pages
 git config user.name "AppVeyor CI"
