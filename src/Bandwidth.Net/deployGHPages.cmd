@@ -3,10 +3,10 @@ if not defined BRANCH (
     set BRANCH=master
 )
 if not defined APPVEYOR_REPO_BRANCH (
-    exit 1
+    exit 0
 )  
 if not %APPVEYOR_REPO_BRANCH% == %BRANCH% (
-    exit 1
+    exit 0
 )
 rd /s /q Help Pages
 %SystemRoot%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe Bandwidth.Net.Html.shfbproj
