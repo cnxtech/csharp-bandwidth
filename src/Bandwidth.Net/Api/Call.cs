@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Bandwidth.Net.Api
 {
@@ -521,6 +524,7 @@ namespace Bandwidth.Net.Api
     /// <summary>
     /// Map of Sip headers prefixed by "X-". Up to 5 headers can be sent per call.
     /// </summary>
+    [JsonConverter(typeof(DefaultConverter))]
     public Dictionary<string, string> SipHeaders { get; set; }
   }
 
@@ -725,6 +729,7 @@ namespace Bandwidth.Net.Api
     /// <summary>
     /// Map of Sip headers prefixed by "X-". Up to 5 headers can be sent per call.
     /// </summary>
+    [JsonConverter(typeof(DefaultConverter))]
     public Dictionary<string, string> SipHeaders { get; set; }
   }
 
@@ -943,5 +948,4 @@ namespace Bandwidth.Net.Api
     /// </summary>
     public string DtmfOut { get; set; }
   }
-
 }
