@@ -474,4 +474,97 @@ namespace Bandwidth.Net.Api
       return _time.ToString("yyyy-MM-dd HH:mm:ss");
     }
   }
+
+  public class MessageQueue
+  {
+    private readonly IMessage _api;
+    private readonly string _from;
+    private readonly List<MessageData> _queue;
+    private readonly List<SendMessageResult> _results;
+    private readonly int _count;
+    private readonly TimeSpan _period;
+
+    public MessageQueue(IMessage api, string from, double rate = 1, CancellationToken? cancellationToken = null)
+    {
+      if(rate <= 0) throw new ArgumentOutOfRangeException(nameof(rate), $"{nameof(rate)} should be more than 0");
+      _api = api;
+      _from = @from;
+      if (rate >= 1)
+      {
+        _count = (int) Math.Round(rate);
+        _period = TimeSpan.FromSeconds(1);
+      }
+      else
+      {
+        _period = TimeSpan.FromSeconds(1/rate);
+        _count = 1;
+      }
+      _queue = new List<MessageData>();
+      _results = new List<SendMessageResult>();
+      StartSendMessages(cancellationToken ?? CancellationToken.None).Start();
+    }
+
+    public void Queue(params MessageData[] data)
+    {
+      Queue((IEnumerable<MessageData>)data);
+    }
+
+    public void Queue(IEnumerable<MessageData> data)
+    {
+      var list = data.ToList();
+      foreach (var messageData in list)
+      {
+        messageData.From = _from;
+      }
+      lock (_queue)
+      {
+        _queue.AddRange(list);
+      }
+    }
+
+    public SendMessageResult[] GetResults()
+    {
+      lock (_results)
+      {
+        return _results.ToArray();
+      }
+    }
+
+ 
+    private async Task  StartSendMessages(CancellationToken cancellationToken)
+    {
+      MessageData[] messages;
+      var startTime = DateTime.Now;
+      lock (_queue)
+      {
+        messages = _queue.Take(_count).ToArray();
+        _queue.RemoveRange(0, messages.Length);
+      }
+      if (messages.Length > 0)
+      {
+        var results = await _api.SendAsync(messages, cancellationToken);
+        var rateLimitResults =
+          results.Where(r => r.Error.Code == "message-rate-limit" || r.Error.Code == "multi-message-limit").ToList();
+        var rateLimitMessages = rateLimitResults.Select(r => r.Message).ToList();
+        if (rateLimitMessages.Count > 0)
+        {
+          Queue(rateLimitMessages); //repeat sending of rate limited messages;
+          await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
+            // wait a bit to avoid rate limit error for next messages
+        }
+        var otherResults = results.Where(r => !rateLimitResults.Contains(r));
+        lock (_results)
+        {
+          _results.AddRange(otherResults);
+        }
+      }
+      var executionTime = DateTime.Now - startTime;
+      var timeToWait = _period - executionTime;
+      await Task.Delay(timeToWait, cancellationToken);
+      if (!cancellationToken.IsCancellationRequested)
+      {
+        await StartSendMessages(cancellationToken);
+      }
+    }
+  }
 }
