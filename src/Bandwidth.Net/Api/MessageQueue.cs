@@ -25,28 +25,32 @@ namespace Bandwidth.Net.Api
     internal readonly string From;
     internal readonly List<MessageData> MessagesQueue;
     internal readonly List<SendMessageResult> Results;
-    internal readonly int Count;
+    internal readonly int MessagesToSendPerTime;
     internal readonly TimeSpan Interval;
     internal IDelay Delay;
 
     public MessageQueue(IMessage api, string from, double rate = 1, CancellationToken? cancellationToken = null)
     {
+      if (api == null) throw new ArgumentNullException(nameof(api));
+      if (string.IsNullOrEmpty(@from)) throw new ArgumentNullException(nameof(@from));
       if(rate <= 0) throw new ArgumentOutOfRangeException(nameof(rate), $"{nameof(rate)} should be more than 0");
       Api = api;
       From = @from;
       if (rate >= 1)
       {
-        Count = (int) Math.Round(rate);
+        MessagesToSendPerTime = (int) Math.Round(rate);
         Interval = TimeSpan.FromSeconds(1);
+        // send N messages per second
       }
       else
       {
         Interval = TimeSpan.FromSeconds(1/rate);
-        Count = 1;
+        MessagesToSendPerTime = 1;
+        // send 1 messages per given interval (more 1 second)
       }
       MessagesQueue = new List<MessageData>();
       Results = new List<SendMessageResult>();
-      StartSendMessages(cancellationToken ?? CancellationToken.None).Start();
+      Task.Run(() => StartSendMessages(cancellationToken ?? CancellationToken.None));
     }
 
     public void Queue(params MessageData[] data)
@@ -75,7 +79,7 @@ namespace Bandwidth.Net.Api
       }
     }
 
- 
+
     internal async Task  StartSendMessages(CancellationToken cancellationToken)
     {
       if (cancellationToken.IsCancellationRequested)
@@ -86,15 +90,16 @@ namespace Bandwidth.Net.Api
       var startTime = DateTime.Now;
       lock (MessagesQueue)
       {
-        messages = MessagesQueue.Take(Count).ToArray();
+        messages = MessagesQueue.Take(MessagesToSendPerTime).ToArray();
         MessagesQueue.RemoveRange(0, messages.Length);
       }
       var delay = Delay ?? new DelayInternal();
       if (messages.Length > 0)
       {
-        var results = await Api.SendAsync(messages, cancellationToken);
+        var task = Api.SendAsync(messages, cancellationToken);
+        var results = await task;
         var rateLimitResults =
-          results.Where(r => r.Error.Code == "message-rate-limit" || r.Error.Code == "multi-message-limit").ToList();
+          results.Where(r => r.Error != null && r.Error.Code == "message-rate-limit" || r.Error.Code == "multi-message-limit").ToList();
         var rateLimitMessages = rateLimitResults.Select(r => r.Message).ToList();
         if (rateLimitMessages.Count > 0)
         {
@@ -110,7 +115,10 @@ namespace Bandwidth.Net.Api
       }
       var executionTime = DateTime.Now - startTime;
       var timeToWait = Interval - executionTime;
-      await delay.Delay(timeToWait, cancellationToken);
+      if(timeToWait.TotalMilliseconds > 0)
+      {
+        await delay.Delay(timeToWait, cancellationToken);
+      }
       await StartSendMessages(cancellationToken);
     }
   }
