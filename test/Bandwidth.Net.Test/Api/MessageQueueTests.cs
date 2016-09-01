@@ -16,8 +16,7 @@ namespace Bandwidth.Net.Test.Api
     [Fact]
     public void TestConstructor()
     {
-      var context = new MockContext<IMessage>();
-      var api = new Message(context);
+      var api = new Message(null, null);
       var queue = new MessageQueue(api, "from", 2, new CancellationToken(true));
       Assert.Equal(api, queue.Api);
       Assert.Equal("from", queue.From);
@@ -28,8 +27,7 @@ namespace Bandwidth.Net.Test.Api
     [Fact]
     public void TestConstructor2()
     {
-      var context = new MockContext<IMessage>();
-      var api = new Message(context);
+      var api = new Message(null, null);
       var queue = new MessageQueue(api, "from1", 0.2, new CancellationToken(true));
       Assert.Equal(api, queue.Api);
       Assert.Equal("from1", queue.From);
@@ -40,8 +38,7 @@ namespace Bandwidth.Net.Test.Api
     [Fact]
     public void TestConstructorFail()
     {
-      var context = new MockContext<IMessage>();
-      var api = new Message(context);
+      var api = new Message(null, null);
       Assert.Throws<ArgumentNullException>(() => new MessageQueue(api, ""));
     }
 
@@ -54,8 +51,7 @@ namespace Bandwidth.Net.Test.Api
     [Fact]
     public void TestConstructorFail3()
     {
-      var context = new MockContext<IMessage>();
-      var api = new Message(context);
+      var api = new Message(null, null);
       Assert.Throws<ArgumentOutOfRangeException>(() => new MessageQueue(api, "from", 0));
     }
 
@@ -67,7 +63,7 @@ namespace Bandwidth.Net.Test.Api
       queue.Queue(new MessageData {To = "to1"});
       Assert.Equal(1, queue.MessagesQueue.Count);
       Assert.Equal("to1", queue.MessagesQueue[0].To);
-      queue.Queue(new MessageData { To = "to2" }, new MessageData { To = "to3" });
+      queue.Queue(new MessageData {To = "to2"}, new MessageData {To = "to3"});
       Assert.Equal(3, queue.MessagesQueue.Count);
       var list = new List<MessageData>(new[] {new MessageData {To = "to4"}, new MessageData {To = "to5"}});
       queue.Queue(list);
@@ -92,11 +88,14 @@ namespace Bandwidth.Net.Test.Api
       var delayContext = new MockContext<IDelay>();
       var queue = GetMessageQueue();
       queue.Delay = new Delay(delayContext);
-      delayContext.Arrange(d => d.Delay(The<TimeSpan>.IsAnyValue, The<CancellationToken>.IsAnyValue)).Returns(Task.FromResult(0));
+      delayContext.Arrange(d => d.Delay(The<TimeSpan>.IsAnyValue, The<CancellationToken>.IsAnyValue))
+        .Returns(Task.FromResult(0));
       using (var source = new CancellationTokenSource())
       {
-        Task.Run(() => queue.StartSendMessages(source.Token));
-        await Task.Delay(100);
+        var cancellationToken = source.Token;
+        var t = Task.Run(() => queue.StartSendMessages(cancellationToken));
+        Assert.False(t.IsCompleted);
+        await Task.Delay(50);
         source.Cancel(false);
       }
       delayContext.Assert(d => d.Delay(The<TimeSpan>.IsAnyValue, The<CancellationToken>.IsAnyValue), Invoked.AtLeast(1));
@@ -106,36 +105,78 @@ namespace Bandwidth.Net.Test.Api
     public async void TestStartSendMessages()
     {
       var delayContext = new MockContext<IDelay>();
-      var messageContext = new MockContext<IMessage>();
-      var queue = GetMessageQueue(messageContext);
-      queue.Delay = new Delay(delayContext);
-      delayContext.Arrange(d => d.Delay(The<TimeSpan>.IsAnyValue, The<CancellationToken>.IsAnyValue)).Returns(Task.FromResult(0));
       var messages = new[]
       {
-        new MessageData {To = "to1", Text = "text1"},
-        new MessageData {To = "to2", Text = "text2"}
+        new MessageData {To = "to1", Text = "text1"}
       };
       var results = new[]
       {
-        new SendMessageResult {Location = "http://host/id1", Message = messages[0], Result = SendMessageResults.Accepted},
-        new SendMessageResult {Location = "http://host/id2", Message = messages[1], Result = SendMessageResults.Accepted}
+        new SendMessageResult
+        {
+          Location = "http://host/id1",
+          Message = messages[0],
+          Result = SendMessageResults.Accepted
+        }
       };
-      messageContext.Arrange(m => m.SendAsync(The<MessageData[]>.IsAnyValue, The<CancellationToken>.IsAnyValue)).Returns(Task.FromResult(new SendMessageResult[0]));
-      messageContext.Arrange(m => m.SendAsync(The<MessageData>.IsAnyValue, The<CancellationToken>.IsAnyValue)).Returns(Task.FromResult(null));
+      var api = new Message(messages, results);
+      var queue = GetMessageQueue(api);
+      queue.Delay = new Delay(delayContext);
+      delayContext.Arrange(d => d.Delay(The<TimeSpan>.IsAnyValue, The<CancellationToken>.IsAnyValue))
+        .Returns(Task.FromResult(0));
       using (var source = new CancellationTokenSource())
       {
-        Task.Run(() => queue.StartSendMessages(source.Token));
+        var cancellationToken = source.Token;
+        var t = Task.Run(() => queue.StartSendMessages(cancellationToken));
+        Assert.False(t.IsCompleted);
         queue.Queue(messages);
-        await Task.Delay(100000);
+        await Task.Delay(50);
         source.Cancel(false);
+        Assert.Equal(1, api.SendAsyncCallCount);
+        Assert.Equal(1, queue.Results.Count);
+        Assert.Equal(results[0], queue.Results[0]);
+        Assert.Equal(0, queue.MessagesQueue.Count);
       }
-      delayContext.Assert(d => d.Delay(The<TimeSpan>.IsAnyValue, The<CancellationToken>.IsAnyValue), Invoked.AtLeast(1));
     }
 
-    private MessageQueue GetMessageQueue(IInvocationContext<IMessage> context = null)
+    [Fact]
+    public async void TestStartSendMessagesWithRateLimit()
     {
-      var api = new Message(context ?? new MockContext<IMessage>());
-      return new MessageQueue(api, "from", 1, new CancellationToken(true));
+      var delayContext = new MockContext<IDelay>();
+      var messages = new[]
+      {
+        new MessageData {To = "to1", Text = "text1"}
+      };
+      var results = new[]
+      {
+        new SendMessageResult
+        {
+          Error = new Error {Code = "message-rate-limit"},
+          Message = messages[0],
+          Result = SendMessageResults.Error
+        }
+      };
+      var api = new Message(messages, results);
+      var queue = GetMessageQueue(api);
+      queue.Delay = new Delay(delayContext);
+      delayContext.Arrange(d => d.Delay(The<TimeSpan>.IsAnyValue, The<CancellationToken>.IsAnyValue))
+        .Returns(Task.FromResult(0));
+      using (var source = new CancellationTokenSource())
+      {
+        var cancellationToken = source.Token;
+        var t = Task.Run(() => queue.StartSendMessages(cancellationToken));
+        Assert.False(t.IsCompleted);
+        queue.Queue(messages);
+        await Task.Delay(50);
+        source.Cancel(false);
+        Assert.True(api.SendAsyncCallCount > 1);
+        Assert.Equal(0, queue.Results.Count);
+        Assert.Equal(1, queue.MessagesQueue.Count);
+      }
+    }
+
+    private MessageQueue GetMessageQueue(Message api = null)
+    {
+      return new MessageQueue(api ?? new Message(null, null), "from", 1, new CancellationToken(true));
     }
   }
 }
