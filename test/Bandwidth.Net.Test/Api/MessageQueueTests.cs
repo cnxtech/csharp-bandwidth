@@ -95,7 +95,7 @@ namespace Bandwidth.Net.Test.Api
         var cancellationToken = source.Token;
         var t = Task.Run(() => queue.StartSendMessages(cancellationToken));
         Assert.False(t.IsCompleted);
-        await Task.Delay(50);
+        await Task.Delay(100);
         source.Cancel(false);
       }
       delayContext.Assert(d => d.Delay(The<TimeSpan>.IsAnyValue, The<CancellationToken>.IsAnyValue), Invoked.AtLeast(1));
@@ -129,7 +129,7 @@ namespace Bandwidth.Net.Test.Api
         var t = Task.Run(() => queue.StartSendMessages(cancellationToken));
         Assert.False(t.IsCompleted);
         queue.Queue(messages);
-        await Task.Delay(50);
+        await Task.Delay(100);
         source.Cancel(false);
         Assert.Equal(1, api.SendAsyncCallCount);
         Assert.Equal(1, queue.Results.Count);
@@ -166,7 +166,7 @@ namespace Bandwidth.Net.Test.Api
         var t = Task.Run(() => queue.StartSendMessages(cancellationToken));
         Assert.False(t.IsCompleted);
         queue.Queue(messages);
-        await Task.Delay(50);
+        await Task.Delay(100);
         source.Cancel(false);
         Assert.True(api.SendAsyncCallCount > 1);
         Assert.Equal(0, queue.Results.Count);
