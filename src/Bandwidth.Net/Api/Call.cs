@@ -712,6 +712,11 @@ namespace Bandwidth.Net.Api
     public bool? RecordingEnabled { get; set; }
 
     /// <summary>
+    /// The file format of the recorded call.
+    /// </summary>
+    public string RecordingFileFormat { get; set; }
+
+    /// <summary>
     /// Indicates the maximum duration of call recording in seconds
     /// </summary>
     public int? RecordingMaxDuration { get; set; }
@@ -758,7 +763,11 @@ namespace Bandwidth.Net.Api
     /// </summary>
     public bool RecordingEnabled { get; set; }
 
-
+    /// <summary>
+    /// The file format of the recorded call.
+    /// </summary>
+    public string RecordingFileFormat { get; set; }
+    
     /// <summary>
     /// Audio to be played to the number that the call will be transfered to
     /// </summary>
