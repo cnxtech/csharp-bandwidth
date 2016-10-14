@@ -34,19 +34,11 @@ namespace Bandwidth.Net.Test.Api
     {
       var response = new HttpResponseMessage(HttpStatusCode.Created);
       response.Headers.Location = new Uri("http://localhost/path/id");
-      var getResponse = new HttpResponseMessage
-      {
-        Content = Helpers.GetJsonContent("Call")
-      };
       var context = new MockContext<IHttp>();
       context.Arrange(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      context.Arrange(
-        m =>
-          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
-            null)).Returns(Task.FromResult(getResponse));
       var api = Helpers.GetClient(context).Call;
       var callId = await api.CreateAsync(new CreateCallData{From = "+1234567890", To = "+1234567981"});
       context.Assert(
@@ -54,10 +46,6 @@ namespace Bandwidth.Net.Test.Api
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null), Invoked.Never);
       Assert.Equal("id", callId);
-      context.Assert(
-        m =>
-          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
-            null), Invoked.Once);
     }
 
     [Fact]
@@ -186,19 +174,11 @@ namespace Bandwidth.Net.Test.Api
     {
       var response = new HttpResponseMessage(HttpStatusCode.Created);
       response.Headers.Location = new Uri("http://localhost/path/gatherId");
-      var getResponse = new HttpResponseMessage
-      {
-        Content = Helpers.GetJsonContent("CallGather")
-      };
       var context = new MockContext<IHttp>();
       context.Arrange(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateGatherRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      context.Arrange(
-        m =>
-          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetGatherRequest(r)), HttpCompletionOption.ResponseContentRead,
-            null)).Returns(Task.FromResult(getResponse));
       var api = Helpers.GetClient(context).Call;
       var gatherId = await api.CreateGatherAsync("id", new CreateGatherData {MaxDigits = "1"});
       context.Assert(
@@ -206,10 +186,6 @@ namespace Bandwidth.Net.Test.Api
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetGatherRequest(r)), HttpCompletionOption.ResponseContentRead,
             null), Invoked.Never);
       Assert.Equal("gatherId", gatherId);
-      context.Assert(
-        m =>
-          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetGatherRequest(r)), HttpCompletionOption.ResponseContentRead,
-            null), Invoked.Once);
     }
 
     [Fact]

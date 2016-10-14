@@ -17,19 +17,11 @@ namespace Bandwidth.Net.Test.Api
     {
       var response = new HttpResponseMessage(HttpStatusCode.Created);
       response.Headers.Location = new Uri("http://localhost/path/id");
-      var getResponse = new HttpResponseMessage
-      {
-        Content = Helpers.GetJsonContent("Conference")
-      };
       var context = new MockContext<IHttp>();
       context.Arrange(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      context.Arrange(
-        m =>
-          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
-            null)).Returns(Task.FromResult(getResponse));
       var api = Helpers.GetClient(context).Conference;
       var conferenceId = await api.CreateAsync(new CreateConferenceData{From = "+1234567980"});
       context.Assert(
@@ -37,10 +29,6 @@ namespace Bandwidth.Net.Test.Api
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null), Invoked.Never);
       Assert.Equal("id", conferenceId);
-      context.Assert(
-        m =>
-          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
-            null), Invoked.Once);
     }
 
     [Fact]
@@ -123,19 +111,11 @@ namespace Bandwidth.Net.Test.Api
     {
       var response = new HttpResponseMessage(HttpStatusCode.Created);
       response.Headers.Location = new Uri("http://localhost/path/memberId");
-      var getResponse = new HttpResponseMessage
-      {
-        Content = Helpers.GetJsonContent("ConferenceMember")
-      };
       var context = new MockContext<IHttp>();
       context.Arrange(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateMemberRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      context.Arrange(
-        m =>
-          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetMemberRequest(r)), HttpCompletionOption.ResponseContentRead,
-            null)).Returns(Task.FromResult(getResponse));
       var api = Helpers.GetClient(context).Conference;
       var memberId = await api.CreateMemberAsync("id", new CreateConferenceMemberData {CallId = "callId"});
       context.Assert(
@@ -143,10 +123,6 @@ namespace Bandwidth.Net.Test.Api
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetMemberRequest(r)), HttpCompletionOption.ResponseContentRead,
             null), Invoked.Never);
       Assert.Equal("memberId", memberId);
-      context.Assert(
-        m =>
-          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetMemberRequest(r)), HttpCompletionOption.ResponseContentRead,
-            null), Invoked.Once);
     }
 
     [Fact]

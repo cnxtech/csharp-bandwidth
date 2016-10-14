@@ -34,19 +34,11 @@ namespace Bandwidth.Net.Test.Api
     {
       var response = new HttpResponseMessage(HttpStatusCode.Created);
       response.Headers.Location = new Uri("http://localhost/path/id");
-      var getResponse = new HttpResponseMessage
-      {
-        Content = Helpers.GetJsonContent("Message")
-      };
       var context = new MockContext<IHttp>();
       context.Arrange(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidSendRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      context.Arrange(
-        m =>
-          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
-            null)).Returns(Task.FromResult(getResponse));
       var api = Helpers.GetClient(context).Message;
       var messageId = await api.SendAsync(new MessageData {From = "+1234567890", To = "+1234567891", Text = "Hello"});
       context.Assert(
@@ -54,10 +46,6 @@ namespace Bandwidth.Net.Test.Api
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null), Invoked.Never);
       Assert.Equal("id", messageId);
-      context.Assert(
-        m =>
-          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
-            null), Invoked.Once);
     }
 
     [Fact]
