@@ -3,13 +3,13 @@
 
 Create a transcription.
 
-**Namespace:**&nbsp;<a href ="N_Bandwidth_Net_Api.md">Bandwidth.Net.Api</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.0-beta3
+**Namespace:**&nbsp;<a href ="N_Bandwidth_Net_Api.md">Bandwidth.Net.Api</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.0-beta4
 
 ## Syntax
 
 **C#**<br />
 ``` C#
-Task<ILazyInstance<Transcription>> CreateAsync(
+Task<string> CreateAsync(
 	string recordingId,
 	Nullable<CancellationToken> cancellationToken = null
 )
@@ -20,12 +20,12 @@ Task<ILazyInstance<Transcription>> CreateAsync(
 &nbsp;<dl><dt>recordingId</dt><dd>Type: <a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">System.String</a><br />Id of the recording</dd><dt>cancellationToken (Optional)</dt><dd>Type: <a href="http://msdn2.microsoft.com/en-us/library/b3h38hb0" target="_blank">System.Nullable</a>(<a href="http://msdn2.microsoft.com/en-us/library/dd384802" target="_blank">CancellationToken</a>)<br />Optional token to cancel async operation</dd></dl>
 
 #### Return Value
-Type: <a href="http://msdn2.microsoft.com/en-us/library/dd321424" target="_blank">Task</a>(<a href ="T_Bandwidth_Net_ILazyInstance_1.md">ILazyInstance</a>(<a href ="T_Bandwidth_Net_Api_Transcription.md">Transcription</a>))<br />Instance of created transcription
+Type: <a href="http://msdn2.microsoft.com/en-us/library/dd321424" target="_blank">Task</a>(<a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">String</a>)<br />Created transcription Id
 
 ## Examples
 
 ```
-var transcription = await client.Transcription.CreateAsync("recordingId");
+var transcriptionId = await client.Transcription.CreateAsync("recordingId");
 ```
 
 

@@ -22,7 +22,7 @@ namespace Bandwidth.Net.Test.Mocks
       throw new NotImplementedException();
     }
 
-    public Task<ILazyInstance<Net.Api.Conference>> CreateAsync(CreateConferenceData data,
+    public Task<string> CreateAsync(CreateConferenceData data,
       CancellationToken? cancellationToken = null)
     {
       throw new NotImplementedException();
@@ -43,7 +43,7 @@ namespace Bandwidth.Net.Test.Mocks
       throw new NotImplementedException();
     }
 
-    public Task<ILazyInstance<ConferenceMember>> CreateMemberAsync(string conferenceId, CreateConferenceMemberData data,
+    public Task<string> CreateMemberAsync(string conferenceId, CreateConferenceMemberData data,
       CancellationToken? cancellationToken = null)
     {
       throw new NotImplementedException();

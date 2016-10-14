@@ -6,7 +6,7 @@ The PlayAudio verb is used to play an audio file in the call.
 
 ## Inheritance Hierarchy
 <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">System.Object</a><br />&nbsp;&nbsp;Bandwidth.Net.Xml.Verbs.PlayAudio<br />
-**Namespace:**&nbsp;<a href ="N_Bandwidth_Net_Xml_Verbs.md">Bandwidth.Net.Xml.Verbs</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.0-beta3
+**Namespace:**&nbsp;<a href ="N_Bandwidth_Net_Xml_Verbs.md">Bandwidth.Net.Xml.Verbs</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.0-beta4
 
 ## Syntax
 

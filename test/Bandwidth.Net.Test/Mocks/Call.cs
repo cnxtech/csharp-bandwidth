@@ -26,7 +26,7 @@ namespace Bandwidth.Net.Test.Mocks
         throw new System.NotImplementedException();
       }
 
-      public Task<ILazyInstance<Net.Api.Call>> CreateAsync(CreateCallData data, CancellationToken? cancellationToken = null)
+      public Task<string> CreateAsync(CreateCallData data, CancellationToken? cancellationToken = null)
       {
         throw new System.NotImplementedException();
       }
@@ -66,7 +66,7 @@ namespace Bandwidth.Net.Test.Mocks
         throw new System.NotImplementedException();
       }
 
-      public Task<ILazyInstance<CallGather>> CreateGatherAsync(string callId, CreateGatherData data, CancellationToken? cancellationToken = null)
+      public Task<string> CreateGatherAsync(string callId, CreateGatherData data, CancellationToken? cancellationToken = null)
       {
         throw new System.NotImplementedException();
       }

@@ -48,13 +48,12 @@ namespace Bandwidth.Net.Test.Api
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(getResponse));
       var api = Helpers.GetClient(context).Bridge;
-      var bridge = await api.CreateAsync(new CreateBridgeData {CallIds = new []{"callId"}});
+      var bridgeId = await api.CreateAsync(new CreateBridgeData {CallIds = new []{"callId"}});
       context.Assert(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null), Invoked.Never);
-      Assert.Equal("id", bridge.Id);
-      ValidateBridge(bridge.Instance);
+      Assert.Equal("id", bridgeId);
       context.Assert(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,

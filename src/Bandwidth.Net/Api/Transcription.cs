@@ -32,13 +32,13 @@ namespace Bandwidth.Net.Api
     /// </summary>
     /// <param name="recordingId">Id of the recording</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
-    /// <returns>Instance of created transcription</returns>
+    /// <returns>Created transcription Id</returns>
     /// <example>
     ///   <code>
-    /// var transcription = await client.Transcription.CreateAsync("recordingId");
+    /// var transcriptionId = await client.Transcription.CreateAsync("recordingId");
     /// </code>
     /// </example>
-    Task<ILazyInstance<Transcription>> CreateAsync(string recordingId, CancellationToken? cancellationToken = null);
+    Task<string> CreateAsync(string recordingId, CancellationToken? cancellationToken = null);
 
 
     /// <summary>
@@ -67,14 +67,11 @@ namespace Bandwidth.Net.Api
             cancellationToken, query));
     }
 
-    public async Task<ILazyInstance<Transcription>> CreateAsync(string recordingId,
+    public Task<string> CreateAsync(string recordingId,
       CancellationToken? cancellationToken = null)
     {
-      var id =
-        await
-          Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/recordings/{recordingId}/transcriptions",
+      return Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/recordings/{recordingId}/transcriptions",
             cancellationToken, new object());
-      return new LazyInstance<Transcription>(id, () => GetAsync(recordingId, id));
     }
 
     public Task<Transcription> GetAsync(string recordingId, string transcriptionId,

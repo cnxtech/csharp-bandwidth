@@ -31,13 +31,13 @@ namespace Bandwidth.Net.Api
     /// </summary>
     /// <param name="data">Parameters of new message</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
-    /// <returns>Instance of created message</returns>
+    /// <returns>Created message Id</returns>
     /// <example>
     ///   <code>
-    /// var message = await client.Message.SendAsync(new MessageData{ From = "from", To = "to", Text = "Hello"});
+    /// var messageId = await client.Message.SendAsync(new MessageData{ From = "from", To = "to", Text = "Hello"});
     /// </code>
     /// </example>
-    Task<ILazyInstance<Message>> SendAsync(MessageData data, CancellationToken? cancellationToken = null);
+    Task<string> SendAsync(MessageData data, CancellationToken? cancellationToken = null);
     
     /// <summary>
     ///   Send a message.
@@ -77,11 +77,10 @@ namespace Bandwidth.Net.Api
           Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.UserId}/messages", cancellationToken, query));
     }
 
-    public async Task<ILazyInstance<Message>> SendAsync(MessageData data,
+    public Task<string> SendAsync(MessageData data,
       CancellationToken? cancellationToken = null)
     {
-      var id = await Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/messages", cancellationToken, data);
-      return new LazyInstance<Message>(id, () => GetAsync(id));
+      return Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/messages", cancellationToken, data);
     }
 
     public async Task<SendMessageResult[]> SendAsync(MessageData[] data,

@@ -34,13 +34,13 @@ namespace Bandwidth.Net.Api
     /// </summary>
     /// <param name="data">Parameters of new call</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
-    /// <returns>Instance of created call</returns>
+    /// <returns>Created call id</returns>
     /// <example>
     ///   <code>
-    /// var call = await client.Call.CreateAsync(new CreateCallData{ From = "+1234567890", To = "+1234567891"});
+    /// var callId = await client.Call.CreateAsync(new CreateCallData{ From = "+1234567890", To = "+1234567891"});
     /// </code>
     /// </example>
-    Task<ILazyInstance<Call>> CreateAsync(CreateCallData data, CancellationToken? cancellationToken = null);
+    Task<string> CreateAsync(CreateCallData data, CancellationToken? cancellationToken = null);
 
 
     /// <summary>
@@ -144,13 +144,13 @@ namespace Bandwidth.Net.Api
     /// <param name="callId">Id of the calls</param>
     /// <param name="data">Parameters of new call</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
-    /// <returns>Instance of created gather</returns>
+    /// <returns>Created gather id</returns>
     /// <example>
     ///   <code>
-    /// var gather = await client.Call.CreateGatherAsync("callId", new CreateGatherData{ MaxDigits = 1});
+    /// var gatherId = await client.Call.CreateGatherAsync("callId", new CreateGatherData{ MaxDigits = 1});
     /// </code>
     /// </example>
-    Task<ILazyInstance<CallGather>> CreateGatherAsync(string callId, CreateGatherData data, CancellationToken? cancellationToken = null);
+    Task<string> CreateGatherAsync(string callId, CreateGatherData data, CancellationToken? cancellationToken = null);
 
     /// <summary>
     ///  Get the gather DTMF parameters and results
@@ -192,11 +192,10 @@ namespace Bandwidth.Net.Api
           Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.UserId}/calls", cancellationToken, query));
     }
 
-    public async Task<ILazyInstance<Call>> CreateAsync(CreateCallData data,
+    public Task<string> CreateAsync(CreateCallData data,
       CancellationToken? cancellationToken = null)
     {
-      var id = await Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/calls", cancellationToken, data);
-      return new LazyInstance<Call>(id, () => GetAsync(id));
+      return Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/calls", cancellationToken, data);
     }
 
     public Task<Call> GetAsync(string callId, CancellationToken? cancellationToken = null)
@@ -250,10 +249,9 @@ namespace Bandwidth.Net.Api
           Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.UserId}/calls/{callId}/transcriptions", cancellationToken));
     }
 
-    public async Task<ILazyInstance<CallGather>> CreateGatherAsync(string callId, CreateGatherData data, CancellationToken? cancellationToken = null)
+    public Task<string> CreateGatherAsync(string callId, CreateGatherData data, CancellationToken? cancellationToken = null)
     {
-      var id = await Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/calls/{callId}/gather", cancellationToken, data);
-      return new LazyInstance<CallGather>(id, () => GetGatherAsync(callId, id));
+      return Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/calls/{callId}/gather", cancellationToken, data);
     }
 
     public Task<CallGather> GetGatherAsync(string callId, string gatherId, CancellationToken? cancellationToken = null)

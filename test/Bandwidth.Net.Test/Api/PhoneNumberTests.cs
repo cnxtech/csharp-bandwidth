@@ -48,13 +48,12 @@ namespace Bandwidth.Net.Test.Api
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(getResponse));
       var api = Helpers.GetClient(context).PhoneNumber;
-      var phoneNumber = await api.CreateAsync(new CreatePhoneNumberData {Number = "+1234567890"});
+      var phoneNumberId = await api.CreateAsync(new CreatePhoneNumberData {Number = "+1234567890"});
       context.Assert(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null), Invoked.Never);
-      Assert.Equal("id", phoneNumber.Id);
-      ValidatePhoneNumber(phoneNumber.Instance);
+      Assert.Equal("id", phoneNumberId);
       context.Assert(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,

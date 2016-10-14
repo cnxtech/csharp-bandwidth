@@ -31,13 +31,12 @@ namespace Bandwidth.Net.Test.Api
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(getResponse));
       var api = Helpers.GetClient(context).Conference;
-      var conference = await api.CreateAsync(new CreateConferenceData{From = "+1234567980"});
+      var conferenceId = await api.CreateAsync(new CreateConferenceData{From = "+1234567980"});
       context.Assert(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null), Invoked.Never);
-      Assert.Equal("id", conference.Id);
-      ValidateConference(conference.Instance);
+      Assert.Equal("id", conferenceId);
       context.Assert(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
@@ -138,13 +137,12 @@ namespace Bandwidth.Net.Test.Api
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetMemberRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(getResponse));
       var api = Helpers.GetClient(context).Conference;
-      var member = await api.CreateMemberAsync("id", new CreateConferenceMemberData {CallId = "callId"});
+      var memberId = await api.CreateMemberAsync("id", new CreateConferenceMemberData {CallId = "callId"});
       context.Assert(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetMemberRequest(r)), HttpCompletionOption.ResponseContentRead,
             null), Invoked.Never);
-      Assert.Equal("memberId", member.Id);
-      ValidateConferenceMember(member.Instance);
+      Assert.Equal("memberId", memberId);
       context.Assert(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetMemberRequest(r)), HttpCompletionOption.ResponseContentRead,

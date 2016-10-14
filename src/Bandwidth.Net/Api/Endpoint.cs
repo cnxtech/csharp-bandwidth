@@ -31,13 +31,13 @@ namespace Bandwidth.Net.Api
     /// </summary>
     /// <param name="data">Parameters of new endpoint</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
-    /// <returns>Instance of created endpoint</returns>
+    /// <returns>Created endpoint Id</returns>
     /// <example>
     ///   <code>
-    /// var endpoint = await client.Endpoint.CreateAsync(new CreateEndpointData{ Name = "endpoint", DomainId="domainId", ApplicationId="applicationId", Credentials = new CreateEndpointCredentials{Password = "123456"}});
+    /// var endpointId = await client.Endpoint.CreateAsync(new CreateEndpointData{ Name = "endpoint", DomainId="domainId", ApplicationId="applicationId", Credentials = new CreateEndpointCredentials{Password = "123456"}});
     /// </code>
     /// </example>
-    Task<ILazyInstance<Endpoint>> CreateAsync(CreateEndpointData data, CancellationToken? cancellationToken = null);
+    Task<string> CreateAsync(CreateEndpointData data, CancellationToken? cancellationToken = null);
 
 
     /// <summary>
@@ -112,14 +112,11 @@ namespace Bandwidth.Net.Api
             cancellationToken, query));
     }
 
-    public async Task<ILazyInstance<Endpoint>> CreateAsync(CreateEndpointData data,
+    public Task<string> CreateAsync(CreateEndpointData data,
       CancellationToken? cancellationToken = null)
     {
-      var id =
-        await
-          Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/domains/{data.DomainId}/endpoints", cancellationToken,
+      return Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/domains/{data.DomainId}/endpoints", cancellationToken,
             data);
-      return new LazyInstance<Endpoint>(id, () => GetAsync(data.DomainId, id));
     }
 
     public Task<Endpoint> GetAsync(string domainId, string endpointId, CancellationToken? cancellationToken = null)

@@ -29,13 +29,13 @@ namespace Bandwidth.Net.Api
     /// </summary>
     /// <param name="data">Parameters of new application</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
-    /// <returns>Instance of created application</returns>
+    /// <returns>Created application Id</returns>
     /// <example>
     /// <code>
-    /// var application = await client.Application.CreateAsync(new CreateApplicationData{ Name = "MyApp"});
+    /// var applicationId = await client.Application.CreateAsync(new CreateApplicationData{ Name = "MyApp"});
     /// </code>
     /// </example>
-    Task<ILazyInstance<Application>> CreateAsync(CreateApplicationData data, CancellationToken? cancellationToken = null);
+    Task<string> CreateAsync(CreateApplicationData data, CancellationToken? cancellationToken = null);
 
 
     /// <summary>
@@ -88,11 +88,10 @@ namespace Bandwidth.Net.Api
           Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.UserId}/applications", cancellationToken, query));
     }
 
-    public async Task<ILazyInstance<Application>> CreateAsync(CreateApplicationData data,
+    public Task<string> CreateAsync(CreateApplicationData data,
       CancellationToken? cancellationToken = null)
     {
-      var id = await Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/applications", cancellationToken, data);
-      return new LazyInstance<Application>(id, () => GetAsync(id));
+      return Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/applications", cancellationToken, data);
     }
 
     public Task<Application> GetAsync(string applicationId, CancellationToken? cancellationToken = null)

@@ -17,13 +17,13 @@ namespace Bandwidth.Net.Api
     /// </summary>
     /// <param name="data">Parameters of new conference</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
-    /// <returns>Instance of created conference</returns>
+    /// <returns>Created conference Id</returns>
     /// <example>
     ///   <code>
-    /// var conference = await client.Conference.CreateAsync(new CreateConferenceData{ From = "+1234567890"});
+    /// var conferenceId = await client.Conference.CreateAsync(new CreateConferenceData{ From = "+1234567890"});
     /// </code>
     /// </example>
-    Task<ILazyInstance<Conference>> CreateAsync(CreateConferenceData data, CancellationToken? cancellationToken = null);
+    Task<string> CreateAsync(CreateConferenceData data, CancellationToken? cancellationToken = null);
 
 
     /// <summary>
@@ -72,13 +72,13 @@ namespace Bandwidth.Net.Api
     /// <param name="conferenceId">Id of conference to add member</param>
     /// <param name="data">Data for creation of new member</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
-    /// <returns>Created member</returns>
+    /// <returns>Created member Id</returns>
     /// <example>
     ///   <code>
-    /// var member = await client.Conference.CreateMemberAsync("conferenceId", new CreateConferenceMemberData{From = "+1234567980"});
+    /// var memberId = await client.Conference.CreateMemberAsync("conferenceId", new CreateConferenceMemberData{From = "+1234567980"});
     /// </code>
     /// </example>
-    Task<ILazyInstance<ConferenceMember>> CreateMemberAsync(string conferenceId, CreateConferenceMemberData data,
+    Task<string> CreateMemberAsync(string conferenceId, CreateConferenceMemberData data,
       CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -126,11 +126,10 @@ namespace Bandwidth.Net.Api
 
   internal class ConferenceApi : ApiBase, IConference
   {
-    public async Task<ILazyInstance<Conference>> CreateAsync(CreateConferenceData data,
+    public Task<string> CreateAsync(CreateConferenceData data,
       CancellationToken? cancellationToken = null)
     {
-      var id = await Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/conferences", cancellationToken, data);
-      return new LazyInstance<Conference>(id, () => GetAsync(id));
+      return Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/conferences", cancellationToken, data);
     }
 
     public Task<Conference> GetAsync(string conferenceId, CancellationToken? cancellationToken = null)
@@ -154,14 +153,11 @@ namespace Bandwidth.Net.Api
             cancellationToken));
     }
 
-    public async Task<ILazyInstance<ConferenceMember>> CreateMemberAsync(string conferenceId,
+    public Task<string> CreateMemberAsync(string conferenceId,
       CreateConferenceMemberData data, CancellationToken? cancellationToken = null)
     {
-      var id =
-        await
-          Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/conferences/{conferenceId}/members",
+      return Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/conferences/{conferenceId}/members",
             cancellationToken, data);
-      return new LazyInstance<ConferenceMember>(id, () => GetMemberAsync(conferenceId, id));
     }
 
     public Task<ConferenceMember> GetMemberAsync(string conferenceId, string memberId,

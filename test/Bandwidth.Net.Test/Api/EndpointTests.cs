@@ -48,13 +48,12 @@ namespace Bandwidth.Net.Test.Api
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(getResponse));
       var api = Helpers.GetClient(context).Endpoint;
-      var endpoint = await api.CreateAsync(new CreateEndpointData {DomainId = "domainId", Name = "name"});
+      var endpointId = await api.CreateAsync(new CreateEndpointData {DomainId = "domainId", Name = "name"});
       context.Assert(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null), Invoked.Never);
-      Assert.Equal("id", endpoint.Id);
-      ValidateEndpoint(endpoint.Instance);
+      Assert.Equal("id", endpointId);
       context.Assert(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,

@@ -30,13 +30,13 @@ namespace Bandwidth.Net.Api
     /// </summary>
     /// <param name="data">Parameters of new phone number</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
-    /// <returns>Instance of created phone number</returns>
+    /// <returns>Created phone number id</returns>
     /// <example>
     ///   <code>
-    /// var phoneNumber = await client.PhoneNumber.CreateAsync(new CreatePhoneNumberData{ Number = "+1234567890"});
+    /// var phoneNumberId = await client.PhoneNumber.CreateAsync(new CreatePhoneNumberData{ Number = "+1234567890"});
     /// </code>
     /// </example>
-    Task<ILazyInstance<PhoneNumber>> CreateAsync(CreatePhoneNumberData data, CancellationToken? cancellationToken = null);
+    Task<string> CreateAsync(CreatePhoneNumberData data, CancellationToken? cancellationToken = null);
 
 
     /// <summary>
@@ -90,11 +90,10 @@ namespace Bandwidth.Net.Api
           Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.UserId}/phoneNumbers", cancellationToken, query));
     }
 
-    public async Task<ILazyInstance<PhoneNumber>> CreateAsync(CreatePhoneNumberData data,
+    public Task<string> CreateAsync(CreatePhoneNumberData data,
       CancellationToken? cancellationToken = null)
     {
-      var id = await Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/phoneNumbers", cancellationToken, data);
-      return new LazyInstance<PhoneNumber>(id, () => GetAsync(id));
+      return Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/phoneNumbers", cancellationToken, data);
     }
 
     public Task<PhoneNumber> GetAsync(string phoneNumberId, CancellationToken? cancellationToken = null)

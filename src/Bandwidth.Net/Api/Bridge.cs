@@ -30,13 +30,13 @@ namespace Bandwidth.Net.Api
     /// </summary>
     /// <param name="data">Parameters of new bridge</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
-    /// <returns>Instance of created bridge</returns>
+    /// <returns>Created bridge Id</returns>
     /// <example>
     ///   <code>
-    /// var bridge = await client.Bridge.CreateAsync(new CreateBridgeData{ CallIds = new[]{"callId"}});
+    /// var bridgeId = await client.Bridge.CreateAsync(new CreateBridgeData{ CallIds = new[]{"callId"}});
     /// </code>
     /// </example>
-    Task<ILazyInstance<Bridge>> CreateAsync(CreateBridgeData data, CancellationToken? cancellationToken = null);
+    Task<string> CreateAsync(CreateBridgeData data, CancellationToken? cancellationToken = null);
 
 
     /// <summary>
@@ -89,11 +89,10 @@ namespace Bandwidth.Net.Api
           Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.UserId}/bridges", cancellationToken, query));
     }
 
-    public async Task<ILazyInstance<Bridge>> CreateAsync(CreateBridgeData data,
+    public Task<string> CreateAsync(CreateBridgeData data,
       CancellationToken? cancellationToken = null)
     {
-      var id = await Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/bridges", cancellationToken, data);
-      return new LazyInstance<Bridge>(id, () => GetAsync(id));
+      return Client.MakePostJsonRequestAsync($"/users/{Client.UserId}/bridges", cancellationToken, data);
     }
 
     public Task<Bridge> GetAsync(string bridgeId, CancellationToken? cancellationToken = null)
