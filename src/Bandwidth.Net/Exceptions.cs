@@ -59,6 +59,7 @@ namespace Bandwidth.Net
     /// BandwidthException
     /// </summary>
     /// <param name="message">Error message</param>
+    /// <param name="additionalData">Additional data for exception</param>
     /// <param name="code">Status code</param>
     public BandwidthException(string message, IDictionary<string, string> additionalData, HttpStatusCode code) : this(message, code)
     {
