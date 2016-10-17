@@ -11,8 +11,8 @@ namespace Bandwidth.Net.Test
   {
     public static Client GetClient(MockContext<IHttp> context = null)
     {
-      return new Client(new CatapultAuthData {UserId = "userId", ApiToken = "apiToken", ApiSecret = "apiSecret", BaseUrl = "http://localhost/v1/"},
-        new IrisAuthData { AccountId = "accountId", UserName = "userName", Password = "password", BaseUrl = "http://localhost/v1.0/" },
+      return new Client(new CatapultAuthData {UserId = "userId", ApiToken = "apiToken", ApiSecret = "apiSecret", BaseUrl = "http://localhost/v1"},
+        new IrisAuthData { AccountId = "accountId", UserName = "userName", Password = "password", BaseUrl = "http://localhost/v1.0" },
         context == null ? null : new Http(context));
     }
     private static readonly ResourceManager ResourceManager = new ResourceManager("Bandwidth.Net.Test.Json", typeof(Helpers).GetTypeInfo().Assembly);
