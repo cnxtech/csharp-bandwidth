@@ -13,9 +13,8 @@ namespace Bandwidth.Net
     /// <summary>
     /// MissingCredentialsException
     /// </summary>
-    public MissingCredentialsException()
-        : base("Missing credentials.\n" +
-        "Use new Client(<userId>, <apiToken>, <apiSecret>) to set up them.")
+    public MissingCredentialsException(string credentialType)
+        : base($"Missing {credentialType} credentials in constructor of Client. Please fill them as parameter of type {credentialType}AuthData.")
     {
     }
   }

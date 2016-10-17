@@ -64,7 +64,7 @@ namespace Bandwidth.Net
     {
       if (string.IsNullOrEmpty(UserId) || string.IsNullOrEmpty(ApiToken) || string.IsNullOrEmpty(ApiSecret))
       {
-        throw new MissingCredentialsException();
+        throw new MissingCredentialsException("Catapult");
       }
       if (string.IsNullOrEmpty(BaseUrl))
       {
@@ -101,7 +101,7 @@ namespace Bandwidth.Net
     {
       if (string.IsNullOrEmpty(AccountId) || string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
       {
-        throw new MissingCredentialsException();
+        throw new MissingCredentialsException("Iris");
       }
       if (string.IsNullOrEmpty(BaseUrl))
       {
