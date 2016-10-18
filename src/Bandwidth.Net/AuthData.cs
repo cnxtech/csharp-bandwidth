@@ -53,7 +53,7 @@ namespace Bandwidth.Net
     /// <summary>
     ///   Optional base url of catapult services
     /// </summary>
-    public string BaseUrl { get; set; } = "https://api.catapult.inetwork.com/v1/";
+    public string BaseUrl { get; set; } = "https://api.catapult.inetwork.com/v1";
 
     /// <summary>
     ///   Validate if parameters are correct
@@ -110,7 +110,7 @@ namespace Bandwidth.Net
     /// <summary>
     ///   Optional base url of iris services
     /// </summary>
-    public string BaseUrl { get; set; } = "https://api.inetwork.com/v1.0/";
+    public string BaseUrl { get; set; } = "https://api.inetwork.com/v1.0";
 
     /// <summary>
     ///   Authentication Header

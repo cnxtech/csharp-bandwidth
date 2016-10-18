@@ -50,7 +50,8 @@ namespace Bandwidth.Net
       CatapultAuthData = catapultAuthData ?? new CatapultAuthData();
       IrisAuthData = irisAuthData ?? new IrisAuthData();
       _http = http ?? new Http<HttpClientHandler>();
-      SetupApis();
+      SetupCatapultApis();
+      SetupIrisApis();
     }
 
     private static ProductInfoHeaderValue BuildUserAgent()
