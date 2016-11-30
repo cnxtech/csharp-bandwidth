@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using LightMock;
 using Xunit;
 
-namespace Bandwidth.Net.Test.Api
+namespace Bandwidth.Net.Test.Iris
 {
   public class CityTests
   {
@@ -19,7 +19,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).City;
+      var api = Helpers.GetIrisApi(context).City;
       var list = await api.ListAsync();
       Assert.Equal(2, list.Length);
     }

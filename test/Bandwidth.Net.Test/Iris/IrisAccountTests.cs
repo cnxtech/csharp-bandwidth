@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using LightMock;
 using Xunit;
 
-namespace Bandwidth.Net.Test.Api
+namespace Bandwidth.Net.Test.Iris
 {
   public class IrisAccountTests
   {
@@ -19,7 +19,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).IrisAccount;
+      var api = Helpers.GetIrisApi(context).Account;
       var account = await api.GetAsync();
       Assert.Equal("14", account.AccountId);
       Assert.Equal("Business", account.AccountType);

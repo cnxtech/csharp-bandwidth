@@ -1,3 +1,4 @@
+using Bandwidth.Net.Iris;
 using System;
 using System.Linq;
 using System.Net;
@@ -5,7 +6,7 @@ using System.Net.Http;
 using System.Text;
 using Xunit;
 
-namespace Bandwidth.Net.Test
+namespace Bandwidth.Net.Test.Iris
 {
   public class XmlHelpersTests
   {
@@ -129,7 +130,7 @@ namespace Bandwidth.Net.Test
         using (var response = new HttpResponseMessage(HttpStatusCode.BadRequest))
         {
           response.Content = new StringContent("<Code 100", Encoding.UTF8, "application/xml");
-          return response.CheckJsonResponseAsync();
+          return response.CheckXmlResponseAsync();
         }
       });
       Assert.Equal(HttpStatusCode.BadRequest, ex.Code);
