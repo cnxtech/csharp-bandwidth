@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bandwidth.Net.Api
+namespace Bandwidth.Net.Catapult
 {
   /// <summary>
   ///   Access to PhoneNumber Api
@@ -85,34 +85,34 @@ namespace Bandwidth.Net.Api
   {
     public IEnumerable<PhoneNumber> List(PhoneNumberQuery query = null, CancellationToken? cancellationToken = null)
     {
-      return new LazyEnumerable<PhoneNumber>(Client,
+      return new LazyEnumerable<PhoneNumber>(Api,
         () =>
-          Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.CatapultAuthData.UserId}/phoneNumbers", Client.CatapultAuthData, cancellationToken, query));
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/phoneNumbers",  cancellationToken, query));
     }
 
     public Task<string> CreateAsync(CreatePhoneNumberData data,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakePostJsonRequestAsync($"/users/{Client.CatapultAuthData.UserId}/phoneNumbers", Client.CatapultAuthData, cancellationToken, data);
+      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/phoneNumbers",  cancellationToken, data);
     }
 
     public Task<PhoneNumber> GetAsync(string phoneNumberId, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync<PhoneNumber>(HttpMethod.Get,
-        $"/users/{Client.CatapultAuthData.UserId}/phoneNumbers/{phoneNumberId}", Client.CatapultAuthData, cancellationToken);
+      return Api.MakeJsonRequestAsync<PhoneNumber>(HttpMethod.Get,
+        $"/users/{Api.UserId}/phoneNumbers/{phoneNumberId}",  cancellationToken);
     }
 
     public Task UpdateAsync(string phoneNumberId, UpdatePhoneNumberData data,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
-        $"/users/{Client.CatapultAuthData.UserId}/phoneNumbers/{phoneNumberId}", Client.CatapultAuthData, cancellationToken, null, data);
+      return Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
+        $"/users/{Api.UserId}/phoneNumbers/{phoneNumberId}",  cancellationToken, null, data);
     }
 
     public Task DeleteAsync(string phoneNumberId, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Delete,
-        $"/users/{Client.CatapultAuthData.UserId}/phoneNumbers/{phoneNumberId}", Client.CatapultAuthData, cancellationToken);
+      return Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Delete,
+        $"/users/{Api.UserId}/phoneNumbers/{phoneNumberId}",  cancellationToken);
     }
   }
 

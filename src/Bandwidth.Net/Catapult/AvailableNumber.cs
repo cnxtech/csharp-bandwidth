@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bandwidth.Net.Api
+namespace Bandwidth.Net.Catapult
 {
   /// <summary>
   ///   Access to AvailableNumber Api
@@ -69,29 +69,26 @@ namespace Bandwidth.Net.Api
   {
     public Task<AvailableNumber[]> SearchLocalAsync(LocalNumberQuery query, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync<AvailableNumber[]>(HttpMethod.Get, "/availableNumbers/local", Client.CatapultAuthData, cancellationToken,
-        query);
+      return Api.MakeJsonRequestAsync<AvailableNumber[]>(HttpMethod.Get, "/availableNumbers/local",  cancellationToken, query);
     }
 
     public Task<AvailableNumber[]> SearchTollFreeAsync(TollFreeNumberQuery query,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync<AvailableNumber[]>(HttpMethod.Get, "/availableNumbers/tollFree", Client.CatapultAuthData,
+      return Api.MakeJsonRequestAsync<AvailableNumber[]>(HttpMethod.Get, "/availableNumbers/tollFree", 
         cancellationToken, query);
     }
 
     public Task<OrderedNumber[]> SearchAndOrderLocalAsync(LocalNumberQueryForOrder query,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync<OrderedNumber[]>(HttpMethod.Post, "/availableNumbers/local", Client.CatapultAuthData, cancellationToken,
-        query);
+      return Api.MakeJsonRequestAsync<OrderedNumber[]>(HttpMethod.Post, "/availableNumbers/local",  cancellationToken, query);
     }
 
     public Task<OrderedNumber[]> SearchAndOrderTollFreeAsync(TollFreeNumberQueryForOrder query,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync<OrderedNumber[]>(HttpMethod.Post, "/availableNumbers/tollFree", Client.CatapultAuthData,
-        cancellationToken, query);
+      return Api.MakeJsonRequestAsync<OrderedNumber[]>(HttpMethod.Post, "/availableNumbers/tollFree", cancellationToken, query);
     }
   }
 

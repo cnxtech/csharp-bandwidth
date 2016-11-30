@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bandwidth.Net.Api
+namespace Bandwidth.Net.Catapult
 {
   /// <summary>
   ///   Access to Error Api
@@ -43,15 +43,15 @@ namespace Bandwidth.Net.Api
   {
     public IEnumerable<Error> List(ErrorQuery query = null, CancellationToken? cancellationToken = null)
     {
-      return new LazyEnumerable<Error>(Client,
+      return new LazyEnumerable<Error>(Api,
         () =>
-          Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.CatapultAuthData.UserId}/errors", Client.CatapultAuthData, cancellationToken, query));
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/errors",  cancellationToken, query));
     }
 
     public Task<Error> GetAsync(string errorId, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync<Error>(HttpMethod.Get,
-        $"/users/{Client.CatapultAuthData.UserId}/errors/{errorId}", Client.CatapultAuthData, cancellationToken);
+      return Api.MakeJsonRequestAsync<Error>(HttpMethod.Get,
+        $"/users/{Api.UserId}/errors/{errorId}",  cancellationToken);
     }
   }
 

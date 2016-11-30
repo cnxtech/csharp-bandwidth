@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bandwidth.Net.Api
+namespace Bandwidth.Net.Catapult
 {
 
   /// <summary>
@@ -46,15 +46,15 @@ namespace Bandwidth.Net.Api
   {
     public IEnumerable<Recording> List(RecordingQuery query = null, CancellationToken? cancellationToken = null)
     {
-      return new LazyEnumerable<Recording>(Client,
+      return new LazyEnumerable<Recording>(Api,
         () =>
-          Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.CatapultAuthData.UserId}/recordings", Client.CatapultAuthData, cancellationToken, query));
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/recordings",  cancellationToken, query));
     }
 
     public Task<Recording> GetAsync(string recordingId, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync<Recording>(HttpMethod.Get,
-        $"/users/{Client.CatapultAuthData.UserId}/recordings/{recordingId}", Client.CatapultAuthData, cancellationToken);
+      return Api.MakeJsonRequestAsync<Recording>(HttpMethod.Get,
+        $"/users/{Api.UserId}/recordings/{recordingId}",  cancellationToken);
     }
   }
   /// <summary>

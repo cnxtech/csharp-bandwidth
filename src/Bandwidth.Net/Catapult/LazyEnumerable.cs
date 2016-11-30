@@ -1,18 +1,18 @@
 using System;
-using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Bandwidth.Net
+namespace Bandwidth.Net.Catapult
 {
   internal class LazyEnumerable<T> : IEnumerable<T>
   {
-    private readonly Client _client;
+    private readonly CatapultApi _client;
     private readonly Func<Task<HttpResponseMessage>> _getFirstPageFunc;
 
-    public LazyEnumerable(Client client, Func<Task<HttpResponseMessage>> getFirstPageFunc)
+    public LazyEnumerable(CatapultApi client, Func<Task<HttpResponseMessage>> getFirstPageFunc)
     {
       if (client == null) throw new ArgumentNullException(nameof(client));
       if (getFirstPageFunc == null) throw new ArgumentNullException(nameof(getFirstPageFunc));
@@ -23,9 +23,9 @@ namespace Bandwidth.Net
     public IEnumerator<T> GetEnumerator()
     {
       var getData = _getFirstPageFunc;
-      var nextPageUrl = "";
       while (true)
       {
+        string nextPageUrl;
         using (var response = getData().Result)
         {
 
@@ -54,8 +54,8 @@ namespace Bandwidth.Net
         {
           yield break;
         }
-        var request = _client.CreateRequest(HttpMethod.Get, nextPageUrl, _client.CatapultAuthData);
-        getData = () => _client.MakeJsonRequestAsync(request, _client.CatapultAuthData);
+        var request = RequestHelpers.CreateRequest(HttpMethod.Get, nextPageUrl, _client.BaseUrl, _client.AuthenticationHeader);
+        getData = () => _client.MakeJsonRequestAsync(request);
       }
     }
 

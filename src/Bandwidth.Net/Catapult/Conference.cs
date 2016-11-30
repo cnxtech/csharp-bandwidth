@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bandwidth.Net.Api
+namespace Bandwidth.Net.Catapult
 {
   /// <summary>
   ///   Access to Conference Api
@@ -129,65 +129,65 @@ namespace Bandwidth.Net.Api
     public Task<string> CreateAsync(CreateConferenceData data,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakePostJsonRequestAsync($"/users/{Client.CatapultAuthData.UserId}/conferences", Client.CatapultAuthData, cancellationToken, data);
+      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/conferences",  cancellationToken, data);
     }
 
     public Task<Conference> GetAsync(string conferenceId, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync<Conference>(HttpMethod.Get,
-        $"/users/{Client.CatapultAuthData.UserId}/conferences/{conferenceId}", Client.CatapultAuthData,
+      return Api.MakeJsonRequestAsync<Conference>(HttpMethod.Get,
+        $"/users/{Api.UserId}/conferences/{conferenceId}", 
         cancellationToken);
     }
 
     public Task UpdateAsync(string conferenceId, UpdateConferenceData data, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
-        $"/users/{Client.CatapultAuthData.UserId}/conferences/{conferenceId}", Client.CatapultAuthData, cancellationToken, null, data);
+      return Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
+        $"/users/{Api.UserId}/conferences/{conferenceId}",  cancellationToken, null, data);
     }
 
     public IEnumerable<ConferenceMember> GetMembers(string conferenceId, CancellationToken? cancellationToken = null)
     {
-      return new LazyEnumerable<ConferenceMember>(Client,
+      return new LazyEnumerable<ConferenceMember>(Api,
         () =>
-          Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.CatapultAuthData.UserId}/conferences/{conferenceId}/members", Client.CatapultAuthData,
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/conferences/{conferenceId}/members", 
             cancellationToken));
     }
 
     public Task<string> CreateMemberAsync(string conferenceId,
       CreateConferenceMemberData data, CancellationToken? cancellationToken = null)
     {
-      return Client.MakePostJsonRequestAsync($"/users/{Client.CatapultAuthData.UserId}/conferences/{conferenceId}/members", Client.CatapultAuthData,
+      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/conferences/{conferenceId}/members", 
             cancellationToken, data);
     }
 
     public Task<ConferenceMember> GetMemberAsync(string conferenceId, string memberId,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync<ConferenceMember>(HttpMethod.Get,
-        $"/users/{Client.CatapultAuthData.UserId}/conferences/{conferenceId}/members/{memberId}", Client.CatapultAuthData,
+      return Api.MakeJsonRequestAsync<ConferenceMember>(HttpMethod.Get,
+        $"/users/{Api.UserId}/conferences/{conferenceId}/members/{memberId}", 
         cancellationToken);
     }
 
     public Task UpdateMemberAsync(string conferenceId, string memberId, UpdateConferenceMemberData data,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
-        $"/users/{Client.CatapultAuthData.UserId}/conferences/{conferenceId}/members/{memberId}", Client.CatapultAuthData, cancellationToken, null, data);
+      return Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
+        $"/users/{Api.UserId}/conferences/{conferenceId}/members/{memberId}",  cancellationToken, null, data);
     }
 
     public Task PlayAudioToMemberAsync(string conferenceId, string memberId, PlayAudioData data,
       CancellationToken? cancellationToken = null)
     {
       return
-        Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
-          $"/users/{Client.CatapultAuthData.UserId}/conferences/{conferenceId}/members/{memberId}/audio", Client.CatapultAuthData, cancellationToken, null, data);
+        Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
+          $"/users/{Api.UserId}/conferences/{conferenceId}/members/{memberId}/audio",  cancellationToken, null, data);
     }
 
     public Task PlayAudioAsync(string conferenceId, PlayAudioData data, CancellationToken? cancellationToken = null)
     {
       return
-        Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
-          $"/users/{Client.CatapultAuthData.UserId}/conferences/{conferenceId}/audio", Client.CatapultAuthData, cancellationToken, null, data);
+        Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
+          $"/users/{Api.UserId}/conferences/{conferenceId}/audio",  cancellationToken, null, data);
     }
   }
 

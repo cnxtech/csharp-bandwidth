@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bandwidth.Net.Api
+namespace Bandwidth.Net.Catapult
 {
   /// <summary>
   ///   Access to Transcription Api
@@ -61,24 +61,24 @@ namespace Bandwidth.Net.Api
     public IEnumerable<Transcription> List(string recordingId, TranscriptionQuery query = null,
       CancellationToken? cancellationToken = null)
     {
-      return new LazyEnumerable<Transcription>(Client,
+      return new LazyEnumerable<Transcription>(Api,
         () =>
-          Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.CatapultAuthData.UserId}/recordings/{recordingId}/transcriptions", Client.CatapultAuthData,
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/recordings/{recordingId}/transcriptions", 
             cancellationToken, query));
     }
 
     public Task<string> CreateAsync(string recordingId,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakePostJsonRequestAsync($"/users/{Client.CatapultAuthData.UserId}/recordings/{recordingId}/transcriptions", Client.CatapultAuthData,
+      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/recordings/{recordingId}/transcriptions", 
             cancellationToken, new object());
     }
 
     public Task<Transcription> GetAsync(string recordingId, string transcriptionId,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync<Transcription>(HttpMethod.Get,
-        $"/users/{Client.CatapultAuthData.UserId}/bridges/recordings/{recordingId}/transcriptions/{transcriptionId}", Client.CatapultAuthData, cancellationToken);
+      return Api.MakeJsonRequestAsync<Transcription>(HttpMethod.Get,
+        $"/users/{Api.UserId}/bridges/recordings/{recordingId}/transcriptions/{transcriptionId}",  cancellationToken);
     }
   }
 

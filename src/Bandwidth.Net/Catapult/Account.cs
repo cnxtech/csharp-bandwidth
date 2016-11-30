@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bandwidth.Net.Api
+namespace Bandwidth.Net.Catapult
 {
   /// <summary>
   /// Access to Account Api
@@ -42,12 +42,12 @@ namespace Bandwidth.Net.Api
   {
     public Task<Account> GetAsync(CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync<Account>(HttpMethod.Get, $"/users/{Client.CatapultAuthData.UserId}/account", Client.CatapultAuthData, cancellationToken);
+      return Api.MakeJsonRequestAsync<Account>(HttpMethod.Get, $"/users/{Api.UserId}/account", cancellationToken);
     }
 
     public IEnumerable<AccountTransaction> GetTransactions(AccountTransactionQuery query = null, CancellationToken? cancellationToken = null)
     {
-      return new LazyEnumerable<AccountTransaction>(Client, () => Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.CatapultAuthData.UserId}/account/transactions", Client.CatapultAuthData, cancellationToken, query));
+      return new LazyEnumerable<AccountTransaction>(Api, () => Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/account/transactions", cancellationToken, query));
     }
   }
 

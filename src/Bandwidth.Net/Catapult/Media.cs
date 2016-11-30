@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bandwidth.Net.Api
+namespace Bandwidth.Net.Catapult
 {
   /// <summary>
   ///   Access to Media Api
@@ -75,17 +75,17 @@ namespace Bandwidth.Net.Api
   {
     public IEnumerable<MediaFile> List(CancellationToken? cancellationToken = null)
     {
-      return new LazyEnumerable<MediaFile>(Client,
+      return new LazyEnumerable<MediaFile>(Api,
         () =>
-          Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.CatapultAuthData.UserId}/media", Client.CatapultAuthData, cancellationToken));
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/media",  cancellationToken));
     }
 
     public async Task UploadAsync(UploadMediaFileData data, CancellationToken? cancellationToken = null)
     {
       if (data == null) throw new ArgumentNullException(nameof(data));
       if (string.IsNullOrEmpty(data.MediaName)) throw new ArgumentException("data.MediaName is required");
-      var request = Client.CreateRequest(HttpMethod.Put,
-        $"/users/{Client.CatapultAuthData.UserId}/media/{Uri.EscapeDataString(data.MediaName)}", Client.CatapultAuthData);
+      var request = RequestHelpers.CreateRequest(HttpMethod.Put,
+        $"/users/{Api.UserId}/media/{Uri.EscapeDataString(data.MediaName)}", Api.BaseUrl, Api.AuthenticationHeader);
 #if !WithoutFileIO
       IDisposable resourceToClean = null;
       if (data.Path != null)
@@ -109,7 +109,7 @@ namespace Bandwidth.Net.Api
       }
       if (request.Content == null) throw new ArgumentException("Path, Stream, Buffer or String is required. Please fill one of them.");
       request.Content.Headers.ContentType = new MediaTypeHeaderValue(data.ContentType ?? "application/octet-stream");
-      using (await Client.MakeJsonRequestAsync(request, Client.CatapultAuthData, cancellationToken))
+      using (await Api.MakeJsonRequestAsync(request,  cancellationToken))
       {
 #if !WithoutFileIO
         resourceToClean?.Dispose();
@@ -120,17 +120,17 @@ namespace Bandwidth.Net.Api
     public async Task<DownloadMediaFileData> DownloadAsync(string mediaName, CancellationToken? cancellationToken = null)
     {
       if (string.IsNullOrEmpty(mediaName)) throw new ArgumentNullException(nameof(mediaName));
-      var request = Client.CreateRequest(HttpMethod.Get,
-        $"/users/{Client.CatapultAuthData.UserId}/media/{Uri.EscapeDataString(mediaName)}", Client.CatapultAuthData);
-      var response = await Client.MakeJsonRequestAsync(request, Client.CatapultAuthData, cancellationToken, HttpCompletionOption.ResponseHeadersRead);
+      var request = RequestHelpers.CreateRequest(HttpMethod.Get,
+        $"/users/{Api.UserId}/media/{Uri.EscapeDataString(mediaName)}", Api.BaseUrl, Api.AuthenticationHeader);
+      var response = await Api.MakeJsonRequestAsync(request,  cancellationToken, HttpCompletionOption.ResponseHeadersRead);
       response.EnsureSuccessStatusCode();
       return new DownloadMediaFileData(response);
     }
 
     public Task DeleteAsync(string mediaName, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Delete,
-        $"/users/{Client.CatapultAuthData.UserId}/media/{Uri.EscapeDataString(mediaName)}", Client.CatapultAuthData, cancellationToken);
+      return Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Delete,
+        $"/users/{Api.UserId}/media/{Uri.EscapeDataString(mediaName)}",  cancellationToken);
     }
   }
 

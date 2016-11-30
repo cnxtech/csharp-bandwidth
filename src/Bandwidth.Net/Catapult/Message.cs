@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bandwidth.Net.Api
+namespace Bandwidth.Net.Catapult
 {
   /// <summary>
   ///   Access to Message Api
@@ -72,21 +72,21 @@ namespace Bandwidth.Net.Api
   {
     public IEnumerable<Message> List(MessageQuery query = null, CancellationToken? cancellationToken = null)
     {
-      return new LazyEnumerable<Message>(Client,
+      return new LazyEnumerable<Message>(Api,
         () =>
-          Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.CatapultAuthData.UserId}/messages", Client.CatapultAuthData, cancellationToken, query));
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/messages",  cancellationToken, query));
     }
 
     public Task<string> SendAsync(MessageData data,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakePostJsonRequestAsync($"/users/{Client.CatapultAuthData.UserId}/messages", Client.CatapultAuthData, cancellationToken, data);
+      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/messages",  cancellationToken, data);
     }
 
     public async Task<SendMessageResult[]> SendAsync(MessageData[] data,
       CancellationToken? cancellationToken = null)
     {
-      var list =  await Client.MakeJsonRequestAsync<SendMessageResult[]>(HttpMethod.Post,  $"/users/{Client.CatapultAuthData.UserId}/messages", Client.CatapultAuthData, cancellationToken, null, data);
+      var list =  await Api.MakeJsonRequestAsync<SendMessageResult[]>(HttpMethod.Post,  $"/users/{Api.UserId}/messages",  cancellationToken, null, data);
       var l = data.Length;
       for (var i = 0; i < l; i ++)
       {
@@ -97,8 +97,8 @@ namespace Bandwidth.Net.Api
 
     public Task<Message> GetAsync(string messageId, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync<Message>(HttpMethod.Get,
-        $"/users/{Client.CatapultAuthData.UserId}/messages/{messageId}", Client.CatapultAuthData, cancellationToken);
+      return Api.MakeJsonRequestAsync<Message>(HttpMethod.Get,
+        $"/users/{Api.UserId}/messages/{messageId}",  cancellationToken);
     }
   }
 

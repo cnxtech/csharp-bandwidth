@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bandwidth.Net.Api
+namespace Bandwidth.Net.Catapult
 {
   /// <summary>
   ///   Access to Bridge Api
@@ -84,43 +84,43 @@ namespace Bandwidth.Net.Api
   {
     public IEnumerable<Bridge> List(BridgeQuery query = null, CancellationToken? cancellationToken = null)
     {
-      return new LazyEnumerable<Bridge>(Client,
+      return new LazyEnumerable<Bridge>(Api,
         () =>
-          Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.CatapultAuthData.UserId}/bridges", Client.CatapultAuthData, cancellationToken, query));
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/bridges",  cancellationToken, query));
     }
 
     public Task<string> CreateAsync(CreateBridgeData data,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakePostJsonRequestAsync($"/users/{Client.CatapultAuthData.UserId}/bridges", Client.CatapultAuthData, cancellationToken, data);
+      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/bridges",  cancellationToken, data);
     }
 
     public Task<Bridge> GetAsync(string bridgeId, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync<Bridge>(HttpMethod.Get,
-        $"/users/{Client.CatapultAuthData.UserId}/bridges/{bridgeId}", Client.CatapultAuthData, cancellationToken);
+      return Api.MakeJsonRequestAsync<Bridge>(HttpMethod.Get,
+        $"/users/{Api.UserId}/bridges/{bridgeId}",  cancellationToken);
     }
 
     public Task UpdateAsync(string bridgeId, UpdateBridgeData data,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
-        $"/users/{Client.CatapultAuthData.UserId}/bridges/{bridgeId}", Client.CatapultAuthData, cancellationToken, null, data);
+      return Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
+        $"/users/{Api.UserId}/bridges/{bridgeId}",  cancellationToken, null, data);
     }
 
     public IEnumerable<Call> GetCalls(string bridgeId, CancellationToken? cancellationToken = null)
     {
-      return new LazyEnumerable<Call>(Client,
+      return new LazyEnumerable<Call>(Api,
         () =>
-          Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.CatapultAuthData.UserId}/bridges/{bridgeId}/calls",
-            Client.CatapultAuthData, cancellationToken));
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/bridges/{bridgeId}/calls",
+             cancellationToken));
     }
 
     public Task PlayAudioAsync(string bridgeId, PlayAudioData data, CancellationToken? cancellationToken = null)
     {
       return
-        Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
-          $"/users/{Client.CatapultAuthData.UserId}/bridges/{bridgeId}/audio", Client.CatapultAuthData, cancellationToken, null, data);
+        Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
+          $"/users/{Api.UserId}/bridges/{bridgeId}/audio",  cancellationToken, null, data);
     }
   }
 

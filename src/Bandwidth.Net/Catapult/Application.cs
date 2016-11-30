@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bandwidth.Net.Api
+namespace Bandwidth.Net.Catapult
 {
   /// <summary>
   ///   Access to Application Api
@@ -83,34 +83,34 @@ namespace Bandwidth.Net.Api
   {
     public IEnumerable<Application> List(ApplicationQuery query = null, CancellationToken? cancellationToken = null)
     {
-      return new LazyEnumerable<Application>(Client,
+      return new LazyEnumerable<Application>(Api,
         () =>
-          Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.CatapultAuthData.UserId}/applications", Client.CatapultAuthData, cancellationToken, query));
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/applications", cancellationToken, query));
     }
 
     public Task<string> CreateAsync(CreateApplicationData data,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakePostJsonRequestAsync($"/users/{Client.CatapultAuthData.UserId}/applications", Client.CatapultAuthData, cancellationToken, data);
+      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/applications", cancellationToken, data);
     }
 
     public Task<Application> GetAsync(string applicationId, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync<Application>(HttpMethod.Get,
-        $"/users/{Client.CatapultAuthData.UserId}/applications/{applicationId}", Client.CatapultAuthData, cancellationToken);
+      return Api.MakeJsonRequestAsync<Application>(HttpMethod.Get,
+        $"/users/{Api.UserId}/applications/{applicationId}", cancellationToken);
     }
 
     public Task UpdateAsync(string applicationId, UpdateApplicationData data,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
-        $"/users/{Client.CatapultAuthData.UserId}/applications/{applicationId}", Client.CatapultAuthData, cancellationToken, null, data );
+      return Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
+        $"/users/{Api.UserId}/applications/{applicationId}", cancellationToken, null, data );
     }
 
     public Task DeleteAsync(string applicationId, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Delete,
-        $"/users/{Client.CatapultAuthData.UserId}/applications/{applicationId}", Client.CatapultAuthData, cancellationToken);
+      return Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Delete,
+        $"/users/{Api.UserId}/applications/{applicationId}", cancellationToken);
     }
   }
 

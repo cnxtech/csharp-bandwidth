@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bandwidth.Net.Api
+namespace Bandwidth.Net.Catapult
 {
   /// <summary>
   ///   Access to NumberInfo Api
@@ -28,8 +28,8 @@ namespace Bandwidth.Net.Api
   {
     public Task<NumberInfo> GetAsync(string number, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestAsync<NumberInfo>(HttpMethod.Get,
-        $"/phoneNumbers/numberInfo/{Uri.EscapeDataString(number)}", Client.CatapultAuthData, cancellationToken);
+      return Api.MakeJsonRequestAsync<NumberInfo>(HttpMethod.Get,
+        $"/phoneNumbers/numberInfo/{Uri.EscapeDataString(number)}",  cancellationToken);
     }
   }
 

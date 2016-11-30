@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bandwidth.Net.Api
+namespace Bandwidth.Net.Catapult
 {
   /// <summary>
   ///   Access to Domain Api
@@ -56,21 +56,21 @@ namespace Bandwidth.Net.Api
   {
     public IEnumerable<Domain> List(DomainQuery query = null, CancellationToken? cancellationToken = null)
     {
-      return new LazyEnumerable<Domain>(Client,
+      return new LazyEnumerable<Domain>(Api,
         () =>
-          Client.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Client.CatapultAuthData.UserId}/domains", Client.CatapultAuthData, cancellationToken, query));
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/domains",  cancellationToken, query));
     }
 
     public Task<string> CreateAsync(CreateDomainData data,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakePostJsonRequestAsync($"/users/{Client.CatapultAuthData.UserId}/domains", Client.CatapultAuthData, cancellationToken, data);
+      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/domains",  cancellationToken, data);
     }
 
     public Task DeleteAsync(string domainId, CancellationToken? cancellationToken = null)
     {
-      return Client.MakeJsonRequestWithoutResponseAsync(HttpMethod.Delete,
-        $"/users/{Client.CatapultAuthData.UserId}/domains/{domainId}", Client.CatapultAuthData, cancellationToken);
+      return Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Delete,
+        $"/users/{Api.UserId}/domains/{domainId}",  cancellationToken);
     }
   }
 
