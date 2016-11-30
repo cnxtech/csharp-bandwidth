@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Xml.Serialization;
-using Bandwidth.Net.Xml;
+using Bandwidth.Net.Catapult.Xml;
 using Xunit;
 
-namespace Bandwidth.Net.Test.Xml
+namespace Bandwidth.Net.Test.Catapult.Xml
 {
   public class ResponseTests
   {

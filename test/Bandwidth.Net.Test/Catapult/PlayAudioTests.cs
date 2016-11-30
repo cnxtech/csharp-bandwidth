@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using Bandwidth.Net.Test.Mocks;
+using Bandwidth.Net.Catapult;
 using Bandwidth.Net.Test.Mocks.Catapult;
 using LightMock;
 using Xunit;
 
-namespace Bandwidth.Net.Test
+namespace Bandwidth.Net.Test.Catapult
 {
   public class PlayAudioTests
   {

@@ -3,12 +3,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Bandwidth.Net.Api;
-using Bandwidth.Net.Test.Mocks.Catapult;
+using Bandwidth.Net.Catapult;
 using LightMock;
 using Xunit;
+using Conference = Bandwidth.Net.Catapult.Conference;
 
-namespace Bandwidth.Net.Test.Api
+namespace Bandwidth.Net.Test.Catapult
 {
   public class ConferenceTests
   {
@@ -23,7 +23,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Conference;
+      var api = Helpers.GetCatapultApi(context).Conference;
       var conferenceId = await api.CreateAsync(new CreateConferenceData{From = "+1234567980"});
       context.Assert(
         m =>
@@ -44,7 +44,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Conference;
+      var api = Helpers.GetCatapultApi(context).Conference;
       var conference = await api.GetAsync("id");
       ValidateConference(conference);
     }
@@ -57,7 +57,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidUpdateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Conference;
+      var api = Helpers.GetCatapultApi(context).Conference;
       await api.UpdateAsync("id", new UpdateConferenceData {State = ConferenceState.Completed});
     }
 
@@ -69,7 +69,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidPlayAudioRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Conference;
+      var api = Helpers.GetCatapultApi(context).Conference;
       await api.PlayAudioAsync("id", new PlayAudioData {FileUrl = "url"});
     }
 
@@ -85,7 +85,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetMembersRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Conference;
+      var api = Helpers.GetCatapultApi(context).Conference;
       var members = api.GetMembers("id");
       Assert.Equal("memberId", members.First().Id);
     }
@@ -102,7 +102,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetMemberRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Conference;
+      var api = Helpers.GetCatapultApi(context).Conference;
       var member = await api.GetMemberAsync("id", "memberId");
       Assert.Equal("memberId", member.Id);
     }
@@ -117,7 +117,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateMemberRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Conference;
+      var api = Helpers.GetCatapultApi(context).Conference;
       var memberId = await api.CreateMemberAsync("id", new CreateConferenceMemberData {CallId = "callId"});
       context.Assert(
         m =>
@@ -134,7 +134,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidUpdateMemberRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Conference;
+      var api = Helpers.GetCatapultApi(context).Conference;
       await api.UpdateMemberAsync("id", "memberId", new UpdateConferenceMemberData{State = ConferenceMemberState.Completed});
     }
 
@@ -146,7 +146,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidPlayAudioToMemberRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Conference;
+      var api = Helpers.GetCatapultApi(context).Conference;
       await api.PlayAudioToMemberAsync("id", "memberId", new PlayAudioData { FileUrl = "url" });
     }
 
@@ -228,7 +228,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestSpeakSentenceToMember()
     {
       var context = new MockContext<IConference>(); 
-      var conference = new Conference(context);
+      var conference = new Mocks.Catapult.Conference(context);
       context.Arrange(m => m.PlayAudioToMemberAsync("conferenceId", "memberId", The<PlayAudioData>.Is(r => r.Sentence == "Hello"), null)).Returns(Task.FromResult(new HttpResponseMessage()));
       await conference.SpeakSentenceToMemberAsync("conferenceId", "memberId", "Hello");
     }
@@ -237,7 +237,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestPlayAudioFileToMember()
     {
       var context = new MockContext<IConference>(); 
-      var conference = new Conference(context);
+      var conference = new Mocks.Catapult.Conference(context);
       context.Arrange(m => m.PlayAudioToMemberAsync("conferenceId", "memberId", The<PlayAudioData>.Is(r => r.FileUrl == "url"), null)).Returns(Task.FromResult(new HttpResponseMessage()));
       await conference.PlayAudioFileToMemberAsync("conferenceId", "memberId", "url");
     }
@@ -246,7 +246,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestDeleteMember()
     {
       var context = new MockContext<IConference>(); 
-      var conference = new Conference(context);
+      var conference = new Mocks.Catapult.Conference(context);
       context.Arrange(m => m.UpdateMemberAsync("conferenceId", "memberId", The<UpdateConferenceMemberData>.Is(r => r.State == ConferenceMemberState.Completed), null)).Returns(Task.FromResult(new HttpResponseMessage()));
       await conference.DeleteMemberAsync("conferenceId", "memberId");
     }
@@ -255,7 +255,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestHoldMember()
     {
       var context = new MockContext<IConference>(); 
-      var conference = new Conference(context);
+      var conference = new Mocks.Catapult.Conference(context);
       context.Arrange(m => m.UpdateMemberAsync("conferenceId", "memberId", The<UpdateConferenceMemberData>.Is(r => r.Hold), null)).Returns(Task.FromResult(new HttpResponseMessage()));
       await conference.HoldMemberAsync("conferenceId", "memberId", true);
     }
@@ -264,7 +264,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestMuteMember()
     {
       var context = new MockContext<IConference>(); 
-      var conference = new Conference(context);
+      var conference = new Mocks.Catapult.Conference(context);
       context.Arrange(m => m.UpdateMemberAsync("conferenceId", "memberId", The<UpdateConferenceMemberData>.Is(r => r.Mute), null)).Returns(Task.FromResult(new HttpResponseMessage()));
       await conference.MuteMemberAsync("conferenceId", "memberId", true);
     }
@@ -273,7 +273,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestTerminate()
     {
       var context = new MockContext<IConference>(); 
-      var conference = new Conference(context);
+      var conference = new Mocks.Catapult.Conference(context);
       context.Arrange(m => m.UpdateAsync("conferenceId", The<UpdateConferenceData>.Is(r => r.State == ConferenceState.Completed), null)).Returns(Task.FromResult(new HttpResponseMessage()));
       await conference.TerminateAsync("conferenceId");
     }
@@ -282,7 +282,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestHold()
     {
       var context = new MockContext<IConference>(); 
-      var conference = new Conference(context);
+      var conference = new Mocks.Catapult.Conference(context);
       context.Arrange(m => m.UpdateAsync("conferenceId", The<UpdateConferenceData>.Is(r => r.Hold), null)).Returns(Task.FromResult(new HttpResponseMessage()));
       await conference.HoldAsync("conferenceId", true);
     }
@@ -291,7 +291,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestMute()
     {
       var context = new MockContext<IConference>(); 
-      var conference = new Conference(context);
+      var conference = new Mocks.Catapult.Conference(context);
       context.Arrange(m => m.UpdateAsync("conferenceId", The<UpdateConferenceData>.Is(r => r.Mute), null)).Returns(Task.FromResult(new HttpResponseMessage()));
       await conference.MuteAsync("conferenceId", true);
     }

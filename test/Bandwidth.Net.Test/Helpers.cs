@@ -11,12 +11,12 @@ namespace Bandwidth.Net.Test
 {
   public static class Helpers
   {
-    public static CatapultApi GetCatapultApi(MockContext<IHttp> context)
+    public static CatapultApi GetCatapultApi(MockContext<IHttp> context = null)
     {
       return new CatapultApi(new CatapultAuthData { UserId = "userId", ApiToken = "token", ApiSecret = "secret", BaseUrl = "http://localhost/v1" }, new Http(context));
     }
 
-    public static IrisApi GetIrisApi(MockContext<IHttp> context)
+    public static IrisApi GetIrisApi(MockContext<IHttp> context = null)
     {
       return new IrisApi(new IrisAuthData { AccountId = "accountId", UserName = "userName", Password = "password", BaseUrl = "http://localhost/v1.0" }, new Http(context));
     }

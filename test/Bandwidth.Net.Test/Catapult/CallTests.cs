@@ -3,12 +3,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Bandwidth.Net.Api;
-using Bandwidth.Net.Test.Mocks.Catapult;
+using Bandwidth.Net.Catapult;
 using LightMock;
 using Xunit;
+using Call = Bandwidth.Net.Catapult.Call;
 
-namespace Bandwidth.Net.Test.Api
+namespace Bandwidth.Net.Test.Catapult
 {
   public class CallTests
   {
@@ -25,7 +25,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidListRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Call;
+      var api = Helpers.GetCatapultApi(context).Call;
       var calls = api.List();
       ValidateCall(calls.First());
     }
@@ -40,7 +40,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Call;
+      var api = Helpers.GetCatapultApi(context).Call;
       var callId = await api.CreateAsync(new CreateCallData{From = "+1234567890", To = "+1234567981"});
       context.Assert(
         m =>
@@ -61,7 +61,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Call;
+      var api = Helpers.GetCatapultApi(context).Call;
       var call = await api.GetAsync("id");
       ValidateCall(call);
     }
@@ -74,7 +74,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidUpdateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Call;
+      var api = Helpers.GetCatapultApi(context).Call;
       await api.UpdateAsync("id", new UpdateCallData {State = CallState.Completed});
     }
 
@@ -86,7 +86,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidPlayAudioRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Call;
+      var api = Helpers.GetCatapultApi(context).Call;
       await api.PlayAudioAsync("id", new PlayAudioData {FileUrl = "url"});
     }
 
@@ -98,7 +98,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidSendDtmfRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Call;
+      var api = Helpers.GetCatapultApi(context).Call;
       await api.SendDtmfAsync("id", new SendDtmfData{DtmfOut = "1"});
     }
 
@@ -114,7 +114,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetEventsRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Call;
+      var api = Helpers.GetCatapultApi(context).Call;
       var events = api.GetEvents("id");
       Assert.Equal("eventId", events.First().Id);
     }
@@ -131,7 +131,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetEventRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Call;
+      var api = Helpers.GetCatapultApi(context).Call;
       var ev = await api.GetEventAsync("id", "eventId");
       Assert.Equal("eventId", ev.Id);
     }
@@ -148,7 +148,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRecordingsRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Call;
+      var api = Helpers.GetCatapultApi(context).Call;
       var recordings = api.GetRecordings("id");
       Assert.Equal("recordingId", recordings.First().Id);
     }
@@ -165,7 +165,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetTranscriptionsRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Call;
+      var api = Helpers.GetCatapultApi(context).Call;
       var transcriptions = api.GetTranscriptions("id");
       Assert.Equal("transcriptionId", transcriptions.First().Id);
     }
@@ -180,7 +180,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateGatherRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Call;
+      var api = Helpers.GetCatapultApi(context).Call;
       var gatherId = await api.CreateGatherAsync("id", new CreateGatherData {MaxDigits = "1"});
       context.Assert(
         m =>
@@ -201,7 +201,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetGatherRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Call;
+      var api = Helpers.GetCatapultApi(context).Call;
       var gather = await api.GetGatherAsync("id", "gatherId");
       ValidateCallGather(gather);
     }
@@ -214,7 +214,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidUpdateGatherRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Call;
+      var api = Helpers.GetCatapultApi(context).Call;
       await api.UpdateGatherAsync("id", "gatherId", new UpdateGatherData{State = CallGatherState.Completed});
     }
 
@@ -317,7 +317,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestAnswer()
     {
       var context = new MockContext<ICall>(); 
-      var call = new Call(context);
+      var call = new Mocks.Catapult.Call(context);
       context.Arrange(m => m.UpdateAsync("id", The<UpdateCallData>.Is(d => d.State == CallState.Active), null, true)).Returns(Task.FromResult(new HttpResponseMessage()));
       await call.AnswerAsync("id");
     }
@@ -326,7 +326,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestReject()
     {
       var context = new MockContext<ICall>(); 
-      var call = new Call(context);
+      var call = new Mocks.Catapult.Call(context);
       context.Arrange(m => m.UpdateAsync("id", The<UpdateCallData>.Is(d => d.State == CallState.Rejected), null, true)).Returns(Task.FromResult(new HttpResponseMessage()));
       await call.RejectAsync("id");
     }
@@ -335,7 +335,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestHangup()
     {
       var context = new MockContext<ICall>(); 
-      var call = new Call(context);
+      var call = new Mocks.Catapult.Call(context);
       context.Arrange(m => m.UpdateAsync("id", The<UpdateCallData>.Is(d => d.State == CallState.Completed), null, true)).Returns(Task.FromResult(new HttpResponseMessage()));
       await call.HangupAsync("id");
     }
@@ -344,7 +344,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestTurnCallRecording()
     {
       var context = new MockContext<ICall>(); 
-      var call = new Call(context);
+      var call = new Mocks.Catapult.Call(context);
       context.Arrange(m => m.UpdateAsync("id", The<UpdateCallData>.Is(d => d.RecordingEnabled), null, true)).Returns(Task.FromResult(new HttpResponseMessage()));
       await call.TurnCallRecordingAsync("id", true);
     }
@@ -355,7 +355,7 @@ namespace Bandwidth.Net.Test.Api
       var context = new MockContext<ICall>(); 
       var response = new HttpResponseMessage(HttpStatusCode.Created);
       response.Headers.Location = new Uri("http://localhost/path/transferedId");
-      var call = new Call(context);
+      var call = new Mocks.Catapult.Call(context);
       context.Arrange(m => m.UpdateAsync("id", The<UpdateCallData>.Is(d => d.State == CallState.Transferring && d.TransferTo == "to"), null, false)).Returns(Task.FromResult(response));
       var callId = await call.TransferAsync("id", "to");
       Assert.Equal("transferedId", callId);

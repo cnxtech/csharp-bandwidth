@@ -1,6 +1,6 @@
 using System.Xml.Serialization;
-using Bandwidth.Net.Xml.Verbs;
-using Bandwidth.Net.Xml;
+using Bandwidth.Net.Catapult.Xml.Verbs;
+using Bandwidth.Net.Catapult.Xml;
 using Xunit;
 using System;
 

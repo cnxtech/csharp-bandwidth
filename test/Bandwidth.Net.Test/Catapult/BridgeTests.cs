@@ -3,11 +3,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Bandwidth.Net.Api;
 using LightMock;
 using Xunit;
+using Bandwidth.Net.Catapult;
 
-namespace Bandwidth.Net.Test.Api
+namespace Bandwidth.Net.Test.Catapult
 {
   public class BridgeTests
   {
@@ -24,7 +24,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidListRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Bridge;
+      var api = Helpers.GetCatapultApi(context).Bridge;
       var bridges = api.List();
       ValidateBridge(bridges.First());
     }
@@ -39,7 +39,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Bridge;
+      var api = Helpers.GetCatapultApi(context).Bridge;
       var bridgeId = await api.CreateAsync(new CreateBridgeData {CallIds = new []{"callId"}});
       context.Assert(
         m =>
@@ -60,7 +60,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Bridge;
+      var api = Helpers.GetCatapultApi(context).Bridge;
       var bridge = await api.GetAsync("id");
       ValidateBridge(bridge);
     }
@@ -73,7 +73,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidUpdateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Bridge;
+      var api = Helpers.GetCatapultApi(context).Bridge;
       await api.UpdateAsync("id", new UpdateBridgeData {CallIds = new []{"callId"}});
     }
 
@@ -85,7 +85,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidPlayAudioRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Bridge;
+      var api = Helpers.GetCatapultApi(context).Bridge;
       await api.PlayAudioAsync("id", new PlayAudioData {FileUrl = "url"});
     }
 
@@ -101,7 +101,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetCallsRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Bridge;
+      var api = Helpers.GetCatapultApi(context).Bridge;
       var calls = api.GetCalls("id");
       Assert.Equal("callId", calls.First().Id);
     }

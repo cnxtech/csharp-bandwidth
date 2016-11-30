@@ -1,8 +1,8 @@
 ﻿using System.Net.Http;
-using Bandwidth.Net.Api;
 using Xunit;
+using Bandwidth.Net.Catapult;
 
-namespace Bandwidth.Net.Test
+namespace Bandwidth.Net.Test.Catapult
 {
   public class CallbackEventTests
   {

@@ -1,10 +1,11 @@
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using Bandwidth.Net.Catapult;
 using Newtonsoft.Json;
 using Xunit;
 
-namespace Bandwidth.Net.Test
+namespace Bandwidth.Net.Test.Catapult
 {
   public class JsonHelpersTests
   {

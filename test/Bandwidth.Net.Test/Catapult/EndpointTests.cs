@@ -3,11 +3,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Bandwidth.Net.Api;
+using Bandwidth.Net.Catapult;
 using LightMock;
 using Xunit;
 
-namespace Bandwidth.Net.Test.Api
+namespace Bandwidth.Net.Test.Catapult
 {
   public class EndpointTests
   {
@@ -24,7 +24,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidListRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Endpoint;
+      var api = Helpers.GetCatapultApi(context).Endpoint;
       var endpoints = api.List("domainId");
       ValidateEndpoint(endpoints.First());
     }
@@ -39,7 +39,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Endpoint;
+      var api = Helpers.GetCatapultApi(context).Endpoint;
       var endpointId = await api.CreateAsync(new CreateEndpointData {DomainId = "domainId", Name = "name"});
       context.Assert(
         m =>
@@ -60,7 +60,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Endpoint;
+      var api = Helpers.GetCatapultApi(context).Endpoint;
       var endpoint = await api.GetAsync("domainId", "id");
       ValidateEndpoint(endpoint);
     }
@@ -73,7 +73,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidUpdateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Endpoint;
+      var api = Helpers.GetCatapultApi(context).Endpoint;
       await api.UpdateAsync("domainId","id", new UpdateEndpointData {Enabled = false});
     }
 
@@ -85,7 +85,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidDeleteRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Endpoint;
+      var api = Helpers.GetCatapultApi(context).Endpoint;
       await api.DeleteAsync("domainId", "id");
     }
 
@@ -101,7 +101,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateAuthTokenRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Endpoint;
+      var api = Helpers.GetCatapultApi(context).Endpoint;
       var token = await api.CreateAuthTokenAsync("domainId", "id");
       Assert.Equal("token", token.Token);
     }

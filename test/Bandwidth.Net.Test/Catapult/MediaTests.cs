@@ -1,14 +1,14 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Bandwidth.Net.Api;
+using Bandwidth.Net.Catapult;
 using LightMock;
 using Xunit;
 
-namespace Bandwidth.Net.Test.Api
+namespace Bandwidth.Net.Test.Catapult
 {
   public class MediaTest
   {
@@ -25,7 +25,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidListRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Media;
+      var api = Helpers.GetCatapultApi(context).Media;
       var file = api.List().First();
       Assert.Equal("mediaName1", file.MediaName);
       Assert.Equal(10, file.ContentLength);
@@ -39,7 +39,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidUploadRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Media;
+      var api = Helpers.GetCatapultApi(context).Media;
       await api.UploadAsync(new UploadMediaFileData
       {
         MediaName = "file",
@@ -56,7 +56,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidUploadRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Media;
+      var api = Helpers.GetCatapultApi(context).Media;
       using (var stream = new MemoryStream(Encoding.UTF8.GetBytes("1234")))
       {
         await api.UploadAsync(new UploadMediaFileData
@@ -76,7 +76,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidUploadRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Media;
+      var api = Helpers.GetCatapultApi(context).Media;
       await api.UploadAsync(new UploadMediaFileData
       {
         MediaName = "file",
@@ -93,7 +93,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidUploadRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Media;
+      var api = Helpers.GetCatapultApi(context).Media;
       var path = Path.GetTempFileName();
       try
       {
@@ -115,7 +115,7 @@ namespace Bandwidth.Net.Test.Api
     public async void TestUploadFailWithNullData()
     {
       var context = new MockContext<IHttp>();
-      var api = Helpers.GetClient(context).Media;
+      var api = Helpers.GetCatapultApi(context).Media;
       await Assert.ThrowsAsync<ArgumentNullException>(() => api.UploadAsync(null));
     }
 
@@ -123,7 +123,7 @@ namespace Bandwidth.Net.Test.Api
     public async void TestUploadFailWithMissingMediaName()
     {
       var context = new MockContext<IHttp>();
-      var api = Helpers.GetClient(context).Media;
+      var api = Helpers.GetCatapultApi(context).Media;
       await Assert.ThrowsAsync<ArgumentException>(() => api.UploadAsync(new UploadMediaFileData{String = "1234"}));
     }
 
@@ -131,7 +131,7 @@ namespace Bandwidth.Net.Test.Api
     public async void TestUploadFailWithMissingContent()
     {
       var context = new MockContext<IHttp>();
-      var api = Helpers.GetClient(context).Media;
+      var api = Helpers.GetCatapultApi(context).Media;
       await Assert.ThrowsAsync<ArgumentException>(() => api.UploadAsync(new UploadMediaFileData{MediaName = "file"}));
     }
 
@@ -147,7 +147,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidDownloadRequest(r)), HttpCompletionOption.ResponseHeadersRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Media;
+      var api = Helpers.GetCatapultApi(context).Media;
       using (var data = await api.DownloadAsync("file"))
       {
         Assert.Equal("text/plain", data.ContentType);
@@ -165,7 +165,7 @@ namespace Bandwidth.Net.Test.Api
     public async void TestDownloadFailWithMissingMediaName()
     {
       var context = new MockContext<IHttp>();
-      var api = Helpers.GetClient(context).Media;
+      var api = Helpers.GetCatapultApi(context).Media;
       await Assert.ThrowsAsync<ArgumentNullException>(() => api.DownloadAsync(null));
     }
    
@@ -177,7 +177,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidDeleteRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Media;
+      var api = Helpers.GetCatapultApi(context).Media;
       await api.DeleteAsync("file");
     }
 

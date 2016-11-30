@@ -3,11 +3,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Bandwidth.Net.Api;
+using Bandwidth.Net.Catapult;
 using LightMock;
 using Xunit;
 
-namespace Bandwidth.Net.Test.Api
+namespace Bandwidth.Net.Test.Catapult
 {
   public class DomainTests
   {
@@ -24,7 +24,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidListRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Domain;
+      var api = Helpers.GetCatapultApi(context).Domain;
       var domains = api.List();
       ValidateDomain(domains.First());
     }
@@ -39,7 +39,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Domain;
+      var api = Helpers.GetCatapultApi(context).Domain;
       var domainId = await api.CreateAsync(new CreateDomainData {Name = "domain"});
       Assert.Equal("id", domainId);
     }
@@ -52,7 +52,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidDeleteRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Domain;
+      var api = Helpers.GetCatapultApi(context).Domain;
       await api.DeleteAsync("id");
     }
 

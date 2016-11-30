@@ -2,10 +2,11 @@
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Bandwidth.Net.Catapult;
 using LightMock;
 using Xunit;
 
-namespace Bandwidth.Net.Test
+namespace Bandwidth.Net.Test.Catapult
 {
   public class LazyEnumerableTests
   {
@@ -14,7 +15,7 @@ namespace Bandwidth.Net.Test
     {
       Assert.Throws<ArgumentNullException>(
         () => new LazyEnumerable<string>(null, () => Task.FromResult(new HttpResponseMessage())));
-      Assert.Throws<ArgumentNullException>(() => new LazyEnumerable<string>(Helpers.GetClient(), null));
+      Assert.Throws<ArgumentNullException>(() => new LazyEnumerable<string>(Helpers.GetCatapultApi(), null));
     }
 
     [Fact]
@@ -24,7 +25,7 @@ namespace Bandwidth.Net.Test
       {
         Content = new StringContent("[\"1\", \"2\"]", Encoding.UTF8, "application/json")
       };
-      var list = new LazyEnumerable<string>(Helpers.GetClient(), () => Task.FromResult(response));
+      var list = new LazyEnumerable<string>(Helpers.GetCatapultApi(), () => Task.FromResult(response));
       Assert.Equal(new[] {"1", "2"}, list);
     }
 
@@ -37,7 +38,7 @@ namespace Bandwidth.Net.Test
       };
       response.Headers.Add("Link",
         "<https://api.catapult.inetwork.com/v1/users/userId/account/transactions?page=0&size=25>; rel=\"first\"");
-      var list = new LazyEnumerable<string>(Helpers.GetClient(), () => Task.FromResult(response));
+      var list = new LazyEnumerable<string>(Helpers.GetCatapultApi(), () => Task.FromResult(response));
       Assert.Equal(new[] {"1", "2"}, list);
     }
 
@@ -56,7 +57,7 @@ namespace Bandwidth.Net.Test
       };
       var context = new MockContext<IHttp>();
       context.Arrange(m => m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidRequest(r)), HttpCompletionOption.ResponseContentRead, null)).Returns(Task.FromResult(nextPageResponse));
-      var list = new LazyEnumerable<string>(Helpers.GetClient(context), () => Task.FromResult(response));
+      var list = new LazyEnumerable<string>(Helpers.GetCatapultApi(context), () => Task.FromResult(response));
       Assert.Equal(new[] {"1", "2", "3"}, list);
     }
 
@@ -76,7 +77,7 @@ namespace Bandwidth.Net.Test
       };
       response.Headers.Add("Link",
         "<https://api.catapult.inetwork.com/v1/users/userId/account/transactions?page=0&size=25> rel=\"next\"");
-      var list = new LazyEnumerable<string>(Helpers.GetClient(), () => Task.FromResult(response));
+      var list = new LazyEnumerable<string>(Helpers.GetCatapultApi(), () => Task.FromResult(response));
       Assert.Equal(new[] {"1", "2"}, list);
     }
   }

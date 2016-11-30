@@ -1,10 +1,10 @@
-using System.Xml.Serialization;
-using Bandwidth.Net.Xml.Verbs;
-using Bandwidth.Net.Xml;
-using Xunit;
 using System;
+using System.Xml.Serialization;
+using Bandwidth.Net.Catapult.Xml;
+using Bandwidth.Net.Catapult.Xml.Verbs;
+using Xunit;
 
-namespace Bandwidth.Net.Test.Xml.Verbs
+namespace Bandwidth.Net.Test.Catapult.Xml.Verbs
 {
   public class SpeakSentenceTests
   {

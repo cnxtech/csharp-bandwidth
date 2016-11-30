@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Bandwidth.Net.Api;
+using Bandwidth.Net.Catapult;
 using LightMock;
 using Xunit;
 
-namespace Bandwidth.Net.Test.Api
+namespace Bandwidth.Net.Test.Catapult
 {
   public class RecordingTest
   {
@@ -22,7 +22,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidListRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Recording;
+      var api = Helpers.GetCatapultApi(context).Recording;
       var recordings = api.List();
       ValidateRecording(recordings.First());
     }
@@ -39,7 +39,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Recording;
+      var api = Helpers.GetCatapultApi(context).Recording;
       var recording = await api.GetAsync("id");
       ValidateRecording(recording);
     }

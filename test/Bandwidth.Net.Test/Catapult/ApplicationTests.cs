@@ -3,11 +3,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Bandwidth.Net.Api;
 using LightMock;
 using Xunit;
+using Bandwidth.Net.Catapult;
 
-namespace Bandwidth.Net.Test.Api
+namespace Bandwidth.Net.Test.Catapult
 {
   public class ApplicationTests
   {
@@ -24,7 +24,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidListRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Application;
+      var api = Helpers.GetCatapultApi(context).Application;
       var applications = api.List();
       ValidateApplication(applications.First());
     }
@@ -39,7 +39,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Application;
+      var api = Helpers.GetCatapultApi(context).Application;
       var applicationId = await api.CreateAsync(new CreateApplicationData {Name = "MyFirstApp"});
       context.Assert(
         m =>
@@ -60,7 +60,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Application;
+      var api = Helpers.GetCatapultApi(context).Application;
       var application = await api.GetAsync("id");
       ValidateApplication(application);
     }
@@ -73,7 +73,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidUpdateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Application;
+      var api = Helpers.GetCatapultApi(context).Application;
       await api.UpdateAsync("id", new UpdateApplicationData {Name = "NewName"});
     }
 
@@ -85,7 +85,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidDeleteRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).Application;
+      var api = Helpers.GetCatapultApi(context).Application;
       await api.DeleteAsync("id");
     }
 

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using LightMock;
 using Xunit;
 
-namespace Bandwidth.Net.Test.Api
+namespace Bandwidth.Net.Test.Catapult
 {
   public class NumberInfoTests
   {
@@ -19,7 +19,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).NumberInfo;
+      var api = Helpers.GetCatapultApi(context).NumberInfo;
       var numberInfo = await api.GetAsync("1234567890");
       Assert.Equal("Name", numberInfo.Name);
       Assert.Equal("number", numberInfo.Number);

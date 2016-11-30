@@ -1,8 +1,8 @@
-﻿using Bandwidth.Net.Xml;
-using Bandwidth.Net.Xml.Verbs;
+﻿using Bandwidth.Net.Catapult.Xml;
+using Bandwidth.Net.Catapult.Xml.Verbs;
 using Xunit;
 
-namespace Bandwidth.Net.Test.Xml
+namespace Bandwidth.Net.Test.Catapult.Xml
 {
   public class BandwidthXmlContentTests
   {

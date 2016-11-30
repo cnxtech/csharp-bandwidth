@@ -3,11 +3,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Bandwidth.Net.Api;
+using Bandwidth.Net.Catapult;
 using LightMock;
 using Xunit;
 
-namespace Bandwidth.Net.Test.Api
+namespace Bandwidth.Net.Test.Catapult
 {
   public class PhoneNumberTest
   {
@@ -24,7 +24,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidListRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).PhoneNumber;
+      var api = Helpers.GetCatapultApi(context).PhoneNumber;
       var phoneNumbers = api.List();
       ValidatePhoneNumber(phoneNumbers.First());
     }
@@ -39,7 +39,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).PhoneNumber;
+      var api = Helpers.GetCatapultApi(context).PhoneNumber;
       var phoneNumberId = await api.CreateAsync(new CreatePhoneNumberData {Number = "+1234567890"});
       context.Assert(
         m =>
@@ -60,7 +60,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).PhoneNumber;
+      var api = Helpers.GetCatapultApi(context).PhoneNumber;
       var phoneNumber = await api.GetAsync("id");
       ValidatePhoneNumber(phoneNumber);
     }
@@ -73,7 +73,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidUpdateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).PhoneNumber;
+      var api = Helpers.GetCatapultApi(context).PhoneNumber;
       await api.UpdateAsync("id", new UpdatePhoneNumberData {ApplicationId = "applicationId"});
     }
 
@@ -85,7 +85,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidDeleteRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(new HttpResponseMessage()));
-      var api = Helpers.GetClient(context).PhoneNumber;
+      var api = Helpers.GetCatapultApi(context).PhoneNumber;
       await api.DeleteAsync("id");
     }
 

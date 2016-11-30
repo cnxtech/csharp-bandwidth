@@ -3,11 +3,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Bandwidth.Net.Api;
+using Bandwidth.Net.Catapult;
 using LightMock;
 using Xunit;
 
-namespace Bandwidth.Net.Test.Api
+namespace Bandwidth.Net.Test.Catapult
 {
   public class MessageTests
   {
@@ -24,7 +24,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidListRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Message;
+      var api = Helpers.GetCatapultApi(context).Message;
       var messages = api.List();
       ValidateMessage(messages.First());
     }
@@ -39,7 +39,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidSendRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Message;
+      var api = Helpers.GetCatapultApi(context).Message;
       var messageId = await api.SendAsync(new MessageData {From = "+1234567890", To = "+1234567891", Text = "Hello"});
       context.Assert(
         m =>
@@ -60,7 +60,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidBatchSendRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Message;
+      var api = Helpers.GetCatapultApi(context).Message;
       var result = await api.SendAsync(new []{new MessageData {From = "+1234567890", To = "+1234567891", Text = "Hello"}});
       Assert.Equal("id", result[0].Id);
       Assert.Equal(SendMessageResults.Accepted, result[0].Result);
@@ -78,7 +78,7 @@ namespace Bandwidth.Net.Test.Api
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).Message;
+      var api = Helpers.GetCatapultApi(context).Message;
       var message = await api.GetAsync("id");
       ValidateMessage(message);
     }

@@ -1,7 +1,8 @@
-using Bandwidth.Net.Xml.Verbs;
 using Xunit;
+using Bandwidth.Net.Catapult.Xml.Verbs;
 
-namespace Bandwidth.Net.Test.Xml.Verbs
+
+namespace Bandwidth.Net.Test.Catapult.Xml.Verbs
 {
   public class GatherTests
   {

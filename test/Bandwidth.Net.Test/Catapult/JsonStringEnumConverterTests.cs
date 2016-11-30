@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using Bandwidth.Net.Catapult;
+using Newtonsoft.Json;
 using Xunit;
 
-namespace Bandwidth.Net.Test
+namespace Bandwidth.Net.Test.Catapult
 {
   public class JsonStringEnumConverterTests
   {

@@ -1,10 +1,10 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Bandwidth.Net.Api;
+using Bandwidth.Net.Catapult;
 using LightMock;
 using Xunit;
 
-namespace Bandwidth.Net.Test.Api
+namespace Bandwidth.Net.Test.Catapult
 {
   public class AvailableNumberTest
   {
@@ -21,7 +21,7 @@ namespace Bandwidth.Net.Test.Api
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidSearchLocalRequest(r)),
             HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).AvailableNumber;
+      var api = Helpers.GetCatapultApi(context).AvailableNumber;
       var numbers = await api.SearchLocalAsync(new LocalNumberQuery {AreaCode = "910"});
       ValidateAvailableNumbers(numbers);
     }
@@ -39,7 +39,7 @@ namespace Bandwidth.Net.Test.Api
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidSearchTollFreeRequest(r)),
             HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).AvailableNumber;
+      var api = Helpers.GetCatapultApi(context).AvailableNumber;
       var numbers = await api.SearchTollFreeAsync(new TollFreeNumberQuery {Quantity = 1});
       ValidateAvailableNumbers(numbers);
     }
@@ -57,7 +57,7 @@ namespace Bandwidth.Net.Test.Api
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidSearchAndOrderLocalRequest(r)),
             HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).AvailableNumber;
+      var api = Helpers.GetCatapultApi(context).AvailableNumber;
       var numbers = await api.SearchAndOrderLocalAsync(new LocalNumberQueryForOrder {AreaCode = "910"});
       ValidateOrderedNumbers(numbers);
     }
@@ -75,7 +75,7 @@ namespace Bandwidth.Net.Test.Api
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidSearchAndOrderTollFreeRequest(r)),
             HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
-      var api = Helpers.GetClient(context).AvailableNumber;
+      var api = Helpers.GetCatapultApi(context).AvailableNumber;
       var numbers = await api.SearchAndOrderTollFreeAsync(new TollFreeNumberQueryForOrder {Quantity = 1});
       ValidateOrderedNumbers(numbers);
     }
