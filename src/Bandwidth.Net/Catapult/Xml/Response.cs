@@ -6,7 +6,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Bandwidth.Net.Xml
+namespace Bandwidth.Net.Catapult.Xml
 {
   /// <summary>
   ///   Response class for Bandwidth XML

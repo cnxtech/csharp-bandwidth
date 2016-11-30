@@ -38,7 +38,7 @@ namespace Bandwidth.Net.Catapult
     /// </code>
     /// </example>
     Task<string> SendAsync(MessageData data, CancellationToken? cancellationToken = null);
-    
+
     /// <summary>
     ///   Send a message.
     /// </summary>
@@ -65,7 +65,6 @@ namespace Bandwidth.Net.Catapult
     /// </code>
     /// </example>
     Task<Message> GetAsync(string messageId, CancellationToken? cancellationToken = null);
-
   }
 
   internal class MessageApi : ApiBase, IMessage
@@ -74,19 +73,22 @@ namespace Bandwidth.Net.Catapult
     {
       return new LazyEnumerable<Message>(Api,
         () =>
-          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/messages",  cancellationToken, query));
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/messages", cancellationToken, query));
     }
 
     public Task<string> SendAsync(MessageData data,
       CancellationToken? cancellationToken = null)
     {
-      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/messages",  cancellationToken, data);
+      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/messages", cancellationToken, data);
     }
 
     public async Task<SendMessageResult[]> SendAsync(MessageData[] data,
       CancellationToken? cancellationToken = null)
     {
-      var list =  await Api.MakeJsonRequestAsync<SendMessageResult[]>(HttpMethod.Post,  $"/users/{Api.UserId}/messages",  cancellationToken, null, data);
+      var list =
+        await
+          Api.MakeJsonRequestAsync<SendMessageResult[]>(HttpMethod.Post, $"/users/{Api.UserId}/messages",
+            cancellationToken, null, data);
       var l = data.Length;
       for (var i = 0; i < l; i ++)
       {
@@ -98,7 +100,7 @@ namespace Bandwidth.Net.Catapult
     public Task<Message> GetAsync(string messageId, CancellationToken? cancellationToken = null)
     {
       return Api.MakeJsonRequestAsync<Message>(HttpMethod.Get,
-        $"/users/{Api.UserId}/messages/{messageId}",  cancellationToken);
+        $"/users/{Api.UserId}/messages/{messageId}", cancellationToken);
     }
   }
 
@@ -114,167 +116,167 @@ namespace Bandwidth.Net.Catapult
     public string Id { get; set; }
 
     /// <summary>
-    /// The message sender's telephone number (or short code).
+    ///   The message sender's telephone number (or short code).
     /// </summary>
     public string From { get; set; }
 
     /// <summary>
-    /// Message recipient telephone number (or short code).
+    ///   Message recipient telephone number (or short code).
     /// </summary>
     public string To { get; set; }
 
     /// <summary>
-    /// Direction of message
+    ///   Direction of message
     /// </summary>
     public MessageDirection Direction { get; set; }
 
     /// <summary>
-    /// The message contents.
+    ///   The message contents.
     /// </summary>
     public string Text { get; set; }
 
     /// <summary>
-    /// Array containing list of media urls to be sent as content for an mms.
+    ///   Array containing list of media urls to be sent as content for an mms.
     /// </summary>
     public string[] Media { get; set; }
 
     /// <summary>
-    /// Message state
+    ///   Message state
     /// </summary>
     public MessageState State { get; set; }
 
     /// <summary>
-    /// The time when the message was completed.
+    ///   The time when the message was completed.
     /// </summary>
     public DateTime Time { get; set; }
 
 
     /// <summary>
-    /// The complete URL where the events related to the outgoing message will be sent.
+    ///   The complete URL where the events related to the outgoing message will be sent.
     /// </summary>
     public string CallbackUrl { get; set; }
 
     /// <summary>
-    /// Determine how long should the platform wait for callbackUrl's response before timing out (milliseconds).
+    ///   Determine how long should the platform wait for callbackUrl's response before timing out (milliseconds).
     /// </summary>
     public int CallbackTimeout { get; set; }
 
     /// <summary>
-    /// The server URL used to send message events if the request to callbackUrl fails.
+    ///   The server URL used to send message events if the request to callbackUrl fails.
     /// </summary>
     public string FallbackUrl { get; set; }
 
     /// <summary>
-    /// A string that will be included in the callback events of the message.
+    ///   A string that will be included in the callback events of the message.
     /// </summary>
     public string Tag { get; set; }
 
     /// <summary>
-    /// Requested receipt option for outbound messages
+    ///   Requested receipt option for outbound messages
     /// </summary>
     public MessageReceiptRequested ReceiptRequested { get; set; }
 
     /// <summary>
-    /// Message delivery state 
+    ///   Message delivery state
     /// </summary>
     public MessageDeliveryState DeliveryState { get; set; }
 
     /// <summary>
-    /// Numeric value of deliver code, see table for values.
+    ///   Numeric value of deliver code, see table for values.
     /// </summary>
     public int DeliveryCode { get; set; }
 
     /// <summary>
-    /// Message delivery description for the respective delivery code
+    ///   Message delivery description for the respective delivery code
     /// </summary>
     public string DeliveryDescription { get; set; }
   }
 
   /// <summary>
-  /// Possible message states
+  ///   Possible message states
   /// </summary>
   public enum MessageState
   {
     /// <summary>
-    /// The message was received.
+    ///   The message was received.
     /// </summary>
     Received,
 
     /// <summary>
-    /// The message is waiting in queue and will be sent soon.
+    ///   The message is waiting in queue and will be sent soon.
     /// </summary>
     Queued,
 
     /// <summary>
-    /// The message was removed from queue and is being sent.
+    ///   The message was removed from queue and is being sent.
     /// </summary>
     Sending,
 
     /// <summary>
-    /// The message was sent successfully.
+    ///   The message was sent successfully.
     /// </summary>
     Sent,
 
     /// <summary>
-    /// There was an error sending or receiving a message (check errors resource for details).
+    ///   There was an error sending or receiving a message (check errors resource for details).
     /// </summary>
     Error
   }
 
   /// <summary>
-  /// Requested receipt options for outbound messages
+  ///   Requested receipt options for outbound messages
   /// </summary>
   public enum MessageReceiptRequested
   {
     /// <summary>
-    /// Delivery receipt will not be sent as callback event.
+    ///   Delivery receipt will not be sent as callback event.
     /// </summary>
     None,
 
     /// <summary>
-    /// Success or error delivery receipt maybe sent as callback event.
+    ///   Success or error delivery receipt maybe sent as callback event.
     /// </summary>
     All,
 
     /// <summary>
-    /// Only error delivery receipt event maybe sent as callback event.
+    ///   Only error delivery receipt event maybe sent as callback event.
     /// </summary>
     Error
   }
 
   /// <summary>
-  /// Possible delivery states
+  ///   Possible delivery states
   /// </summary>
   public enum MessageDeliveryState
   {
     /// <summary>
-    /// Waiting for receipt.
+    ///   Waiting for receipt.
     /// </summary>
     Waiting,
 
     /// <summary>
-    /// Receipt indicating that message was delivered.
+    ///   Receipt indicating that message was delivered.
     /// </summary>
     Delivered,
 
     /// <summary>
-    /// Receipt indicating that message was not delivered.
+    ///   Receipt indicating that message was not delivered.
     /// </summary>
     NotDelivered
   }
 
   /// <summary>
-  /// Directions of message
+  ///   Directions of message
   /// </summary>
   public enum MessageDirection
   {
     /// <summary>
-    /// A message that came from the telephone network to one of your numbers (an "inbound" message)
+    ///   A message that came from the telephone network to one of your numbers (an "inbound" message)
     /// </summary>
     In,
 
     /// <summary>
-    /// A message that was sent from one of your numbers to the telephone network (an "outbound" message)
+    ///   A message that was sent from one of your numbers to the telephone network (an "outbound" message)
     /// </summary>
     Out
   }
@@ -285,42 +287,42 @@ namespace Bandwidth.Net.Catapult
   public class MessageQuery
   {
     /// <summary>
-    /// The phone number to filter the messages that came from (must be in E.164 format, like +19195551212).
+    ///   The phone number to filter the messages that came from (must be in E.164 format, like +19195551212).
     /// </summary>
     public string From { get; set; }
 
     /// <summary>
-    /// The phone number to filter the messages that was sent to (must be in E.164 format, like +19195551212).
+    ///   The phone number to filter the messages that was sent to (must be in E.164 format, like +19195551212).
     /// </summary>
     public string To { get; set; }
 
     /// <summary>
-    /// The starting date time to filter the messages
+    ///   The starting date time to filter the messages
     /// </summary>
     public MessageQueryDateTime FromDateTime { get; set; }
 
     /// <summary>
-    /// The ending date time to filter the messages
+    ///   The ending date time to filter the messages
     /// </summary>
     public MessageQueryDateTime ToDateTime { get; set; }
 
     /// <summary>
-    /// Filter by direction of message
+    ///   Filter by direction of message
     /// </summary>
     public MessageDirection? Direction { get; set; }
 
     /// <summary>
-    /// The message state to filter. 
+    ///   The message state to filter.
     /// </summary>
     public MessageState? State { get; set; }
 
     /// <summary>
-    /// The message delivery state to filter. 
+    ///   The message delivery state to filter.
     /// </summary>
     public MessageDeliveryState? DeliveryState { get; set; }
 
     /// <summary>
-    /// How to sort the messages.
+    ///   How to sort the messages.
     /// </summary>
     public SortOrder? SortOrder { get; set; }
 
@@ -337,108 +339,107 @@ namespace Bandwidth.Net.Catapult
   public class MessageData
   {
     /// <summary>
-    /// The message sender's telephone number (or short code).
+    ///   The message sender's telephone number (or short code).
     /// </summary>
     public string From { get; set; }
 
     /// <summary>
-    /// Message recipient telephone number (or short code).
+    ///   Message recipient telephone number (or short code).
     /// </summary>
     public string To { get; set; }
 
     /// <summary>
-    /// The message contents.
+    ///   The message contents.
     /// </summary>
     public string Text { get; set; }
 
     /// <summary>
-    /// Array containing list of media urls to be sent as content for an mms.
+    ///   Array containing list of media urls to be sent as content for an mms.
     /// </summary>
     public string[] Media { get; set; }
 
     /// <summary>
-    /// The complete URL where the events related to the outgoing message will be sent.
+    ///   The complete URL where the events related to the outgoing message will be sent.
     /// </summary>
     public string CallbackUrl { get; set; }
 
     /// <summary>
-    /// Determine how long should the platform wait for callbackUrl's response before timing out (milliseconds).
+    ///   Determine how long should the platform wait for callbackUrl's response before timing out (milliseconds).
     /// </summary>
     public int? CallbackTimeout { get; set; }
 
     /// <summary>
-    /// The server URL used to send message events if the request to callbackUrl fails.
+    ///   The server URL used to send message events if the request to callbackUrl fails.
     /// </summary>
     public string FallbackUrl { get; set; }
 
     /// <summary>
-    /// A string that will be included in the callback events of the message.
+    ///   A string that will be included in the callback events of the message.
     /// </summary>
     public string Tag { get; set; }
 
     /// <summary>
-    /// Requested receipt option for outbound messages
+    ///   Requested receipt option for outbound messages
     /// </summary>
     public MessageReceiptRequested? ReceiptRequested { get; set; }
-
   }
 
   /// <summary>
-  /// Rsult of batch send of some messages
+  ///   Rsult of batch send of some messages
   /// </summary>
   public class SendMessageResult
   {
     /// <summary>
-    /// Operation result
+    ///   Operation result
     /// </summary>
     public SendMessageResults Result { get; set; }
 
     /// <summary>
-    /// Url to new message
+    ///   Url to new message
     /// </summary>
     public string Location { get; set; }
 
     /// <summary>
-    /// Id of new message
+    ///   Id of new message
     /// </summary>
     public string Id => Location.Split('/').Last();
 
     /// <summary>
-    /// Error information (if Result is Error)
+    ///   Error information (if Result is Error)
     /// </summary>
     public Error Error { get; set; }
 
     /// <summary>
-    /// Message data
+    ///   Message data
     /// </summary>
     public MessageData Message { get; set; }
   }
 
   /// <summary>
-  /// Send message results
+  ///   Send message results
   /// </summary>
   public enum SendMessageResults
   {
     /// <summary>
-    /// Accepted
+    ///   Accepted
     /// </summary>
     Accepted,
 
     /// <summary>
-    /// Error
+    ///   Error
     /// </summary>
     Error
   }
 
   /// <summary>
-  /// Custom DateTime type to support specific serializing to string. It can be converted to/from date time implicitly
+  ///   Custom DateTime type to support specific serializing to string. It can be converted to/from date time implicitly
   /// </summary>
   public class MessageQueryDateTime
   {
     private readonly DateTime _time;
 
     /// <summary>
-    /// Constructor
+    ///   Constructor
     /// </summary>
     /// <param name="time">DateTime instance</param>
     public MessageQueryDateTime(DateTime time)
@@ -447,16 +448,16 @@ namespace Bandwidth.Net.Catapult
     }
 
     /// <summary>
-    /// MessageQueryDateTime -> DateTime  implicit convert 
+    ///   MessageQueryDateTime -> DateTime  implicit convert
     /// </summary>
     /// <param name="time">Instance to convert</param>
     public static implicit operator DateTime(MessageQueryDateTime time)
     {
       return time._time;
     }
-    
+
     /// <summary>
-    /// DateTime -> MessageQueryDateTime implicit convert
+    ///   DateTime -> MessageQueryDateTime implicit convert
     /// </summary>
     /// <param name="time">Instance to convert</param>
     public static implicit operator MessageQueryDateTime(DateTime time)
@@ -465,7 +466,7 @@ namespace Bandwidth.Net.Catapult
     }
 
     /// <summary>
-    /// Convert to string
+    ///   Convert to string
     /// </summary>
     /// <returns>String presentation</returns>
     public override string ToString()

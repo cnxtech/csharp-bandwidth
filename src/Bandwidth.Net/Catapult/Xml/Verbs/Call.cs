@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Xml.Serialization;
 
-namespace Bandwidth.Net.Xml.Verbs
+namespace Bandwidth.Net.Catapult.Xml.Verbs
 {
   /// <summary>
   ///   The Call verb is used to create call to another number.
@@ -56,23 +56,23 @@ namespace Bandwidth.Net.Xml.Verbs
 
 
     /// <summary>
-    /// Additional data for the call
+    ///   Additional data for the call
     /// </summary>
     [XmlAttribute("tag")]
     public string Tag { get; set; }
 
     /// <summary>
-    /// PlayAudio sub-verb
+    ///   PlayAudio sub-verb
     /// </summary>
     public PlayAudio PlayAudio { get; set; }
 
     /// <summary>
-    /// Record sub-verb
+    ///   Record sub-verb
     /// </summary>
     public Record Record { get; set; }
 
     /// <summary>
-    /// SpeakSentence sub-verb
+    ///   SpeakSentence sub-verb
     /// </summary>
     public SpeakSentence SpeakSentence { get; set; }
   }

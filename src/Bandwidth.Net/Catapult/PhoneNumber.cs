@@ -87,32 +87,32 @@ namespace Bandwidth.Net.Catapult
     {
       return new LazyEnumerable<PhoneNumber>(Api,
         () =>
-          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/phoneNumbers",  cancellationToken, query));
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/phoneNumbers", cancellationToken, query));
     }
 
     public Task<string> CreateAsync(CreatePhoneNumberData data,
       CancellationToken? cancellationToken = null)
     {
-      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/phoneNumbers",  cancellationToken, data);
+      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/phoneNumbers", cancellationToken, data);
     }
 
     public Task<PhoneNumber> GetAsync(string phoneNumberId, CancellationToken? cancellationToken = null)
     {
       return Api.MakeJsonRequestAsync<PhoneNumber>(HttpMethod.Get,
-        $"/users/{Api.UserId}/phoneNumbers/{phoneNumberId}",  cancellationToken);
+        $"/users/{Api.UserId}/phoneNumbers/{phoneNumberId}", cancellationToken);
     }
 
     public Task UpdateAsync(string phoneNumberId, UpdatePhoneNumberData data,
       CancellationToken? cancellationToken = null)
     {
       return Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
-        $"/users/{Api.UserId}/phoneNumbers/{phoneNumberId}",  cancellationToken, null, data);
+        $"/users/{Api.UserId}/phoneNumbers/{phoneNumberId}", cancellationToken, null, data);
     }
 
     public Task DeleteAsync(string phoneNumberId, CancellationToken? cancellationToken = null)
     {
       return Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Delete,
-        $"/users/{Api.UserId}/phoneNumbers/{phoneNumberId}",  cancellationToken);
+        $"/users/{Api.UserId}/phoneNumbers/{phoneNumberId}", cancellationToken);
     }
   }
 

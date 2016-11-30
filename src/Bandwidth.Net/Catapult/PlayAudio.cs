@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bandwidth.Net
+namespace Bandwidth.Net.Catapult
 {
   /// <summary>
   ///   Add ability to play audio
@@ -66,17 +66,17 @@ namespace Bandwidth.Net
   }
 
   /// <summary>
-  /// Genders
+  ///   Genders
   /// </summary>
   public enum Gender
   {
     /// <summary>
-    /// Male
+    ///   Male
     /// </summary>
     Male,
 
     /// <summary>
-    /// Female
+    ///   Female
     /// </summary>
     Female
   }
@@ -97,14 +97,16 @@ namespace Bandwidth.Net
     /// <param name="locale">The locale used to get the accent of the voice used to synthesize the sentence.</param>
     /// <param name="tag">A string that will be included in the events delivered when the audio playback starts or finishes</param>
     /// <param name="cancellationToken">
-    ///   Optional token to cancel async operation</param>
+    ///   Optional token to cancel async operation
+    /// </param>
     /// <returns>Task instance for async operation</returns>
     /// <example>
     ///   <code>
     /// await client.Bridge.SpeakSentenceAsync("bridgeId", "Hello");
     /// </code>
     /// </example>
-    public static Task SpeakSentenceAsync(this IPlayAudio instance, string id, string sentence, Gender gender = Gender.Female,
+    public static Task SpeakSentenceAsync(this IPlayAudio instance, string id, string sentence,
+      Gender gender = Gender.Female,
       string voice = "susan", string locale = "en_US", string tag = null,
       CancellationToken? cancellationToken = null)
     {
@@ -126,7 +128,8 @@ namespace Bandwidth.Net
     /// <param name="fileUrl">Url to file to play</param>
     /// <param name="tag">A string that will be included in the events delivered when the audio playback starts or finishes</param>
     /// <param name="cancellationToken">
-    ///   Optional token to cancel async operation</param>
+    ///   Optional token to cancel async operation
+    /// </param>
     /// <returns>Task instance for async operation</returns>
     /// <example>
     ///   <code>

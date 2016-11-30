@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Bandwidth.Net.Catapult;
 using Newtonsoft.Json;
 
-namespace Bandwidth.Net
+namespace Bandwidth.Net.Catapult
 {
   /// <summary>
   ///   Catapult Api callback event
   /// </summary>
   /// <example>
-  /// <code>
+  ///   <code>
   /// var callbackEvent = CallbackEvent.CreateFromJson("{\"eventType\": \"sms\"}");
   /// switch(callbackEvent.EventType)
   /// {
@@ -441,7 +440,7 @@ namespace Bandwidth.Net
     /// <param name="content">Content</param>
     /// <returns>Callback event data or null if response content is not json</returns>
     /// <example>
-    /// <code>
+    ///   <code>
     /// var callbackEvent = await response.Content.ReadAsCallbackEventAsync(); // response is instance of HttpResponseMessage
     /// switch(callbackEvent.EventType)
     /// {

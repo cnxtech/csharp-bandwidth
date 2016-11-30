@@ -4,16 +4,19 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Bandwidth.Net
+namespace Bandwidth.Net.Catapult
 {
-  internal sealed class JsonStringEnumConverter: StringEnumConverter
+  internal sealed class JsonStringEnumConverter : StringEnumConverter
   {
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
       // convert string like "enum-value" and "eNUM-VALUE" to EnumType.EnumValue
-      var rawString = (string)reader.Value;
+      var rawString = (string) reader.Value;
       var result = string.Join("",
-        rawString.ToLowerInvariant().Replace('_', '-').Split('-').Select(v => $"{char.ToUpperInvariant(v[0])}{v.Substring(1)}"));
+        rawString.ToLowerInvariant()
+          .Replace('_', '-')
+          .Split('-')
+          .Select(v => $"{char.ToUpperInvariant(v[0])}{v.Substring(1)}"));
       return Enum.Parse(objectType, result);
     }
 

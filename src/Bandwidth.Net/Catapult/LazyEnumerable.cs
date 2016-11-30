@@ -28,7 +28,6 @@ namespace Bandwidth.Net.Catapult
         string nextPageUrl;
         using (var response = getData().Result)
         {
-
           var list = response.Content.ReadAsJsonAsync<T[]>().Result;
           foreach (var item in list)
           {
@@ -54,7 +53,8 @@ namespace Bandwidth.Net.Catapult
         {
           yield break;
         }
-        var request = RequestHelpers.CreateRequest(HttpMethod.Get, nextPageUrl, _client.BaseUrl, _client.AuthenticationHeader);
+        var request = RequestHelpers.CreateRequest(HttpMethod.Get, nextPageUrl, _client.BaseUrl,
+          _client.AuthenticationHeader);
         getData = () => _client.MakeJsonRequestAsync(request);
       }
     }

@@ -1,4 +1,4 @@
-﻿namespace Bandwidth.Net.Xml.Verbs
+﻿namespace Bandwidth.Net.Catapult.Xml.Verbs
 {
   /// <summary>
   ///   The Hangup verb is used to hangup current call.

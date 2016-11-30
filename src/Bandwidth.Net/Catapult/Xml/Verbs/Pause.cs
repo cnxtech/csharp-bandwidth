@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace Bandwidth.Net.Xml.Verbs
+namespace Bandwidth.Net.Catapult.Xml.Verbs
 {
   /// <summary>
   ///   Pause is a verb to specify the length of seconds to wait before executing the next verb.

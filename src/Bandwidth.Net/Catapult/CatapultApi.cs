@@ -15,13 +15,17 @@ namespace Bandwidth.Net.Catapult
   {
     private readonly IHttp _http;
 
+    internal readonly AuthenticationHeaderValue AuthenticationHeader;
+    internal readonly string BaseUrl;
+    internal readonly string UserId;
+
     /// <summary>
-    /// Contructor
+    ///   Contructor
     /// </summary>
     /// <param name="authData">Auth data</param>
     /// <param name="http">object which implements http requests handling (usefull for tests)</param>
     /// <example>
-    /// <code>
+    ///   <code>
     /// var api = new CatapultApi(new CatapultAuthData{UserId = "userId", ApiToken = "token", ApiSecret = "secret"}, new YourMockHttp());
     /// </code>
     /// </example>
@@ -45,7 +49,8 @@ namespace Bandwidth.Net.Catapult
       {
         throw new InvalidBaseUrlException();
       }
-      AuthenticationHeader = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{authData.ApiToken}:{authData.ApiSecret}")));
+      AuthenticationHeader = new AuthenticationHeaderValue("Basic",
+        Convert.ToBase64String(Encoding.UTF8.GetBytes($"{authData.ApiToken}:{authData.ApiSecret}")));
       BaseUrl = authData.BaseUrl;
       UserId = authData.UserId;
       Error = new ErrorApi {Api = this};
@@ -66,21 +71,17 @@ namespace Bandwidth.Net.Catapult
     }
 
     /// <summary>
-    /// Contructor
+    ///   Contructor
     /// </summary>
     /// <param name="authData">Auth data</param>
     /// <example>
-    /// <code>
+    ///   <code>
     /// var api = new CatapultApi(new CatapultAuthData{UserId = "userId", ApiToken = "token", ApiSecret = "secret"});
     /// </code>
     /// </example>
     public CatapultApi(CatapultAuthData authData) : this(authData, new Http<HttpClientHandler>())
     {
     }
-
-    internal readonly AuthenticationHeaderValue AuthenticationHeader;
-    internal readonly string BaseUrl;
-    internal readonly string UserId;
 
     /// <summary>
     ///   Access to Error Api
@@ -158,14 +159,17 @@ namespace Bandwidth.Net.Catapult
     /// </summary>
     public IEndpoint Endpoint { get; }
 
-    internal async Task<HttpResponseMessage> MakeJsonRequestAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null, HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
+    internal async Task<HttpResponseMessage> MakeJsonRequestAsync(HttpRequestMessage request,
+      CancellationToken? cancellationToken = null,
+      HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
     {
       var response = await _http.SendAsync(request, completionOption, cancellationToken);
       await response.CheckJsonResponseAsync();
       return response;
     }
 
-    internal async Task<T> MakeJsonRequestAsync<T>(HttpMethod method, string path,  CancellationToken? cancellationToken = null, object query = null, object body = null)
+    internal async Task<T> MakeJsonRequestAsync<T>(HttpMethod method, string path,
+      CancellationToken? cancellationToken = null, object query = null, object body = null)
     {
       using (var response = await MakeJsonRequestAsync(method, path, cancellationToken, query, body))
       {
@@ -173,7 +177,8 @@ namespace Bandwidth.Net.Catapult
       }
     }
 
-    internal async Task<HttpResponseMessage> MakeJsonRequestAsync(HttpMethod method, string path, CancellationToken? cancellationToken = null, object query = null, object body = null)
+    internal async Task<HttpResponseMessage> MakeJsonRequestAsync(HttpMethod method, string path,
+      CancellationToken? cancellationToken = null, object query = null, object body = null)
     {
       var request = RequestHelpers.CreateRequest(method, path, BaseUrl, AuthenticationHeader, query);
       request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -181,7 +186,7 @@ namespace Bandwidth.Net.Catapult
       {
         request.SetJsonContent(body);
       }
-      return await MakeJsonRequestAsync(request,  cancellationToken);
+      return await MakeJsonRequestAsync(request, cancellationToken);
     }
 
     internal async Task MakeJsonRequestWithoutResponseAsync(HttpMethod method, string path,
@@ -192,13 +197,13 @@ namespace Bandwidth.Net.Catapult
       }
     }
 
-    internal async Task<string> MakePostJsonRequestAsync(string path, CancellationToken? cancellationToken = null, object body = null)
+    internal async Task<string> MakePostJsonRequestAsync(string path, CancellationToken? cancellationToken = null,
+      object body = null)
     {
       using (var response = await MakeJsonRequestAsync(HttpMethod.Post, path, cancellationToken, null, body))
       {
         return (response.Headers.Location ?? new Uri("http://localhost")).AbsolutePath.Split('/').LastOrDefault();
       }
     }
-
   }
 }

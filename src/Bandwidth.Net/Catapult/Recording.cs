@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Bandwidth.Net.Catapult
 {
-
   /// <summary>
-  /// Access to Recording Api
+  ///   Access to Recording Api
   /// </summary>
   public interface IRecording
   {
@@ -39,7 +38,6 @@ namespace Bandwidth.Net.Catapult
     /// </code>
     /// </example>
     Task<Recording> GetAsync(string recordingId, CancellationToken? cancellationToken = null);
-
   }
 
   internal class RecordingApi : ApiBase, IRecording
@@ -48,57 +46,58 @@ namespace Bandwidth.Net.Catapult
     {
       return new LazyEnumerable<Recording>(Api,
         () =>
-          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/recordings",  cancellationToken, query));
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/recordings", cancellationToken, query));
     }
 
     public Task<Recording> GetAsync(string recordingId, CancellationToken? cancellationToken = null)
     {
       return Api.MakeJsonRequestAsync<Recording>(HttpMethod.Get,
-        $"/users/{Api.UserId}/recordings/{recordingId}",  cancellationToken);
+        $"/users/{Api.UserId}/recordings/{recordingId}", cancellationToken);
     }
   }
+
   /// <summary>
-  /// Recording data
+  ///   Recording data
   /// </summary>
   public class Recording
   {
     /// <summary>
-    /// The unique id of the recordings resource.
+    ///   The unique id of the recordings resource.
     /// </summary>
     public string Id { get; set; }
 
     /// <summary>
-    /// Date/time when the recording started.
+    ///   Date/time when the recording started.
     /// </summary>
     public DateTime StartTime { get; set; }
 
     /// <summary>
-    /// Date/time when the recording ended. 
+    ///   Date/time when the recording ended.
     /// </summary>
     public DateTime EndTime { get; set; }
 
     /// <summary>
-    /// The complete URL to the call resource this recording is associated with.
+    ///   The complete URL to the call resource this recording is associated with.
     /// </summary>
     public string Call { get; set; }
 
     /// <summary>
-    /// Id of associated call
+    ///   Id of associated call
     /// </summary>
     public string CallId => Call.Split('/').Last();
 
     /// <summary>
-    /// The complete URL to the media resource this recording is associated with.
+    ///   The complete URL to the media resource this recording is associated with.
     /// </summary>
     public string Media { get; set; }
 
     /// <summary>
-    /// Name of associated media resource
+    ///   Name of associated media resource
     /// </summary>
     public string MediaName => Media.Split('/').Last();
 
     /// <summary>
-    /// The state of the recording,
+    ///   The state of the recording,
     /// </summary>
     public RecordingState State { get; set; }
   }
@@ -116,27 +115,27 @@ namespace Bandwidth.Net.Catapult
   }
 
   /// <summary>
-  /// States of recording
+  ///   States of recording
   /// </summary>
   public enum RecordingState
   {
     /// <summary>
-    /// Recording is currently active.
+    ///   Recording is currently active.
     /// </summary>
     Recording,
 
     /// <summary>
-    /// Recording complete and available for downloading or playing.
+    ///   Recording complete and available for downloading or playing.
     /// </summary>
     Complete,
 
     /// <summary>
-    /// Recording is complete but it is not available to download yet.
+    ///   Recording is complete but it is not available to download yet.
     /// </summary>
     Saving,
 
     /// <summary>
-    /// Recording could not be uploaded
+    ///   Recording could not be uploaded
     /// </summary>
     Error
   }

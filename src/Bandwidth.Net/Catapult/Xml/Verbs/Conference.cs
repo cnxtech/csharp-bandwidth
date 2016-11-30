@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace Bandwidth.Net.Xml.Verbs
+namespace Bandwidth.Net.Catapult.Xml.Verbs
 {
   /// <summary>
   ///   The Conference verb is used to create conferences.

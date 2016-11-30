@@ -17,7 +17,7 @@ namespace Bandwidth.Net.Catapult
     /// <param name="cancellationToken">>Optional token to cancel async operation</param>
     /// <returns>Collection with <see cref="Application" /> instances</returns>
     /// <example>
-    /// <code>
+    ///   <code>
     /// var applications = client.Application.List(); // get access to all applications of user
     /// </code>
     /// </example>
@@ -31,7 +31,7 @@ namespace Bandwidth.Net.Catapult
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Created application Id</returns>
     /// <example>
-    /// <code>
+    ///   <code>
     /// var applicationId = await client.Application.CreateAsync(new CreateApplicationData{ Name = "MyApp"});
     /// </code>
     /// </example>
@@ -45,7 +45,7 @@ namespace Bandwidth.Net.Catapult
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Task with <see cref="Application" />Application instance</returns>
     /// <example>
-    /// <code>
+    ///   <code>
     /// var application = await client.Application.GetAsync("applicationId");
     /// </code>
     /// </example>
@@ -59,7 +59,7 @@ namespace Bandwidth.Net.Catapult
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Task instance for async operation</returns>
     /// <example>
-    /// <code>
+    ///   <code>
     /// await client.Application.UpdateAsync("applicationId", new UpdateApplicationData {Name = "NewName"});
     /// </code>
     /// </example>
@@ -72,7 +72,7 @@ namespace Bandwidth.Net.Catapult
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Task instance for async operation</returns>
     /// <example>
-    /// <code>
+    ///   <code>
     /// await client.Application.DeleteAsync("applicationId");
     /// </code>
     /// </example>
@@ -104,7 +104,7 @@ namespace Bandwidth.Net.Catapult
       CancellationToken? cancellationToken = null)
     {
       return Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
-        $"/users/{Api.UserId}/applications/{applicationId}", cancellationToken, null, data );
+        $"/users/{Api.UserId}/applications/{applicationId}", cancellationToken, null, data);
     }
 
     public Task DeleteAsync(string applicationId, CancellationToken? cancellationToken = null)

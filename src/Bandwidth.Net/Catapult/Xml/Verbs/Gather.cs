@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Xml.Serialization;
 
-namespace Bandwidth.Net.Xml.Verbs
+namespace Bandwidth.Net.Catapult.Xml.Verbs
 {
   /// <summary>
   ///   The Gather verb is used to collect digits for some period of time.
@@ -58,12 +58,12 @@ namespace Bandwidth.Net.Xml.Verbs
     public bool Bargeable { get; set; }
 
     /// <summary>
-    ///  Using the SpeakSentence inside the Gather verb will speak the text to the callee.
+    ///   Using the SpeakSentence inside the Gather verb will speak the text to the callee.
     /// </summary>
     public SpeakSentence SpeakSentence { get; set; }
 
     /// <summary>
-    /// Using the PlayAudio inside the Gather verb will play the media to the callee.
+    ///   Using the PlayAudio inside the Gather verb will play the media to the callee.
     /// </summary>
     public PlayAudio PlayAudio { get; set; }
   }

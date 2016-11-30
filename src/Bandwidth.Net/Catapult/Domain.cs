@@ -58,19 +58,19 @@ namespace Bandwidth.Net.Catapult
     {
       return new LazyEnumerable<Domain>(Api,
         () =>
-          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/domains",  cancellationToken, query));
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/domains", cancellationToken, query));
     }
 
     public Task<string> CreateAsync(CreateDomainData data,
       CancellationToken? cancellationToken = null)
     {
-      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/domains",  cancellationToken, data);
+      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/domains", cancellationToken, data);
     }
 
     public Task DeleteAsync(string domainId, CancellationToken? cancellationToken = null)
     {
       return Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Delete,
-        $"/users/{Api.UserId}/domains/{domainId}",  cancellationToken);
+        $"/users/{Api.UserId}/domains/{domainId}", cancellationToken);
     }
   }
 
@@ -86,42 +86,41 @@ namespace Bandwidth.Net.Catapult
     public string Id { get; set; }
 
     /// <summary>
-    ///The name is a unique URI to be used in DNS lookups
+    ///   The name is a unique URI to be used in DNS lookups
     /// </summary>
     public string Name { get; set; }
 
     /// <summary>
-    /// Description of the domain
+    ///   Description of the domain
     /// </summary>
     public string Description { get; set; }
-    
   }
 
   /// <summary>
-  /// Data to create domain
+  ///   Data to create domain
   /// </summary>
   public class CreateDomainData
   {
     /// <summary>
-    ///The name is a unique URI to be used in DNS lookups
+    ///   The name is a unique URI to be used in DNS lookups
     /// </summary>
     public string Name { get; set; }
 
     /// <summary>
-    /// Description of the domain
+    ///   Description of the domain
     /// </summary>
     public string Description { get; set; }
   }
 
   /// <summary>
-  /// Query parameters to domain search
+  ///   Query parameters to domain search
   /// </summary>
   public class DomainQuery
   {
     /// <summary>
-    /// Used for pagination to indicate the size of each page requested for querying a list of domain. If no value is specified the default value is 25 (maximum value 100).
+    ///   Used for pagination to indicate the size of each page requested for querying a list of domain. If no value is
+    ///   specified the default value is 25 (maximum value 100).
     /// </summary>
     public int Size { get; set; }
   }
-
 }

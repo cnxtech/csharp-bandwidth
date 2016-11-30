@@ -14,7 +14,7 @@ namespace Bandwidth.Net
     /// MissingCredentialsException
     /// </summary>
     public MissingCredentialsException(string credentialType)
-        : base($"Missing {credentialType} credentials in constructor of Client. Please fill them as parameter of type {credentialType}AuthData.")
+        : base($"Missing {credentialType} credentials in constructor of {credentialType}Api. Please fill them as parameter of type {credentialType}AuthData.")
     {
     }
   }

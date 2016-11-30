@@ -68,7 +68,6 @@ namespace Bandwidth.Net.Catapult
     /// </code>
     /// </example>
     Task DeleteAsync(string mediaName, CancellationToken? cancellationToken = null);
-
   }
 
   internal class MediaApi : ApiBase, IMedia
@@ -77,7 +76,7 @@ namespace Bandwidth.Net.Catapult
     {
       return new LazyEnumerable<MediaFile>(Api,
         () =>
-          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/media",  cancellationToken));
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/media", cancellationToken));
     }
 
     public async Task UploadAsync(UploadMediaFileData data, CancellationToken? cancellationToken = null)
@@ -107,9 +106,10 @@ namespace Bandwidth.Net.Catapult
       {
         request.Content = new StringContent(data.String, Encoding.UTF8);
       }
-      if (request.Content == null) throw new ArgumentException("Path, Stream, Buffer or String is required. Please fill one of them.");
+      if (request.Content == null)
+        throw new ArgumentException("Path, Stream, Buffer or String is required. Please fill one of them.");
       request.Content.Headers.ContentType = new MediaTypeHeaderValue(data.ContentType ?? "application/octet-stream");
-      using (await Api.MakeJsonRequestAsync(request,  cancellationToken))
+      using (await Api.MakeJsonRequestAsync(request, cancellationToken))
       {
 #if !WithoutFileIO
         resourceToClean?.Dispose();
@@ -122,7 +122,8 @@ namespace Bandwidth.Net.Catapult
       if (string.IsNullOrEmpty(mediaName)) throw new ArgumentNullException(nameof(mediaName));
       var request = RequestHelpers.CreateRequest(HttpMethod.Get,
         $"/users/{Api.UserId}/media/{Uri.EscapeDataString(mediaName)}", Api.BaseUrl, Api.AuthenticationHeader);
-      var response = await Api.MakeJsonRequestAsync(request,  cancellationToken, HttpCompletionOption.ResponseHeadersRead);
+      var response =
+        await Api.MakeJsonRequestAsync(request, cancellationToken, HttpCompletionOption.ResponseHeadersRead);
       response.EnsureSuccessStatusCode();
       return new DownloadMediaFileData(response);
     }
@@ -130,7 +131,7 @@ namespace Bandwidth.Net.Catapult
     public Task DeleteAsync(string mediaName, CancellationToken? cancellationToken = null)
     {
       return Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Delete,
-        $"/users/{Api.UserId}/media/{Uri.EscapeDataString(mediaName)}",  cancellationToken);
+        $"/users/{Api.UserId}/media/{Uri.EscapeDataString(mediaName)}", cancellationToken);
     }
   }
 
@@ -146,14 +147,13 @@ namespace Bandwidth.Net.Catapult
     public string MediaName { get; set; }
 
     /// <summary>
-    /// Length of media file
+    ///   Length of media file
     /// </summary>
     public int ContentLength { get; set; }
-
   }
 
   /// <summary>
-  /// Data to upload media file
+  ///   Data to upload media file
   /// </summary>
   public class UploadMediaFileData
   {
@@ -163,7 +163,7 @@ namespace Bandwidth.Net.Catapult
     public string MediaName { get; set; }
 
     /// <summary>
-    /// Content type of media file
+    ///   Content type of media file
     /// </summary>
     public string ContentType { get; set; }
 
@@ -174,6 +174,7 @@ namespace Bandwidth.Net.Catapult
     /// </summary>
     public string Path { get; set; }
 #endif
+
     /// <summary>
     ///   Byte array to upload
     /// </summary>
@@ -191,7 +192,7 @@ namespace Bandwidth.Net.Catapult
   }
 
   /// <summary>
-  /// Downloaded media file data
+  ///   Downloaded media file data
   /// </summary>
   public sealed class DownloadMediaFileData : IDisposable
   {
@@ -203,17 +204,25 @@ namespace Bandwidth.Net.Catapult
     }
 
     /// <summary>
-    /// Length of media file
+    ///   Length of media file
     /// </summary>
     public long? ContentLength => _response.Content.Headers.ContentLength;
 
     /// <summary>
-    /// Content type of media file
+    ///   Content type of media file
     /// </summary>
     public string ContentType => _response.Content.Headers.ContentType.MediaType;
 
     /// <summary>
-    /// Read content of downloaded file as byte array
+    ///   Free allocated resources
+    /// </summary>
+    public void Dispose()
+    {
+      _response.Dispose();
+    }
+
+    /// <summary>
+    ///   Read content of downloaded file as byte array
     /// </summary>
     /// <returns>Byte array</returns>
     public Task<byte[]> ReadAsByteArrayAsync()
@@ -222,7 +231,7 @@ namespace Bandwidth.Net.Catapult
     }
 
     /// <summary>
-    /// Read content of downloaded file as stream
+    ///   Read content of downloaded file as stream
     /// </summary>
     /// <returns>Stream</returns>
     public Task<Stream> ReadAsStreamAsync()
@@ -231,21 +240,12 @@ namespace Bandwidth.Net.Catapult
     }
 
     /// <summary>
-    /// Read content of downloaded file as string
+    ///   Read content of downloaded file as string
     /// </summary>
     /// <returns>String content of file</returns>
     public Task<string> ReadAsStringAsync()
     {
       return _response.Content.ReadAsStringAsync();
     }
-
-    /// <summary>
-    /// Free allocated resources
-    /// </summary>
-    public void Dispose()
-    {
-      _response.Dispose();
-    }
   }
-
 }

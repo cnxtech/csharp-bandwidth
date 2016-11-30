@@ -1,12 +1,12 @@
 using System;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using System.Threading.Tasks;
-using System.Diagnostics;
 
-namespace Bandwidth.Net
+namespace Bandwidth.Net.Catapult
 {
   internal static class JsonHelpers
   {
@@ -34,7 +34,7 @@ namespace Bandwidth.Net
         var json = await response.Content.ReadAsStringAsync();
         try
         {
-          var msg = JsonConvert.DeserializeAnonymousType(json, new { Message = "", Code = "" }, GetSerializerSettings());
+          var msg = JsonConvert.DeserializeAnonymousType(json, new {Message = "", Code = ""}, GetSerializerSettings());
           var message = msg.Message ?? msg.Code;
           if (!string.IsNullOrEmpty(message))
           {
@@ -56,8 +56,8 @@ namespace Bandwidth.Net
       {
         var json = await content.ReadAsStringAsync();
         return json.Length > 0
-            ? JsonConvert.DeserializeObject<TResult>(json, GetSerializerSettings())
-            : default(TResult);
+          ? JsonConvert.DeserializeObject<TResult>(json, GetSerializerSettings())
+          : default(TResult);
       }
       return default(TResult);
     }

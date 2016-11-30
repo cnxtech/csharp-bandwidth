@@ -4,7 +4,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Bandwidth.Net.Xml.Verbs
+namespace Bandwidth.Net.Catapult.Xml.Verbs
 {
   /// <summary>
   ///   The SendMessage is used to send a text message.

@@ -86,26 +86,26 @@ namespace Bandwidth.Net.Catapult
     {
       return new LazyEnumerable<Bridge>(Api,
         () =>
-          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/bridges",  cancellationToken, query));
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/bridges", cancellationToken, query));
     }
 
     public Task<string> CreateAsync(CreateBridgeData data,
       CancellationToken? cancellationToken = null)
     {
-      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/bridges",  cancellationToken, data);
+      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/bridges", cancellationToken, data);
     }
 
     public Task<Bridge> GetAsync(string bridgeId, CancellationToken? cancellationToken = null)
     {
       return Api.MakeJsonRequestAsync<Bridge>(HttpMethod.Get,
-        $"/users/{Api.UserId}/bridges/{bridgeId}",  cancellationToken);
+        $"/users/{Api.UserId}/bridges/{bridgeId}", cancellationToken);
     }
 
     public Task UpdateAsync(string bridgeId, UpdateBridgeData data,
       CancellationToken? cancellationToken = null)
     {
       return Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
-        $"/users/{Api.UserId}/bridges/{bridgeId}",  cancellationToken, null, data);
+        $"/users/{Api.UserId}/bridges/{bridgeId}", cancellationToken, null, data);
     }
 
     public IEnumerable<Call> GetCalls(string bridgeId, CancellationToken? cancellationToken = null)
@@ -113,14 +113,14 @@ namespace Bandwidth.Net.Catapult
       return new LazyEnumerable<Call>(Api,
         () =>
           Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/bridges/{bridgeId}/calls",
-             cancellationToken));
+            cancellationToken));
     }
 
     public Task PlayAudioAsync(string bridgeId, PlayAudioData data, CancellationToken? cancellationToken = null)
     {
       return
         Api.MakeJsonRequestWithoutResponseAsync(HttpMethod.Post,
-          $"/users/{Api.UserId}/bridges/{bridgeId}/audio",  cancellationToken, null, data);
+          $"/users/{Api.UserId}/bridges/{bridgeId}/audio", cancellationToken, null, data);
     }
   }
 
@@ -136,64 +136,63 @@ namespace Bandwidth.Net.Catapult
     public string Id { get; set; }
 
     /// <summary>
-    /// Bridge state
+    ///   Bridge state
     /// </summary>
     public BridgeState State { get; set; }
 
     /// <summary>
-    /// List of call Ids that will be in the bridge.
+    ///   List of call Ids that will be in the bridge.
     /// </summary>
     public string[] CallIds { get; set; }
 
     /// <summary>
-    /// Enable/Disable two way audio path.
+    ///   Enable/Disable two way audio path.
     /// </summary>
     public bool BridgeAudio { get; set; }
 
     /// <summary>
-    /// The time when the bridge was completed.
+    ///   The time when the bridge was completed.
     /// </summary>
     public DateTime CompletedTime { get; set; }
 
     /// <summary>
-    /// The time that bridge was created.
+    ///   The time that bridge was created.
     /// </summary>
     public DateTime CreatedTime { get; set; }
 
     /// <summary>
-    /// The time that the bridge got into active state.
+    ///   The time that the bridge got into active state.
     /// </summary>
     public DateTime ActivatedTime { get; set; }
-
   }
 
   /// <summary>
-  /// Possible bridge state
+  ///   Possible bridge state
   /// </summary>
   public enum BridgeState
   {
     /// <summary>
-    /// The bridge was created but the audio was never bridged.
+    ///   The bridge was created but the audio was never bridged.
     /// </summary>
     Created,
 
     /// <summary>
-    /// The bridge has two active calls and the audio was already bridged before.
+    ///   The bridge has two active calls and the audio was already bridged before.
     /// </summary>
     Active,
 
     /// <summary>
-    /// The bridge calls are on hold (bridgeAudio was set to false).
+    ///   The bridge calls are on hold (bridgeAudio was set to false).
     /// </summary>
     Hold,
 
     /// <summary>
-    /// The bridge was completed. The bridge is completed when all calls hangup or when all calls are removed from bridge.
+    ///   The bridge was completed. The bridge is completed when all calls hangup or when all calls are removed from bridge.
     /// </summary>
     Completed,
 
     /// <summary>
-    /// Some error was detected in bridge.
+    ///   Some error was detected in bridge.
     /// </summary>
     Error
   }
@@ -209,19 +208,19 @@ namespace Bandwidth.Net.Catapult
     /// </summary>
     public int? Size { get; set; }
   }
-   
+
   /// <summary>
   ///   Parameters to create an bridge
   /// </summary>
   public class CreateBridgeData
   {
     /// <summary>
-    /// List of call Ids that will be in the bridge.
+    ///   List of call Ids that will be in the bridge.
     /// </summary>
     public string[] CallIds { get; set; }
 
     /// <summary>
-    /// Enable/Disable two way audio path.
+    ///   Enable/Disable two way audio path.
     /// </summary>
     public bool? BridgeAudio { get; set; }
   }

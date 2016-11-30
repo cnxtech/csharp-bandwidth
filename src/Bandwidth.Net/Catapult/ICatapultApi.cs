@@ -39,7 +39,7 @@
     ///   Access to Call Api
     /// </summary>
     ICall Call { get; }
-    
+
     /// <summary>
     ///   Access to Conference Api
     /// </summary>
@@ -82,7 +82,7 @@
   }
 
   /// <summary>
-  /// Auth data for Catapult Api
+  ///   Auth data for Catapult Api
   /// </summary>
   public class CatapultAuthData
   {

@@ -63,22 +63,22 @@ namespace Bandwidth.Net.Catapult
     {
       return new LazyEnumerable<Transcription>(Api,
         () =>
-          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/recordings/{recordingId}/transcriptions", 
+          Api.MakeJsonRequestAsync(HttpMethod.Get, $"/users/{Api.UserId}/recordings/{recordingId}/transcriptions",
             cancellationToken, query));
     }
 
     public Task<string> CreateAsync(string recordingId,
       CancellationToken? cancellationToken = null)
     {
-      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/recordings/{recordingId}/transcriptions", 
-            cancellationToken, new object());
+      return Api.MakePostJsonRequestAsync($"/users/{Api.UserId}/recordings/{recordingId}/transcriptions",
+        cancellationToken, new object());
     }
 
     public Task<Transcription> GetAsync(string recordingId, string transcriptionId,
       CancellationToken? cancellationToken = null)
     {
       return Api.MakeJsonRequestAsync<Transcription>(HttpMethod.Get,
-        $"/users/{Api.UserId}/bridges/recordings/{recordingId}/transcriptions/{transcriptionId}",  cancellationToken);
+        $"/users/{Api.UserId}/bridges/recordings/{recordingId}/transcriptions/{transcriptionId}", cancellationToken);
     }
   }
 
@@ -93,37 +93,39 @@ namespace Bandwidth.Net.Catapult
     public string Id { get; set; }
 
     /// <summary>
-    /// The state of the transcription
+    ///   The state of the transcription
     /// </summary>
     public TranscriptionState State { get; set; }
 
     /// <summary>
-    /// The transcribed text.
+    ///   The transcribed text.
     /// </summary>
     public string Text { get; set; }
 
     /// <summary>
-    /// The date/time the transcription resource was created
+    ///   The date/time the transcription resource was created
     /// </summary>
     public DateTime Time { get; set; }
 
     /// <summary>
-    /// The seconds between activeTime and endTime for the recording; this is the time that is going to be used to charge the resource.
+    ///   The seconds between activeTime and endTime for the recording; this is the time that is going to be used to charge the
+    ///   resource.
     /// </summary>
     public int ChargeableDuration { get; set; }
 
     /// <summary>
-    /// The size of the transcribed text. If the text is longer than 1000 characters it will be cropped; the full text can be retrieved from the url available at textUrl property.
+    ///   The size of the transcribed text. If the text is longer than 1000 characters it will be cropped; the full text can be
+    ///   retrieved from the url available at textUrl property.
     /// </summary>
     public int TextSize { get; set; }
 
     /// <summary>
-    /// An url to the full text; this property is available regardless the textSize.
+    ///   An url to the full text; this property is available regardless the textSize.
     /// </summary>
     public string TextUrl { get; set; }
 
     /// <summary>
-    /// Media name of full text file
+    ///   Media name of full text file
     /// </summary>
     public string TextMediaName => TextUrl.Split('/').Last();
   }
@@ -141,22 +143,22 @@ namespace Bandwidth.Net.Catapult
   }
 
   /// <summary>
-  /// States of transcription
+  ///   States of transcription
   /// </summary>
   public enum TranscriptionState
   {
     /// <summary>
-    /// Transcribing
+    ///   Transcribing
     /// </summary>
     Transcribing,
 
     /// <summary>
-    /// Completed
+    ///   Completed
     /// </summary>
     Completed,
 
     /// <summary>
-    /// Error
+    ///   Error
     /// </summary>
     Error
   }
