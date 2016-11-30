@@ -2,10 +2,10 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Bandwidth.Net.Api;
+using Bandwidth.Net.Catapult;
 using LightMock;
 
-namespace Bandwidth.Net.Test.Mocks
+namespace Bandwidth.Net.Test.Mocks.Catapult
 {
     public class Call: ICall
     {
@@ -21,7 +21,7 @@ namespace Bandwidth.Net.Test.Mocks
         throw new System.NotImplementedException();
       }
 
-      public IEnumerable<Net.Api.Call> List(CallQuery query = null, CancellationToken? cancellationToken = null)
+      public IEnumerable<Net.Catapult.Call> List(CallQuery query = null, CancellationToken? cancellationToken = null)
       {
         throw new System.NotImplementedException();
       }
@@ -31,7 +31,7 @@ namespace Bandwidth.Net.Test.Mocks
         throw new System.NotImplementedException();
       }
 
-      public Task<Net.Api.Call> GetAsync(string callId, CancellationToken? cancellationToken = null)
+      public Task<Net.Catapult.Call> GetAsync(string callId, CancellationToken? cancellationToken = null)
       {
         throw new System.NotImplementedException();
       }

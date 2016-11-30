@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Bandwidth.Net.Api;
+using Bandwidth.Net.Test.Mocks.Catapult;
 using LightMock;
 using Xunit;
 
@@ -227,7 +228,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestSpeakSentenceToMember()
     {
       var context = new MockContext<IConference>(); 
-      var conference = new Mocks.Conference(context);
+      var conference = new Conference(context);
       context.Arrange(m => m.PlayAudioToMemberAsync("conferenceId", "memberId", The<PlayAudioData>.Is(r => r.Sentence == "Hello"), null)).Returns(Task.FromResult(new HttpResponseMessage()));
       await conference.SpeakSentenceToMemberAsync("conferenceId", "memberId", "Hello");
     }
@@ -236,7 +237,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestPlayAudioFileToMember()
     {
       var context = new MockContext<IConference>(); 
-      var conference = new Mocks.Conference(context);
+      var conference = new Conference(context);
       context.Arrange(m => m.PlayAudioToMemberAsync("conferenceId", "memberId", The<PlayAudioData>.Is(r => r.FileUrl == "url"), null)).Returns(Task.FromResult(new HttpResponseMessage()));
       await conference.PlayAudioFileToMemberAsync("conferenceId", "memberId", "url");
     }
@@ -245,7 +246,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestDeleteMember()
     {
       var context = new MockContext<IConference>(); 
-      var conference = new Mocks.Conference(context);
+      var conference = new Conference(context);
       context.Arrange(m => m.UpdateMemberAsync("conferenceId", "memberId", The<UpdateConferenceMemberData>.Is(r => r.State == ConferenceMemberState.Completed), null)).Returns(Task.FromResult(new HttpResponseMessage()));
       await conference.DeleteMemberAsync("conferenceId", "memberId");
     }
@@ -254,7 +255,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestHoldMember()
     {
       var context = new MockContext<IConference>(); 
-      var conference = new Mocks.Conference(context);
+      var conference = new Conference(context);
       context.Arrange(m => m.UpdateMemberAsync("conferenceId", "memberId", The<UpdateConferenceMemberData>.Is(r => r.Hold), null)).Returns(Task.FromResult(new HttpResponseMessage()));
       await conference.HoldMemberAsync("conferenceId", "memberId", true);
     }
@@ -263,7 +264,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestMuteMember()
     {
       var context = new MockContext<IConference>(); 
-      var conference = new Mocks.Conference(context);
+      var conference = new Conference(context);
       context.Arrange(m => m.UpdateMemberAsync("conferenceId", "memberId", The<UpdateConferenceMemberData>.Is(r => r.Mute), null)).Returns(Task.FromResult(new HttpResponseMessage()));
       await conference.MuteMemberAsync("conferenceId", "memberId", true);
     }
@@ -272,7 +273,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestTerminate()
     {
       var context = new MockContext<IConference>(); 
-      var conference = new Mocks.Conference(context);
+      var conference = new Conference(context);
       context.Arrange(m => m.UpdateAsync("conferenceId", The<UpdateConferenceData>.Is(r => r.State == ConferenceState.Completed), null)).Returns(Task.FromResult(new HttpResponseMessage()));
       await conference.TerminateAsync("conferenceId");
     }
@@ -281,7 +282,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestHold()
     {
       var context = new MockContext<IConference>(); 
-      var conference = new Mocks.Conference(context);
+      var conference = new Conference(context);
       context.Arrange(m => m.UpdateAsync("conferenceId", The<UpdateConferenceData>.Is(r => r.Hold), null)).Returns(Task.FromResult(new HttpResponseMessage()));
       await conference.HoldAsync("conferenceId", true);
     }
@@ -290,7 +291,7 @@ namespace Bandwidth.Net.Test.Api
     public static async void TestMute()
     {
       var context = new MockContext<IConference>(); 
-      var conference = new Mocks.Conference(context);
+      var conference = new Conference(context);
       context.Arrange(m => m.UpdateAsync("conferenceId", The<UpdateConferenceData>.Is(r => r.Mute), null)).Returns(Task.FromResult(new HttpResponseMessage()));
       await conference.MuteAsync("conferenceId", true);
     }

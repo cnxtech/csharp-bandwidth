@@ -2,6 +2,8 @@
 using System.Reflection;
 using System.Resources;
 using System.Text;
+using Bandwidth.Net.Catapult;
+using Bandwidth.Net.Iris;
 using Bandwidth.Net.Test.Mocks;
 using LightMock;
 
@@ -9,12 +11,16 @@ namespace Bandwidth.Net.Test
 {
   public static class Helpers
   {
-    public static Client GetClient(MockContext<IHttp> context = null)
+    public static CatapultApi GetCatapultApi(MockContext<IHttp> context)
     {
-      return new Client(new CatapultAuthData {UserId = "userId", ApiToken = "apiToken", ApiSecret = "apiSecret", BaseUrl = "http://localhost/v1"},
-        new IrisAuthData { AccountId = "accountId", UserName = "userName", Password = "password", BaseUrl = "http://localhost/v1.0" },
-        context == null ? null : new Http(context));
+      return new CatapultApi(new CatapultAuthData { UserId = "userId", ApiToken = "token", ApiSecret = "secret", BaseUrl = "http://localhost/v1" }, new Http(context));
     }
+
+    public static IrisApi GetIrisApi(MockContext<IHttp> context)
+    {
+      return new IrisApi(new IrisAuthData { AccountId = "accountId", UserName = "userName", Password = "password", BaseUrl = "http://localhost/v1.0" }, new Http(context));
+    }
+
     private static readonly ResourceManager JsonResourceManager = new ResourceManager("Bandwidth.Net.Test.Json", typeof(Helpers).GetTypeInfo().Assembly);
     public static string GetJsonResourse(string name)
     {

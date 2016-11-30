@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Bandwidth.Net.Api;
+using Bandwidth.Net.Catapult;
 using LightMock;
 
-namespace Bandwidth.Net.Test.Mocks
+namespace Bandwidth.Net.Test.Mocks.Catapult
 {
   public class Conference : IConference
   {
@@ -28,7 +28,7 @@ namespace Bandwidth.Net.Test.Mocks
       throw new NotImplementedException();
     }
 
-    public Task<Net.Api.Conference> GetAsync(string conferenceId, CancellationToken? cancellationToken = null)
+    public Task<Net.Catapult.Conference> GetAsync(string conferenceId, CancellationToken? cancellationToken = null)
     {
       throw new NotImplementedException();
     }

@@ -1,8 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Bandwidth.Net.Catapult;
 using LightMock;
 
-namespace Bandwidth.Net.Test.Mocks
+namespace Bandwidth.Net.Test.Mocks.Catapult
 {
   public class PlayAudio : IPlayAudio
   {

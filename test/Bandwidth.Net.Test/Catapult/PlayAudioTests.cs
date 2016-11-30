@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Bandwidth.Net.Test.Mocks;
+using Bandwidth.Net.Test.Mocks.Catapult;
 using LightMock;
 using Xunit;
 
