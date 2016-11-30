@@ -78,7 +78,7 @@ namespace Bandwidth.Net.Test.Iris
         m => m.SendAsync(The<HttpRequestMessage>.IsAnyValue, HttpCompletionOption.ResponseContentRead, null))
         .Returns(Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK)
         {
-          Content = new StringContent("<MakeJsonRequestDemo><Test>value</Test></MakeJsonRequestDemo>", Encoding.UTF8, "application/xml")
+          Content = new StringContent("<MakeXmlRequestDemo><Test>value</Test></MakeXmlRequestDemo>", Encoding.UTF8, "application/xml")
         }));
       var result = await api.MakeXmlRequestAsync<MakeXmlRequestDemo>(HttpMethod.Get, "/test");
       Assert.Equal("value", result.Test);
