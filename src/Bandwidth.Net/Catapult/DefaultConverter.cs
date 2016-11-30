@@ -2,7 +2,7 @@ using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Bandwidth.Net
+namespace Bandwidth.Net.Catapult
 {
   /// <summary>
   /// Default Json converter (without changing names)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Bandwidth.Net.Iris;
 using Newtonsoft.Json;
 
 namespace Bandwidth.Net.Catapult

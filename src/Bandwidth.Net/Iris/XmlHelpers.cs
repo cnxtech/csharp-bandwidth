@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
-namespace Bandwidth.Net
+namespace Bandwidth.Net.Iris
 {
   internal static class XmlHelpers
   {

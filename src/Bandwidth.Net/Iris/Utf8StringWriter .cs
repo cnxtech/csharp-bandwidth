@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 
-namespace Bandwidth.Net
+namespace Bandwidth.Net.Iris
 {
   internal class Utf8StringWriter : StringWriter
   {
