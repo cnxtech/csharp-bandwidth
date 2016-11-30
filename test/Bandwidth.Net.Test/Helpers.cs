@@ -21,26 +21,26 @@ namespace Bandwidth.Net.Test
       return new IrisApi(new IrisAuthData { AccountId = "accountId", UserName = "userName", Password = "password", BaseUrl = "http://localhost/v1.0" }, new Http(context));
     }
 
-    private static readonly ResourceManager JsonResourceManager = new ResourceManager("Bandwidth.Net.Test.Json", typeof(Helpers).GetTypeInfo().Assembly);
-    public static string GetJsonResourse(string name)
+    private static readonly ResourceManager JsonResourceManager = new ResourceManager("Bandwidth.Net.Test.Catapult.Json", typeof(Helpers).GetTypeInfo().Assembly);
+    public static string GetCatapultResourse(string name)
     {
       return JsonResourceManager.GetString(name);
     }
 
-    public static JsonContent GetJsonContent(string name)
+    public static JsonContent GetCatapultContent(string name)
     {
-      return new JsonContent(GetJsonResourse(name));
+      return new JsonContent(GetCatapultResourse(name));
     }
 
-    private static readonly ResourceManager XmlResourceManager = new ResourceManager("Bandwidth.Net.Test.Xml", typeof(Helpers).GetTypeInfo().Assembly);
-    public static string GetXmlResourse(string name)
+    private static readonly ResourceManager XmlResourceManager = new ResourceManager("Bandwidth.Net.Test.Iris.Xml", typeof(Helpers).GetTypeInfo().Assembly);
+    public static string GetIrisResourse(string name)
     {
       return XmlResourceManager.GetString(name);
     }
 
-    public static XmlContent GetXmlContent(string name)
+    public static XmlContent GetIrisContent(string name)
     {
-      return new XmlContent(GetXmlResourse(name));
+      return new XmlContent(GetIrisResourse(name));
     }
   }
 

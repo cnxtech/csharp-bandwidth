@@ -14,7 +14,7 @@ namespace Bandwidth.Net.Test.Catapult
     {
       var response = new HttpResponseMessage
       {
-        Content = Helpers.GetJsonContent("Account")
+        Content = Helpers.GetCatapultContent("Account")
       };
       var context = new MockContext<IHttp>();
       context.Arrange(m =>m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead, null)).Returns(Task.FromResult(response));
@@ -29,7 +29,7 @@ namespace Bandwidth.Net.Test.Catapult
     {
       var response = new HttpResponseMessage
       {
-        Content = Helpers.GetJsonContent("AccountTransactions")
+        Content = Helpers.GetCatapultContent("AccountTransactions")
       };
       var context = new MockContext<IHttp>();
       context.Arrange(m => m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetTransactionsRequest(r)), HttpCompletionOption.ResponseContentRead, null)).Returns(Task.FromResult(response));

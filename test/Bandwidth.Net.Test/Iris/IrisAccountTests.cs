@@ -12,7 +12,7 @@ namespace Bandwidth.Net.Test.Iris
     {
       var response = new HttpResponseMessage
       {
-        Content = Helpers.GetXmlContent("Account")
+        Content = Helpers.GetIrisContent("Account")
       };
       var context = new MockContext<IHttp>();
       context.Arrange(

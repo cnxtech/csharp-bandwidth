@@ -17,7 +17,7 @@ namespace Bandwidth.Net.Test.Catapult
       var response = new HttpResponseMessage
       {
         Content =
-          new JsonContent($"[{Helpers.GetJsonResourse("Message")}]")
+          new JsonContent($"[{Helpers.GetCatapultResourse("Message")}]")
       };
       var context = new MockContext<IHttp>();
       context.Arrange(
@@ -71,7 +71,7 @@ namespace Bandwidth.Net.Test.Catapult
     {
       var response = new HttpResponseMessage
       {
-        Content = Helpers.GetJsonContent("Message")
+        Content = Helpers.GetCatapultContent("Message")
       };
       var context = new MockContext<IHttp>();
       context.Arrange(

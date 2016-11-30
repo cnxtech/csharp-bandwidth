@@ -18,7 +18,7 @@ namespace Bandwidth.Net.Test.Catapult
       var response = new HttpResponseMessage
       {
         Content =
-          new JsonContent($"[{Helpers.GetJsonResourse("MediaFile")}]")
+          new JsonContent($"[{Helpers.GetCatapultResourse("MediaFile")}]")
       };
       var context = new MockContext<IHttp>();
       context.Arrange(

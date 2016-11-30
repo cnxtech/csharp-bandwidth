@@ -18,7 +18,7 @@ namespace Bandwidth.Net.Test.Catapult
       var response = new HttpResponseMessage
       {
         Content =
-          new JsonContent($"[{Helpers.GetJsonResourse("Call")}]")
+          new JsonContent($"[{Helpers.GetCatapultResourse("Call")}]")
       };
       var context = new MockContext<IHttp>();
       context.Arrange(
@@ -54,7 +54,7 @@ namespace Bandwidth.Net.Test.Catapult
     {
       var response = new HttpResponseMessage
       {
-        Content = Helpers.GetJsonContent("Call")
+        Content = Helpers.GetCatapultContent("Call")
       };
       var context = new MockContext<IHttp>();
       context.Arrange(
@@ -108,7 +108,7 @@ namespace Bandwidth.Net.Test.Catapult
       var context = new MockContext<IHttp>();
       var response = new HttpResponseMessage
       {
-        Content = new JsonContent($"[{Helpers.GetJsonResourse("CallEvent")}]")
+        Content = new JsonContent($"[{Helpers.GetCatapultResourse("CallEvent")}]")
       };
       context.Arrange(
         m =>
@@ -125,7 +125,7 @@ namespace Bandwidth.Net.Test.Catapult
       var context = new MockContext<IHttp>();
       var response = new HttpResponseMessage
       {
-        Content = new JsonContent(Helpers.GetJsonResourse("CallEvent"))
+        Content = new JsonContent(Helpers.GetCatapultResourse("CallEvent"))
       };
       context.Arrange(
         m =>
@@ -142,7 +142,7 @@ namespace Bandwidth.Net.Test.Catapult
       var context = new MockContext<IHttp>();
       var response = new HttpResponseMessage
       {
-        Content = new JsonContent($"[{Helpers.GetJsonResourse("CallRecording")}]")
+        Content = new JsonContent($"[{Helpers.GetCatapultResourse("CallRecording")}]")
       };
       context.Arrange(
         m =>
@@ -159,7 +159,7 @@ namespace Bandwidth.Net.Test.Catapult
       var context = new MockContext<IHttp>();
       var response = new HttpResponseMessage
       {
-        Content = new JsonContent($"[{Helpers.GetJsonResourse("CallTranscription")}]")
+        Content = new JsonContent($"[{Helpers.GetCatapultResourse("CallTranscription")}]")
       };
       context.Arrange(
         m =>
@@ -194,7 +194,7 @@ namespace Bandwidth.Net.Test.Catapult
     {
       var response = new HttpResponseMessage
       {
-        Content = Helpers.GetJsonContent("CallGather")
+        Content = Helpers.GetCatapultContent("CallGather")
       };
       var context = new MockContext<IHttp>();
       context.Arrange(

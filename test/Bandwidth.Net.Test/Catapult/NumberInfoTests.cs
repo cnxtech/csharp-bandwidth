@@ -12,7 +12,7 @@ namespace Bandwidth.Net.Test.Catapult
     {
       var response = new HttpResponseMessage
       {
-        Content = Helpers.GetJsonContent("NumberInfo")
+        Content = Helpers.GetCatapultContent("NumberInfo")
       };
       var context = new MockContext<IHttp>();
       context.Arrange(

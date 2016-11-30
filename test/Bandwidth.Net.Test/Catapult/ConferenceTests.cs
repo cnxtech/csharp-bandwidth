@@ -37,7 +37,7 @@ namespace Bandwidth.Net.Test.Catapult
     {
       var response = new HttpResponseMessage
       {
-        Content = Helpers.GetJsonContent("Conference")
+        Content = Helpers.GetCatapultContent("Conference")
       };
       var context = new MockContext<IHttp>();
       context.Arrange(
@@ -79,7 +79,7 @@ namespace Bandwidth.Net.Test.Catapult
       var context = new MockContext<IHttp>();
       var response = new HttpResponseMessage
       {
-        Content = new JsonContent($"[{Helpers.GetJsonResourse("ConferenceMember")}]")
+        Content = new JsonContent($"[{Helpers.GetCatapultResourse("ConferenceMember")}]")
       };
       context.Arrange(
         m =>
@@ -96,7 +96,7 @@ namespace Bandwidth.Net.Test.Catapult
       var context = new MockContext<IHttp>();
       var response = new HttpResponseMessage
       {
-        Content = new JsonContent(Helpers.GetJsonResourse("ConferenceMember"))
+        Content = new JsonContent(Helpers.GetCatapultResourse("ConferenceMember"))
       };
       context.Arrange(
         m =>
