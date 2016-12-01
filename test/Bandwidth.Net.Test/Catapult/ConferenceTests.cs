@@ -105,6 +105,7 @@ namespace Bandwidth.Net.Test.Catapult
       var api = Helpers.GetCatapultApi(context).Conference;
       var member = await api.GetMemberAsync("id", "memberId");
       Assert.Equal("memberId", member.Id);
+      Assert.Equal("callId1", member.CallId);
     }
 
     [Fact]

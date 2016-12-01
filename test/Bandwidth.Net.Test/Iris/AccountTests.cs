@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Bandwidth.Net.Test.Iris
 {
-  public class IrisAccountTests
+  public class AccountTests
   {
     [Fact]
     public async void TestGet()
@@ -22,6 +22,7 @@ namespace Bandwidth.Net.Test.Iris
       var api = Helpers.GetIrisApi(context).Account;
       var account = await api.GetAsync();
       Assert.Equal("14", account.AccountId);
+      Assert.Equal("14", account.Id);
       Assert.Equal("Business", account.AccountType);
     }
 

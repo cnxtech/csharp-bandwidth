@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Bandwidth.Net.Test.Iris
 {
-  public class IrisAvailableNumberTests
+  public class AvailableNumberTests
   {
     [Fact]
     public async void TestGet()

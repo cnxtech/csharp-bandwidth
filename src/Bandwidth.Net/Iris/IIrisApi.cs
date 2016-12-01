@@ -47,7 +47,7 @@
     /// </summary>
     public string Password { get; set; }
 
-    // <summary>
+    /// <summary>
     ///   Optional base url of iris services
     /// </summary>
     public string BaseUrl { get; set; } = "https://api.inetwork.com/v1.0";

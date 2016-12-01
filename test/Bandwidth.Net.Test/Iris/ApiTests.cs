@@ -10,7 +10,7 @@ using Xunit;
 
 namespace Bandwidth.Net.Test.Iris
 {
-  public class IrisApiTests
+  public class ApiTests
   {
     [Fact]
     public void TestConstructor()
