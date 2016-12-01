@@ -39,11 +39,7 @@ namespace Bandwidth.Net.Iris
     /// <summary>
     /// Id
     /// </summary>
-    public string Id
-    {
-      get { return AccountId; }
-      set { AccountId = value; }
-    }
+    public string Id => AccountId;
 
     /// <summary>
     /// AccountId

@@ -20,10 +20,6 @@ namespace Bandwidth.Net
 
     private static string BuildQueryString(object query)
     {
-      if (query == null)
-      {
-        return "";
-      }
       var type = query.GetType();
       return string.Join("&", from p in type.GetRuntimeProperties()
         let v = p.GetValue(query)
