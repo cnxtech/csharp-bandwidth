@@ -27,8 +27,22 @@ namespace Bandwidth.Net
       CancellationToken? cancellationToken = null);
   }
 
-  internal class Http<THandler> : IHttp where THandler : HttpMessageHandler, new()
+  /// <summary>
+  /// Implementation of IHttp which allows to use HttpMessageHandler
+  /// </summary>
+  /// <typeparam name="THandler">type based on HttpMessageHandler</typeparam>
+  public class Http<THandler> : IHttp where THandler : HttpMessageHandler, new()
   {
+    /// <summary>
+    ///   Send http request and return response message
+    /// </summary>
+    /// <param name="request">Request message to send</param>
+    /// <param name="completionOption">
+    ///   Indicates if current http operation should be considered completed either as soon as a
+    ///   response is available, or after reading the entire response message including the content.
+    /// </param>
+    /// <param name="cancellationToken">Cancelation token for current async operation</param>
+    /// <returns>Task with response message</returns>
     public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
       HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead,
       CancellationToken? cancellationToken = null)
