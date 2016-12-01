@@ -50,6 +50,7 @@ var allMyCalls = api.Call.List().ToList();
 
 ### Catapult API
 You should fill next auth data to use Catapult Api.
+
 | Argument  | Description           | Default value                       | Required |
 |-------------|-----------------------|-------------------------------------|----------|
 | `UserId`    | Your user ID | none                         | Yes      |
@@ -137,6 +138,8 @@ Console.WriteLine($"Call Id is {call.Id}");
 
 ### Iris API
 You should fill next auth data to use Iris Api.
+
+
 | Argument  | Description           | Default value                       | Required |
 |-------------|-----------------------|-------------------------------------|----------|
 | `AccountId`    | Your Iris account ID | none                         | Yes      |
