@@ -60,6 +60,7 @@ namespace Bandwidth.Net.Iris
       City = new CityApi {Api = this};
       CoveredRateCenter = new CoveredRateCenterApi { Api = this };
       DiscNumber = new DiscNumberApi { Api = this };
+      Host = new HostApi { Api = this };
     }
 
     /// <summary>
@@ -104,6 +105,11 @@ namespace Bandwidth.Net.Iris
     /// Access to DiscNumber Api
     /// </summary>
     public IDiscNumber DiscNumber { get; }
+
+    /// <summary>
+    /// Access to Host Api
+    /// </summary>
+    public IHost Host { get; }
 
     internal async Task<HttpResponseMessage> MakeXmlRequestAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null, HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
     {

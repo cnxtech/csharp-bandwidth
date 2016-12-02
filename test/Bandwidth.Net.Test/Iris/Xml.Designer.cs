@@ -155,5 +155,14 @@ namespace Bandwidth.Net.Test.Iris {
                 return ResourceManager.GetString("DiscNumberTotals", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to &lt;SiteHostsResponse&gt;&lt;SiteHosts&gt; &lt;SiteHost&gt; &lt;SiteId&gt;{id}&lt;/SiteId&gt; &lt;SipPeerHosts&gt; &lt;SipPeerHost&gt; &lt;SipPeerId&gt;{id}&lt;/SipPeerId&gt; &lt;SmsHosts&gt; &lt;Host&gt; &lt;HostName&gt;{IP | host name}&lt;/HostName&gt; &lt;Port&gt;8888&lt;/Port&gt; &lt;/Host&gt;&lt;/SmsHosts&gt; &lt;VoiceHosts&gt;&lt;/VoiceHosts&gt; &lt;TerminationHosts&gt;&lt;/TerminationHosts&gt; &lt;/SipPeerHost&gt;&lt;/SipPeerHosts&gt;&lt;/SiteHost&gt;&lt;/SiteHosts&gt;&lt;/SiteHostsResponse&gt;.
+        /// </summary>
+        public static string Host {
+            get {
+                return ResourceManager.GetString("Host", resourceCulture);
+            }
+        }
     }
 }

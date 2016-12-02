@@ -34,6 +34,11 @@
     /// Access to DiscNumber Api
     /// </summary>
     IDiscNumber DiscNumber { get; }
+
+    /// <summary>
+    /// Access to Host Api
+    /// </summary>
+    IHost Host { get; }
   }
 
   /// <summary>

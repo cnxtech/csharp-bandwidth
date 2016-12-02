@@ -172,4 +172,7 @@
   <data name="DiscNumberTotals" xml:space="preserve">
     <value>&lt;Quantity&gt;&lt;Count&gt;2&lt;/Count&gt;&lt;/Quantity&gt;</value>
   </data>
+  <data name="Host" xml:space="preserve">
+    <value>&lt;SiteHostsResponse&gt;&lt;SiteHosts&gt; &lt;SiteHost&gt; &lt;SiteId&gt;{id}&lt;/SiteId&gt; &lt;SipPeerHosts&gt; &lt;SipPeerHost&gt; &lt;SipPeerId&gt;{id}&lt;/SipPeerId&gt; &lt;SmsHosts&gt; &lt;Host&gt; &lt;HostName&gt;{IP | host name}&lt;/HostName&gt; &lt;Port&gt;8888&lt;/Port&gt; &lt;/Host&gt;&lt;/SmsHosts&gt; &lt;VoiceHosts&gt;&lt;/VoiceHosts&gt; &lt;TerminationHosts&gt;&lt;/TerminationHosts&gt; &lt;/SipPeerHost&gt;&lt;/SipPeerHosts&gt;&lt;/SiteHost&gt;&lt;/SiteHosts&gt;&lt;/SiteHostsResponse&gt;</value>
+  </data>
 </root>
