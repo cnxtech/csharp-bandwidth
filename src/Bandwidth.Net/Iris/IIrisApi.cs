@@ -29,6 +29,11 @@
     /// Access to CoveredRateCenter Api
     /// </summary>
     ICoveredRateCenter CoveredRateCenter { get; }
+
+    /// <summary>
+    /// Access to DiscNumber Api
+    /// </summary>
+    IDiscNumber DiscNumber { get; }
   }
 
   /// <summary>

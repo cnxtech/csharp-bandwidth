@@ -59,6 +59,7 @@ namespace Bandwidth.Net.Iris
       AvailableNumber = new AvailableNumberApi {Api = this};
       City = new CityApi {Api = this};
       CoveredRateCenter = new CoveredRateCenterApi { Api = this };
+      DiscNumber = new DiscNumberApi { Api = this };
     }
 
     /// <summary>
@@ -98,6 +99,11 @@ namespace Bandwidth.Net.Iris
     /// Access to CoveredRateCenter Api
     /// </summary>
     public ICoveredRateCenter CoveredRateCenter { get; }
+
+    /// <summary>
+    /// Access to DiscNumber Api
+    /// </summary>
+    public IDiscNumber DiscNumber { get; }
 
     internal async Task<HttpResponseMessage> MakeXmlRequestAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null, HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
     {

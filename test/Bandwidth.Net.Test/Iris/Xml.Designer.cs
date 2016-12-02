@@ -137,5 +137,23 @@ namespace Bandwidth.Net.Test.Iris {
                 return ResourceManager.GetString("CoveredRateCenter", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to &lt;TNs&gt;&lt;TotalCount&gt;4&lt;/TotalCount&gt;&lt;Links&gt;&lt;first&gt;&lt;/first&gt;&lt;/Links&gt;&lt;TelephoneNumbers&gt;&lt;Count&gt;2&lt;/Count&gt;&lt;TelephoneNumber&gt;4158714245&lt;/TelephoneNumber&gt;&lt;TelephoneNumber&gt;4352154439&lt;/TelephoneNumber&gt;&lt;/TelephoneNumbers&gt;&lt;/TNs&gt;.
+        /// </summary>
+        public static string DiscNumber {
+            get {
+                return ResourceManager.GetString("DiscNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to &lt;Quantity&gt;&lt;Count&gt;2&lt;/Count&gt;&lt;/Quantity&gt;.
+        /// </summary>
+        public static string DiscNumberTotals {
+            get {
+                return ResourceManager.GetString("DiscNumberTotals", resourceCulture);
+            }
+        }
     }
 }
