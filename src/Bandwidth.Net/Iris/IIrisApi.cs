@@ -25,6 +25,10 @@
     /// </summary>
     ICity City { get; }
 
+    /// <summary>
+    /// Access to CoveredRateCenter Api
+    /// </summary>
+    ICoveredRateCenter CoveredRateCenter { get; }
   }
 
   /// <summary>

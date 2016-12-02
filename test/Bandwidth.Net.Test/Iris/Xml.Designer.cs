@@ -128,5 +128,14 @@ namespace Bandwidth.Net.Test.Iris {
                 return ResourceManager.GetString("City", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to &lt;CoveredRateCenters&gt;&lt;CoveredRateCenter&gt;&lt;Abbreviation&gt;ACME&lt;/Abbreviation&gt;&lt;Name&gt;ACME&lt;/Name&gt;&lt;/CoveredRateCenter&gt;&lt;/CoveredRateCenters&gt;.
+        /// </summary>
+        public static string CoveredRateCenter {
+            get {
+                return ResourceManager.GetString("CoveredRateCenter", resourceCulture);
+            }
+        }
     }
 }

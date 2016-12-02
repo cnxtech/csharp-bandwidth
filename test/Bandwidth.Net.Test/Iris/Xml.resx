@@ -163,4 +163,7 @@
   <data name="City" xml:space="preserve">
     <value>&lt;CityResponse&gt;&lt;ResultCount&gt;2&lt;/ResultCount&gt;&lt;Cities&gt;&lt;City&gt;&lt;RcAbbreviation&gt;SOUTHEPINS&lt;/RcAbbreviation&gt;&lt;Name&gt;ABERDEEN&lt;/Name&gt;&lt;/City&gt;&lt;City&gt;&lt;RcAbbreviation&gt;JULIAN&lt;/RcAbbreviation&gt;&lt;Name&gt;ADVANCE&lt;/Name&gt;&lt;/City&gt;&lt;/Cities&gt;&lt;/CityResponse&gt;</value>
   </data>
+  <data name="CoveredRateCenter" xml:space="preserve">
+    <value>&lt;CoveredRateCenters&gt;&lt;CoveredRateCenter&gt;&lt;Abbreviation&gt;ACME&lt;/Abbreviation&gt;&lt;Name&gt;ACME&lt;/Name&gt;&lt;/CoveredRateCenter&gt;&lt;/CoveredRateCenters&gt;</value>
+  </data>
 </root>
