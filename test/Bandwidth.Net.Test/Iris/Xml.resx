@@ -175,4 +175,7 @@
   <data name="Host" xml:space="preserve">
     <value>&lt;SiteHostsResponse&gt;&lt;SiteHosts&gt; &lt;SiteHost&gt; &lt;SiteId&gt;{id}&lt;/SiteId&gt; &lt;SipPeerHosts&gt; &lt;SipPeerHost&gt; &lt;SipPeerId&gt;{id}&lt;/SipPeerId&gt; &lt;SmsHosts&gt; &lt;Host&gt; &lt;HostName&gt;{IP | host name}&lt;/HostName&gt; &lt;Port&gt;8888&lt;/Port&gt; &lt;/Host&gt;&lt;/SmsHosts&gt; &lt;VoiceHosts&gt;&lt;/VoiceHosts&gt; &lt;TerminationHosts&gt;&lt;/TerminationHosts&gt; &lt;/SipPeerHost&gt;&lt;/SipPeerHosts&gt;&lt;/SiteHost&gt;&lt;/SiteHosts&gt;&lt;/SiteHostsResponse&gt;</value>
   </data>
+  <data name="Notes" xml:space="preserve">
+    <value>&lt;Notes&gt;&lt;Note&gt;&lt;Id&gt;11299&lt;/Id&gt;&lt;UserId&gt;customer&lt;/UserId&gt;&lt;Description&gt;Test&lt;/Description&gt;&lt;LastDateModifier&gt;2014-11-20T07:08:47.000Z&lt;/LastDateModifier&gt;&lt;/Note&gt;&lt;Note&gt;&lt;Id&gt;11301&lt;/Id&gt;&lt;UserId&gt;customer&lt;/UserId&gt;&lt;Description&gt;Test1&lt;/Description&gt;&lt;LastDateModifier&gt;2014-11-20T07:11:36.000Z&lt;/LastDateModifier&gt;&lt;/Note&gt;&lt;/Notes&gt;</value>
+  </data>
 </root>

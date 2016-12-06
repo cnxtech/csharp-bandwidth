@@ -60,6 +60,7 @@ namespace Bandwidth.Net.Iris
       City = new CityApi {Api = this};
       CoveredRateCenter = new CoveredRateCenterApi { Api = this };
       DiscNumber = new DiscNumberApi { Api = this };
+      Disconnect = new DisconnectApi { Api = this };
       Host = new HostApi { Api = this };
     }
 
@@ -105,6 +106,11 @@ namespace Bandwidth.Net.Iris
     /// Access to DiscNumber Api
     /// </summary>
     public IDiscNumber DiscNumber { get; }
+
+    /// <summary>
+    /// Access to Disconnect Api
+    /// </summary>
+    public IDisconnect Disconnect { get; }
 
     /// <summary>
     /// Access to Host Api

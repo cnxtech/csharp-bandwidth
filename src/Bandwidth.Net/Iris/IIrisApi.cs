@@ -36,6 +36,11 @@
     IDiscNumber DiscNumber { get; }
 
     /// <summary>
+    /// Access to Disconnect Api
+    /// </summary>
+    IDisconnect Disconnect { get; }
+
+    /// <summary>
     /// Access to Host Api
     /// </summary>
     IHost Host { get; }

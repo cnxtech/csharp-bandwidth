@@ -164,5 +164,14 @@ namespace Bandwidth.Net.Test.Iris {
                 return ResourceManager.GetString("Host", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to &lt;Notes&gt;&lt;Note&gt;&lt;Id&gt;11299&lt;/Id&gt;&lt;UserId&gt;customer&lt;/UserId&gt;&lt;Description&gt;Test&lt;/Description&gt;&lt;LastDateModifier&gt;2014-11-20T07:08:47.000Z&lt;/LastDateModifier&gt;&lt;/Note&gt;&lt;Note&gt;&lt;Id&gt;11301&lt;/Id&gt;&lt;UserId&gt;customer&lt;/UserId&gt;&lt;Description&gt;Test1&lt;/Description&gt;&lt;LastDateModifier&gt;2014-11-20T07:11:36.000Z&lt;/LastDateModifier&gt;&lt;/Note&gt;&lt;/Notes&gt;.
+        /// </summary>
+        public static string Notes {
+            get {
+                return ResourceManager.GetString("Notes", resourceCulture);
+            }
+        }
     }
 }

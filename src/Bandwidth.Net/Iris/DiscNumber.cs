@@ -32,13 +32,13 @@ namespace Bandwidth.Net.Iris
       CancellationToken? cancellationToken = null)
     {
       return (await Api.MakeXmlRequestAsync<DiscNumberResponse>(HttpMethod.Get,
-        "/discnumbers", cancellationToken, query)).TelephoneNumbers.Numbers;
+        $"/accounts/{Api.AccountId}/discnumbers", cancellationToken, query)).TelephoneNumbers.Numbers;
     }
 
     public async Task<Quantity> GetTotalsAsync(CancellationToken? cancellationToken = null)
     {
       return await Api.MakeXmlRequestAsync<Quantity>(HttpMethod.Get,
-        "/discnumbers/totals", cancellationToken);
+        $"/accounts/{Api.AccountId}/discnumbers/totals", cancellationToken);
     }
   }
 

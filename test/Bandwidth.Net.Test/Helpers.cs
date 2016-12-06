@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Resources;
 using System.Text;
+using System.Xml.Serialization;
 using Bandwidth.Net.Catapult;
 using Bandwidth.Net.Iris;
 using Bandwidth.Net.Test.Mocks;
@@ -41,6 +42,16 @@ namespace Bandwidth.Net.Test
     public static XmlContent GetIrisContent(string name)
     {
       return new XmlContent(GetIrisResourse(name));
+    }
+
+    public static string ToXmlString(object data)
+    {
+      var serializer = new XmlSerializer(data.GetType());
+      using (var writer = new Utf8StringWriter())
+      {
+        serializer.Serialize(writer, data);
+        return writer.ToString();
+      }
     }
   }
 

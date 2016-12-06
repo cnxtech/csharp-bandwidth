@@ -26,7 +26,7 @@ namespace Bandwidth.Net.Test.Iris
 
     public static bool IsValidGetRequest(HttpRequestMessage request)
     {
-      return request.Method == HttpMethod.Get && request.RequestUri.PathAndQuery == "/v1.0/discnumbers";
+      return request.Method == HttpMethod.Get && request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/discnumbers";
     }
 
     [Fact]
@@ -48,7 +48,7 @@ namespace Bandwidth.Net.Test.Iris
 
     public static bool IsValidGetTotalsRequest(HttpRequestMessage request)
     {
-      return request.Method == HttpMethod.Get && request.RequestUri.PathAndQuery == "/v1.0/discnumbers/totals";
+      return request.Method == HttpMethod.Get && request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/discnumbers/totals";
     }
   }
 }
