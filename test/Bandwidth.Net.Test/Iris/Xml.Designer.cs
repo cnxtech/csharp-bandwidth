@@ -157,6 +157,33 @@ namespace Bandwidth.Net.Test.Iris {
         }
         
         /// <summary>
+        ///    Looks up a localized string similar to  &lt;DldaOrderResponse&gt;&lt;DldaOrder&gt;&lt;CustomerOrderId&gt;5a88d16d-f8a9-45c5-a5db-137d700c6a22&lt;/CustomerOrderId&gt;&lt;OrderCreateDate&gt;2014-07-10T12:38:11.833Z&lt;/OrderCreateDate&gt;&lt;AccountId&gt;14&lt;/AccountId&gt;&lt;CreatedByUser&gt;jbm&lt;/CreatedByUser&gt;&lt;OrderId&gt;ea9e90c2-77a4-4f82-ac47-e1c5bb1311f4&lt;/OrderId&gt;&lt;LastModifiedDate&gt;2014-07-10T12:38:11.833Z&lt;/LastModifiedDate&gt;&lt;ProcessingStatus&gt;RECEIVED&lt;/ProcessingStatus&gt;&lt;DldaTnGroups&gt;&lt;DldaTnGroup&gt;&lt;TelephoneNumbers&gt;&lt;TelephoneNumber&gt;2053778335&lt;/TelephoneNumber&gt;&lt;TelephoneNumber&gt;2053865784&lt;/TelephoneNumb [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Dlda {
+            get {
+                return ResourceManager.GetString("Dlda", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to &lt;OrderHistoryWrapper&gt;&lt;OrderHistory&gt;&lt;OrderDate&gt;2014-05-20T14:21:43.937Z&lt;/OrderDate&gt;&lt;Note&gt;Order backordered - awaiting additional numbers&lt;/Note&gt;&lt;Status&gt;BACKORDERED&lt;/Status&gt;&lt;/OrderHistory&gt;&lt;OrderHistory&gt;&lt;OrderDate&gt;2014-05-20T14:24:43.428Z&lt;/OrderDate&gt;&lt;Note&gt;Order backordered - awaiting additional numbers&lt;/Note&gt;&lt;Author&gt;System&lt;/Author&gt;&lt;Status&gt;BACKORDERED&lt;/Status&gt;&lt;Difference&gt;&lt;/Difference&gt;&lt;/OrderHistory&gt;&lt;/OrderHistoryWrapper&gt;.
+        /// </summary>
+        public static string DldaHistory {
+            get {
+                return ResourceManager.GetString("DldaHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to  &lt;ResponseSelectWrapper&gt;&lt;ListOrderIdUserIdDate&gt;&lt;TotalCount&gt;3&lt;/TotalCount&gt;&lt;OrderIdUserIdDate&gt;&lt;accountId&gt;14&lt;/accountId&gt;&lt;CountOfTNs&gt;2&lt;/CountOfTNs&gt;&lt;userId&gt;team_ua&lt;/userId&gt;&lt;lastModifiedDate&gt;2014-07-07T10:06:43.427Z&lt;/lastModifiedDate&gt;&lt;OrderType&gt;dlda&lt;/OrderType&gt;&lt;OrderDate&gt;2014-07-07T10:06:43.427Z&lt;/OrderDate&gt;&lt;orderId&gt;37a6447c-1a0b-4be9-ba89-3f5cb0aea142&lt;/orderId&gt;&lt;OrderStatus&gt;FAILED&lt;/OrderStatus&gt;&lt;/OrderIdUserIdDate&gt;&lt;OrderIdUserIdDate&gt;&lt;accountId&gt;14&lt;/accountId&gt;&lt;CountOfTNs&gt;2&lt;/CountOfTNs&gt;&lt;userId&gt;team_ua&lt;/userId&gt;&lt;lastModi [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string DldaList {
+            get {
+                return ResourceManager.GetString("DldaList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Looks up a localized string similar to &lt;SiteHostsResponse&gt;&lt;SiteHosts&gt; &lt;SiteHost&gt; &lt;SiteId&gt;{id}&lt;/SiteId&gt; &lt;SipPeerHosts&gt; &lt;SipPeerHost&gt; &lt;SipPeerId&gt;{id}&lt;/SipPeerId&gt; &lt;SmsHosts&gt; &lt;Host&gt; &lt;HostName&gt;{IP | host name}&lt;/HostName&gt; &lt;Port&gt;8888&lt;/Port&gt; &lt;/Host&gt;&lt;/SmsHosts&gt; &lt;VoiceHosts&gt;&lt;/VoiceHosts&gt; &lt;TerminationHosts&gt;&lt;/TerminationHosts&gt; &lt;/SipPeerHost&gt;&lt;/SipPeerHosts&gt;&lt;/SiteHost&gt;&lt;/SiteHosts&gt;&lt;/SiteHostsResponse&gt;.
         /// </summary>
         public static string Host {

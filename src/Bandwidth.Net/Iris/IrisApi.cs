@@ -61,6 +61,7 @@ namespace Bandwidth.Net.Iris
       CoveredRateCenter = new CoveredRateCenterApi { Api = this };
       DiscNumber = new DiscNumberApi { Api = this };
       Disconnect = new DisconnectApi { Api = this };
+      Dlda = new DldaApi { Api = this };
       Host = new HostApi { Api = this };
     }
 
@@ -116,6 +117,11 @@ namespace Bandwidth.Net.Iris
     /// Access to Host Api
     /// </summary>
     public IHost Host { get; }
+
+    /// <summary>
+    /// Access to Dlda Api
+    /// </summary>
+    public IDlda Dlda { get; }
 
     internal async Task<HttpResponseMessage> MakeXmlRequestAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null, HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
     {

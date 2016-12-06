@@ -41,6 +41,11 @@
     IDisconnect Disconnect { get; }
 
     /// <summary>
+    /// Access to Dlda Api
+    /// </summary>
+    IDlda Dlda { get; }
+
+    /// <summary>
     /// Access to Host Api
     /// </summary>
     IHost Host { get; }
