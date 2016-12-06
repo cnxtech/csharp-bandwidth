@@ -63,6 +63,7 @@ namespace Bandwidth.Net.Iris
       Disconnect = new DisconnectApi { Api = this };
       Dlda = new DldaApi { Api = this };
       Host = new HostApi { Api = this };
+      ImportToAccount = new ImportToAccountApi { Api = this };
     }
 
     /// <summary>
@@ -122,6 +123,11 @@ namespace Bandwidth.Net.Iris
     /// Access to Dlda Api
     /// </summary>
     public IDlda Dlda { get; }
+
+    /// <summary>
+    /// Access to ImportToAccount Api
+    /// </summary>
+    public IImportToAccount ImportToAccount { get; }
 
     internal async Task<HttpResponseMessage> MakeXmlRequestAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null, HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
     {

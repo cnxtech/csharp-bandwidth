@@ -49,6 +49,11 @@
     /// Access to Host Api
     /// </summary>
     IHost Host { get; }
+
+    /// <summary>
+    /// Access to ImportToAccount Api
+    /// </summary>
+    IImportToAccount ImportToAccount { get; }
   }
 
   /// <summary>
