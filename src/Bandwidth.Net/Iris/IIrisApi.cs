@@ -54,6 +54,11 @@
     /// Access to ImportToAccount Api
     /// </summary>
     IImportToAccount ImportToAccount { get; }
+
+    /// <summary>
+    /// Access to InserviceNumber Api
+    /// </summary>
+    IInserviceNumber InserviceNumber { get; }
   }
 
   /// <summary>

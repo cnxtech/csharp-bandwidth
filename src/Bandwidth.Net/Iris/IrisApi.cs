@@ -64,6 +64,7 @@ namespace Bandwidth.Net.Iris
       Dlda = new DldaApi { Api = this };
       Host = new HostApi { Api = this };
       ImportToAccount = new ImportToAccountApi { Api = this };
+      InserviceNumber = new InserviceNumberApi { Api = this };
     }
 
     /// <summary>
@@ -128,6 +129,11 @@ namespace Bandwidth.Net.Iris
     /// Access to ImportToAccount Api
     /// </summary>
     public IImportToAccount ImportToAccount { get; }
+
+    /// <summary>
+    /// Access to InserviceNumber Api
+    /// </summary>
+    public IInserviceNumber InserviceNumber { get; }
 
     internal async Task<HttpResponseMessage> MakeXmlRequestAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null, HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
     {

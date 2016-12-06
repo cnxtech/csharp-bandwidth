@@ -193,6 +193,24 @@ namespace Bandwidth.Net.Test.Iris {
         }
         
         /// <summary>
+        ///    Looks up a localized string similar to  &lt;TNs&gt;&lt;TotalCount&gt;59&lt;/TotalCount&gt;&lt;Links&gt;&lt;first&gt; ( a link goes here ) &lt;/first&gt;&lt;/Links&gt;&lt;TelephoneNumbers&gt;&lt;Count&gt;59&lt;/Count&gt;&lt;TelephoneNumber&gt;8043024183&lt;/TelephoneNumber&gt;&lt;TelephoneNumber&gt;8042121778&lt;/TelephoneNumber&gt;&lt;TelephoneNumber&gt;8042146066&lt;/TelephoneNumber&gt;&lt;TelephoneNumber&gt;8043814903&lt;/TelephoneNumber&gt;&lt;TelephoneNumber&gt;8043814905&lt;/TelephoneNumber&gt;&lt;TelephoneNumber&gt;8043814864&lt;/TelephoneNumber&gt;&lt;TelephoneNumber&gt;8043326094&lt;/TelephoneNumber&gt;&lt;TelephoneNumber&gt;8042121771&lt;/TelephoneNumber&gt;&lt;TelephoneNumber&gt;8043024182&lt;/Tele [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string InserviceNumberList {
+            get {
+                return ResourceManager.GetString("InserviceNumberList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to &lt;Quantity&gt;&lt;Count&gt;3&lt;/Count&gt;&lt;/Quantity&gt;.
+        /// </summary>
+        public static string InserviceNumberTotals {
+            get {
+                return ResourceManager.GetString("InserviceNumberTotals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Looks up a localized string similar to &lt;Notes&gt;&lt;Note&gt;&lt;Id&gt;11299&lt;/Id&gt;&lt;UserId&gt;customer&lt;/UserId&gt;&lt;Description&gt;Test&lt;/Description&gt;&lt;LastDateModifier&gt;2014-11-20T07:08:47.000Z&lt;/LastDateModifier&gt;&lt;/Note&gt;&lt;Note&gt;&lt;Id&gt;11301&lt;/Id&gt;&lt;UserId&gt;customer&lt;/UserId&gt;&lt;Description&gt;Test1&lt;/Description&gt;&lt;LastDateModifier&gt;2014-11-20T07:11:36.000Z&lt;/LastDateModifier&gt;&lt;/Note&gt;&lt;/Notes&gt;.
         /// </summary>
         public static string Notes {
