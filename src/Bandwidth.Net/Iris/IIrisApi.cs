@@ -64,6 +64,11 @@
     /// Access to Lidb Api
     /// </summary>
     ILidb Lidb { get; }
+
+    /// <summary>
+    /// Access to LineOptionOrder Api
+    /// </summary>
+    ILineOptionOrder LineOptionOrder { get; }
   }
 
   /// <summary>

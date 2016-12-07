@@ -66,6 +66,7 @@ namespace Bandwidth.Net.Iris
       ImportToAccount = new ImportToAccountApi { Api = this };
       InserviceNumber = new InserviceNumberApi { Api = this };
       Lidb = new LidbApi { Api = this };
+      LineOptionOrder = new LineOptionOrderApi { Api = this };
     }
 
     /// <summary>
@@ -141,6 +142,12 @@ namespace Bandwidth.Net.Iris
     /// </summary>
     public ILidb Lidb { get; }
 
+    /// <summary>
+    /// Access to LineOptionOrder Api
+    /// </summary>
+    public ILineOptionOrder LineOptionOrder { get; }
+
+
     internal async Task<HttpResponseMessage> MakeXmlRequestAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null, HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
     {
       var response = await _http.SendAsync(request, completionOption, cancellationToken);
@@ -168,7 +175,7 @@ namespace Bandwidth.Net.Iris
     }
 
 
-    internal async Task MakeXmlRequestWithoutResponseAsync(HttpMethod method, string path, 
+    internal async Task MakeXmlRequestWithoutResponseAsync(HttpMethod method, string path,
       CancellationToken? cancellationToken = null, object query = null, object body = null)
     {
       using (await MakeXmlRequestAsync(method, path, cancellationToken, query, body))
