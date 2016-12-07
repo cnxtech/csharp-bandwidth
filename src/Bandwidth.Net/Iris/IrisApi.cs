@@ -65,6 +65,7 @@ namespace Bandwidth.Net.Iris
       Host = new HostApi { Api = this };
       ImportToAccount = new ImportToAccountApi { Api = this };
       InserviceNumber = new InserviceNumberApi { Api = this };
+      Lidb = new LidbApi { Api = this };
     }
 
     /// <summary>
@@ -134,6 +135,11 @@ namespace Bandwidth.Net.Iris
     /// Access to InserviceNumber Api
     /// </summary>
     public IInserviceNumber InserviceNumber { get; }
+
+    /// <summary>
+    /// Access to Lidb Api
+    /// </summary>
+    public ILidb Lidb { get; }
 
     internal async Task<HttpResponseMessage> MakeXmlRequestAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null, HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
     {

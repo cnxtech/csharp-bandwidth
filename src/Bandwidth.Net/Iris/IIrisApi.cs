@@ -59,6 +59,11 @@
     /// Access to InserviceNumber Api
     /// </summary>
     IInserviceNumber InserviceNumber { get; }
+
+    /// <summary>
+    /// Access to Lidb Api
+    /// </summary>
+    ILidb Lidb { get; }
   }
 
   /// <summary>

@@ -211,6 +211,24 @@ namespace Bandwidth.Net.Test.Iris {
         }
         
         /// <summary>
+        ///    Looks up a localized string similar to  &lt;LidbOrder&gt;&lt;CustomerOrderId&gt;testCustomerOrderId&lt;/CustomerOrderId&gt;&lt;orderId&gt;255bda29-fc57-44e8-a6c2-59b45388c6d0&lt;/orderId&gt;    &lt;OrderCreateDate&gt;2014-05-28T14:46:21.724Z&lt;/OrderCreateDate&gt;&lt;ProcessingStatus&gt;RECEIVED&lt;/ProcessingStatus&gt;&lt;CreatedByUser&gt;jbm&lt;/CreatedByUser&gt;&lt;LastModifiedDate&gt;2014-02-20T19:33:17.600Z&lt;/LastModifiedDate&gt;&lt;OrderCompleteDate&gt;2014-02-20T19:33:17.600Z&lt;/OrderCompleteDate&gt;&lt;ErrorList/&gt;&lt;LidbTnGroups&gt;&lt;LidbTnGroup&gt;&lt;TelephoneNumbers&gt;&lt;TelephoneNumber&gt;4082213311&lt;/TelephoneNumber&gt;&lt;/TelephoneNumbers&gt;&lt;Full [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Lidb {
+            get {
+                return ResourceManager.GetString("Lidb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to  &lt;ResponseSelectWrapper&gt;&lt;ListOrderIdUserIdDate&gt;&lt;TotalCount&gt;2122&lt;/TotalCount&gt;&lt;OrderIdUserIdDate&gt;&lt;accountId&gt;9999999&lt;/accountId&gt;&lt;CountOfTNs&gt;0&lt;/CountOfTNs&gt;&lt;lastModifiedDate&gt;2014-02-25T16:02:43.195Z&lt;/lastModifiedDate&gt;&lt;OrderType&gt;lidb&lt;/OrderType&gt;&lt;OrderDate&gt;2014-02-25T16:02:43.195Z&lt;/OrderDate&gt;&lt;orderId&gt;abe36738-6929-4c6f-926c-88e534e2d46f&lt;/orderId&gt;&lt;OrderStatus&gt;FAILED&lt;/OrderStatus&gt;&lt;TelephoneNumberDetails/&gt;&lt;userId&gt;team_ua&lt;/userId&gt;&lt;/OrderIdUserIdDate&gt;&lt;!-- ...SNIP... --&gt;&lt;OrderIdUserIdDate&gt;&lt;accountId&gt;9999999&lt;/accountId&gt;&lt;C [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string LidbList {
+            get {
+                return ResourceManager.GetString("LidbList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Looks up a localized string similar to &lt;Notes&gt;&lt;Note&gt;&lt;Id&gt;11299&lt;/Id&gt;&lt;UserId&gt;customer&lt;/UserId&gt;&lt;Description&gt;Test&lt;/Description&gt;&lt;LastDateModifier&gt;2014-11-20T07:08:47.000Z&lt;/LastDateModifier&gt;&lt;/Note&gt;&lt;Note&gt;&lt;Id&gt;11301&lt;/Id&gt;&lt;UserId&gt;customer&lt;/UserId&gt;&lt;Description&gt;Test1&lt;/Description&gt;&lt;LastDateModifier&gt;2014-11-20T07:11:36.000Z&lt;/LastDateModifier&gt;&lt;/Note&gt;&lt;/Notes&gt;.
         /// </summary>
         public static string Notes {
