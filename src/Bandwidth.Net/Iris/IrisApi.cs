@@ -67,6 +67,7 @@ namespace Bandwidth.Net.Iris
       InserviceNumber = new InserviceNumberApi { Api = this };
       Lidb = new LidbApi { Api = this };
       LineOptionOrder = new LineOptionOrderApi { Api = this };
+      LnpChecker = new LnpCheckerApi { Api = this };
     }
 
     /// <summary>
@@ -146,6 +147,11 @@ namespace Bandwidth.Net.Iris
     /// Access to LineOptionOrder Api
     /// </summary>
     public ILineOptionOrder LineOptionOrder { get; }
+
+    /// <summary>
+    /// Access to LnpChecker Api
+    /// </summary>
+    public ILnpChecker LnpChecker { get; }
 
 
     internal async Task<HttpResponseMessage> MakeXmlRequestAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null, HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)

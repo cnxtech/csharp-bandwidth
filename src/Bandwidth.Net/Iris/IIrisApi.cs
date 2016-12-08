@@ -69,6 +69,11 @@
     /// Access to LineOptionOrder Api
     /// </summary>
     ILineOptionOrder LineOptionOrder { get; }
+
+    /// <summary>
+    /// Access to LnpChecker Api
+    /// </summary>
+    ILnpChecker LnpChecker { get; }
   }
 
   /// <summary>
