@@ -65,7 +65,7 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Order id</param>
     /// <param name="cancellationToken"></param>
     /// <returns>Array of notes</returns>
-    Task<Note[]> GetNotes(string id, CancellationToken? cancellationToken = null);
+    Task<Note[]> GetNotesAsync(string id, CancellationToken? cancellationToken = null);
   }
 
 
@@ -381,7 +381,7 @@ namespace Bandwidth.Net.Iris
       return Api.MakePostXmlRequestAsync($"/accounts/{Api.AccountId}/lsrorders/{id}/notes", cancellationToken, note);
     }
 
-    public async Task<Note[]> GetNotes(string id, CancellationToken? cancellationToken = null)
+    public async Task<Note[]> GetNotesAsync(string id, CancellationToken? cancellationToken = null)
     {
       return
         (await

@@ -84,7 +84,7 @@ namespace Bandwidth.Net.Test.Iris
             HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
       var api = Helpers.GetIrisApi(context).Disconnect;
-      var list = await api.GetNotes("id");
+      var list = await api.GetNotesAsync("id");
       Assert.Equal(2, list.Length);
       Assert.Equal("11299", list[0].Id);
       Assert.Equal("customer", list[0].UserId);
