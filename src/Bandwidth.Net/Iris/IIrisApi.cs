@@ -79,6 +79,11 @@
     /// Access to LsrOrder Api
     /// </summary>
     ILsrOrder LsrOrder { get; }
+
+    /// <summary>
+    /// Access to Order Api
+    /// </summary>
+    IOrder Order { get; }
   }
 
   /// <summary>
