@@ -74,6 +74,11 @@
     /// Access to LnpChecker Api
     /// </summary>
     ILnpChecker LnpChecker { get; }
+
+    /// <summary>
+    /// Access to LsrOrder Api
+    /// </summary>
+    ILsrOrder LsrOrder { get; }
   }
 
   /// <summary>

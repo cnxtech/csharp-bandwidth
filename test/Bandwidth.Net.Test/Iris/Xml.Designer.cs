@@ -238,6 +238,33 @@ namespace Bandwidth.Net.Test.Iris {
         }
         
         /// <summary>
+        ///    Looks up a localized string similar to  &lt;LsrOrder&gt;&lt;CustomerOrderId&gt;MyId5&lt;/CustomerOrderId&gt;&lt;LastModifiedBy&gt;System&lt;/LastModifiedBy&gt;&lt;OrderCreateDate&gt;2015-03-03T13:54:00.450Z&lt;/OrderCreateDate&gt;&lt;AccountId&gt;9999999&lt;/AccountId&gt;&lt;OrderId&gt;00cf7e08-cab0-4515-9a77-2d0a7da09415&lt;/OrderId&gt;&lt;LastModifiedDate&gt;2015-03-03T14:07:19.926Z&lt;/LastModifiedDate&gt;&lt;OrderStatus&gt;FAILED&lt;/OrderStatus&gt;&lt;SPID&gt;123C&lt;/SPID&gt;&lt;BillingTelephoneNumber&gt;9192381468&lt;/BillingTelephoneNumber&gt;&lt;Pon&gt;testpon1002&lt;/Pon&gt;&lt;PonVersion&gt;0&lt;/PonVersion&gt;&lt;RequestedFocDate&gt;2015-11-15&lt;/RequestedFocDate&gt;&lt;AuthorizingPe [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string LsrOrder {
+            get {
+                return ResourceManager.GetString("LsrOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to &lt;OrderHistoryWrapper&gt;&lt;OrderHistory&gt;&lt;OrderDate&gt;2014-05-20T14:21:43.937Z&lt;/OrderDate&gt;&lt;Note&gt;Order backordered - awaiting additional numbers&lt;/Note&gt;&lt;Status&gt;BACKORDERED&lt;/Status&gt;&lt;/OrderHistory&gt;&lt;OrderHistory&gt;&lt;OrderDate&gt;2014-05-20T14:24:43.428Z&lt;/OrderDate&gt;&lt;Note&gt;Order backordered - awaiting additional numbers&lt;/Note&gt;&lt;Author&gt;System&lt;/Author&gt;&lt;Status&gt;BACKORDERED&lt;/Status&gt;&lt;Difference&gt;&lt;/Difference&gt;&lt;/OrderHistory&gt;&lt;/OrderHistoryWrapper&gt;.
+        /// </summary>
+        public static string LsrOrderHistory {
+            get {
+                return ResourceManager.GetString("LsrOrderHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to  &lt;LsrOrders&gt;&lt;TotalCount&gt;5&lt;/TotalCount&gt;&lt;LsrOrderSummary&gt;&lt;accountId&gt;9999999&lt;/accountId&gt;&lt;CountOfTNs&gt;2&lt;/CountOfTNs&gt;&lt;CustomerOrderId&gt;FineCustomerid&lt;/CustomerOrderId&gt;&lt;userId&gt;team_ua&lt;/userId&gt;&lt;lastModifiedDate&gt;2015-03-02T09:10:16.193Z&lt;/lastModifiedDate&gt;&lt;OrderType&gt;lsr&lt;/OrderType&gt;&lt;OrderDate&gt;2015-03-25T11:44:42.941Z&lt;/OrderDate&gt;&lt;OrderStatus&gt;PENDING&lt;/OrderStatus&gt;&lt;ActualFocDate&gt;2015-03-25&lt;/ActualFocDate&gt;&lt;BillingTelephoneNumber&gt;2526795000&lt;/BillingTelephoneNumber&gt;&lt;CreatedByUser&gt;lsrOnlyUser&lt;/CreatedByUser&gt;&lt;OrderId&gt;7d644c88-e [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string LsrOrderList {
+            get {
+                return ResourceManager.GetString("LsrOrderList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Looks up a localized string similar to &lt;Notes&gt;&lt;Note&gt;&lt;Id&gt;11299&lt;/Id&gt;&lt;UserId&gt;customer&lt;/UserId&gt;&lt;Description&gt;Test&lt;/Description&gt;&lt;LastDateModifier&gt;2014-11-20T07:08:47.000Z&lt;/LastDateModifier&gt;&lt;/Note&gt;&lt;Note&gt;&lt;Id&gt;11301&lt;/Id&gt;&lt;UserId&gt;customer&lt;/UserId&gt;&lt;Description&gt;Test1&lt;/Description&gt;&lt;LastDateModifier&gt;2014-11-20T07:11:36.000Z&lt;/LastDateModifier&gt;&lt;/Note&gt;&lt;/Notes&gt;.
         /// </summary>
         public static string Notes {
