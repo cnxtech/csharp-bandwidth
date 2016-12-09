@@ -211,4 +211,19 @@
   <data name="Notes" xml:space="preserve">
     <value>&lt;Notes&gt;&lt;Note&gt;&lt;Id&gt;11299&lt;/Id&gt;&lt;UserId&gt;customer&lt;/UserId&gt;&lt;Description&gt;Test&lt;/Description&gt;&lt;LastDateModifier&gt;2014-11-20T07:08:47.000Z&lt;/LastDateModifier&gt;&lt;/Note&gt;&lt;Note&gt;&lt;Id&gt;11301&lt;/Id&gt;&lt;UserId&gt;customer&lt;/UserId&gt;&lt;Description&gt;Test1&lt;/Description&gt;&lt;LastDateModifier&gt;2014-11-20T07:11:36.000Z&lt;/LastDateModifier&gt;&lt;/Note&gt;&lt;/Notes&gt;</value>
   </data>
+  <data name="OrderAreaCodes" xml:space="preserve">
+    <value>&lt;TelephoneDetailsReports&gt;&lt;TelephoneDetailsReport&gt;&lt;AreaCode&gt;888&lt;/AreaCode&gt;&lt;Count&gt;1&lt;/Count&gt;&lt;/TelephoneDetailsReport&gt;&lt;/TelephoneDetailsReports&gt;</value>
+  </data>
+  <data name="OrderHistory" xml:space="preserve">
+    <value>&lt;OrderHistoryWrapper&gt;&lt;OrderHistory&gt;&lt;OrderDate&gt;2014-05-20T14:21:43.937Z&lt;/OrderDate&gt;&lt;Note&gt;Order backordered - awaiting additional numbers&lt;/Note&gt;&lt;Status&gt;BACKORDERED&lt;/Status&gt;&lt;/OrderHistory&gt;&lt;OrderHistory&gt;&lt;OrderDate&gt;2014-05-20T14:24:43.428Z&lt;/OrderDate&gt;&lt;Note&gt;Order backordered - awaiting additional numbers&lt;/Note&gt;&lt;Author&gt;System&lt;/Author&gt;&lt;Status&gt;BACKORDERED&lt;/Status&gt;&lt;Difference&gt;&lt;/Difference&gt;&lt;/OrderHistory&gt;&lt;/OrderHistoryWrapper&gt;</value>
+  </data>
+  <data name="OrderNpaNxx" xml:space="preserve">
+    <value>&lt;TelephoneDetailsReports&gt;&lt;TelephoneDetailsReport&gt;&lt;NPA-NXX&gt;888424&lt;/NPA-NXX&gt;&lt;Count&gt;1&lt;/Count&gt;&lt;/TelephoneDetailsReport&gt;&lt;/TelephoneDetailsReports&gt;</value>
+  </data>
+  <data name="OrderTns" xml:space="preserve">
+    <value>&lt;TelephoneNumbers&gt;&lt;Count&gt;2&lt;/Count&gt;&lt;TelephoneNumber&gt;8042105666&lt;/TelephoneNumber&gt;&lt;TelephoneNumber&gt;8042105667&lt;/TelephoneNumber&gt;&lt;/TelephoneNumbers&gt;</value>
+  </data>
+  <data name="OrderTotals" xml:space="preserve">
+    <value>&lt;TelephoneDetailsReports&gt;&lt;TelephoneDetailsReport&gt;&lt;NPA-NXX&gt;888424&lt;/NPA-NXX&gt;&lt;Count&gt;1&lt;/Count&gt;&lt;/TelephoneDetailsReport&gt;&lt;/TelephoneDetailsReports&gt;</value>
+  </data>
 </root>

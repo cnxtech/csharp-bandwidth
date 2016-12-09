@@ -272,5 +272,50 @@ namespace Bandwidth.Net.Test.Iris {
                 return ResourceManager.GetString("Notes", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to &lt;TelephoneDetailsReports&gt;&lt;TelephoneDetailsReport&gt;&lt;AreaCode&gt;888&lt;/AreaCode&gt;&lt;Count&gt;1&lt;/Count&gt;&lt;/TelephoneDetailsReport&gt;&lt;/TelephoneDetailsReports&gt;.
+        /// </summary>
+        public static string OrderAreaCodes {
+            get {
+                return ResourceManager.GetString("OrderAreaCodes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to &lt;OrderHistoryWrapper&gt;&lt;OrderHistory&gt;&lt;OrderDate&gt;2014-05-20T14:21:43.937Z&lt;/OrderDate&gt;&lt;Note&gt;Order backordered - awaiting additional numbers&lt;/Note&gt;&lt;Status&gt;BACKORDERED&lt;/Status&gt;&lt;/OrderHistory&gt;&lt;OrderHistory&gt;&lt;OrderDate&gt;2014-05-20T14:24:43.428Z&lt;/OrderDate&gt;&lt;Note&gt;Order backordered - awaiting additional numbers&lt;/Note&gt;&lt;Author&gt;System&lt;/Author&gt;&lt;Status&gt;BACKORDERED&lt;/Status&gt;&lt;Difference&gt;&lt;/Difference&gt;&lt;/OrderHistory&gt;&lt;/OrderHistoryWrapper&gt;.
+        /// </summary>
+        public static string OrderHistory {
+            get {
+                return ResourceManager.GetString("OrderHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to &lt;TelephoneDetailsReports&gt;&lt;TelephoneDetailsReport&gt;&lt;NPA-NXX&gt;888424&lt;/NPA-NXX&gt;&lt;Count&gt;1&lt;/Count&gt;&lt;/TelephoneDetailsReport&gt;&lt;/TelephoneDetailsReports&gt;.
+        /// </summary>
+        public static string OrderNpaNxx {
+            get {
+                return ResourceManager.GetString("OrderNpaNxx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to &lt;TelephoneNumbers&gt;&lt;Count&gt;2&lt;/Count&gt;&lt;TelephoneNumber&gt;8042105666&lt;/TelephoneNumber&gt;&lt;TelephoneNumber&gt;8042105667&lt;/TelephoneNumber&gt;&lt;/TelephoneNumbers&gt;.
+        /// </summary>
+        public static string OrderTns {
+            get {
+                return ResourceManager.GetString("OrderTns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to &lt;TelephoneDetailsReports&gt;&lt;TelephoneDetailsReport&gt;&lt;NPA-NXX&gt;888424&lt;/NPA-NXX&gt;&lt;Count&gt;1&lt;/Count&gt;&lt;/TelephoneDetailsReport&gt;&lt;/TelephoneDetailsReports&gt;.
+        /// </summary>
+        public static string OrderTotals {
+            get {
+                return ResourceManager.GetString("OrderTotals", resourceCulture);
+            }
+        }
     }
 }

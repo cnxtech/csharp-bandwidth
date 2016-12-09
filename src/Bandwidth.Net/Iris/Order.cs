@@ -638,7 +638,7 @@ namespace Bandwidth.Net.Iris
       return
         (await
           Api.MakeXmlRequestAsync<TelephoneDetailsReportsWithAreaCodes>(HttpMethod.Get,
-            $"/accounts/{Api.AccountId}/orders/{id}/history",
+            $"/accounts/{Api.AccountId}/orders/{id}/areaCodes",
             cancellationToken)).Codes;
     }
 
@@ -668,5 +668,6 @@ namespace Bandwidth.Net.Iris
             $"/accounts/{Api.AccountId}/orders/{id}/tns",
             cancellationToken)).Numbers;
     }
+
   }
 }
