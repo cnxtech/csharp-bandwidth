@@ -139,7 +139,7 @@ namespace Bandwidth.Net.Iris
     Task<FileData[]> GetFilesAsync(string id, bool metadata = false, CancellationToken? cancellationToken = null);
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="id">Portin id</param>
     /// <param name="fileName">File name on the server</param>

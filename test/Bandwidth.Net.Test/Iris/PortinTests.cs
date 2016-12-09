@@ -88,7 +88,7 @@ namespace Bandwidth.Net.Test.Iris
 
     public static bool IsValidUpdateRequest(HttpRequestMessage request, Portin data)
     {
-      return request.Method == HttpMethod.Post &&
+      return request.Method == HttpMethod.Put &&
              request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins/id"
              && request.Content.Headers.ContentType.MediaType == "application/xml"
              && request.Content.ReadAsStringAsync().Result == Helpers.ToXmlString(data);
@@ -228,7 +228,7 @@ namespace Bandwidth.Net.Test.Iris
       var path = Path.GetTempFileName();
       try
       {
-        File.WriteAllText(path, "1234");
+        File.WriteAllBytes(path, Encoding.Unicode.GetBytes("1234"));
         context.Arrange(
           m =>
             m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateFileRequest(r)),
@@ -250,16 +250,13 @@ namespace Bandwidth.Net.Test.Iris
       return request.Method == HttpMethod.Put
              && request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins/id/loas"
              && request.Content.Headers.ContentType.MediaType == "application/octet-stream"
-             && request.Content.ReadAsStringAsync().Result == "1234";
+             && Encoding.Unicode.GetString(request.Content.ReadAsByteArrayAsync().Result) == "1234";
     }
 
     [Fact]
     public async void TestUpdateFileStream()
     {
-      var response = new HttpResponseMessage
-      {
-        Content = new XmlContent("<Response><filename>fileName</filename></Response>")
-      };
+      var response = new HttpResponseMessage();
       var context = new MockContext<IHttp>();
       context.Arrange(
         m =>
@@ -276,10 +273,7 @@ namespace Bandwidth.Net.Test.Iris
     [Fact]
     public async void TestUpdateFileBuffer()
     {
-      var response = new HttpResponseMessage
-      {
-        Content = new XmlContent("<Response><filename>fileName</filename></Response>")
-      };
+      var response = new HttpResponseMessage();
       var context = new MockContext<IHttp>();
       context.Arrange(
         m =>
@@ -293,15 +287,12 @@ namespace Bandwidth.Net.Test.Iris
     [Fact]
     public async void TestUpdateFilePath()
     {
-      var response = new HttpResponseMessage
-      {
-        Content = new XmlContent("<Response><filename>fileName</filename></Response>")
-      };
+      var response = new HttpResponseMessage();
       var context = new MockContext<IHttp>();
       var path = Path.GetTempFileName();
       try
       {
-        File.WriteAllText(path, "1234");
+        File.WriteAllBytes(path, Encoding.Unicode.GetBytes("1234"));
         context.Arrange(
           m =>
             m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidUploadFileRequest(r)),
@@ -322,7 +313,7 @@ namespace Bandwidth.Net.Test.Iris
       return request.Method == HttpMethod.Put
              && request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins/id/loas/fileName"
              && request.Content.Headers.ContentType.MediaType == "application/octet-stream"
-             && request.Content.ReadAsStringAsync().Result == "1234";
+             && Encoding.Unicode.GetString(request.Content.ReadAsByteArrayAsync().Result) == "1234";
     }
 
     [Fact]
@@ -380,7 +371,7 @@ namespace Bandwidth.Net.Test.Iris
     public static bool IsValidGetFilesRequest(HttpRequestMessage request)
     {
       return request.Method == HttpMethod.Get
-             && request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins/id/loas/fileName/metadata";
+             && request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins/id/loas?metadata=false";
     }
 
     [Fact]
@@ -399,7 +390,7 @@ namespace Bandwidth.Net.Test.Iris
       var api = Helpers.GetIrisApi(context).Portin;
       using (var r = await api.GetFileAsync("id", "fileName", true))
       {
-        Assert.Equal("text/plain", r.MediaType);        
+        Assert.Equal("text/plain", r.MediaType);
         Assert.Null(r.Buffer);
         Assert.NotNull(r.Stream);
       }
@@ -421,7 +412,7 @@ namespace Bandwidth.Net.Test.Iris
       var api = Helpers.GetIrisApi(context).Portin;
       using (var r = await api.GetFileAsync("id", "fileName"))
       {
-        Assert.Equal("text/plain", r.MediaType);        
+        Assert.Equal("text/plain", r.MediaType);
         Assert.NotNull(r.Buffer);
         Assert.Null(r.Stream);
       }
