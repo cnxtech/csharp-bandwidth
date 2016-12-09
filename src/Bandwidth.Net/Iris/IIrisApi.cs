@@ -84,6 +84,11 @@
     /// Access to Order Api
     /// </summary>
     IOrder Order { get; }
+
+    /// <summary>
+    /// Access to Portin Api
+    /// </summary>
+    IPortin Portin { get; }
   }
 
   /// <summary>

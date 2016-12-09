@@ -70,6 +70,7 @@ namespace Bandwidth.Net.Iris
       LnpChecker = new LnpCheckerApi { Api = this };
       LsrOrder = new LsrOrderApi { Api = this };
       Order = new OrderApi { Api = this };
+      Portin = new PortinApi { Api = this };
     }
 
     /// <summary>
@@ -164,6 +165,12 @@ namespace Bandwidth.Net.Iris
     /// Access to Order Api
     /// </summary>
     public IOrder Order { get; }
+
+    /// <summary>
+    /// Access to Portin Api
+    /// </summary>
+    public IPortin Portin { get; }
+
 
 
     internal async Task<HttpResponseMessage> MakeXmlRequestAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null, HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
