@@ -100,6 +100,11 @@
     /// </summary>
     IRateCenter RateCenter { get; }
 
+    /// <summary>
+    /// Access to SipPeer Api
+    /// </summary>
+    ISipPeer SipPeer { get; }
+
   }
 
   /// <summary>
