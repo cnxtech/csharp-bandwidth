@@ -71,7 +71,8 @@ namespace Bandwidth.Net.Iris
       LsrOrder = new LsrOrderApi { Api = this };
       Order = new OrderApi { Api = this };
       Portin = new PortinApi { Api = this };
-      Portout = new PortoutApi { Api = this }; 
+      Portout = new PortoutApi { Api = this };
+      RateCenter = new RateCenterApi { Api = this };
     }
 
     /// <summary>
@@ -177,7 +178,10 @@ namespace Bandwidth.Net.Iris
     /// </summary>
     public IPortout Portout { get; }
 
-
+    /// <summary>
+    /// Access to RateCenter Api
+    /// </summary>
+    public IRateCenter RateCenter { get; }
 
     internal async Task<HttpResponseMessage> MakeXmlRequestAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null, HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
     {

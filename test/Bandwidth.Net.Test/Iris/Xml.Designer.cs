@@ -317,5 +317,14 @@ namespace Bandwidth.Net.Test.Iris {
                 return ResourceManager.GetString("OrderTotals", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to &lt;RateCenterResponse&gt;&lt;ResultCount&gt;2&lt;/ResultCount&gt;&lt;RateCenters&gt;&lt;RateCenter&gt;&lt;Abbreviation&gt;ACME&lt;/Abbreviation&gt;&lt;Name&gt;ACME&lt;/Name&gt;&lt;/RateCenter&gt;&lt;RateCenter&gt;&lt;Abbreviation&gt;AHOSKIE&lt;/Abbreviation&gt;&lt;Name&gt;AHOSKIE&lt;/Name&gt;&lt;/RateCenter&gt;&lt;RateCenter&gt;&lt;Abbreviation&gt;ALBEMARLE&lt;/Abbreviation&gt;&lt;Name&gt;ALBEMARLE&lt;/Name&gt;&lt;/RateCenter&gt;&lt;/RateCenters&gt;&lt;/RateCenterResponse&gt;.
+        /// </summary>
+        public static string RateCenterList {
+            get {
+                return ResourceManager.GetString("RateCenterList", resourceCulture);
+            }
+        }
     }
 }

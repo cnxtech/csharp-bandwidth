@@ -226,4 +226,7 @@
   <data name="OrderTotals" xml:space="preserve">
     <value>&lt;TelephoneDetailsReports&gt;&lt;TelephoneDetailsReport&gt;&lt;NPA-NXX&gt;888424&lt;/NPA-NXX&gt;&lt;Count&gt;1&lt;/Count&gt;&lt;/TelephoneDetailsReport&gt;&lt;/TelephoneDetailsReports&gt;</value>
   </data>
+  <data name="RateCenterList" xml:space="preserve">
+    <value>&lt;RateCenterResponse&gt;&lt;ResultCount&gt;2&lt;/ResultCount&gt;&lt;RateCenters&gt;&lt;RateCenter&gt;&lt;Abbreviation&gt;ACME&lt;/Abbreviation&gt;&lt;Name&gt;ACME&lt;/Name&gt;&lt;/RateCenter&gt;&lt;RateCenter&gt;&lt;Abbreviation&gt;AHOSKIE&lt;/Abbreviation&gt;&lt;Name&gt;AHOSKIE&lt;/Name&gt;&lt;/RateCenter&gt;&lt;RateCenter&gt;&lt;Abbreviation&gt;ALBEMARLE&lt;/Abbreviation&gt;&lt;Name&gt;ALBEMARLE&lt;/Name&gt;&lt;/RateCenter&gt;&lt;/RateCenters&gt;&lt;/RateCenterResponse&gt;</value>
+  </data>
 </root>

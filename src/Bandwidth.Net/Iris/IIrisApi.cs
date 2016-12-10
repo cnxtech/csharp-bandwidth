@@ -95,6 +95,11 @@
     /// </summary>
     IPortout Portout { get; }
 
+    /// <summary>
+    /// Access to RateCenter Api
+    /// </summary>
+    IRateCenter RateCenter { get; }
+
   }
 
   /// <summary>
