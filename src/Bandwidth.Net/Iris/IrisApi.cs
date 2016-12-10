@@ -71,6 +71,7 @@ namespace Bandwidth.Net.Iris
       LsrOrder = new LsrOrderApi { Api = this };
       Order = new OrderApi { Api = this };
       Portin = new PortinApi { Api = this };
+      Portout = new PortoutApi { Api = this }; 
     }
 
     /// <summary>
@@ -170,6 +171,11 @@ namespace Bandwidth.Net.Iris
     /// Access to Portin Api
     /// </summary>
     public IPortin Portin { get; }
+
+    /// <summary>
+    /// Access to Portout Api
+    /// </summary>
+    public IPortout Portout { get; }
 
 
 

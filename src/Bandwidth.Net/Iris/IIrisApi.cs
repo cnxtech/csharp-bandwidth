@@ -89,6 +89,12 @@
     /// Access to Portin Api
     /// </summary>
     IPortin Portin { get; }
+
+    /// <summary>
+    /// Access to Portout Api
+    /// </summary>
+    IPortout Portout { get; }
+
   }
 
   /// <summary>
