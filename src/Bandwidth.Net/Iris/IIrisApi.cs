@@ -105,6 +105,11 @@
     /// </summary>
     ISipPeer SipPeer { get; }
 
+    /// <summary>
+    /// Access to Site Api
+    /// </summary>
+    ISite Site { get; }
+
   }
 
   /// <summary>

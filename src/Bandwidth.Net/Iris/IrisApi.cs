@@ -74,6 +74,7 @@ namespace Bandwidth.Net.Iris
       Portout = new PortoutApi { Api = this };
       RateCenter = new RateCenterApi { Api = this };
       SipPeer = new SipPeerApi { Api = this };
+      Site = new SiteApi { Api = this };
     }
 
     /// <summary>
@@ -188,6 +189,12 @@ namespace Bandwidth.Net.Iris
     /// Access to SipPeer Api
     /// </summary>
     public ISipPeer SipPeer { get; }
+
+    /// <summary>
+    /// Access to Site Api
+    /// </summary>
+    public ISite Site { get; }
+
 
 
     internal async Task<HttpResponseMessage> MakeXmlRequestAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null, HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
