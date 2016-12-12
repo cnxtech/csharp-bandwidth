@@ -77,6 +77,7 @@ namespace Bandwidth.Net.Iris
       Site = new SiteApi { Api = this };
       Subscription = new SubscriptionApi { Api = this };
       TnReservation = new TnReservationApi { Api = this };
+      Tn = new TnApi { Api = this };
     }
 
     /// <summary>
@@ -207,8 +208,10 @@ namespace Bandwidth.Net.Iris
     /// </summary>
     public ITnReservation TnReservation { get; }
 
-
-
+    /// <summary>
+    /// Access to Tn Api
+    /// </summary>
+    public ITn Tn { get; }
 
     internal async Task<HttpResponseMessage> MakeXmlRequestAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null, HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
     {

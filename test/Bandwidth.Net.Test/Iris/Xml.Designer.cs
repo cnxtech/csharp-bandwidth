@@ -326,5 +326,23 @@ namespace Bandwidth.Net.Test.Iris {
                 return ResourceManager.GetString("RateCenterList", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to &lt;TelephoneNumberResponse&gt;&lt;TelephoneNumberDetails&gt;&lt;Lata&gt;656&lt;/Lata&gt;&lt;/TelephoneNumberDetails&gt;&lt;/TelephoneNumberResponse&gt;.
+        /// </summary>
+        public static string TnLata {
+            get {
+                return ResourceManager.GetString("TnLata", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to &lt;TelephoneNumberResponse&gt;&lt;TelephoneNumberDetails&gt;&lt;State&gt;CO&lt;/State&gt;&lt;RateCenter&gt;DENVER&lt;/RateCenter&gt;&lt;/TelephoneNumberDetails&gt;&lt;/TelephoneNumberResponse&gt;.
+        /// </summary>
+        public static string TnRateCenter {
+            get {
+                return ResourceManager.GetString("TnRateCenter", resourceCulture);
+            }
+        }
     }
 }

@@ -120,6 +120,11 @@
     /// </summary>
     ITnReservation TnReservation { get; }
 
+    /// <summary>
+    /// Access to Tn Api
+    /// </summary>
+    ITn Tn { get; }
+
   }
 
   /// <summary>

@@ -229,4 +229,10 @@
   <data name="RateCenterList" xml:space="preserve">
     <value>&lt;RateCenterResponse&gt;&lt;ResultCount&gt;2&lt;/ResultCount&gt;&lt;RateCenters&gt;&lt;RateCenter&gt;&lt;Abbreviation&gt;ACME&lt;/Abbreviation&gt;&lt;Name&gt;ACME&lt;/Name&gt;&lt;/RateCenter&gt;&lt;RateCenter&gt;&lt;Abbreviation&gt;AHOSKIE&lt;/Abbreviation&gt;&lt;Name&gt;AHOSKIE&lt;/Name&gt;&lt;/RateCenter&gt;&lt;RateCenter&gt;&lt;Abbreviation&gt;ALBEMARLE&lt;/Abbreviation&gt;&lt;Name&gt;ALBEMARLE&lt;/Name&gt;&lt;/RateCenter&gt;&lt;/RateCenters&gt;&lt;/RateCenterResponse&gt;</value>
   </data>
+  <data name="TnLata" xml:space="preserve">
+    <value>&lt;TelephoneNumberResponse&gt;&lt;TelephoneNumberDetails&gt;&lt;Lata&gt;656&lt;/Lata&gt;&lt;/TelephoneNumberDetails&gt;&lt;/TelephoneNumberResponse&gt;</value>
+  </data>
+  <data name="TnRateCenter" xml:space="preserve">
+    <value>&lt;TelephoneNumberResponse&gt;&lt;TelephoneNumberDetails&gt;&lt;State&gt;CO&lt;/State&gt;&lt;RateCenter&gt;DENVER&lt;/RateCenter&gt;&lt;/TelephoneNumberDetails&gt;&lt;/TelephoneNumberResponse&gt;</value>
+  </data>
 </root>
