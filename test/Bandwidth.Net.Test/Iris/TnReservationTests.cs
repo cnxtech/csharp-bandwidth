@@ -47,7 +47,8 @@ namespace Bandwidth.Net.Test.Iris
     {
       var tnreservation = new TnReservation
       {
-         ReservedTn = "123456"
+         ReservedTn = "123456",
+         ReservationId = "id"
       };
       var response = new HttpResponseMessage
       {
@@ -61,6 +62,7 @@ namespace Bandwidth.Net.Test.Iris
       var api = Helpers.GetIrisApi(context).TnReservation;
       var item = await api.GetAsync("id");
       Assert.Equal("123456", item.ReservedTn);
+      Assert.Equal("id", item.Id);
     }
 
     public static bool IsValidGetRequest(HttpRequestMessage request)

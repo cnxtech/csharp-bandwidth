@@ -47,7 +47,8 @@ namespace Bandwidth.Net.Test.Iris
     {
       var subscription = new Subscription
       {
-         OrderId = "111"
+         OrderId = "111",
+         SubscriptionId = "id"
       };
       var response = new HttpResponseMessage
       {
@@ -61,6 +62,7 @@ namespace Bandwidth.Net.Test.Iris
       var api = Helpers.GetIrisApi(context).Subscription;
       var item = await api.GetAsync("id");
       Assert.Equal("111", item.OrderId);
+      Assert.Equal("id", item.Id);
     }
 
     public static bool IsValidGetRequest(HttpRequestMessage request)

@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Bandwidth.Net.Iris;
 using LightMock;
 using Xunit;
@@ -234,6 +235,18 @@ namespace Bandwidth.Net.Test.Iris
              &&
              request.Content.ReadAsStringAsync().Result ==
              Helpers.ToXmlString(new SipPeerTelephoneNumbers {Numbers = data});
+    }
+
+    [Fact]
+    public void TestXmlSerializing()
+    {
+      ValidateXmlSerializable(new SipPeerTelephoneNumbers());
+    }
+
+    private void ValidateXmlSerializable(IXmlSerializable item)
+    {
+      Assert.Null(item.GetSchema());
+      Assert.Throws<NotImplementedException>(() => item.ReadXml(null));
     }
   }
 }

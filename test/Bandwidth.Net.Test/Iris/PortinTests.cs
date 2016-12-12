@@ -29,7 +29,8 @@ namespace Bandwidth.Net.Test.Iris
             Country = "County"
           }
         },
-        SiteId = "1"
+        SiteId = "1",
+        OrderId = "id"
       };
       var response = new HttpResponseMessage
       {
@@ -53,6 +54,7 @@ namespace Bandwidth.Net.Test.Iris
           HttpCompletionOption.ResponseContentRead,
           null));
       Assert.Equal("1111", res.BillingTelephoneNumber);
+      Assert.Equal("id", res.Id);
     }
 
     public static bool IsValidCreateRequest(HttpRequestMessage request, Portin data)
@@ -314,6 +316,26 @@ namespace Bandwidth.Net.Test.Iris
              && request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins/id/loas/fileName"
              && request.Content.Headers.ContentType.MediaType == "application/octet-stream"
              && Encoding.Unicode.GetString(request.Content.ReadAsByteArrayAsync().Result) == "1234";
+    }
+
+    [Fact]
+    public async void TestDeleteFile()
+    {
+      var response = new HttpResponseMessage();
+      var context = new MockContext<IHttp>();
+      context.Arrange(
+          m =>
+            m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidDeleteFileRequest(r)),
+              HttpCompletionOption.ResponseContentRead,
+              null)).Returns(Task.FromResult(response));
+      var api = Helpers.GetIrisApi(context).Portin;
+      await api.DeleteFileAsync("id", "fileName");
+    }
+    
+    public static bool IsValidDeleteFileRequest(HttpRequestMessage request)
+    {
+      return request.Method == HttpMethod.Delete
+             && request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins/id/loas/fileName";
     }
 
     [Fact]

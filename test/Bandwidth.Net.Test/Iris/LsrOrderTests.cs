@@ -101,6 +101,7 @@ namespace Bandwidth.Net.Test.Iris
       var api = Helpers.GetIrisApi(context).LsrOrder;
       var items = await api.ListAsync();
       Assert.Equal(2, items.Length);
+      Assert.Equal("7d644c88-ef23-4307-96ab-20253666d0c7", items[0].Id);
     }
 
     public static bool IsValidListRequest(HttpRequestMessage request)

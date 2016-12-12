@@ -9,10 +9,5 @@ namespace Bandwidth.Net.Iris
       : base(default(DateTime))
     {
     }
-
-    public DefaultDateTimeAttribute(string dateTime)
-      : base(DateTime.Parse(dateTime))
-    {
-    }
   }
 }
