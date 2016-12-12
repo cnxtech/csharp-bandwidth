@@ -12,7 +12,7 @@ namespace Bandwidth.Net.Iris
     /// <summary>
     ///   Create a site
     /// </summary>
-    /// <param name="data">data of new sip site</param>
+    /// <param name="data">data of new  site</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Id of created sip site</returns>
     Task<string> CreateAsync(Site data, CancellationToken? cancellationToken = null);

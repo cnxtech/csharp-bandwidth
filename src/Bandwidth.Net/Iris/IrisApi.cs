@@ -75,6 +75,7 @@ namespace Bandwidth.Net.Iris
       RateCenter = new RateCenterApi { Api = this };
       SipPeer = new SipPeerApi { Api = this };
       Site = new SiteApi { Api = this };
+      Subscription = new SubscriptionApi { Api = this };
     }
 
     /// <summary>
@@ -194,6 +195,11 @@ namespace Bandwidth.Net.Iris
     /// Access to Site Api
     /// </summary>
     public ISite Site { get; }
+
+    /// <summary>
+    /// Access to Subscription Api
+    /// </summary>
+    public ISubscription Subscription { get; }
 
 
 

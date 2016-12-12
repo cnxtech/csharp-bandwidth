@@ -110,6 +110,11 @@
     /// </summary>
     ISite Site { get; }
 
+    /// <summary>
+    /// Access to Subscription Api
+    /// </summary>
+    ISubscription Subscription { get; }
+
   }
 
   /// <summary>
