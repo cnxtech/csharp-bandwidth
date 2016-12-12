@@ -76,6 +76,7 @@ namespace Bandwidth.Net.Iris
       SipPeer = new SipPeerApi { Api = this };
       Site = new SiteApi { Api = this };
       Subscription = new SubscriptionApi { Api = this };
+      TnReservation = new TnReservationApi { Api = this };
     }
 
     /// <summary>
@@ -200,6 +201,12 @@ namespace Bandwidth.Net.Iris
     /// Access to Subscription Api
     /// </summary>
     public ISubscription Subscription { get; }
+
+    /// <summary>
+    /// Access to TnReservation Api
+    /// </summary>
+    public ITnReservation TnReservation { get; }
+
 
 
 

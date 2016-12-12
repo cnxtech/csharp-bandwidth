@@ -16,7 +16,7 @@ namespace Bandwidth.Net.Iris
     /// </summary>
     /// <param name="data">data of new subscription</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
-    /// <returns>Id of created sip subscription</returns>
+    /// <returns>Id of created subscription</returns>
     Task<string> CreateAsync(Subscription data, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -58,83 +58,82 @@ namespace Bandwidth.Net.Iris
   /// </summary>
   public class Subscription
   {
-
     /// <summary>
-    /// Id
+    ///   Id
     /// </summary>
-public string Id => SubscriptionId;
+    public string Id => SubscriptionId;
 
     /// <summary>
-    /// SubscriptionId
+    ///   SubscriptionId
     /// </summary>
     public string SubscriptionId { get; set; }
 
     /// <summary>
-    /// OrderType
+    ///   OrderType
     /// </summary>
     public string OrderType { get; set; }
 
     /// <summary>
-    /// OrderId
+    ///   OrderId
     /// </summary>
     public string OrderId { get; set; }
 
     /// <summary>
-    /// EmailSubscription
+    ///   EmailSubscription
     /// </summary>
     public EmailSubscription EmailSubscription { get; set; }
 
     /// <summary>
-    /// CallbackSubscription
+    ///   CallbackSubscription
     /// </summary>
     public CallbackSubscription CallbackSubscription { get; set; }
   }
 
   /// <summary>
-  /// CallbackSubscription
+  ///   CallbackSubscription
   /// </summary>
   public class CallbackSubscription
   {
     /// <summary>
-    /// Url
+    ///   Url
     /// </summary>
     [XmlElement("URL")]
     public string Url { get; set; }
 
     /// <summary>
-    /// User
+    ///   User
     /// </summary>
     public string User { get; set; }
 
     /// <summary>
-    /// Expiry
+    ///   Expiry
     /// </summary>
     public int Expiry { get; set; }
   }
 
   /// <summary>
-  /// EmailSubscription
+  ///   EmailSubscription
   /// </summary>
   public class EmailSubscription
   {
     /// <summary>
-    /// Email
+    ///   Email
     /// </summary>
     public string Email { get; set; }
 
     /// <summary>
-    /// DigestRequested
+    ///   DigestRequested
     /// </summary>
     public string DigestRequested { get; set; }
   }
 
   /// <summary>
-  /// SubscriptionsResponse
+  ///   SubscriptionsResponse
   /// </summary>
   public class SubscriptionsResponse
   {
     /// <summary>
-    /// Subscriptions
+    ///   Subscriptions
     /// </summary>
     public Subscription[] Subscriptions { get; set; }
   }

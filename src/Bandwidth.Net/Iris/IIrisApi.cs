@@ -115,6 +115,11 @@
     /// </summary>
     ISubscription Subscription { get; }
 
+    /// <summary>
+    /// Access to TnReservation Api
+    /// </summary>
+    ITnReservation TnReservation { get; }
+
   }
 
   /// <summary>
