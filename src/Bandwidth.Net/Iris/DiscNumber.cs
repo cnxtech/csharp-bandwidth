@@ -16,6 +16,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="query">Optional query</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Array of data about numbers</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.DiscNumber.ListAsync();
+    /// </code>
+    /// </example>
     Task<string[]> ListAsync(CityQuery query = null, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -23,6 +28,11 @@ namespace Bandwidth.Net.Iris
     /// </summary>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Totals data</returns>
+    /// <example>
+    /// <code>
+    /// var totals = await client.DiscNumber.GetTotalsAsync();
+    /// </code>
+    /// </example>
     Task<Quantity> GetTotalsAsync(CancellationToken? cancellationToken = null);
   }
 

@@ -16,6 +16,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="note">Note data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Id of created note</returns>
+    /// <example>
+    /// <code>
+    /// var id = await client.Portout.AddNoteAsync("orderId", new Note {Description = "description"});
+    /// </code>
+    /// </example>
     Task<string> AddNoteAsync(string id, Note note, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -24,6 +29,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Portout id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Array of notes</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.Portout.GetNotesAsync("orderId");
+    /// </code>
+    /// </example>
     Task<Note[]> GetNotesAsync(string id, CancellationToken? cancellationToken = null);
   }
 

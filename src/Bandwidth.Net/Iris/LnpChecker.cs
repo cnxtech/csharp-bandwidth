@@ -20,6 +20,11 @@ namespace Bandwidth.Net.Iris
     /// </param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Protability report</returns>
+    /// <example>
+    /// <code>
+    /// var response = await client.LnpChecker.CheckAsync(new[]{"+1234567980"}, true);
+    /// </code>
+    /// </example>
     Task<NumberPortabilityResponse> CheckAsync(string[] numbers, bool fullCheck = false,
       CancellationToken? cancellationToken = null);
   }

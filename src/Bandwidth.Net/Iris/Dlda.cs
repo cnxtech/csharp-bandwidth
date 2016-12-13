@@ -17,6 +17,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="data">data of new Dlda order</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Id of created Dlda</returns>
+    /// <example>
+    /// <code>
+    /// var id = await client.Dlda.CreateAsync(new Dlda{DldaTnGroups = new[]{new DldaTnGroup{TelephoneNumbers = new TelephoneNumbers{Numbers = new[]{"+1234567890"}}}}});
+    /// </code>
+    /// </example>
     Task<string> CreateAsync(Dlda data, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -25,6 +30,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Dlda Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Dlda data</returns>
+    /// <example>
+    /// <code>
+    /// var data = await client.Dlda.GetAsync("id");
+    /// </code>
+    /// </example>
     Task<Dlda> GetAsync(string id, CancellationToken? cancellationToken = null);
 
 
@@ -32,6 +42,11 @@ namespace Bandwidth.Net.Iris
     ///   List orders
     /// </summary>
     /// <returns>Array of orders data</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.Dlda.ListAsync();
+    /// </code>
+    /// </example>
     Task<OrderIdUserIdDate[]> ListAsync(DldaQuery query = null, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -40,6 +55,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Dlda Id</param>
     /// <param name="data">data to change</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <example>
+    /// <code>
+    /// await client.Dlda.UpdateAsync("id", new Dlda{DldaTnGroups = new[]{new DldaTnGroup{TelephoneNumbers = new TelephoneNumbers{Numbers = new[]{"+1234567890"}}}}});
+    /// </code>
+    /// </example>
     Task UpdateAsync(string id, Dlda data, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -48,6 +68,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Dlda Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Array of orders</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.Dlda.GetHistoryAsync("id");
+    /// </code>
+    /// </example>
     Task<OrderHistoryItem[]> GetHistoryAsync(string id, CancellationToken? cancellationToken = null);
   }
 

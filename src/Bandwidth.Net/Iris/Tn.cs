@@ -19,6 +19,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="number">phone number</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Tn data</returns>
+    /// <example>
+    /// <code>
+    /// var tn = await client.Tn.GetAsync("id");
+    /// </code>
+    /// </example>
     Task<Tn> GetAsync(string number, CancellationToken? cancellationToken = null);
 
 
@@ -27,6 +32,11 @@ namespace Bandwidth.Net.Iris
     /// </summary>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Array of tns data</returns>
+    /// <example>
+    /// <code>
+    /// var response = await client.Tn.ListAsync();
+    /// </code>
+    /// </example>
     Task<TelephoneNumbersResponse> ListAsync(CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -35,6 +45,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="number">phone number</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Sites data</returns>
+    /// <example>
+    /// <code>
+    /// var response = await client.Tn.GetSitesAsync("1324567890");
+    /// </code>
+    /// </example>
     Task<TelephoneNumberSite> GetSitesAsync(string number, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -43,6 +58,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="number">phone number</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Peers data</returns>
+    /// <example>
+    /// <code>
+    /// var response = await client.Tn.GetSipPeersAsync("1324567890");
+    /// </code>
+    /// </example>
     Task<TelephoneNumberSipPeer> GetSipPeersAsync(string number, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -51,6 +71,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="number">phone number</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Rate center data</returns>
+    /// <example>
+    /// <code>
+    /// var response = await client.Tn.GetRateCenter("1324567890");
+    /// </code>
+    /// </example>
     Task<TelephoneNumberRateCenter> GetRateCenter(string number, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -59,6 +84,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="number">phone number</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Details data</returns>
+    /// <example>
+    /// <code>
+    /// var response = await client.Tn.GetDetailsAsync("1324567890");
+    /// </code>
+    /// </example>
     Task<TelephoneNumberDetails> GetDetailsAsync(string number, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -67,6 +97,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="number">phone number</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>LATA data</returns>
+    /// <example>
+    /// <code>
+    /// var lata = await client.Tn.GetLataAsync("1234567890");
+    /// </code>
+    /// </example>
     Task<string> GetLataAsync(string number, CancellationToken? cancellationToken = null);
   }
 

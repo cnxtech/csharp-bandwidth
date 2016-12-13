@@ -17,12 +17,22 @@ namespace Bandwidth.Net.Iris
     /// <param name="query">Query parameters</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>List of numbers</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.InserviceNumber.ListAsync();
+    /// </code>
+    /// </example>
     Task<string[]> ListAsync(InserviceNumberQuery query = null, CancellationToken? cancellationToken = null);
 
     /// <summary>
     ///   Return totals data for numbers
     /// </summary>
     /// <returns>Total data</returns>
+    /// <example>
+    /// <code>
+    /// var totals = await client.InserviceNumber.GetTotalsAsync();
+    /// </code>
+    /// </example>
     Task<Quantity> GetTotalsAsync(CancellationToken? cancellationToken = null);
   }
 

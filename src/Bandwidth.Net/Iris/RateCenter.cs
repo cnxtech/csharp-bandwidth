@@ -13,6 +13,11 @@ namespace Bandwidth.Net.Iris
     ///   List rate centers
     /// </summary>
     /// <returns>Array of orders data</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.RateCenter.ListAsync();
+    /// </code>
+    /// </example> 
     Task<RateCenter[]> ListAsync(RateCenterQuery query = null, CancellationToken? cancellationToken = null);
   }
 

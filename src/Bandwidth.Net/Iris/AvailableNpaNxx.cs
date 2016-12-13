@@ -16,6 +16,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="query">Optional query parameters</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Aray of data with available NpaNxxs</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.AvailableNpaNxx.ListAsync();
+    /// </code>
+    /// </example>
     Task<AvailableNpaNxx[]> ListAsync(AvailableNpaNxxQuery query = null, CancellationToken? cancellationToken = null);
   }
 

@@ -15,6 +15,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="data">data of new  site</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Id of created sip site</returns>
+    /// <example>
+    /// <code>
+    /// var id = await client.Site.CreateAsync(new Site{Name = "site"});
+    /// </code>
+    /// </example>
     Task<string> CreateAsync(Site data, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -23,6 +28,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Site Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Site data</returns>
+    /// <example>
+    /// <code>
+    /// var site = await client.Site.GetAsync("id");
+    /// </code>
+    /// </example>
     Task<Site> GetAsync(string id, CancellationToken? cancellationToken = null);
 
 
@@ -31,6 +41,11 @@ namespace Bandwidth.Net.Iris
     /// </summary>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Array of sites data</returns>
+    /// <example>
+    /// <code>
+    /// var sites = await client.Site.ListAsync();
+    /// </code>
+    /// </example>
     Task<Site[]> ListAsync(CancellationToken? cancellationToken = null);
 
 
@@ -40,6 +55,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Site Id</param>
     /// <param name="data">Changed site data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <example>
+    /// <code>
+    /// await client.Site.UpdateAsync("id", new Site{Description = "test"});
+    /// </code>
+    /// </example>
     Task UpdateAsync(string id, Site data, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -47,6 +67,11 @@ namespace Bandwidth.Net.Iris
     /// </summary>
     /// <param name="id">Site Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <example>
+    /// <code>
+    /// await client.Site.DeleteAsync("id"});
+    /// </code>
+    /// </example>
     Task DeleteAsync(string id, CancellationToken? cancellationToken = null);
   }
 

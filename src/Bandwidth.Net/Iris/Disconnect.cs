@@ -17,6 +17,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="orderName">Order Name</param>
     /// <param name="numbers">Numbers to order</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <example>
+    /// <code>
+    /// await client.Disconnect.CreateAsync("test", new[]{"+1234567890"});
+    /// </code>
+    /// </example>
     Task CreateAsync(string orderName, string[] numbers, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -26,6 +31,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="note">Note data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Id of created note</returns>
+    /// <example>
+    /// <code>
+    /// var id = await client.Disconnect.AddNoteAsync("orderId", new Note {Description = "description"});
+    /// </code>
+    /// </example>
     Task<string> AddNoteAsync(string id, Note note, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -34,6 +44,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Order id</param>
     /// <param name="cancellationToken"></param>
     /// <returns>Array of notes</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.Disconnect.GetNotesAsync("orderId");
+    /// </code>
+    /// </example>
     Task<Note[]> GetNotesAsync(string id, CancellationToken? cancellationToken = null);
   }
 

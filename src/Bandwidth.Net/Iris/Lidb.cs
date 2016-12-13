@@ -17,6 +17,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="data">data of new order</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Id of created Dlda</returns>
+    /// <example>
+    /// <code>
+    /// var id = await client.Lidb.CreateAsync(new Lidb {LidbTnGroups = new LidbTnGroups{TelephoneNumbers = new []{"+1234567890"}}});
+    /// </code>
+    /// </example>
     Task<string> CreateAsync(Lidb data, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -25,6 +30,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Lidb Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Lidb data</returns>
+    /// <example>
+    /// <code>
+    /// var data = await client.Lidb.GetAsync("id");
+    /// </code>
+    /// </example>
     Task<Lidb> GetAsync(string id, CancellationToken? cancellationToken = null);
 
 
@@ -32,6 +42,11 @@ namespace Bandwidth.Net.Iris
     ///   List orders
     /// </summary>
     /// <returns>Array of orders data</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.Lidb.ListAsync();
+    /// </code>
+    /// </example>
     Task<OrderIdUserIdDate[]> ListAsync(LidbQuery query = null, CancellationToken? cancellationToken = null);
   }
 

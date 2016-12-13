@@ -16,6 +16,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="options">orders data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Array of phone numbers</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.LineOptionOrder.CreateAsync(new[]{new TnLineOptions{TelephoneNumber = "+1234567890"}});
+    /// </code>
+    /// </example>
     Task<string[]> CreateAsync(TnLineOptions[] options, CancellationToken? cancellationToken = null);
   }
 

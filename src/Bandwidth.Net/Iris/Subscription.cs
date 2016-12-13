@@ -17,6 +17,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="data">data of new subscription</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Id of created subscription</returns>
+    /// <example>
+    /// <code>
+    /// var id = await client.Subscription.CreateAsync(new Subscription{OrderId = "orderId"});
+    /// </code>
+    /// </example>
     Task<string> CreateAsync(Subscription data, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -25,6 +30,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Subscription Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Subscription data</returns>
+    /// <example>
+    /// <code>
+    /// var subscription = await client.Subscription.GetAsync("id");
+    /// </code>
+    /// </example>
     Task<Subscription> GetAsync(string id, CancellationToken? cancellationToken = null);
 
 
@@ -33,6 +43,11 @@ namespace Bandwidth.Net.Iris
     /// </summary>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Array of subscriptions data</returns>
+    /// <example>
+    /// <code>
+    /// var subscriptions = await client.Subscription.ListAsync("id");
+    /// </code>
+    /// </example>
     Task<Subscription[]> ListAsync(CancellationToken? cancellationToken = null);
 
 
@@ -42,6 +57,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Subscription Id</param>
     /// <param name="data">Changed subscription data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <example>
+    /// <code>
+    /// await client.Subscription.UpdateAsync("id", new Subscription {OrderId = "orderId"});
+    /// </code>
+    /// </example>
     Task UpdateAsync(string id, Subscription data, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -49,6 +69,11 @@ namespace Bandwidth.Net.Iris
     /// </summary>
     /// <param name="id">Subscription Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <example>
+    /// <code>
+    /// await client.Subscription.DeleteAsync("id");
+    /// </code>
+    /// </example>
     Task DeleteAsync(string id, CancellationToken? cancellationToken = null);
   }
 

@@ -21,6 +21,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="data">data of new Portin order</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Order response</returns>
+    /// <example>
+    /// <code>
+    /// var id = await client.Portin.CreateAsync(new Portin {BillingTelephoneNumber = "+1234567890"});
+    /// </code>
+    /// </example>
     Task<LnpOrderResponse> CreateAsync(Portin data, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -30,6 +35,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="note">Note data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Id of created note</returns>
+    /// <example>
+    /// <code>
+    /// var id = await client.Portin.AddNoteAsync("orderId", new Note {Description = "description"});
+    /// </code>
+    /// </example>
     Task<string> AddNoteAsync(string id, Note note, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -38,6 +48,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Portin id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Array of notes</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.Portin.GetNotesAsync("orderId");
+    /// </code>
+    /// </example>
     Task<Note[]> GetNotesAsync(string id, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -48,6 +63,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="mediaType">media type of uploaded data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>file name on the server</returns>
+    /// <example>
+    /// <code>
+    /// var fileName = await client.Portin.CreateFileAsync("orderId", fileStream, "text/plain");
+    /// </code>
+    /// </example>
     Task<string> CreateFileAsync(string id, Stream stream, string mediaType, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -58,6 +78,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="mediaType">media type of uploaded data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>file name on the server</returns>
+    /// <example>
+    /// <code>
+    /// var fileName = await client.Portin.CreateFileAsync("orderId", fileBuffer, "text/plain");
+    /// </code>
+    /// </example>
     Task<string> CreateFileAsync(string id, byte[] buffer, string mediaType, CancellationToken? cancellationToken = null);
 
 #if !WithoutFileIO
@@ -69,6 +94,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="mediaType">media type of uploaded data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>file name on the server</returns>
+    /// <example>
+    /// <code>
+    /// var fileName = await client.Portin.CreateFileAsync("orderId", filePath, "text/plain");
+    /// </code>
+    /// </example>
     Task<string> CreateFileAsync(string id, string filePath, string mediaType,
       CancellationToken? cancellationToken = null);
 #endif
@@ -82,6 +112,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="mediaType">media type of uploaded data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Task instance</returns>
+    /// <example>
+    /// <code>
+    /// await client.Portin.UpdateFileAsync("orderId", "file.txt", fileStream, "text/plain");
+    /// </code>
+    /// </example>
     Task UpdateFileAsync(string id, string fileName, Stream stream, string mediaType,
       CancellationToken? cancellationToken = null);
 
@@ -94,6 +129,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="mediaType">media type of uploaded data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Task instance</returns>
+    /// <example>
+    /// <code>
+    /// await client.Portin.UpdateFileAsync("orderId", "file.txt", fileBuffer, "text/plain");
+    /// </code>
+    /// </example>
     Task UpdateFileAsync(string id, string fileName, byte[] buffer, string mediaType,
       CancellationToken? cancellationToken = null);
 
@@ -107,6 +147,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="mediaType">media type of uploaded data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Task instance</returns>
+    /// <example>
+    /// <code>
+    /// await client.Portin.UpdateFileAsync("orderId", "file.txt", filePath, "text/plain");
+    /// </code>
+    /// </example>
     Task UpdateFileAsync(string id, string fileName, string filePath, string mediaType,
       CancellationToken? cancellationToken = null);
 #endif
@@ -117,7 +162,12 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Portin id</param>
     /// <param name="fileName">File name on the server</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
-    /// <returns></returns>
+    /// <returns>File metadata</returns>
+    /// <example>
+    /// <code>
+    /// var metadata = await client.Portin.GetFileMetadataAsync("orderId", "file.txt");
+    /// </code>
+    /// </example>
     Task<FileMetadata> GetFileMetadataAsync(string id, string fileName, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -127,6 +177,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="fileName">File name on the server</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Async task</returns>
+    /// <example>
+    /// <code>
+    /// await client.Portin.DeleteFileAsync("orderId");
+    /// </code>
+    /// </example>
     Task DeleteFileAsync(string id, string fileName, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -136,6 +191,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="metadata">if true files metadata will be returned too</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>List of files</returns>
+    /// <example>
+    /// <code>
+    /// var files = await client.Portin.GetFilesAsync("orderId");
+    /// </code>
+    /// </example>
     Task<FileData[]> GetFilesAsync(string id, bool metadata = false, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -146,6 +206,14 @@ namespace Bandwidth.Net.Iris
     /// <param name="asStream">if true file content will be returned as Stream object, otherwise as byte array</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>File content</returns>
+    /// <example>
+    /// <code>
+    /// using(var content = await client.Portin.GetFileAsync("orderId", "file.txt"))
+    /// {
+    ///   var buffer = content.Buffer;
+    /// }
+    /// </code>
+    /// </example>
     Task<FileContent> GetFileAsync(string id, string fileName, bool asStream = false,
       CancellationToken? cancellationToken = null);
 
@@ -156,6 +224,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="data">Changed data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Async task</returns>
+    /// <example>
+    /// <code>
+    /// await client.Portin.UpdateAsync("orderId", new LnpOrderSupp{WirelessInfo = new[]{new WirelessInfo{AccountNumber = ""}}});
+    /// </code>
+    /// </example>
     Task UpdateAsync(string id, LnpOrderSupp data, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -164,6 +237,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Portin id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Async task</returns>
+    /// <example>
+    /// <code>
+    /// await client.Portin.DeleteAsync("orderId");
+    /// </code>
+    /// </example>
     Task DeleteAsync(string id, CancellationToken? cancellationToken = null);
   }
 

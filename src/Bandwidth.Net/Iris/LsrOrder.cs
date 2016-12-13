@@ -17,6 +17,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="data">data of new LsrOrder order</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Id of created LsrOrder</returns>
+    /// <example>
+    /// <code>
+    /// var id = await client.LnpChecker.CreateAsync(new LsrOrder {BillingTelephoneNumber = "+1234567890"});
+    /// </code>
+    /// </example>
     Task<string> CreateAsync(LsrOrder data, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -25,6 +30,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">LsrOrder Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>LsrOrder data</returns>
+    /// <example>
+    /// <code>
+    /// var order = await client.LnpChecker.GetAsync("id");
+    /// </code>
+    /// </example>
     Task<LsrOrder> GetAsync(string id, CancellationToken? cancellationToken = null);
 
 
@@ -32,6 +42,11 @@ namespace Bandwidth.Net.Iris
     ///   List orders
     /// </summary>
     /// <returns>Array of orders data</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.LnpChecker.ListAsync();
+    /// </code>
+    /// </example>
     Task<LsrOrderSummary[]> ListAsync(LsrOrderQuery query = null, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -40,6 +55,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">LsrOrder Id</param>
     /// <param name="data">data to change</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <example>
+    /// <code>
+    /// await client.LnpChecker.UpdateAsync("id", new LsrOrder {BillingTelephoneNumber = "+1234567890"});
+    /// </code>
+    /// </example>
     Task UpdateAsync(string id, LsrOrder data, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -48,6 +68,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">LsrOrder Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Array of orders</returns>
+    /// <example>
+    /// <code>
+    /// var data = await client.LnpChecker.GetHistoryAsync("id");
+    /// </code>
+    /// </example>
     Task<OrderHistoryItem[]> GetHistoryAsync(string id, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -57,6 +82,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="note">Note data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Id of created note</returns>
+    /// <example>
+    /// <code>
+    /// var id = await client.LnpChecker.AddNoteAsync("orderId", new Note {Description = "description"});
+    /// </code>
+    /// </example>
     Task<string> AddNoteAsync(string id, Note note, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -65,6 +95,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Order id</param>
     /// <param name="cancellationToken"></param>
     /// <returns>Array of notes</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.LnpChecker.GetNotesAsync("orderId");
+    /// </code>
+    /// </example>
     Task<Note[]> GetNotesAsync(string id, CancellationToken? cancellationToken = null);
   }
 

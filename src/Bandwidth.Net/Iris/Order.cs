@@ -18,6 +18,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="data">data of new Order order</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Id of created Order</returns>
+    /// <example>
+    /// <code>
+    /// var id = await client.Order.CreateAsync(new Order{Name = "order"}});
+    /// </code>
+    /// </example>
     Task<string> CreateAsync(Order data, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -26,6 +31,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Order Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Order data</returns>
+    /// <example>
+    /// <code>
+    /// var order = await client.Order.GetAsync("id");
+    /// </code>
+    /// </example>
     Task<OrderResult> GetAsync(string id, CancellationToken? cancellationToken = null);
 
 
@@ -33,6 +43,11 @@ namespace Bandwidth.Net.Iris
     ///   List orders
     /// </summary>
     /// <returns>Array of orders data</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.Order.ListAsync();
+    /// </code>
+    /// </example>
     Task<OrderResult[]> ListAsync(OrderQuery query = null, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -41,6 +56,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Order Id</param>
     /// <param name="data">data to change</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <example>
+    /// <code>
+    /// await client.Order.UpdateAsync("id", new Order{Name= "my order"});
+    /// </code>
+    /// </example>
     Task UpdateAsync(string id, Order data, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -49,6 +69,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Order Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Array of orders</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.Order.GetHistoryAsync("orderId");
+    /// </code>
+    /// </example>
     Task<OrderHistoryItem[]> GetHistoryAsync(string id, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -58,6 +83,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="note">Note data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Id of created note</returns>
+    /// <example>
+    /// <code>
+    /// var id = await client.Order.AddNoteAsync("orderId", new Note {Description = "description"});
+    /// </code>
+    /// </example>
     Task<string> AddNoteAsync(string id, Note note, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -66,6 +96,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Order id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Array of notes</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.Order.GetNotesAsync("orderId");
+    /// </code>
+    /// </example>
     Task<Note[]> GetNotesAsync(string id, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -74,6 +109,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Order id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Area codes data</returns>
+    /// <example>
+    /// <code>
+    /// var codes = await client.Order.GetAreaCodesAsync("orderId");
+    /// </code>
+    /// </example>
     Task<AreaCode[]> GetAreaCodesAsync(string id, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -82,6 +122,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Order id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Npa-Nxx data</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.Order.GetNpaNxxAsync("orderId");
+    /// </code>
+    /// </example>
     Task<NpaNxx[]> GetNpaNxxAsync(string id, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -90,6 +135,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Order id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Totals data</returns>
+    /// <example>
+    /// <code>
+    /// var totals = await client.Order.GetTotalsAsync("orderId");
+    /// </code>
+    /// </example>
     Task<object[]> GetTotalsAsync(string id, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -98,6 +148,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">Order id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Phone nnumbers data</returns>
+    /// <example>
+    /// <code>
+    /// var numbers = await client.Order.GetTnsAsync("orderId");
+    /// </code>
+    /// </example>
     Task<string[]> GetTnsAsync(string id, CancellationToken? cancellationToken = null);
   }
 

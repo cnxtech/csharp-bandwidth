@@ -15,6 +15,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="data">data of new tnreservation</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Id of created tnreservation</returns>
+    /// <example>
+    /// <code>
+    /// var id = await client.TnReservation.CreateAsync(new TnReservation{ReservedTn = "1234567980"}});
+    /// </code>
+    /// </example>
     Task<string> CreateAsync(TnReservation data, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -23,6 +28,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">TnReservation Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>TnReservation data</returns>
+    /// <example>
+    /// <code>
+    /// var reservation = await client.TnReservation.GetAsync("id");
+    /// </code>
+    /// </example>
     Task<TnReservation> GetAsync(string id, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -30,6 +40,11 @@ namespace Bandwidth.Net.Iris
     /// </summary>
     /// <param name="id">TnReservation Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <example>
+    /// <code>
+    /// await client.TnReservation.DeleteAsync("id");
+    /// </code>
+    /// </example>
     Task DeleteAsync(string id, CancellationToken? cancellationToken = null);
   }
 

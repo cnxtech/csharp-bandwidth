@@ -20,6 +20,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="data">data of new sip peer</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Id of created sip peer</returns>
+    /// <example>
+    /// <code>
+    /// var id = await client.SipPeer.CreateAsync("siteId", new SipPeer{Name = "sip"});
+    /// </code>
+    /// </example>
     Task<string> CreateAsync(string siteId, SipPeer data, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -29,6 +34,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">SipPeer Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>SipPeer data</returns>
+    /// <example>
+    /// <code>
+    /// var peer = await client.SipPeer.GetAsync("siteId", "id");
+    /// </code>
+    /// </example>
     Task<SipPeer> GetAsync(string siteId, string id, CancellationToken? cancellationToken = null);
 
 
@@ -38,6 +48,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="siteId">Site Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Array of sip peers data</returns>
+    /// <example>
+    /// <code>
+    /// var peers = await client.SipPeer.ListAsync("siteId");
+    /// </code>
+    /// </example>
     Task<SipPeer[]> ListAsync(string siteId, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -46,6 +61,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="siteId">Site Id</param>
     /// <param name="id">SipPeer Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <example>
+    /// <code>
+    /// await client.SipPeer.DeleteAsync("siteId", "id");
+    /// </code>
+    /// </example>
     Task DeleteAsync(string siteId, string id, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -56,6 +76,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="number">Phone number</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Phone number data</returns>
+    /// <example>
+    /// <code>
+    /// var number = await client.SipPeer.GetTnAsync("siteId", "id", "123456789");
+    /// </code>
+    /// </example>
     Task<SipPeerTelephoneNumber> GetTnAsync(string siteId, string id, string number,
       CancellationToken? cancellationToken = null);
 
@@ -66,6 +91,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="id">SipPeer Id</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Array of phone number data</returns>
+    /// <example>
+    /// <code>
+    /// var numbers = await client.SipPeer.GetTnsAsync("siteId", "id");
+    /// </code>
+    /// </example>
     Task<SipPeerTelephoneNumber[]> GetTnsAsync(string siteId, string id, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -77,6 +107,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="data">Changed phone number data</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Async task</returns>
+    /// <example>
+    /// <code>
+    /// await client.SipPeer.UpdateTnAsync("siteId", "id", "1234567890", new SipPeerTelephoneNumber{FullNumber = "+1234567891"});
+    /// </code>
+    /// </example>
     Task UpdateTnAsync(string siteId, string id, string number, SipPeerTelephoneNumber data,
       CancellationToken? cancellationToken = null);
 
@@ -88,6 +123,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="numbers"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
+    /// <example>
+    /// <code>
+    /// await client.SipPeer.MoveTnsAsync("siteId", "id", new[]{"1234567890"});
+    /// </code>
+    /// </example>
     Task MoveTnsAsync(string siteId, string id, string[] numbers, CancellationToken? cancellationToken = null);
   }
 

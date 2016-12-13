@@ -16,6 +16,11 @@ namespace Bandwidth.Net.Iris
     /// <param name="query">Optional query</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Array of data with numbers</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.AvailableNumber.ListAsync();
+    /// </code>
+    /// </example>
     Task<AvailableNumbersResult> ListAsync(AvailableNumberQuery query = null,
       CancellationToken? cancellationToken = null);
   }
