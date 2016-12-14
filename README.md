@@ -2,7 +2,7 @@
 
 A .Net client library for the [Bandwidth Application Platform](http://bandwidth.com/products/application-platform?utm_medium=social&utm_source=github&utm_campaign=dtolb&utm_content=_)
 
-The current version is v4.0, released ## August, 2016. Version 2.15 is available  [here](https://github.com/bandwidthcom/csharp-bandwidth/tree/v2.15).
+The current version is v4.0, released ##. Version 2.15 is available  [here](https://github.com/bandwidthcom/csharp-bandwidth/tree/v2.15).
 
 
 [![Build on .Net 4.5 (Windows)](https://ci.appveyor.com/api/projects/status/bhv8hs3fx9k6c33i?svg=true)](https://ci.appveyor.com/project/avbel/csharp-bandwidth)
@@ -155,6 +155,19 @@ var irisApi = new IrisApi(new IrisAuthData{
     UserName="YOUR_USER_NAME",
     Password="YOUR_PASSWORD"
 });
+```
+
+#### Examples
+
+```csharp
+// Get user's sites
+var sites = await irisApi.Site.ListAsync();
+
+// Return sip peer info for given phone number
+var sipInfo = await irisApi.Tn.GetSipPeersAsync("+1234567890");
+
+//Get available phone numbers
+var numbers = await client.AvailableNumber.ListAsync(new AvailableNumberQuery{AreaCode = "910"});
 ```
 
 ## Providing feedback

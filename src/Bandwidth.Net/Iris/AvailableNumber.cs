@@ -18,7 +18,7 @@ namespace Bandwidth.Net.Iris
     /// <returns>Array of data with numbers</returns>
     /// <example>
     /// <code>
-    /// var list = await client.AvailableNumber.ListAsync();
+    /// var list = await client.AvailableNumber.ListAsync(new AvailableNumberQuery{AreaCode = "910"});
     /// </code>
     /// </example>
     Task<AvailableNumbersResult> ListAsync(AvailableNumberQuery query = null,
@@ -46,6 +46,62 @@ namespace Bandwidth.Net.Iris
     public string AreaCode { get; set; }
 
     /// <summary>
+    /// NpaNxx
+    /// </summary>
+    public string NpaNxx { get; set; }
+    
+    /// <summary>
+    /// NpaNxxx
+    /// </summary>
+    public string NpaNxxx { get; set; }
+
+    /// <summary>
+    /// State
+    /// </summary>
+    public string State { get; set; }
+
+    /// <summary>
+    /// Zip
+    /// </summary>
+    public string Zip { get; set; }
+
+    /// <summary>
+    /// City
+    /// </summary>
+    public string City { get; set; }
+
+    /// <summary>
+    /// Lata
+    /// </summary>
+    public string Lata { get; set; }
+
+    /// <summary>
+    /// OrderBy
+    /// </summary>
+    public string OrderBy { get; set; }
+
+    /// <summary>
+    /// RateCenter
+    /// </summary>
+    public string RateCenter { get; set; }
+
+
+    /// <summary>
+    ///  LocalVanity
+    /// </summary>
+    public string LocalVanity { get; set; }
+
+    /// <summary>
+    ///  TollFreeVanity
+    /// </summary>
+    public string TollFreeVanity { get; set; }
+
+    /// <summary>
+    ///  TollFreeWildCardPattern
+    /// </summary>
+    public string TollFreeWildCardPattern { get; set; }
+
+    /// <summary>
     /// Quantity
     /// </summary>
     public int? Quantity { get; set; }
@@ -54,6 +110,16 @@ namespace Bandwidth.Net.Iris
     /// EnableTNDetail
     /// </summary>
     public bool? EnableTNDetail { get; set; }
+
+    /// <summary>
+    /// Protected
+    /// </summary>
+    public string Protected { get; set; }
+
+    /// <summary>
+    /// EndsIn
+    /// </summary>
+    public string EndsIn { get; set; }
   }
 
 
