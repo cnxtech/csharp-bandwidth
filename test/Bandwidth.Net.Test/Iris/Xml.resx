@@ -226,6 +226,90 @@
   <data name="OrderTotals" xml:space="preserve">
     <value>&lt;TelephoneDetailsReports&gt;&lt;TelephoneDetailsReport&gt;&lt;NPA-NXX&gt;888424&lt;/NPA-NXX&gt;&lt;Count&gt;1&lt;/Count&gt;&lt;/TelephoneDetailsReport&gt;&lt;/TelephoneDetailsReports&gt;</value>
   </data>
+  <data name="Portin" xml:space="preserve">
+    <value>&lt;LnpOrderResponse&gt;
+    &lt;ProcessingStatus&gt;CANCELLED&lt;/ProcessingStatus&gt;
+    &lt;CustomerOrderId&gt;SJM00002&lt;/CustomerOrderId&gt;
+    &lt;LoaAuthorizingPerson&gt;The Authguy&lt;/LoaAuthorizingPerson&gt;
+    &lt;Subscriber&gt;
+        &lt;SubscriberType&gt;BUSINESS&lt;/SubscriberType&gt;
+        &lt;FirstName&gt;First&lt;/FirstName&gt;
+        &lt;LastName&gt;Last&lt;/LastName&gt;
+        &lt;ServiceAddress&gt;
+            &lt;HouseNumber&gt;11235&lt;/HouseNumber&gt;
+            &lt;StreetName&gt;Back&lt;/StreetName&gt;
+            &lt;City&gt;Denver&lt;/City&gt;
+            &lt;StateCode&gt;CO&lt;/StateCode&gt;
+            &lt;Zip&gt;27541&lt;/Zip&gt;
+            &lt;County&gt;Canyon&lt;/County&gt;
+            &lt;Country&gt;United States&lt;/Country&gt;
+            &lt;AddressType&gt;Service&lt;/AddressType&gt;
+        &lt;/ServiceAddress&gt;
+    &lt;/Subscriber&gt;
+    &lt;WirelessInfo&gt;
+        &lt;AccountNumber&gt;771297665AABC&lt;/AccountNumber&gt;
+        &lt;PinNumber&gt;1234&lt;/PinNumber&gt;
+    &lt;/WirelessInfo&gt;
+    &lt;TnAttributes&gt;
+        &lt;TnAttribute&gt;Protected&lt;/TnAttribute&gt;
+    &lt;/TnAttributes&gt;
+    &lt;BillingTelephoneNumber&gt;9195551234&lt;/BillingTelephoneNumber&gt;
+    &lt;ListOfPhoneNumbers&gt;
+        &lt;PhoneNumber&gt;9194809871&lt;/PhoneNumber&gt;
+    &lt;/ListOfPhoneNumbers&gt;
+    &lt;AccountId&gt;20&lt;/AccountId&gt;
+    &lt;SiteId&gt;2857&lt;/SiteId&gt;
+    &lt;PeerId&gt;317771&lt;/PeerId&gt;
+    &lt;LosingCarrierName&gt;Mock Carrier&lt;/LosingCarrierName&gt;
+    &lt;VendorName&gt;Bandwidth CLEC&lt;/VendorName&gt;
+    &lt;OrderCreateDate&gt;2014-08-04T13:37:06.323Z&lt;/OrderCreateDate&gt;
+    &lt;LastModifiedDate&gt;2014-08-04T13:37:08.676Z&lt;/LastModifiedDate&gt;
+    &lt;userId&gt;jbm&lt;/userId&gt;
+    &lt;LastModifiedBy&gt;jbm&lt;/LastModifiedBy&gt;
+    &lt;PartialPort&gt;false&lt;/PartialPort&gt;
+    &lt;Triggered&gt;false&lt;/Triggered&gt;
+    &lt;PortType&gt;AUTOMATED&lt;/PortType&gt;
+    &lt;!-- [ AUTOMATED | INTERNAL | MANUALOFFNET ] --&gt;
+&lt;/LnpOrderResponse&gt;</value>
+  </data>
+  <data name="PortinList" xml:space="preserve">
+    <value>&lt;LNPResponseWrapper&gt;
+    &lt;TotalCount&gt;3176&lt;/TotalCount&gt;
+    &lt;Links&gt;
+        &lt;first&gt; -- link -- &lt;/first&gt;
+        &lt;next&gt; -- link -- &lt;/next&gt;
+    &lt;/Links&gt;
+    &lt;lnpPortInfoForGivenStatus&gt;
+        &lt;CountOfTNs&gt;1&lt;/CountOfTNs&gt;
+        &lt;userId&gt;Neustar&lt;/userId&gt;
+        &lt;lastModifiedDate&gt;2014-11-21T14:00:33.836Z&lt;/lastModifiedDate&gt;
+        &lt;OrderDate&gt;2014-11-05T19:34:53.176Z&lt;/OrderDate&gt;
+        &lt;OrderId&gt;982e3c10-3840-4251-abdd-505cd8610788&lt;/OrderId&gt;
+        &lt;OrderType&gt;port_out&lt;/OrderType&gt;
+        &lt;ErrorCode&gt;200&lt;/ErrorCode&gt;
+        &lt;ErrorMessage&gt;Port out successful.&lt;/ErrorMessage&gt;
+        &lt;FullNumber&gt;9727717577&lt;/FullNumber&gt;
+        &lt;ProcessingStatus&gt;COMPLETE&lt;/ProcessingStatus&gt;
+        &lt;RequestedFOCDate&gt;2014-11-20T00:00:00.000Z&lt;/RequestedFOCDate&gt;
+        &lt;VendorId&gt;512E&lt;/VendorId&gt;
+    &lt;/lnpPortInfoForGivenStatus&gt;
+    &lt;Snip&gt;   ---   &lt;/Snip&gt;
+    &lt;lnpPortInfoForGivenStatus&gt;
+        &lt;CountOfTNs&gt;1&lt;/CountOfTNs&gt;
+        &lt;userId&gt;Neustar&lt;/userId&gt;
+        &lt;lastModifiedDate&gt;2015-03-30T14:01:59.049Z&lt;/lastModifiedDate&gt;
+        &lt;OrderDate&gt;2015-03-24T17:47:17.605Z&lt;/OrderDate&gt;
+        &lt;OrderId&gt;f8f02d0a-d1a4-42eb-8f45-ce8187cd73ff&lt;/OrderId&gt;
+        &lt;OrderType&gt;port_out&lt;/OrderType&gt;
+        &lt;ErrorCode&gt;200&lt;/ErrorCode&gt;
+        &lt;ErrorMessage&gt;Port out successful.&lt;/ErrorMessage&gt;
+        &lt;FullNumber&gt;2092660315&lt;/FullNumber&gt;
+        &lt;ProcessingStatus&gt;COMPLETE&lt;/ProcessingStatus&gt;
+        &lt;RequestedFOCDate&gt;2015-03-27T00:00:00.000Z&lt;/RequestedFOCDate&gt;
+        &lt;VendorId&gt;512E&lt;/VendorId&gt;
+    &lt;/lnpPortInfoForGivenStatus&gt;
+&lt;/LNPResponseWrapper&gt;</value>
+  </data>
   <data name="RateCenterList" xml:space="preserve">
     <value>&lt;RateCenterResponse&gt;&lt;ResultCount&gt;2&lt;/ResultCount&gt;&lt;RateCenters&gt;&lt;RateCenter&gt;&lt;Abbreviation&gt;ACME&lt;/Abbreviation&gt;&lt;Name&gt;ACME&lt;/Name&gt;&lt;/RateCenter&gt;&lt;RateCenter&gt;&lt;Abbreviation&gt;AHOSKIE&lt;/Abbreviation&gt;&lt;Name&gt;AHOSKIE&lt;/Name&gt;&lt;/RateCenter&gt;&lt;RateCenter&gt;&lt;Abbreviation&gt;ALBEMARLE&lt;/Abbreviation&gt;&lt;Name&gt;ALBEMARLE&lt;/Name&gt;&lt;/RateCenter&gt;&lt;/RateCenters&gt;&lt;/RateCenterResponse&gt;</value>
   </data>

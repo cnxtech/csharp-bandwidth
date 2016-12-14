@@ -319,6 +319,50 @@ namespace Bandwidth.Net.Test.Iris {
         }
         
         /// <summary>
+        ///    Looks up a localized string similar to  &lt;LnpOrderResponse&gt;
+        ///    &lt;ProcessingStatus&gt;CANCELLED&lt;/ProcessingStatus&gt;
+        ///    &lt;CustomerOrderId&gt;SJM00002&lt;/CustomerOrderId&gt;
+        ///    &lt;LoaAuthorizingPerson&gt;The Authguy&lt;/LoaAuthorizingPerson&gt;
+        ///    &lt;Subscriber&gt;
+        ///        &lt;SubscriberType&gt;BUSINESS&lt;/SubscriberType&gt;
+        ///        &lt;FirstName&gt;First&lt;/FirstName&gt;
+        ///        &lt;LastName&gt;Last&lt;/LastName&gt;
+        ///        &lt;ServiceAddress&gt;
+        ///            &lt;HouseNumber&gt;11235&lt;/HouseNumber&gt;
+        ///            &lt;StreetName&gt;Back&lt;/StreetName&gt;
+        ///            &lt;City&gt;Denver&lt;/City&gt;
+        ///            &lt;StateCode&gt;CO&lt;/StateCode&gt;
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Portin {
+            get {
+                return ResourceManager.GetString("Portin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to  &lt;LNPResponseWrapper&gt;
+        ///    &lt;TotalCount&gt;3176&lt;/TotalCount&gt;
+        ///    &lt;Links&gt;
+        ///        &lt;first&gt; -- link -- &lt;/first&gt;
+        ///        &lt;next&gt; -- link -- &lt;/next&gt;
+        ///    &lt;/Links&gt;
+        ///    &lt;lnpPortInfoForGivenStatus&gt;
+        ///        &lt;CountOfTNs&gt;1&lt;/CountOfTNs&gt;
+        ///        &lt;userId&gt;Neustar&lt;/userId&gt;
+        ///        &lt;lastModifiedDate&gt;2014-11-21T14:00:33.836Z&lt;/lastModifiedDate&gt;
+        ///        &lt;OrderDate&gt;2014-11-05T19:34:53.176Z&lt;/OrderDate&gt;
+        ///        &lt;OrderId&gt;982e3c10-3840-4251-abdd-505cd8610788&lt;/OrderId&gt;
+        ///        &lt;OrderType&gt;port_out&lt;/OrderType&gt;
+        ///        &lt;ErrorCode&gt; [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string PortinList {
+            get {
+                return ResourceManager.GetString("PortinList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Looks up a localized string similar to &lt;RateCenterResponse&gt;&lt;ResultCount&gt;2&lt;/ResultCount&gt;&lt;RateCenters&gt;&lt;RateCenter&gt;&lt;Abbreviation&gt;ACME&lt;/Abbreviation&gt;&lt;Name&gt;ACME&lt;/Name&gt;&lt;/RateCenter&gt;&lt;RateCenter&gt;&lt;Abbreviation&gt;AHOSKIE&lt;/Abbreviation&gt;&lt;Name&gt;AHOSKIE&lt;/Name&gt;&lt;/RateCenter&gt;&lt;RateCenter&gt;&lt;Abbreviation&gt;ALBEMARLE&lt;/Abbreviation&gt;&lt;Name&gt;ALBEMARLE&lt;/Name&gt;&lt;/RateCenter&gt;&lt;/RateCenters&gt;&lt;/RateCenterResponse&gt;.
         /// </summary>
         public static string RateCenterList {

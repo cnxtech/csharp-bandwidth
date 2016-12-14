@@ -16,6 +16,27 @@ namespace Bandwidth.Net.Iris
   public interface IPortin
   {
     /// <summary>
+    ///   List portin orders
+    /// </summary>
+    /// <param name="query">Query parameters</param>
+    /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <returns>Array of portin data</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.Portin.ListAsync();
+    /// </code>
+    /// </example>
+    Task<PortinResult[]> ListAsync(PortinQuery query = null, CancellationToken? cancellationToken = null);
+
+    /// <summary>
+    /// Return information about portin
+    /// </summary>
+    /// <param name="id">Id of portin</param>
+    /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <returns>Portin data</returns>
+    Task<LnpOrderResponse> GetAsync(string id, CancellationToken? cancellationToken = null);
+
+    /// <summary>
     ///   Create a portin order
     /// </summary>
     /// <param name="data">data of new Portin order</param>
@@ -243,6 +264,90 @@ namespace Bandwidth.Net.Iris
     /// </code>
     /// </example>
     Task DeleteAsync(string id, CancellationToken? cancellationToken = null);
+  }
+
+
+  /// <summary>
+  /// LnpResponseWrapper
+  /// </summary>
+  [XmlType("LNPResponseWrapper")]
+  public class LnpResponseWrapper
+  {
+    /// <summary>
+    /// PortinResults
+    /// </summary>
+    [XmlElement("lnpPortInfoForGivenStatus")]
+    public PortinResult[] PortinResults { get; set; }
+  }
+
+  /// <summary>
+  /// PortinResult
+  /// </summary>
+  public class PortinResult
+  {
+    /// <summary>
+    /// CountOfTns
+    /// </summary>
+    [XmlElement("CountOfTNs")]
+    public int CountOfTns { get; set; }
+
+    /// <summary>
+    /// UserId
+    /// </summary>
+    [XmlElement("userId")]
+    public string UserId { get; set; }
+
+    /// <summary>
+    /// LastModifiedDate
+    /// </summary>
+    [XmlElement("lastModifiedDate")]
+    public DateTime LastModifiedDate { get; set; }
+
+    /// <summary>
+    /// OrderDate
+    /// </summary>
+    public DateTime OrderDate { get; set; }
+
+    /// <summary>
+    /// OrderId
+    /// </summary>
+    public string OrderId { get; set; }
+
+    /// <summary>
+    /// OrderType
+    /// </summary>
+    public string OrderType { get; set; }
+
+    /// <summary>
+    /// ErrorCode
+    /// </summary>
+    public int ErrorCode { get; set; }
+
+    /// <summary>
+    /// ErrorMessage
+    /// </summary>
+    public string ErrorMessage { get; set; }
+
+    /// <summary>
+    /// FullNumber
+    /// </summary>
+    public string FullNumber { get; set; }
+
+    /// <summary>
+    /// ProcessingStatus
+    /// </summary>
+    public string ProcessingStatus { get; set; }
+
+    /// <summary>
+    /// RequestedFOCDate
+    /// </summary>
+    [XmlElement("RequestedFOCDate")]
+    public string RequestedFocDate { get; set; }
+
+    /// <summary>
+    /// VendorId
+    /// </summary>
+    public string VendorId { get; set; }
   }
 
   /// <summary>
@@ -482,6 +587,51 @@ namespace Bandwidth.Net.Iris
     }
   }
 
+  /// <summary>
+  /// Query parameters for Portin list
+  /// </summary>
+  public class PortinQuery
+  {
+    /// <summary>
+    /// Date
+    /// </summary>
+    public DateTime? Date { get; set; }
+
+    /// <summary>
+    /// Startdate
+    /// </summary>
+    public DateTime? Startdate { get; set; }
+
+    /// <summary>
+    /// Enddate
+    /// </summary>
+    public DateTime? Enddate { get; set; }
+
+    /// <summary>
+    /// Page
+    /// </summary>
+    public int? Page { get; set; }
+
+    /// <summary>
+    /// Size
+    /// </summary>
+    public int? Size { get; set; }
+
+    /// <summary>
+    /// Pon
+    /// </summary>
+    public string Pon { get; set; }
+
+    /// <summary>
+    /// Status
+    /// </summary>
+    public string Status { get; set; }
+
+    /// <summary>
+    /// Tn
+    /// </summary>
+    public string Tn { get; set; }
+  }
 
   internal class PortinApi : ApiBase, IPortin
   {
@@ -496,6 +646,20 @@ namespace Bandwidth.Net.Iris
         (await
           Api.MakeXmlRequestAsync<Notes>(HttpMethod.Get, $"/accounts/{Api.AccountId}/portins/{id}/notes",
             cancellationToken)).List;
+    }
+
+    public async Task<PortinResult[]> ListAsync(PortinQuery query = null, CancellationToken? cancellationToken = null)
+    {
+      return
+        (await
+          Api.MakeXmlRequestAsync<LnpResponseWrapper>(HttpMethod.Get, $"/accounts/{Api.AccountId}/portins",
+            cancellationToken)).PortinResults;
+    }
+
+    public Task<LnpOrderResponse> GetAsync(string id, CancellationToken? cancellationToken = null)
+    {
+      return Api.MakeXmlRequestAsync<LnpOrderResponse>(HttpMethod.Get, $"/accounts/{Api.AccountId}/portins/{id}",
+            cancellationToken);
     }
 
     public Task<LnpOrderResponse> CreateAsync(Portin data, CancellationToken? cancellationToken = null)

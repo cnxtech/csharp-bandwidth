@@ -66,6 +66,52 @@ namespace Bandwidth.Net.Test.Iris
     }
 
     [Fact]
+    public async void TestList()
+    {
+      var response = new HttpResponseMessage
+      {
+        Content = Helpers.GetIrisContent("PortinList")
+      };
+      var context = new MockContext<IHttp>();
+      context.Arrange(
+        m =>
+          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidListRequest(r)), HttpCompletionOption.ResponseContentRead,
+            null)).Returns(Task.FromResult(response));
+      var api = Helpers.GetIrisApi(context).Portin;
+      var items = await api.ListAsync();
+      Assert.Equal(2, items.Length);
+    }
+
+    public static bool IsValidListRequest(HttpRequestMessage request)
+    {
+      return request.Method == HttpMethod.Get &&
+             request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins";
+    }
+
+    [Fact]
+    public async void TestGet()
+    {
+      var response = new HttpResponseMessage
+      {
+        Content = Helpers.GetIrisContent("Portin")
+      };
+      var context = new MockContext<IHttp>();
+      context.Arrange(
+        m =>
+          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
+            null)).Returns(Task.FromResult(response));
+      var api = Helpers.GetIrisApi(context).Portin;
+      var item = await api.GetAsync("id");
+      Assert.Equal("771297665AABC", item.WirelessInfo[0].AccountNumber);
+    }
+
+    public static bool IsValidGetRequest(HttpRequestMessage request)
+    {
+      return request.Method == HttpMethod.Get &&
+             request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins/id";
+    }
+
+    [Fact]
     public async void TestUpdate()
     {
       var response = new HttpResponseMessage(HttpStatusCode.OK);
