@@ -377,7 +377,7 @@ namespace Bandwidth.Net.Test.Iris
       var api = Helpers.GetIrisApi(context).Portin;
       await api.DeleteFileAsync("id", "fileName");
     }
-    
+
     public static bool IsValidDeleteFileRequest(HttpRequestMessage request)
     {
       return request.Method == HttpMethod.Delete
@@ -537,11 +537,110 @@ namespace Bandwidth.Net.Test.Iris
 
     public static bool IsValidUpdateActivationStatusRequest(HttpRequestMessage request, ActivationStatus data)
     {
+      var xml = Helpers.ToXmlString(data);
       return request.Method == HttpMethod.Put
              && request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins/id/activationStatus"
              && request.Content.Headers.ContentType.MediaType == "application/xml"
-             && request.Content.ReadAsStringAsync().Result == Helpers.ToXmlString(data);
+             && request.Content.ReadAsStringAsync().Result == xml;
     }
+
+    [Fact]
+    public async void TestGetAreaCodes()
+    {
+      var response = new HttpResponseMessage
+      {
+        Content = Helpers.GetIrisContent("OrderAreaCodes")
+      };
+      var context = new MockContext<IHttp>();
+      context.Arrange(
+        m =>
+          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetAreaCodesRequest(r)),
+            HttpCompletionOption.ResponseContentRead,
+            null)).Returns(Task.FromResult(response));
+      var api = Helpers.GetIrisApi(context).Portin;
+      var list = await api.GetAreaCodesAsync("id");
+      Assert.Equal(1, list.Length);
+      Assert.Equal("888", list[0].Code);
+    }
+
+    public static bool IsValidGetAreaCodesRequest(HttpRequestMessage request)
+    {
+      return request.Method == HttpMethod.Get &&
+             request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins/id/areaCodes";
+    }
+
+    [Fact]
+    public async void TestGetNpaNxx()
+    {
+      var response = new HttpResponseMessage
+      {
+        Content = Helpers.GetIrisContent("OrderNpaNxx")
+      };
+      var context = new MockContext<IHttp>();
+      context.Arrange(
+        m =>
+          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetNpaNxxRequest(r)),
+            HttpCompletionOption.ResponseContentRead,
+            null)).Returns(Task.FromResult(response));
+      var api = Helpers.GetIrisApi(context).Portin;
+      var list = await api.GetNpaNxxAsync("id");
+      Assert.Equal(1, list.Length);
+    }
+
+    public static bool IsValidGetNpaNxxRequest(HttpRequestMessage request)
+    {
+      return request.Method == HttpMethod.Get &&
+             request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins/id/npaNxx";
+    }
+
+    [Fact]
+    public async void TestGetTotals()
+    {
+      var response = new HttpResponseMessage
+      {
+        Content = new XmlContent(Helpers.ToXmlString(new Quantity {Count = 1}))
+      };
+      var context = new MockContext<IHttp>();
+      context.Arrange(
+        m =>
+          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetTotalsRequest(r)),
+            HttpCompletionOption.ResponseContentRead,
+            null)).Returns(Task.FromResult(response));
+      var api = Helpers.GetIrisApi(context).Portin;
+      var rs = await api.GetTotalsAsync("id");
+      Assert.Equal(1, rs.Count);
+    }
+
+    public static bool IsValidGetTotalsRequest(HttpRequestMessage request)
+    {
+      return request.Method == HttpMethod.Get &&
+             request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins/id/totals";
+    }
+
+    [Fact]
+    public async void TestGetTotals2()
+    {
+      var response = new HttpResponseMessage
+      {
+        Content = new XmlContent(Helpers.ToXmlString(new Quantity { Count = 1 }))
+      };
+      var context = new MockContext<IHttp>();
+      context.Arrange(
+        m =>
+          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetTotalsRequest2(r)),
+            HttpCompletionOption.ResponseContentRead,
+            null)).Returns(Task.FromResult(response));
+      var api = Helpers.GetIrisApi(context).Portin;
+      var rs = await api.GetTotalsAsync();
+      Assert.Equal(1, rs.Count);
+    }
+
+    public static bool IsValidGetTotalsRequest2(HttpRequestMessage request)
+    {
+      return request.Method == HttpMethod.Get &&
+             request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins/totals";
+    }
+
 
   }
 }

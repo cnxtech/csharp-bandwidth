@@ -294,6 +294,58 @@ namespace Bandwidth.Net.Iris
     /// </code>
     /// </example>
     Task UpdateActivationStatusAsync(string id, ActivationStatus data, CancellationToken? cancellationToken = null);
+
+    /// <summary>
+    ///   Get area codes of an order
+    /// </summary>
+    /// <param name="id">Portin id</param>
+    /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <returns>Area codes data</returns>
+    /// <example>
+    /// <code>
+    /// var codes = await client.Portin.GetAreaCodesAsync("orderId");
+    /// </code>
+    /// </example>
+    Task<AreaCode[]> GetAreaCodesAsync(string id, CancellationToken? cancellationToken = null);
+
+    /// <summary>
+    ///   Get Npa-Nxx of the phone numbers of an order
+    /// </summary>
+    /// <param name="id">Portin id</param>
+    /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <returns>Npa-Nxx data</returns>
+    /// <example>
+    /// <code>
+    /// var list = await client.Portin.GetNpaNxxAsync("orderId");
+    /// </code>
+    /// </example>
+    Task<NpaNxx[]> GetNpaNxxAsync(string id, CancellationToken? cancellationToken = null);
+
+    /// <summary>
+    ///   Retrieves the total quantity of phone numbers from the specified order.
+    /// </summary>
+    /// <param name="id">Portin id</param>
+    /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <returns>Totals data</returns>
+    /// <example>
+    /// <code>
+    /// var totals = await client.Portin.GetTotalsAsync("orderId");
+    /// </code>
+    /// </example>
+    Task<Quantity> GetTotalsAsync(string id, CancellationToken? cancellationToken = null);
+
+    /// <summary>
+    ///  This resource interacts with the total number of port-ins associated with an account.
+    /// </summary>
+    /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <returns>Totals data</returns>
+    /// <example>
+    /// <code>
+    /// var totals = await client.Portin.GetTotalsAsync("orderId");
+    /// </code>
+    /// </example>
+    Task<Quantity> GetTotalsAsync(CancellationToken? cancellationToken = null);
+
   }
 
 
@@ -839,9 +891,44 @@ namespace Bandwidth.Net.Iris
 
     public Task UpdateActivationStatusAsync(string id, ActivationStatus data, CancellationToken? cancellationToken = null)
     {
-      return Api.MakeXmlRequestAsync<ActivationStatusResponse>(HttpMethod.Put,
+      return Api.MakeXmlRequestAsync(HttpMethod.Put,
         $"/accounts/{Api.AccountId}/portins/{id}/activationStatus", cancellationToken, null, data);
     }
+
+    public async Task<AreaCode[]> GetAreaCodesAsync(string id, CancellationToken? cancellationToken = null)
+    {
+      return
+        (await
+          Api.MakeXmlRequestAsync<TelephoneDetailsReportsWithAreaCodes>(HttpMethod.Get,
+            $"/accounts/{Api.AccountId}/portins/{id}/areaCodes",
+            cancellationToken)).Codes;
+    }
+
+    public async Task<NpaNxx[]> GetNpaNxxAsync(string id, CancellationToken? cancellationToken = null)
+    {
+      return
+        (await
+          Api.MakeXmlRequestAsync<TelephoneDetailsReportsWithNpaNxx>(HttpMethod.Get,
+            $"/accounts/{Api.AccountId}/portins/{id}/npaNxx",
+            cancellationToken)).List;
+    }
+
+    public Task<Quantity> GetTotalsAsync(string id, CancellationToken? cancellationToken = null)
+    {
+      return
+        (Api.MakeXmlRequestAsync<Quantity>(HttpMethod.Get,
+            $"/accounts/{Api.AccountId}/portins/{id}/totals",
+            cancellationToken));
+    }
+
+    public Task<Quantity> GetTotalsAsync(CancellationToken? cancellationToken = null)
+    {
+      return
+        (Api.MakeXmlRequestAsync<Quantity>(HttpMethod.Get,
+            $"/accounts/{Api.AccountId}/portins/totals",
+            cancellationToken));
+    }
+
 
     private async Task<string> SendFileAsync(string id, HttpContent content, string mediaType,
       CancellationToken? cancellationToken = null)
