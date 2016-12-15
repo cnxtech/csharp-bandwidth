@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
+//TODO add routes for /accounts/{accountId}/portins/{orderid}/activationStatus (need description of input/output data)
+
+
 namespace Bandwidth.Net.Iris
 {
   /// <summary>
@@ -264,8 +267,69 @@ namespace Bandwidth.Net.Iris
     /// </code>
     /// </example>
     Task DeleteAsync(string id, CancellationToken? cancellationToken = null);
+
+    /// <summary>
+    /// Retrieve the currently activated status
+    /// </summary>
+    /// <param name="id">Portin id</param>
+    /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <returns>Activation status data</returns>
+    /// <example>
+    /// <code>
+    /// var status = await client.Portin.GetActivationStatusAsync("orderId");
+    /// </code>
+    /// </example>
+    Task<ActivationStatus> GetActivationStatusAsync(string id, CancellationToken? cancellationToken = null);
+
+    /// <summary>
+    /// Sets the activation time for the portin order.
+    /// </summary>
+    /// <param name="id">Portin id</param>
+    /// <param name="data">Changed data</param>
+    /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <returns>Async task</returns>
+    /// <example>
+    /// <code>
+    /// await client.Portin.UpdateActivationStatusAsync("orderId", new ActivationStatus{AutoActivationDate = DateTime.Now});
+    /// </code>
+    /// </example>
+    Task UpdateActivationStatusAsync(string id, ActivationStatus data, CancellationToken? cancellationToken = null);
   }
 
+
+  /// <summary>
+  /// ActivationStatus
+  /// </summary>
+  public class ActivationStatus
+  {
+    /// <summary>
+    /// AutoActivationDate
+    /// </summary>
+    public DateTime AutoActivationDate { get; set; }
+
+    /// <summary>
+    /// ActivatedTelephoneNumbersList
+    /// </summary>
+    [XmlArrayItem("TelephoneNumber")]
+    public string[] ActivatedTelephoneNumbersList { get; set; }
+
+    /// <summary>
+    /// NotYetActivatedTelephoneNumbersList
+    /// </summary>
+    [XmlArrayItem("TelephoneNumber")]
+    public string[] NotYetActivatedTelephoneNumbersList { get; set; }
+  }
+
+  /// <summary>
+  /// ActivationStatusResponse
+  /// </summary>
+  public class ActivationStatusResponse
+  {
+    /// <summary>
+    /// ActivationStatus
+    /// </summary>
+    public ActivationStatus ActivationStatus { get; set; }
+  }
 
   /// <summary>
   /// LnpResponseWrapper
@@ -765,6 +829,18 @@ namespace Bandwidth.Net.Iris
     {
       return Api.MakeXmlRequestWithoutResponseAsync(HttpMethod.Delete, $"/accounts/{Api.AccountId}/portins/{id}",
         cancellationToken);
+    }
+
+    public async Task<ActivationStatus> GetActivationStatusAsync(string id, CancellationToken? cancellationToken = null)
+    {
+      return (await Api.MakeXmlRequestAsync<ActivationStatusResponse>(HttpMethod.Get,
+        $"/accounts/{Api.AccountId}/portins/{id}/activationStatus", cancellationToken)).ActivationStatus;
+    }
+
+    public Task UpdateActivationStatusAsync(string id, ActivationStatus data, CancellationToken? cancellationToken = null)
+    {
+      return Api.MakeXmlRequestAsync<ActivationStatusResponse>(HttpMethod.Put,
+        $"/accounts/{Api.AccountId}/portins/{id}/activationStatus", cancellationToken, null, data);
     }
 
     private async Task<string> SendFileAsync(string id, HttpContent content, string mediaType,

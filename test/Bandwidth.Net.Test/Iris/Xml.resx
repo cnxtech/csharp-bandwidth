@@ -272,6 +272,17 @@
     &lt;!-- [ AUTOMATED | INTERNAL | MANUALOFFNET ] --&gt;
 &lt;/LnpOrderResponse&gt;</value>
   </data>
+  <data name="PortinActivationStatus" xml:space="preserve">
+    <value>&lt;ActivationStatusResponse&gt;
+    &lt;ActivationStatus&gt;
+        &lt;AutoActivationDate&gt;2014-08-29T18:30:00+03:00&lt;/AutoActivationDate&gt;
+        &lt;ActivatedTelephoneNumbersList&gt;
+            &lt;TelephoneNumber&gt;6052609021&lt;/TelephoneNumber&gt;
+        &lt;/ActivatedTelephoneNumbersList&gt;
+        &lt;NotYetActivatedTelephoneNumbersList/&gt;
+    &lt;/ActivationStatus&gt;
+&lt;/ActivationStatusResponse&gt;</value>
+  </data>
   <data name="PortinList" xml:space="preserve">
     <value>&lt;LNPResponseWrapper&gt;
     &lt;TotalCount&gt;3176&lt;/TotalCount&gt;

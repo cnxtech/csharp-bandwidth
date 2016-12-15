@@ -341,6 +341,23 @@ namespace Bandwidth.Net.Test.Iris {
         }
         
         /// <summary>
+        ///    Looks up a localized string similar to &lt;ActivationStatusResponse&gt;
+        ///    &lt;ActivationStatus&gt;
+        ///        &lt;AutoActivationDate&gt;2014-08-29T18:30:00+03:00&lt;/AutoActivationDate&gt;
+        ///        &lt;ActivatedTelephoneNumbersList&gt;
+        ///            &lt;TelephoneNumber&gt;6052609021&lt;/TelephoneNumber&gt;
+        ///        &lt;/ActivatedTelephoneNumbersList&gt;
+        ///        &lt;NotYetActivatedTelephoneNumbersList/&gt;
+        ///    &lt;/ActivationStatus&gt;
+        ///&lt;/ActivationStatusResponse&gt;.
+        /// </summary>
+        public static string PortinActivationStatus {
+            get {
+                return ResourceManager.GetString("PortinActivationStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Looks up a localized string similar to  &lt;LNPResponseWrapper&gt;
         ///    &lt;TotalCount&gt;3176&lt;/TotalCount&gt;
         ///    &lt;Links&gt;

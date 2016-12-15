@@ -493,5 +493,55 @@ namespace Bandwidth.Net.Test.Iris
              && request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins/id/loas/fileName";
     }
 
+    [Fact]
+    public async void TestGetActivationStatus()
+    {
+      var response = new HttpResponseMessage
+      {
+        Content = Helpers.GetIrisContent("PortinActivationStatus")
+      };
+      var context = new MockContext<IHttp>();
+      context.Arrange(
+          m =>
+            m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetActivationStatusRequest(r)),
+              HttpCompletionOption.ResponseContentRead,
+              null)).Returns(Task.FromResult(response));
+      var api = Helpers.GetIrisApi(context).Portin;
+      var status = await api.GetActivationStatusAsync("id");
+      Assert.Equal("6052609021", status.ActivatedTelephoneNumbersList[0]);
+    }
+
+    public static bool IsValidGetActivationStatusRequest(HttpRequestMessage request)
+    {
+      return request.Method == HttpMethod.Get
+             && request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins/id/activationStatus";
+    }
+
+    [Fact]
+    public async void TestUpdateActivationStatus()
+    {
+      var response = new HttpResponseMessage();
+      var context = new MockContext<IHttp>();
+      var data = new ActivationStatus
+      {
+        AutoActivationDate = DateTime.Now
+      };
+      context.Arrange(
+          m =>
+            m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidUpdateActivationStatusRequest(r, data)),
+              HttpCompletionOption.ResponseContentRead,
+              null)).Returns(Task.FromResult(response));
+      var api = Helpers.GetIrisApi(context).Portin;
+      await api.UpdateActivationStatusAsync("id", data);
+    }
+
+    public static bool IsValidUpdateActivationStatusRequest(HttpRequestMessage request, ActivationStatus data)
+    {
+      return request.Method == HttpMethod.Put
+             && request.RequestUri.PathAndQuery == "/v1.0/accounts/accountId/portins/id/activationStatus"
+             && request.Content.Headers.ContentType.MediaType == "application/xml"
+             && request.Content.ReadAsStringAsync().Result == Helpers.ToXmlString(data);
+    }
+
   }
 }
