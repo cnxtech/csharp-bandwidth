@@ -405,5 +405,28 @@ namespace Bandwidth.Net.Test.Iris {
                 return ResourceManager.GetString("TnRateCenter", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to  &lt;UserResponse&gt;
+        ///    &lt;User&gt;
+        ///        &lt;Username&gt;testcustomer&lt;/Username&gt;
+        ///        &lt;FirstName&gt;Jane&lt;/FirstName&gt;
+        ///        &lt;LastName&gt;Doe&lt;/LastName&gt;
+        ///        &lt;EmailAddress&gt;janedoe@bandwidth.com&lt;/EmailAddress&gt;
+        ///        &lt;TelephoneNumber&gt;9199999999&lt;/TelephoneNumber&gt;
+        ///        &lt;Roles&gt;
+        ///            &lt;Role&gt;
+        ///                &lt;RoleName&gt;ROLE_BDR&lt;/RoleName&gt;
+        ///                &lt;Permissions&gt;
+        ///                    &lt;Permission&gt;
+        ///                        &lt;PermissionName&gt;VIEW&lt;/PermissionName&gt;
+        ///                    &lt;/Permission&gt;
+        ///         [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
     }
 }

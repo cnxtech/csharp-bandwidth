@@ -125,6 +125,10 @@
     /// </summary>
     ITn Tn { get; }
 
+    /// <summary>
+    /// User
+    /// </summary>
+    IUser User { get; }
   }
 
   /// <summary>
