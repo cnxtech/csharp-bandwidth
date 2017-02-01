@@ -2,7 +2,7 @@
 
 A .Net client library for the [Bandwidth Application Platform](http://bandwidth.com/products/application-platform?utm_medium=social&utm_source=github&utm_campaign=dtolb&utm_content=_)
 
-The current version is v3.0, released ## August, 2016. Version 2.15 is available  [here](https://github.com/bandwidthcom/csharp-bandwidth/tree/v2.15).
+The current version is v3.0, released 1 February, 2017. Version 2.15 is available  [here](https://github.com/bandwidthcom/csharp-bandwidth/tree/v2.15).
 
 
 [![Build on .Net 4.5 (Windows)](https://ci.appveyor.com/api/projects/status/bhv8hs3fx9k6c33i?svg=true)](https://ci.appveyor.com/project/avbel/csharp-bandwidth)
@@ -228,7 +228,7 @@ For current discussions on 3.0 please see the [3.0 issues section on GitHub](htt
     * [X] Create
     * [X] Get info for single transcription
     * [X] Get all transcriptions for a recording
-    
+
 ## Build Notes
 
-If you are going to build the library to sources with mobile OSes support you should have installed Xamarin tools. 
+If you are going to build the library to sources with mobile OSes support you should have installed Xamarin tools.
