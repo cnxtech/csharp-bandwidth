@@ -197,7 +197,7 @@ namespace Bandwidth.Net.Api
     TollFreeNumberPerMonth,
 
     /// <summary>
-    /// A SMS message that came in to one of your numbers. 
+    /// A SMS message that came in to one of your numbers.
     /// </summary>
     SmsIn,
 
@@ -244,6 +244,16 @@ namespace Bandwidth.Net.Api
     /// <summary>
     /// A CNAM lookup request for a phone number.
     /// </summary>
-    CnamSearch
+    CnamSearch,
+
+    /// <summary>
+    /// Tool free number per month
+    /// </summary>
+    ToolFreeNumberPerMonth,
+
+    /// <summary>
+    /// Sms short codes
+    /// </summary>
+    SmsWShortcodes
   }
 }
