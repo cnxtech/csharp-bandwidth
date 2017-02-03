@@ -31,13 +31,13 @@ namespace Bandwidth.Net
     public InvalidBaseUrlException()
         : base("Base url should be non-empty string")
     {
-    } 
+    }
   }
 
   /// <summary>
   /// BandwidthException
   /// </summary>
-  public sealed class BandwidthException : Exception
+  public class BandwidthException : Exception
   {
     /// <summary>
     /// Status code
@@ -52,6 +52,27 @@ namespace Bandwidth.Net
     public BandwidthException(string message, HttpStatusCode code) : base(message)
     {
       Code = code;
+    }
+  }
+
+  /// <summary>
+  /// RateLimitException
+  /// </summary>
+  public class RateLimitException : BandwidthException
+  {
+
+    /// <summary>
+    /// Time after which your rate limit should be cleared
+    /// </summary>
+    public DateTime ResetTime { get; private set; }
+
+    /// <summary>
+    /// RateLimitException
+    /// </summary>
+    /// <param name="resetTime">Time after which your rate limit should be cleared</param>
+    public RateLimitException(DateTime resetTime): base("Too Many Requests", (HttpStatusCode)429)
+    {
+      ResetTime = resetTime;
     }
   }
 }

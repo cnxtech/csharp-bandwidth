@@ -1,10 +1,13 @@
 using System;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Net;
+using System.Globalization;
 
 namespace Bandwidth.Net
 {
@@ -31,6 +34,12 @@ namespace Bandwidth.Net
     {
       if (!response.IsSuccessStatusCode)
       {
+        if(response.StatusCode == (HttpStatusCode)429){
+          var unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+          var span = double.Parse(response.Headers.GetValues("X-RateLimit-Reset").First(), CultureInfo.InvariantCulture);
+          var time = unixEpoch.AddMilliseconds(span);
+          throw new RateLimitException(time.ToLocalTime());
+        }
         var json = await response.Content.ReadAsStringAsync();
         try
         {
