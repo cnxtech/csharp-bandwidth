@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpTOC>
 
-  <HelpTOCNode Id="a689ebae-b7c2-462a-a573-85d0d99aef89" Title="Bandwidth.Net namespaces" Url="html/R_Project_API.htm">
-    <HelpTOCNode Id="1267e159-467e-4af4-a138-8383d1a0efd7" Title="Bandwidth.Net" Url="html/N_Bandwidth_Net.htm">
-      <HelpTOCNode Id="40463c65-c102-4a96-ba6f-904e895c8650" Title="BandwidthException Class" Url="html/T_Bandwidth_Net_BandwidthException.htm">
+  <HelpTOCNode Id="99e32736-c9a1-4220-b440-5462d2323242" Title="Bandwidth.Net namespaces" Url="html/R_Project_API.htm">
+    <HelpTOCNode Id="7867ad31-95d0-4396-ad00-073583aea281" Title="Bandwidth.Net" Url="html/N_Bandwidth_Net.htm">
+      <HelpTOCNode Id="56d52ce6-b962-4791-81e3-4c6c16c45cd7" Title="BandwidthException Class" Url="html/T_Bandwidth_Net_BandwidthException.htm">
         <HelpTOCNode Title="BandwidthException Constructor " Url="html/M_Bandwidth_Net_BandwidthException__ctor.htm" />
-        <HelpTOCNode Id="b6773f34-1b2b-4174-bdcd-4f722b240f35" Title="BandwidthException Properties" Url="html/Properties_T_Bandwidth_Net_BandwidthException.htm">
+        <HelpTOCNode Id="77c8d53a-f014-4691-bc55-c5f4fb7e04b6" Title="BandwidthException Properties" Url="html/Properties_T_Bandwidth_Net_BandwidthException.htm">
           <HelpTOCNode Title="Code Property " Url="html/P_Bandwidth_Net_BandwidthException_Code.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="4b318bfa-0903-4191-96d1-b9e1e7344af8" Title="CallbackEvent Class" Url="html/T_Bandwidth_Net_CallbackEvent.htm">
+      <HelpTOCNode Id="1ea24aa6-2c16-43ee-b62d-0c04a5868515" Title="CallbackEvent Class" Url="html/T_Bandwidth_Net_CallbackEvent.htm">
         <HelpTOCNode Title="CallbackEvent Constructor " Url="html/M_Bandwidth_Net_CallbackEvent__ctor.htm" />
-        <HelpTOCNode Id="902ced9f-1532-4829-9eaa-9fa632feab40" Title="CallbackEvent Properties" Url="html/Properties_T_Bandwidth_Net_CallbackEvent.htm">
+        <HelpTOCNode Id="73f99c68-96c5-413d-99f6-b34e638590b6" Title="CallbackEvent Properties" Url="html/Properties_T_Bandwidth_Net_CallbackEvent.htm">
           <HelpTOCNode Title="ActiveMembers Property " Url="html/P_Bandwidth_Net_CallbackEvent_ActiveMembers.htm" />
           <HelpTOCNode Title="ApplicationId Property " Url="html/P_Bandwidth_Net_CallbackEvent_ApplicationId.htm" />
           <HelpTOCNode Title="CallId Property " Url="html/P_Bandwidth_Net_CallbackEvent_CallId.htm" />
@@ -51,12 +51,12 @@
           <HelpTOCNode Title="TranscriptionId Property " Url="html/P_Bandwidth_Net_CallbackEvent_TranscriptionId.htm" />
           <HelpTOCNode Title="TranscriptionUri Property " Url="html/P_Bandwidth_Net_CallbackEvent_TranscriptionUri.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="4398b2e7-1c72-40c4-bce0-bead4a6bd3cc" Title="CallbackEvent Methods" Url="html/Methods_T_Bandwidth_Net_CallbackEvent.htm">
+        <HelpTOCNode Id="f631d197-ba83-433b-9e44-91566614880b" Title="CallbackEvent Methods" Url="html/Methods_T_Bandwidth_Net_CallbackEvent.htm">
           <HelpTOCNode Title="CreateFromJson Method " Url="html/M_Bandwidth_Net_CallbackEvent_CreateFromJson.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="b7a5687c-abce-4325-9963-d7ff37a9e97d" Title="CallbackEventHelpers Class" Url="html/T_Bandwidth_Net_CallbackEventHelpers.htm">
-        <HelpTOCNode Id="3ee9ed1b-e7b7-48b4-b3f2-d3235b093b38" Title="CallbackEventHelpers Methods" Url="html/Methods_T_Bandwidth_Net_CallbackEventHelpers.htm">
+      <HelpTOCNode Id="22fce820-e353-4c08-8853-8fbfb1b5df69" Title="CallbackEventHelpers Class" Url="html/T_Bandwidth_Net_CallbackEventHelpers.htm">
+        <HelpTOCNode Id="df121f06-9484-4ccb-b4f8-93f85ab4269c" Title="CallbackEventHelpers Methods" Url="html/Methods_T_Bandwidth_Net_CallbackEventHelpers.htm">
           <HelpTOCNode Title="ReadAsCallbackEventAsync Method " Url="html/M_Bandwidth_Net_CallbackEventHelpers_ReadAsCallbackEventAsync.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
@@ -64,9 +64,9 @@
       <HelpTOCNode Title="CallbackEventState Enumeration" Url="html/T_Bandwidth_Net_CallbackEventState.htm" />
       <HelpTOCNode Title="CallbackEventStatus Enumeration" Url="html/T_Bandwidth_Net_CallbackEventStatus.htm" />
       <HelpTOCNode Title="CallbackEventType Enumeration" Url="html/T_Bandwidth_Net_CallbackEventType.htm" />
-      <HelpTOCNode Id="21fa0742-31ce-4e00-bb3e-0d1b7f5fc7c3" Title="Client Class" Url="html/T_Bandwidth_Net_Client.htm">
+      <HelpTOCNode Id="13967506-efc1-42f2-9689-eeb8ec27e72f" Title="Client Class" Url="html/T_Bandwidth_Net_Client.htm">
         <HelpTOCNode Title="Client Constructor " Url="html/M_Bandwidth_Net_Client__ctor.htm" />
-        <HelpTOCNode Id="559229d5-f915-484b-87af-337130ab1516" Title="Client Properties" Url="html/Properties_T_Bandwidth_Net_Client.htm">
+        <HelpTOCNode Id="93b7cde2-3684-4152-ad9a-b5ed173c99b1" Title="Client Properties" Url="html/Properties_T_Bandwidth_Net_Client.htm">
           <HelpTOCNode Title="Account Property " Url="html/P_Bandwidth_Net_Client_Account.htm" />
           <HelpTOCNode Title="Application Property " Url="html/P_Bandwidth_Net_Client_Application.htm" />
           <HelpTOCNode Title="AvailableNumber Property " Url="html/P_Bandwidth_Net_Client_AvailableNumber.htm" />
@@ -84,35 +84,35 @@
           <HelpTOCNode Title="Transcription Property " Url="html/P_Bandwidth_Net_Client_Transcription.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="817fc7aa-194b-4150-94a9-8640750eef5d" Title="DefaultConverter Class" Url="html/T_Bandwidth_Net_DefaultConverter.htm">
+      <HelpTOCNode Id="9d334bc4-3fd3-4a0a-a64d-662e801d2812" Title="DefaultConverter Class" Url="html/T_Bandwidth_Net_DefaultConverter.htm">
         <HelpTOCNode Title="DefaultConverter Constructor " Url="html/M_Bandwidth_Net_DefaultConverter__ctor.htm" />
         <HelpTOCNode Title="DefaultConverter Properties" Url="html/Properties_T_Bandwidth_Net_DefaultConverter.htm" />
-        <HelpTOCNode Id="78fc3fb9-b465-4718-abcf-bca15fc9fd81" Title="DefaultConverter Methods" Url="html/Methods_T_Bandwidth_Net_DefaultConverter.htm">
+        <HelpTOCNode Id="588f786c-5e97-4cab-967b-63a2047d10f4" Title="DefaultConverter Methods" Url="html/Methods_T_Bandwidth_Net_DefaultConverter.htm">
           <HelpTOCNode Title="CanConvert Method " Url="html/M_Bandwidth_Net_DefaultConverter_CanConvert.htm" />
           <HelpTOCNode Title="ReadJson Method " Url="html/M_Bandwidth_Net_DefaultConverter_ReadJson.htm" />
           <HelpTOCNode Title="WriteJson Method " Url="html/M_Bandwidth_Net_DefaultConverter_WriteJson.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="Gender Enumeration" Url="html/T_Bandwidth_Net_Gender.htm" />
-      <HelpTOCNode Id="98363128-4ea6-4eb9-8fb0-0f50aac1b112" Title="IHttp Interface" Url="html/T_Bandwidth_Net_IHttp.htm">
-        <HelpTOCNode Id="a13f93ab-c35c-4d0c-8d62-1d85685dfa69" Title="IHttp Methods" Url="html/Methods_T_Bandwidth_Net_IHttp.htm">
+      <HelpTOCNode Id="9dd10c24-b35d-4468-8e2f-7c74213f50d3" Title="IHttp Interface" Url="html/T_Bandwidth_Net_IHttp.htm">
+        <HelpTOCNode Id="609d4aed-5200-4fc6-bffe-dbe8f463406d" Title="IHttp Methods" Url="html/Methods_T_Bandwidth_Net_IHttp.htm">
           <HelpTOCNode Title="SendAsync Method " Url="html/M_Bandwidth_Net_IHttp_SendAsync.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="8f6a051f-f720-47a8-8e83-8a4ddb4a4677" Title="InvalidBaseUrlException Class" Url="html/T_Bandwidth_Net_InvalidBaseUrlException.htm">
+      <HelpTOCNode Id="68972946-043c-4fc7-84cd-6b2c23f3b7bb" Title="InvalidBaseUrlException Class" Url="html/T_Bandwidth_Net_InvalidBaseUrlException.htm">
         <HelpTOCNode Title="InvalidBaseUrlException Constructor " Url="html/M_Bandwidth_Net_InvalidBaseUrlException__ctor.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="037eda9c-8328-4781-8214-da9591b3b335" Title="IPlayAudio Interface" Url="html/T_Bandwidth_Net_IPlayAudio.htm">
-        <HelpTOCNode Id="5782e304-b96b-4a50-bd3e-636bcd166994" Title="IPlayAudio Methods" Url="html/Methods_T_Bandwidth_Net_IPlayAudio.htm">
+      <HelpTOCNode Id="16f04221-accb-432c-a999-9118fa01d645" Title="IPlayAudio Interface" Url="html/T_Bandwidth_Net_IPlayAudio.htm">
+        <HelpTOCNode Id="65d4714f-aaad-4b90-9a0c-f3346b853596" Title="IPlayAudio Methods" Url="html/Methods_T_Bandwidth_Net_IPlayAudio.htm">
           <HelpTOCNode Title="PlayAudioAsync Method " Url="html/M_Bandwidth_Net_IPlayAudio_PlayAudioAsync.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="dd1bb13e-3f7f-4460-a494-d8fbe1e45f48" Title="MissingCredentialsException Class" Url="html/T_Bandwidth_Net_MissingCredentialsException.htm">
+      <HelpTOCNode Id="ab1fcba3-8b20-4fca-943a-e7f982ef4435" Title="MissingCredentialsException Class" Url="html/T_Bandwidth_Net_MissingCredentialsException.htm">
         <HelpTOCNode Title="MissingCredentialsException Constructor " Url="html/M_Bandwidth_Net_MissingCredentialsException__ctor.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="cb1dd86e-ebb4-47f6-8ab9-e7c637796183" Title="PlayAudioData Class" Url="html/T_Bandwidth_Net_PlayAudioData.htm">
+      <HelpTOCNode Id="f7c1900b-76e3-4b0f-a6f6-30af667dd0e9" Title="PlayAudioData Class" Url="html/T_Bandwidth_Net_PlayAudioData.htm">
         <HelpTOCNode Title="PlayAudioData Constructor " Url="html/M_Bandwidth_Net_PlayAudioData__ctor.htm" />
-        <HelpTOCNode Id="bd759419-b824-410b-bfe2-a970def72641" Title="PlayAudioData Properties" Url="html/Properties_T_Bandwidth_Net_PlayAudioData.htm">
+        <HelpTOCNode Id="db32fb0d-4725-463d-a832-5e1def3e1a50" Title="PlayAudioData Properties" Url="html/Properties_T_Bandwidth_Net_PlayAudioData.htm">
           <HelpTOCNode Title="FileUrl Property " Url="html/P_Bandwidth_Net_PlayAudioData_FileUrl.htm" />
           <HelpTOCNode Title="Gender Property " Url="html/P_Bandwidth_Net_PlayAudioData_Gender.htm" />
           <HelpTOCNode Title="Locale Property " Url="html/P_Bandwidth_Net_PlayAudioData_Locale.htm" />
@@ -122,24 +122,24 @@
           <HelpTOCNode Title="Voice Property " Url="html/P_Bandwidth_Net_PlayAudioData_Voice.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="02fd1c71-bf06-4fbc-a9ca-5de1cf6c5f02" Title="PlayAudioExtensions Class" Url="html/T_Bandwidth_Net_PlayAudioExtensions.htm">
-        <HelpTOCNode Id="3010739f-ec42-43be-a2cf-5b1a687b967a" Title="PlayAudioExtensions Methods" Url="html/Methods_T_Bandwidth_Net_PlayAudioExtensions.htm">
+      <HelpTOCNode Id="7d2f2ccb-f385-4a35-bec4-278aaa5c1a6a" Title="PlayAudioExtensions Class" Url="html/T_Bandwidth_Net_PlayAudioExtensions.htm">
+        <HelpTOCNode Id="8d020225-69cc-41ca-8989-eab6bc5c3684" Title="PlayAudioExtensions Methods" Url="html/Methods_T_Bandwidth_Net_PlayAudioExtensions.htm">
           <HelpTOCNode Title="PlayAudioFileAsync Method " Url="html/M_Bandwidth_Net_PlayAudioExtensions_PlayAudioFileAsync.htm" />
           <HelpTOCNode Title="SpeakSentenceAsync Method " Url="html/M_Bandwidth_Net_PlayAudioExtensions_SpeakSentenceAsync.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="aef0a0dc-a31f-4e0c-b70f-b0e15031e73d" Title="Bandwidth.Net.Api" Url="html/N_Bandwidth_Net_Api.htm">
-      <HelpTOCNode Id="19f6301a-c36f-4917-b25c-37e27251bbaa" Title="Account Class" Url="html/T_Bandwidth_Net_Api_Account.htm">
+    <HelpTOCNode Id="15f9f054-1edd-4d25-820a-b4de36f2c04b" Title="Bandwidth.Net.Api" Url="html/N_Bandwidth_Net_Api.htm">
+      <HelpTOCNode Id="8bf40cca-cf8f-4728-850b-57fe5148eebd" Title="Account Class" Url="html/T_Bandwidth_Net_Api_Account.htm">
         <HelpTOCNode Title="Account Constructor " Url="html/M_Bandwidth_Net_Api_Account__ctor.htm" />
-        <HelpTOCNode Id="de85d989-f33a-414f-b8b5-fdfa2526e69b" Title="Account Properties" Url="html/Properties_T_Bandwidth_Net_Api_Account.htm">
+        <HelpTOCNode Id="fa8366ca-6ac3-4db3-a1f6-fa0ad3d5e098" Title="Account Properties" Url="html/Properties_T_Bandwidth_Net_Api_Account.htm">
           <HelpTOCNode Title="AccountType Property " Url="html/P_Bandwidth_Net_Api_Account_AccountType.htm" />
           <HelpTOCNode Title="Balance Property " Url="html/P_Bandwidth_Net_Api_Account_Balance.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="0c0ada66-7d90-4e6b-bceb-cb1cb74ef518" Title="AccountTransaction Class" Url="html/T_Bandwidth_Net_Api_AccountTransaction.htm">
+      <HelpTOCNode Id="833f42cd-fd67-4378-a52e-8e887eddbe46" Title="AccountTransaction Class" Url="html/T_Bandwidth_Net_Api_AccountTransaction.htm">
         <HelpTOCNode Title="AccountTransaction Constructor " Url="html/M_Bandwidth_Net_Api_AccountTransaction__ctor.htm" />
-        <HelpTOCNode Id="9a5ddc0f-be30-4ea5-952c-c7d4087e044f" Title="AccountTransaction Properties" Url="html/Properties_T_Bandwidth_Net_Api_AccountTransaction.htm">
+        <HelpTOCNode Id="313639f1-9c1b-4780-b299-d59e8cbb48b5" Title="AccountTransaction Properties" Url="html/Properties_T_Bandwidth_Net_Api_AccountTransaction.htm">
           <HelpTOCNode Title="Amount Property " Url="html/P_Bandwidth_Net_Api_AccountTransaction_Amount.htm" />
           <HelpTOCNode Title="Id Property " Url="html/P_Bandwidth_Net_Api_AccountTransaction_Id.htm" />
           <HelpTOCNode Title="Number Property " Url="html/P_Bandwidth_Net_Api_AccountTransaction_Number.htm" />
@@ -149,9 +149,9 @@
           <HelpTOCNode Title="Units Property " Url="html/P_Bandwidth_Net_Api_AccountTransaction_Units.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="ad1b1cf6-8fac-4104-b2ff-2ab634ab7b8f" Title="AccountTransactionQuery Class" Url="html/T_Bandwidth_Net_Api_AccountTransactionQuery.htm">
+      <HelpTOCNode Id="439eb880-b469-41a2-b336-89b11cd4289a" Title="AccountTransactionQuery Class" Url="html/T_Bandwidth_Net_Api_AccountTransactionQuery.htm">
         <HelpTOCNode Title="AccountTransactionQuery Constructor " Url="html/M_Bandwidth_Net_Api_AccountTransactionQuery__ctor.htm" />
-        <HelpTOCNode Id="b5a1e3b8-9b64-4df3-825b-ec8199ead1aa" Title="AccountTransactionQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_AccountTransactionQuery.htm">
+        <HelpTOCNode Id="4148f060-08ed-4f56-86d7-72fa9162817f" Title="AccountTransactionQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_AccountTransactionQuery.htm">
           <HelpTOCNode Title="FromDate Property " Url="html/P_Bandwidth_Net_Api_AccountTransactionQuery_FromDate.htm" />
           <HelpTOCNode Title="MaxItems Property " Url="html/P_Bandwidth_Net_Api_AccountTransactionQuery_MaxItems.htm" />
           <HelpTOCNode Title="Number Property " Url="html/P_Bandwidth_Net_Api_AccountTransactionQuery_Number.htm" />
@@ -162,9 +162,9 @@
       </HelpTOCNode>
       <HelpTOCNode Title="AccountTransactionType Enumeration" Url="html/T_Bandwidth_Net_Api_AccountTransactionType.htm" />
       <HelpTOCNode Title="AccountType Enumeration" Url="html/T_Bandwidth_Net_Api_AccountType.htm" />
-      <HelpTOCNode Id="a7a666aa-2564-4000-9f8c-f75de3163be7" Title="Application Class" Url="html/T_Bandwidth_Net_Api_Application.htm">
+      <HelpTOCNode Id="dc25c81b-3b6e-4e86-ac6a-305758829696" Title="Application Class" Url="html/T_Bandwidth_Net_Api_Application.htm">
         <HelpTOCNode Title="Application Constructor " Url="html/M_Bandwidth_Net_Api_Application__ctor.htm" />
-        <HelpTOCNode Id="079d0cc3-efe2-4e9c-9ae7-a65f5d697769" Title="Application Properties" Url="html/Properties_T_Bandwidth_Net_Api_Application.htm">
+        <HelpTOCNode Id="84616a8e-feab-434f-9ca9-af545bb8514f" Title="Application Properties" Url="html/Properties_T_Bandwidth_Net_Api_Application.htm">
           <HelpTOCNode Title="AutoAnswer Property " Url="html/P_Bandwidth_Net_Api_Application_AutoAnswer.htm" />
           <HelpTOCNode Title="CallbackHttpMethod Property " Url="html/P_Bandwidth_Net_Api_Application_CallbackHttpMethod.htm" />
           <HelpTOCNode Title="Id Property " Url="html/P_Bandwidth_Net_Api_Application_Id.htm" />
@@ -177,15 +177,15 @@
           <HelpTOCNode Title="Name Property " Url="html/P_Bandwidth_Net_Api_Application_Name.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="de97233c-1c05-4a5a-8ea6-d54aa81a3f20" Title="ApplicationQuery Class" Url="html/T_Bandwidth_Net_Api_ApplicationQuery.htm">
+      <HelpTOCNode Id="a690c634-6517-4b45-8840-6a203ad7c595" Title="ApplicationQuery Class" Url="html/T_Bandwidth_Net_Api_ApplicationQuery.htm">
         <HelpTOCNode Title="ApplicationQuery Constructor " Url="html/M_Bandwidth_Net_Api_ApplicationQuery__ctor.htm" />
-        <HelpTOCNode Id="758b1a75-4b39-4244-bcb2-f6abae722b5e" Title="ApplicationQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_ApplicationQuery.htm">
+        <HelpTOCNode Id="2a09d7b5-4c68-4139-8626-86df3512cd7a" Title="ApplicationQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_ApplicationQuery.htm">
           <HelpTOCNode Title="Size Property " Url="html/P_Bandwidth_Net_Api_ApplicationQuery_Size.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="52579402-79be-485a-9ece-4ba9094137a3" Title="AvailableNumber Class" Url="html/T_Bandwidth_Net_Api_AvailableNumber.htm">
+      <HelpTOCNode Id="a88fd888-a1b0-4f17-8c2d-fae47e2bd028" Title="AvailableNumber Class" Url="html/T_Bandwidth_Net_Api_AvailableNumber.htm">
         <HelpTOCNode Title="AvailableNumber Constructor " Url="html/M_Bandwidth_Net_Api_AvailableNumber__ctor.htm" />
-        <HelpTOCNode Id="a2b551a2-b652-490f-8947-897ae8597756" Title="AvailableNumber Properties" Url="html/Properties_T_Bandwidth_Net_Api_AvailableNumber.htm">
+        <HelpTOCNode Id="61aaaca8-e6b8-43ac-a38a-4c730a5bd198" Title="AvailableNumber Properties" Url="html/Properties_T_Bandwidth_Net_Api_AvailableNumber.htm">
           <HelpTOCNode Title="City Property " Url="html/P_Bandwidth_Net_Api_AvailableNumber_City.htm" />
           <HelpTOCNode Title="Lata Property " Url="html/P_Bandwidth_Net_Api_AvailableNumber_Lata.htm" />
           <HelpTOCNode Title="NationalNumber Property " Url="html/P_Bandwidth_Net_Api_AvailableNumber_NationalNumber.htm" />
@@ -196,9 +196,9 @@
           <HelpTOCNode Title="State Property " Url="html/P_Bandwidth_Net_Api_AvailableNumber_State.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="3e19a9d0-2d5b-4a53-b54b-c286ac3a4f36" Title="Bridge Class" Url="html/T_Bandwidth_Net_Api_Bridge.htm">
+      <HelpTOCNode Id="e9a7543d-d6ea-4a1d-9088-e432c68521b5" Title="Bridge Class" Url="html/T_Bandwidth_Net_Api_Bridge.htm">
         <HelpTOCNode Title="Bridge Constructor " Url="html/M_Bandwidth_Net_Api_Bridge__ctor.htm" />
-        <HelpTOCNode Id="c5c176fe-0e59-419f-b8f2-97a304a68ab7" Title="Bridge Properties" Url="html/Properties_T_Bandwidth_Net_Api_Bridge.htm">
+        <HelpTOCNode Id="de999ca7-2cdc-4adb-8b6b-e97f52b817a1" Title="Bridge Properties" Url="html/Properties_T_Bandwidth_Net_Api_Bridge.htm">
           <HelpTOCNode Title="ActivatedTime Property " Url="html/P_Bandwidth_Net_Api_Bridge_ActivatedTime.htm" />
           <HelpTOCNode Title="BridgeAudio Property " Url="html/P_Bandwidth_Net_Api_Bridge_BridgeAudio.htm" />
           <HelpTOCNode Title="CallIds Property " Url="html/P_Bandwidth_Net_Api_Bridge_CallIds.htm" />
@@ -208,16 +208,16 @@
           <HelpTOCNode Title="State Property " Url="html/P_Bandwidth_Net_Api_Bridge_State.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="5506a0d0-283e-43d6-98c9-3ef92ceb9d3e" Title="BridgeQuery Class" Url="html/T_Bandwidth_Net_Api_BridgeQuery.htm">
+      <HelpTOCNode Id="de828c89-09f1-4c0e-abbe-1cad65638d8b" Title="BridgeQuery Class" Url="html/T_Bandwidth_Net_Api_BridgeQuery.htm">
         <HelpTOCNode Title="BridgeQuery Constructor " Url="html/M_Bandwidth_Net_Api_BridgeQuery__ctor.htm" />
-        <HelpTOCNode Id="76301002-61d9-4f9b-a4f7-2a944e87ee56" Title="BridgeQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_BridgeQuery.htm">
+        <HelpTOCNode Id="f7d453e9-d10b-4388-b99e-48888f302aab" Title="BridgeQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_BridgeQuery.htm">
           <HelpTOCNode Title="Size Property " Url="html/P_Bandwidth_Net_Api_BridgeQuery_Size.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="BridgeState Enumeration" Url="html/T_Bandwidth_Net_Api_BridgeState.htm" />
-      <HelpTOCNode Id="e6346a33-272b-4a82-9fbc-74c25012dd13" Title="Call Class" Url="html/T_Bandwidth_Net_Api_Call.htm">
+      <HelpTOCNode Id="232ea621-dae1-449b-b139-b227a8db07e3" Title="Call Class" Url="html/T_Bandwidth_Net_Api_Call.htm">
         <HelpTOCNode Title="Call Constructor " Url="html/M_Bandwidth_Net_Api_Call__ctor.htm" />
-        <HelpTOCNode Id="259908c6-52dd-4f29-a926-fbeb5147df0d" Title="Call Properties" Url="html/Properties_T_Bandwidth_Net_Api_Call.htm">
+        <HelpTOCNode Id="76c001b6-4286-4a5c-bc95-ab083ec806b9" Title="Call Properties" Url="html/Properties_T_Bandwidth_Net_Api_Call.htm">
           <HelpTOCNode Title="ActiveTime Property " Url="html/P_Bandwidth_Net_Api_Call_ActiveTime.htm" />
           <HelpTOCNode Title="BridgeId Property " Url="html/P_Bandwidth_Net_Api_Call_BridgeId.htm" />
           <HelpTOCNode Title="CallbackHttpMethod Property " Url="html/P_Bandwidth_Net_Api_Call_CallbackHttpMethod.htm" />
@@ -247,17 +247,17 @@
       </HelpTOCNode>
       <HelpTOCNode Title="CallbackHttpMethod Enumeration" Url="html/T_Bandwidth_Net_Api_CallbackHttpMethod.htm" />
       <HelpTOCNode Title="CallDirection Enumeration" Url="html/T_Bandwidth_Net_Api_CallDirection.htm" />
-      <HelpTOCNode Id="2148ffc1-ed99-49e8-ab79-f69106297ce3" Title="CallEvent Class" Url="html/T_Bandwidth_Net_Api_CallEvent.htm">
+      <HelpTOCNode Id="bb94699a-1c37-4e42-9f2c-3a46a776be7f" Title="CallEvent Class" Url="html/T_Bandwidth_Net_Api_CallEvent.htm">
         <HelpTOCNode Title="CallEvent Constructor " Url="html/M_Bandwidth_Net_Api_CallEvent__ctor.htm" />
-        <HelpTOCNode Id="86f81ed8-2c5a-401e-9122-13bd56b57415" Title="CallEvent Properties" Url="html/Properties_T_Bandwidth_Net_Api_CallEvent.htm">
+        <HelpTOCNode Id="8a375e4f-4124-416a-a336-f0e940781ddb" Title="CallEvent Properties" Url="html/Properties_T_Bandwidth_Net_Api_CallEvent.htm">
           <HelpTOCNode Title="Data Property " Url="html/P_Bandwidth_Net_Api_CallEvent_Data.htm" />
           <HelpTOCNode Title="Id Property " Url="html/P_Bandwidth_Net_Api_CallEvent_Id.htm" />
           <HelpTOCNode Title="Name Property " Url="html/P_Bandwidth_Net_Api_CallEvent_Name.htm" />
           <HelpTOCNode Title="Time Property " Url="html/P_Bandwidth_Net_Api_CallEvent_Time.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="903b37e6-0d09-46cf-b6af-161c8189ddee" Title="CallExtensions Class" Url="html/T_Bandwidth_Net_Api_CallExtensions.htm">
-        <HelpTOCNode Id="ad6d3d0a-b0e5-48b1-899a-be9ead732212" Title="CallExtensions Methods" Url="html/Methods_T_Bandwidth_Net_Api_CallExtensions.htm">
+      <HelpTOCNode Id="72fbfa41-60a7-4183-93c2-4450915d0b01" Title="CallExtensions Class" Url="html/T_Bandwidth_Net_Api_CallExtensions.htm">
+        <HelpTOCNode Id="051fdbc3-d7ac-41ed-8d91-0dec08d937d7" Title="CallExtensions Methods" Url="html/Methods_T_Bandwidth_Net_Api_CallExtensions.htm">
           <HelpTOCNode Title="AnswerAsync Method " Url="html/M_Bandwidth_Net_Api_CallExtensions_AnswerAsync.htm" />
           <HelpTOCNode Title="HangupAsync Method " Url="html/M_Bandwidth_Net_Api_CallExtensions_HangupAsync.htm" />
           <HelpTOCNode Title="RejectAsync Method " Url="html/M_Bandwidth_Net_Api_CallExtensions_RejectAsync.htm" />
@@ -265,9 +265,9 @@
           <HelpTOCNode Title="TurnCallRecordingAsync Method " Url="html/M_Bandwidth_Net_Api_CallExtensions_TurnCallRecordingAsync.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="27790e21-d0c3-4a53-813c-c6be0e7a4566" Title="CallGather Class" Url="html/T_Bandwidth_Net_Api_CallGather.htm">
+      <HelpTOCNode Id="b05f72c6-da2f-454a-bd5a-4f9a16108bde" Title="CallGather Class" Url="html/T_Bandwidth_Net_Api_CallGather.htm">
         <HelpTOCNode Title="CallGather Constructor " Url="html/M_Bandwidth_Net_Api_CallGather__ctor.htm" />
-        <HelpTOCNode Id="ee00e7ae-b42e-4bc7-8a6f-204d72c70ca4" Title="CallGather Properties" Url="html/Properties_T_Bandwidth_Net_Api_CallGather.htm">
+        <HelpTOCNode Id="3ff5ddbd-1a5d-4b04-9a55-999526724bfd" Title="CallGather Properties" Url="html/Properties_T_Bandwidth_Net_Api_CallGather.htm">
           <HelpTOCNode Title="Call Property " Url="html/P_Bandwidth_Net_Api_CallGather_Call.htm" />
           <HelpTOCNode Title="CallId Property " Url="html/P_Bandwidth_Net_Api_CallGather_CallId.htm" />
           <HelpTOCNode Title="CompletedTime Property " Url="html/P_Bandwidth_Net_Api_CallGather_CompletedTime.htm" />
@@ -280,9 +280,9 @@
       </HelpTOCNode>
       <HelpTOCNode Title="CallGatherReason Enumeration" Url="html/T_Bandwidth_Net_Api_CallGatherReason.htm" />
       <HelpTOCNode Title="CallGatherState Enumeration" Url="html/T_Bandwidth_Net_Api_CallGatherState.htm" />
-      <HelpTOCNode Id="c2e94e1e-1ab5-4091-b4d4-5017b2e5f497" Title="CallQuery Class" Url="html/T_Bandwidth_Net_Api_CallQuery.htm">
+      <HelpTOCNode Id="fabf60c0-2e03-4f06-996c-0caadce8df86" Title="CallQuery Class" Url="html/T_Bandwidth_Net_Api_CallQuery.htm">
         <HelpTOCNode Title="CallQuery Constructor " Url="html/M_Bandwidth_Net_Api_CallQuery__ctor.htm" />
-        <HelpTOCNode Id="d841282d-8e43-45f3-9164-858e624456ed" Title="CallQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_CallQuery.htm">
+        <HelpTOCNode Id="868924cc-dcb8-4767-b462-3ae0952da42f" Title="CallQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_CallQuery.htm">
           <HelpTOCNode Title="BridgeId Property " Url="html/P_Bandwidth_Net_Api_CallQuery_BridgeId.htm" />
           <HelpTOCNode Title="ConferenceId Property " Url="html/P_Bandwidth_Net_Api_CallQuery_ConferenceId.htm" />
           <HelpTOCNode Title="From Property " Url="html/P_Bandwidth_Net_Api_CallQuery_From.htm" />
@@ -292,9 +292,9 @@
         </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="CallState Enumeration" Url="html/T_Bandwidth_Net_Api_CallState.htm" />
-      <HelpTOCNode Id="653d0596-5f77-4598-93a8-9e6db5eeab65" Title="Conference Class" Url="html/T_Bandwidth_Net_Api_Conference.htm">
+      <HelpTOCNode Id="bd061b46-61e0-4693-b298-8cfb12efa39e" Title="Conference Class" Url="html/T_Bandwidth_Net_Api_Conference.htm">
         <HelpTOCNode Title="Conference Constructor " Url="html/M_Bandwidth_Net_Api_Conference__ctor.htm" />
-        <HelpTOCNode Id="7f318875-e783-479d-b3b0-df3fa7396455" Title="Conference Properties" Url="html/Properties_T_Bandwidth_Net_Api_Conference.htm">
+        <HelpTOCNode Id="4a22ec60-9fc4-47bf-a8fa-26ba1efb76d8" Title="Conference Properties" Url="html/Properties_T_Bandwidth_Net_Api_Conference.htm">
           <HelpTOCNode Title="ActiveMembers Property " Url="html/P_Bandwidth_Net_Api_Conference_ActiveMembers.htm" />
           <HelpTOCNode Title="CallbackHttpMethod Property " Url="html/P_Bandwidth_Net_Api_Conference_CallbackHttpMethod.htm" />
           <HelpTOCNode Title="CallbackTimeout Property " Url="html/P_Bandwidth_Net_Api_Conference_CallbackTimeout.htm" />
@@ -310,8 +310,8 @@
           <HelpTOCNode Title="Tag Property " Url="html/P_Bandwidth_Net_Api_Conference_Tag.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="fe3be834-e252-47d6-8143-786eaf028523" Title="ConferenceExtensions Class" Url="html/T_Bandwidth_Net_Api_ConferenceExtensions.htm">
-        <HelpTOCNode Id="9436d8c2-ab0f-425f-acc4-1a7282adaaf0" Title="ConferenceExtensions Methods" Url="html/Methods_T_Bandwidth_Net_Api_ConferenceExtensions.htm">
+      <HelpTOCNode Id="9042912a-4106-46c0-96ea-dd01850635c9" Title="ConferenceExtensions Class" Url="html/T_Bandwidth_Net_Api_ConferenceExtensions.htm">
+        <HelpTOCNode Id="a544eacb-cb07-421c-83b8-fbe966093828" Title="ConferenceExtensions Methods" Url="html/Methods_T_Bandwidth_Net_Api_ConferenceExtensions.htm">
           <HelpTOCNode Title="DeleteMemberAsync Method " Url="html/M_Bandwidth_Net_Api_ConferenceExtensions_DeleteMemberAsync.htm" />
           <HelpTOCNode Title="HoldAsync Method " Url="html/M_Bandwidth_Net_Api_ConferenceExtensions_HoldAsync.htm" />
           <HelpTOCNode Title="HoldMemberAsync Method " Url="html/M_Bandwidth_Net_Api_ConferenceExtensions_HoldMemberAsync.htm" />
@@ -322,9 +322,9 @@
           <HelpTOCNode Title="TerminateAsync Method " Url="html/M_Bandwidth_Net_Api_ConferenceExtensions_TerminateAsync.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="c1322d55-c2e7-4eeb-9127-bc77d32c386b" Title="ConferenceMember Class" Url="html/T_Bandwidth_Net_Api_ConferenceMember.htm">
+      <HelpTOCNode Id="ebc19b6d-608d-42eb-ad63-458a21ae1acc" Title="ConferenceMember Class" Url="html/T_Bandwidth_Net_Api_ConferenceMember.htm">
         <HelpTOCNode Title="ConferenceMember Constructor " Url="html/M_Bandwidth_Net_Api_ConferenceMember__ctor.htm" />
-        <HelpTOCNode Id="0d073f78-cdb4-4515-9885-7e2b430157e7" Title="ConferenceMember Properties" Url="html/Properties_T_Bandwidth_Net_Api_ConferenceMember.htm">
+        <HelpTOCNode Id="dfb39c59-d9f4-47af-864f-c595f066b37d" Title="ConferenceMember Properties" Url="html/Properties_T_Bandwidth_Net_Api_ConferenceMember.htm">
           <HelpTOCNode Title="AddedTime Property " Url="html/P_Bandwidth_Net_Api_ConferenceMember_AddedTime.htm" />
           <HelpTOCNode Title="Call Property " Url="html/P_Bandwidth_Net_Api_ConferenceMember_Call.htm" />
           <HelpTOCNode Title="CallId Property " Url="html/P_Bandwidth_Net_Api_ConferenceMember_CallId.htm" />
@@ -339,9 +339,9 @@
       </HelpTOCNode>
       <HelpTOCNode Title="ConferenceMemberState Enumeration" Url="html/T_Bandwidth_Net_Api_ConferenceMemberState.htm" />
       <HelpTOCNode Title="ConferenceState Enumeration" Url="html/T_Bandwidth_Net_Api_ConferenceState.htm" />
-      <HelpTOCNode Id="689856d1-0a23-4107-b0ab-cde9c4b2711a" Title="CreateApplicationData Class" Url="html/T_Bandwidth_Net_Api_CreateApplicationData.htm">
+      <HelpTOCNode Id="b28572f8-8cf2-4a62-ac2a-33ac1b706e67" Title="CreateApplicationData Class" Url="html/T_Bandwidth_Net_Api_CreateApplicationData.htm">
         <HelpTOCNode Title="CreateApplicationData Constructor " Url="html/M_Bandwidth_Net_Api_CreateApplicationData__ctor.htm" />
-        <HelpTOCNode Id="076a56d9-6839-4884-99ab-22c9942b9681" Title="CreateApplicationData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateApplicationData.htm">
+        <HelpTOCNode Id="e165644a-5831-4adc-bbea-c3b0897a691f" Title="CreateApplicationData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateApplicationData.htm">
           <HelpTOCNode Title="AutoAnswer Property " Url="html/P_Bandwidth_Net_Api_CreateApplicationData_AutoAnswer.htm" />
           <HelpTOCNode Title="CallbackHttpMethod Property " Url="html/P_Bandwidth_Net_Api_CreateApplicationData_CallbackHttpMethod.htm" />
           <HelpTOCNode Title="IncomingCallFallbackUrl Property " Url="html/P_Bandwidth_Net_Api_CreateApplicationData_IncomingCallFallbackUrl.htm" />
@@ -353,22 +353,22 @@
           <HelpTOCNode Title="Name Property " Url="html/P_Bandwidth_Net_Api_CreateApplicationData_Name.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="7e348710-5f2f-4852-bfb0-b668960bf1e5" Title="CreateAuthTokenData Class" Url="html/T_Bandwidth_Net_Api_CreateAuthTokenData.htm">
+      <HelpTOCNode Id="45ad09a3-0ccf-4645-9c62-87ae68963e29" Title="CreateAuthTokenData Class" Url="html/T_Bandwidth_Net_Api_CreateAuthTokenData.htm">
         <HelpTOCNode Title="CreateAuthTokenData Constructor " Url="html/M_Bandwidth_Net_Api_CreateAuthTokenData__ctor.htm" />
-        <HelpTOCNode Id="3b0ec40c-10ca-42f2-96f9-3079345481a8" Title="CreateAuthTokenData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateAuthTokenData.htm">
+        <HelpTOCNode Id="12853740-bd92-4d5d-9002-bc45504f02b3" Title="CreateAuthTokenData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateAuthTokenData.htm">
           <HelpTOCNode Title="Expires Property " Url="html/P_Bandwidth_Net_Api_CreateAuthTokenData_Expires.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="c593ccfd-30c8-4a58-b157-069a59290f15" Title="CreateBridgeData Class" Url="html/T_Bandwidth_Net_Api_CreateBridgeData.htm">
+      <HelpTOCNode Id="73383ec9-c22d-4be1-8627-561908191f3e" Title="CreateBridgeData Class" Url="html/T_Bandwidth_Net_Api_CreateBridgeData.htm">
         <HelpTOCNode Title="CreateBridgeData Constructor " Url="html/M_Bandwidth_Net_Api_CreateBridgeData__ctor.htm" />
-        <HelpTOCNode Id="b7eeb1e2-9d1f-4146-9fb2-c2f42aabef13" Title="CreateBridgeData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateBridgeData.htm">
+        <HelpTOCNode Id="11ec2933-f35e-4140-a7bf-aeb78d9acd92" Title="CreateBridgeData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateBridgeData.htm">
           <HelpTOCNode Title="BridgeAudio Property " Url="html/P_Bandwidth_Net_Api_CreateBridgeData_BridgeAudio.htm" />
           <HelpTOCNode Title="CallIds Property " Url="html/P_Bandwidth_Net_Api_CreateBridgeData_CallIds.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="9cdf0bc1-55a3-4bd4-84c4-2e9b4f5084ad" Title="CreateCallData Class" Url="html/T_Bandwidth_Net_Api_CreateCallData.htm">
+      <HelpTOCNode Id="f82a3d55-a40a-47ed-91fe-1a010a077b86" Title="CreateCallData Class" Url="html/T_Bandwidth_Net_Api_CreateCallData.htm">
         <HelpTOCNode Title="CreateCallData Constructor " Url="html/M_Bandwidth_Net_Api_CreateCallData__ctor.htm" />
-        <HelpTOCNode Id="a4847281-f99f-4246-a4cf-e9ebc19dd8cf" Title="CreateCallData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateCallData.htm">
+        <HelpTOCNode Id="b5703ac4-df4a-4ae1-be2b-27b4297bc30c" Title="CreateCallData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateCallData.htm">
           <HelpTOCNode Title="BridgeId Property " Url="html/P_Bandwidth_Net_Api_CreateCallData_BridgeId.htm" />
           <HelpTOCNode Title="CallbackHttpMethod Property " Url="html/P_Bandwidth_Net_Api_CreateCallData_CallbackHttpMethod.htm" />
           <HelpTOCNode Title="CallbackTimeout Property " Url="html/P_Bandwidth_Net_Api_CreateCallData_CallbackTimeout.htm" />
@@ -386,9 +386,9 @@
           <HelpTOCNode Title="TranscriptionEnabled Property " Url="html/P_Bandwidth_Net_Api_CreateCallData_TranscriptionEnabled.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="bb24d478-ede5-4bd5-a9a9-8773e52ebd11" Title="CreateConferenceData Class" Url="html/T_Bandwidth_Net_Api_CreateConferenceData.htm">
+      <HelpTOCNode Id="f5992e43-1f55-4054-a609-6cf1c3a9c8d6" Title="CreateConferenceData Class" Url="html/T_Bandwidth_Net_Api_CreateConferenceData.htm">
         <HelpTOCNode Title="CreateConferenceData Constructor " Url="html/M_Bandwidth_Net_Api_CreateConferenceData__ctor.htm" />
-        <HelpTOCNode Id="dca4d814-6f63-4d0b-aa42-65e3c3c0d2a9" Title="CreateConferenceData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateConferenceData.htm">
+        <HelpTOCNode Id="096677b8-7c12-4f9e-9d5c-ad9184dbdbeb" Title="CreateConferenceData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateConferenceData.htm">
           <HelpTOCNode Title="CallbackHttpMethod Property " Url="html/P_Bandwidth_Net_Api_CreateConferenceData_CallbackHttpMethod.htm" />
           <HelpTOCNode Title="CallbackTimeout Property " Url="html/P_Bandwidth_Net_Api_CreateConferenceData_CallbackTimeout.htm" />
           <HelpTOCNode Title="CallbackUrl Property " Url="html/P_Bandwidth_Net_Api_CreateConferenceData_CallbackUrl.htm" />
@@ -397,9 +397,9 @@
           <HelpTOCNode Title="Tag Property " Url="html/P_Bandwidth_Net_Api_CreateConferenceData_Tag.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="72fc182b-6c07-494c-adf0-0ab514fad89f" Title="CreateConferenceMemberData Class" Url="html/T_Bandwidth_Net_Api_CreateConferenceMemberData.htm">
+      <HelpTOCNode Id="370aba0e-ec6d-4081-8100-08fb4ac31b81" Title="CreateConferenceMemberData Class" Url="html/T_Bandwidth_Net_Api_CreateConferenceMemberData.htm">
         <HelpTOCNode Title="CreateConferenceMemberData Constructor " Url="html/M_Bandwidth_Net_Api_CreateConferenceMemberData__ctor.htm" />
-        <HelpTOCNode Id="0a8462db-df09-4281-b2ee-e8d77152b735" Title="CreateConferenceMemberData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateConferenceMemberData.htm">
+        <HelpTOCNode Id="d4e6d9f6-0578-46e6-b1f0-ddc2a378aeda" Title="CreateConferenceMemberData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateConferenceMemberData.htm">
           <HelpTOCNode Title="CallId Property " Url="html/P_Bandwidth_Net_Api_CreateConferenceMemberData_CallId.htm" />
           <HelpTOCNode Title="Hold Property " Url="html/P_Bandwidth_Net_Api_CreateConferenceMemberData_Hold.htm" />
           <HelpTOCNode Title="JoinTone Property " Url="html/P_Bandwidth_Net_Api_CreateConferenceMemberData_JoinTone.htm" />
@@ -407,22 +407,22 @@
           <HelpTOCNode Title="Mute Property " Url="html/P_Bandwidth_Net_Api_CreateConferenceMemberData_Mute.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="18e7ffed-ddba-411a-a87c-8037bd36ca65" Title="CreateDomainData Class" Url="html/T_Bandwidth_Net_Api_CreateDomainData.htm">
+      <HelpTOCNode Id="6849349e-ab66-41d9-93d1-91095c749ee4" Title="CreateDomainData Class" Url="html/T_Bandwidth_Net_Api_CreateDomainData.htm">
         <HelpTOCNode Title="CreateDomainData Constructor " Url="html/M_Bandwidth_Net_Api_CreateDomainData__ctor.htm" />
-        <HelpTOCNode Id="284ae0e2-8242-46ee-b9a9-f209ece96298" Title="CreateDomainData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateDomainData.htm">
+        <HelpTOCNode Id="b06cec99-ea38-453e-8133-1ed563803da0" Title="CreateDomainData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateDomainData.htm">
           <HelpTOCNode Title="Description Property " Url="html/P_Bandwidth_Net_Api_CreateDomainData_Description.htm" />
           <HelpTOCNode Title="Name Property " Url="html/P_Bandwidth_Net_Api_CreateDomainData_Name.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="06b77361-99a6-4d72-875e-2dc9e13b264c" Title="CreateEndpointCredentials Class" Url="html/T_Bandwidth_Net_Api_CreateEndpointCredentials.htm">
+      <HelpTOCNode Id="bd9051d6-a8a0-4538-abe0-82254b9a4266" Title="CreateEndpointCredentials Class" Url="html/T_Bandwidth_Net_Api_CreateEndpointCredentials.htm">
         <HelpTOCNode Title="CreateEndpointCredentials Constructor " Url="html/M_Bandwidth_Net_Api_CreateEndpointCredentials__ctor.htm" />
-        <HelpTOCNode Id="4f16e148-5250-4272-8c48-4c6d85730fe4" Title="CreateEndpointCredentials Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateEndpointCredentials.htm">
+        <HelpTOCNode Id="d49f4e7c-1e30-479d-bfff-812e2dfc59a7" Title="CreateEndpointCredentials Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateEndpointCredentials.htm">
           <HelpTOCNode Title="Password Property " Url="html/P_Bandwidth_Net_Api_CreateEndpointCredentials_Password.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="ba15d73b-9b8b-497d-9f41-387e1bcf628a" Title="CreateEndpointData Class" Url="html/T_Bandwidth_Net_Api_CreateEndpointData.htm">
+      <HelpTOCNode Id="ad7f6b8e-aa76-4e56-aa2b-9138a263c017" Title="CreateEndpointData Class" Url="html/T_Bandwidth_Net_Api_CreateEndpointData.htm">
         <HelpTOCNode Title="CreateEndpointData Constructor " Url="html/M_Bandwidth_Net_Api_CreateEndpointData__ctor.htm" />
-        <HelpTOCNode Id="ecdf7ef7-ae53-400f-b2ac-7be847f91893" Title="CreateEndpointData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateEndpointData.htm">
+        <HelpTOCNode Id="acad8f0f-dac2-4d38-aec6-92f57cccfa9a" Title="CreateEndpointData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateEndpointData.htm">
           <HelpTOCNode Title="ApplicationId Property " Url="html/P_Bandwidth_Net_Api_CreateEndpointData_ApplicationId.htm" />
           <HelpTOCNode Title="Credentials Property " Url="html/P_Bandwidth_Net_Api_CreateEndpointData_Credentials.htm" />
           <HelpTOCNode Title="Description Property " Url="html/P_Bandwidth_Net_Api_CreateEndpointData_Description.htm" />
@@ -430,9 +430,9 @@
           <HelpTOCNode Title="Name Property " Url="html/P_Bandwidth_Net_Api_CreateEndpointData_Name.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="ac5983f4-045e-499d-b2a6-ec326c552140" Title="CreateGatherData Class" Url="html/T_Bandwidth_Net_Api_CreateGatherData.htm">
+      <HelpTOCNode Id="f60bbb7d-f07d-43aa-a6bd-98813178027b" Title="CreateGatherData Class" Url="html/T_Bandwidth_Net_Api_CreateGatherData.htm">
         <HelpTOCNode Title="CreateGatherData Constructor " Url="html/M_Bandwidth_Net_Api_CreateGatherData__ctor.htm" />
-        <HelpTOCNode Id="0d2b13cd-c10b-4ed5-bead-b4a28b02ab5f" Title="CreateGatherData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateGatherData.htm">
+        <HelpTOCNode Id="4a39a872-9487-40d2-a221-b100beec5ed3" Title="CreateGatherData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreateGatherData.htm">
           <HelpTOCNode Title="InterDigitTimeout Property " Url="html/P_Bandwidth_Net_Api_CreateGatherData_InterDigitTimeout.htm" />
           <HelpTOCNode Title="MaxDigits Property " Url="html/P_Bandwidth_Net_Api_CreateGatherData_MaxDigits.htm" />
           <HelpTOCNode Title="Prompt Property " Url="html/P_Bandwidth_Net_Api_CreateGatherData_Prompt.htm" />
@@ -440,44 +440,44 @@
           <HelpTOCNode Title="TerminatingDigits Property " Url="html/P_Bandwidth_Net_Api_CreateGatherData_TerminatingDigits.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="2fb2d518-50bc-447c-8f63-af22868b0769" Title="CreatePhoneNumberData Class" Url="html/T_Bandwidth_Net_Api_CreatePhoneNumberData.htm">
+      <HelpTOCNode Id="cdb58b55-b930-4238-bbc7-1c9b2167fa08" Title="CreatePhoneNumberData Class" Url="html/T_Bandwidth_Net_Api_CreatePhoneNumberData.htm">
         <HelpTOCNode Title="CreatePhoneNumberData Constructor " Url="html/M_Bandwidth_Net_Api_CreatePhoneNumberData__ctor.htm" />
-        <HelpTOCNode Id="c383e944-f343-4068-8f7d-3492d9cdb61d" Title="CreatePhoneNumberData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreatePhoneNumberData.htm">
+        <HelpTOCNode Id="b6f3270a-b177-4144-a30d-9b2b1a4c6c82" Title="CreatePhoneNumberData Properties" Url="html/Properties_T_Bandwidth_Net_Api_CreatePhoneNumberData.htm">
           <HelpTOCNode Title="ApplicationId Property " Url="html/P_Bandwidth_Net_Api_CreatePhoneNumberData_ApplicationId.htm" />
           <HelpTOCNode Title="FallbackNumber Property " Url="html/P_Bandwidth_Net_Api_CreatePhoneNumberData_FallbackNumber.htm" />
           <HelpTOCNode Title="Name Property " Url="html/P_Bandwidth_Net_Api_CreatePhoneNumberData_Name.htm" />
           <HelpTOCNode Title="Number Property " Url="html/P_Bandwidth_Net_Api_CreatePhoneNumberData_Number.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="780319a6-0bb5-4a39-841f-c12e440c3031" Title="Domain Class" Url="html/T_Bandwidth_Net_Api_Domain.htm">
+      <HelpTOCNode Id="651daa92-ca8c-4366-8b1d-38dd2c22f63a" Title="Domain Class" Url="html/T_Bandwidth_Net_Api_Domain.htm">
         <HelpTOCNode Title="Domain Constructor " Url="html/M_Bandwidth_Net_Api_Domain__ctor.htm" />
-        <HelpTOCNode Id="5f42b473-cdb6-492f-8ba1-aadf67aababf" Title="Domain Properties" Url="html/Properties_T_Bandwidth_Net_Api_Domain.htm">
+        <HelpTOCNode Id="176ce356-b124-41df-bbca-3ea3f4d5231b" Title="Domain Properties" Url="html/Properties_T_Bandwidth_Net_Api_Domain.htm">
           <HelpTOCNode Title="Description Property " Url="html/P_Bandwidth_Net_Api_Domain_Description.htm" />
           <HelpTOCNode Title="Id Property " Url="html/P_Bandwidth_Net_Api_Domain_Id.htm" />
           <HelpTOCNode Title="Name Property " Url="html/P_Bandwidth_Net_Api_Domain_Name.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="0da774ee-05cf-4d72-a4e3-ec1ff454ffe8" Title="DomainQuery Class" Url="html/T_Bandwidth_Net_Api_DomainQuery.htm">
+      <HelpTOCNode Id="80cfc768-4fa0-46d0-aee4-aad487c101cd" Title="DomainQuery Class" Url="html/T_Bandwidth_Net_Api_DomainQuery.htm">
         <HelpTOCNode Title="DomainQuery Constructor " Url="html/M_Bandwidth_Net_Api_DomainQuery__ctor.htm" />
-        <HelpTOCNode Id="4e1e0a24-3011-4347-8831-ebe054df82fd" Title="DomainQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_DomainQuery.htm">
+        <HelpTOCNode Id="b2270f16-0ca7-49f7-809d-9a58aa213acf" Title="DomainQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_DomainQuery.htm">
           <HelpTOCNode Title="Size Property " Url="html/P_Bandwidth_Net_Api_DomainQuery_Size.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="1a9db72a-9a5c-4643-ae92-98aadd65dd99" Title="DownloadMediaFileData Class" Url="html/T_Bandwidth_Net_Api_DownloadMediaFileData.htm">
-        <HelpTOCNode Id="e8b901da-e0a2-4059-8bf2-7930c125e932" Title="DownloadMediaFileData Properties" Url="html/Properties_T_Bandwidth_Net_Api_DownloadMediaFileData.htm">
+      <HelpTOCNode Id="bb45c6af-9364-4c13-9bd5-16f6f5a9deff" Title="DownloadMediaFileData Class" Url="html/T_Bandwidth_Net_Api_DownloadMediaFileData.htm">
+        <HelpTOCNode Id="51133295-15b0-43b2-a68c-75298a65c263" Title="DownloadMediaFileData Properties" Url="html/Properties_T_Bandwidth_Net_Api_DownloadMediaFileData.htm">
           <HelpTOCNode Title="ContentLength Property " Url="html/P_Bandwidth_Net_Api_DownloadMediaFileData_ContentLength.htm" />
           <HelpTOCNode Title="ContentType Property " Url="html/P_Bandwidth_Net_Api_DownloadMediaFileData_ContentType.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="518b3074-a8f4-4914-9faf-3c3d61f447db" Title="DownloadMediaFileData Methods" Url="html/Methods_T_Bandwidth_Net_Api_DownloadMediaFileData.htm">
+        <HelpTOCNode Id="c2217cd4-8718-42b4-86a5-c876d4ee94c5" Title="DownloadMediaFileData Methods" Url="html/Methods_T_Bandwidth_Net_Api_DownloadMediaFileData.htm">
           <HelpTOCNode Title="Dispose Method " Url="html/M_Bandwidth_Net_Api_DownloadMediaFileData_Dispose.htm" />
           <HelpTOCNode Title="ReadAsByteArrayAsync Method " Url="html/M_Bandwidth_Net_Api_DownloadMediaFileData_ReadAsByteArrayAsync.htm" />
           <HelpTOCNode Title="ReadAsStreamAsync Method " Url="html/M_Bandwidth_Net_Api_DownloadMediaFileData_ReadAsStreamAsync.htm" />
           <HelpTOCNode Title="ReadAsStringAsync Method " Url="html/M_Bandwidth_Net_Api_DownloadMediaFileData_ReadAsStringAsync.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="986f63b8-7fec-4280-87db-68f063cd2f88" Title="Endpoint Class" Url="html/T_Bandwidth_Net_Api_Endpoint.htm">
+      <HelpTOCNode Id="c444f4f3-634a-4df9-b86b-eacdc83265b8" Title="Endpoint Class" Url="html/T_Bandwidth_Net_Api_Endpoint.htm">
         <HelpTOCNode Title="Endpoint Constructor " Url="html/M_Bandwidth_Net_Api_Endpoint__ctor.htm" />
-        <HelpTOCNode Id="32fcdcf5-d5e4-4a10-a1f7-4967893ae9cb" Title="Endpoint Properties" Url="html/Properties_T_Bandwidth_Net_Api_Endpoint.htm">
+        <HelpTOCNode Id="af490940-a4cd-45b4-9c21-da19a525d94f" Title="Endpoint Properties" Url="html/Properties_T_Bandwidth_Net_Api_Endpoint.htm">
           <HelpTOCNode Title="ApplicationId Property " Url="html/P_Bandwidth_Net_Api_Endpoint_ApplicationId.htm" />
           <HelpTOCNode Title="Credentials Property " Url="html/P_Bandwidth_Net_Api_Endpoint_Credentials.htm" />
           <HelpTOCNode Title="Description Property " Url="html/P_Bandwidth_Net_Api_Endpoint_Description.htm" />
@@ -488,29 +488,29 @@
           <HelpTOCNode Title="SipUri Property " Url="html/P_Bandwidth_Net_Api_Endpoint_SipUri.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="2fd179b6-45ca-4892-a8b0-b821b357ad14" Title="EndpointAuthToken Class" Url="html/T_Bandwidth_Net_Api_EndpointAuthToken.htm">
+      <HelpTOCNode Id="928b20c8-f1e3-49ef-97d9-8a6d21282ef2" Title="EndpointAuthToken Class" Url="html/T_Bandwidth_Net_Api_EndpointAuthToken.htm">
         <HelpTOCNode Title="EndpointAuthToken Constructor " Url="html/M_Bandwidth_Net_Api_EndpointAuthToken__ctor.htm" />
-        <HelpTOCNode Id="743ca5f1-d2b2-411d-8c23-3acce7e3b627" Title="EndpointAuthToken Properties" Url="html/Properties_T_Bandwidth_Net_Api_EndpointAuthToken.htm">
+        <HelpTOCNode Id="47a20962-98d6-4d19-80c6-31c17f0038a6" Title="EndpointAuthToken Properties" Url="html/Properties_T_Bandwidth_Net_Api_EndpointAuthToken.htm">
           <HelpTOCNode Title="Expires Property " Url="html/P_Bandwidth_Net_Api_EndpointAuthToken_Expires.htm" />
           <HelpTOCNode Title="Token Property " Url="html/P_Bandwidth_Net_Api_EndpointAuthToken_Token.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="3fe2c0f3-4d8a-4ffd-8990-ac1ce97fa078" Title="EndpointCredentials Class" Url="html/T_Bandwidth_Net_Api_EndpointCredentials.htm">
+      <HelpTOCNode Id="d28da842-13f7-484e-9b0b-976fb149e012" Title="EndpointCredentials Class" Url="html/T_Bandwidth_Net_Api_EndpointCredentials.htm">
         <HelpTOCNode Title="EndpointCredentials Constructor " Url="html/M_Bandwidth_Net_Api_EndpointCredentials__ctor.htm" />
-        <HelpTOCNode Id="4f5d3e82-f6eb-4b97-b83f-3fc747169322" Title="EndpointCredentials Properties" Url="html/Properties_T_Bandwidth_Net_Api_EndpointCredentials.htm">
+        <HelpTOCNode Id="eeeef7ed-6792-475d-b817-e06f3211071c" Title="EndpointCredentials Properties" Url="html/Properties_T_Bandwidth_Net_Api_EndpointCredentials.htm">
           <HelpTOCNode Title="Realm Property " Url="html/P_Bandwidth_Net_Api_EndpointCredentials_Realm.htm" />
           <HelpTOCNode Title="UserName Property " Url="html/P_Bandwidth_Net_Api_EndpointCredentials_UserName.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="d2b4a752-22d5-4532-a385-ca8a6cfb8cb7" Title="EndpointQuery Class" Url="html/T_Bandwidth_Net_Api_EndpointQuery.htm">
+      <HelpTOCNode Id="77f02f67-5c6a-4d21-8062-bb352a069254" Title="EndpointQuery Class" Url="html/T_Bandwidth_Net_Api_EndpointQuery.htm">
         <HelpTOCNode Title="EndpointQuery Constructor " Url="html/M_Bandwidth_Net_Api_EndpointQuery__ctor.htm" />
-        <HelpTOCNode Id="141bb4bd-6d4a-40b3-8e3a-a7a27acf6db0" Title="EndpointQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_EndpointQuery.htm">
+        <HelpTOCNode Id="84dd83cb-5db8-4dc0-a055-4371d46b9b8b" Title="EndpointQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_EndpointQuery.htm">
           <HelpTOCNode Title="Size Property " Url="html/P_Bandwidth_Net_Api_EndpointQuery_Size.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="62f290fe-c63d-41e6-b1f6-63ee15dccfd1" Title="Error Class" Url="html/T_Bandwidth_Net_Api_Error.htm">
+      <HelpTOCNode Id="484dee49-6983-484c-93e8-aadaaaaa9bd8" Title="Error Class" Url="html/T_Bandwidth_Net_Api_Error.htm">
         <HelpTOCNode Title="Error Constructor " Url="html/M_Bandwidth_Net_Api_Error__ctor.htm" />
-        <HelpTOCNode Id="765f79e6-979c-4467-b85b-2680d3fdc2fd" Title="Error Properties" Url="html/Properties_T_Bandwidth_Net_Api_Error.htm">
+        <HelpTOCNode Id="a198f809-8b4c-46c5-bb77-0c54e724e725" Title="Error Properties" Url="html/Properties_T_Bandwidth_Net_Api_Error.htm">
           <HelpTOCNode Title="Category Property " Url="html/P_Bandwidth_Net_Api_Error_Category.htm" />
           <HelpTOCNode Title="Code Property " Url="html/P_Bandwidth_Net_Api_Error_Code.htm" />
           <HelpTOCNode Title="Details Property " Url="html/P_Bandwidth_Net_Api_Error_Details.htm" />
@@ -520,33 +520,33 @@
         </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="ErrorCategory Enumeration" Url="html/T_Bandwidth_Net_Api_ErrorCategory.htm" />
-      <HelpTOCNode Id="1bfd4aa2-58f5-4b02-9501-da3d4c357c35" Title="ErrorDetail Class" Url="html/T_Bandwidth_Net_Api_ErrorDetail.htm">
+      <HelpTOCNode Id="c28ab039-b8e3-4179-aa6c-e853cf12c252" Title="ErrorDetail Class" Url="html/T_Bandwidth_Net_Api_ErrorDetail.htm">
         <HelpTOCNode Title="ErrorDetail Constructor " Url="html/M_Bandwidth_Net_Api_ErrorDetail__ctor.htm" />
-        <HelpTOCNode Id="7232d318-64a1-48bf-85dc-b782f7bafcbb" Title="ErrorDetail Properties" Url="html/Properties_T_Bandwidth_Net_Api_ErrorDetail.htm">
+        <HelpTOCNode Id="b620fb10-f0bf-4b7e-a2d9-78faff9800ef" Title="ErrorDetail Properties" Url="html/Properties_T_Bandwidth_Net_Api_ErrorDetail.htm">
           <HelpTOCNode Title="Name Property " Url="html/P_Bandwidth_Net_Api_ErrorDetail_Name.htm" />
           <HelpTOCNode Title="Value Property " Url="html/P_Bandwidth_Net_Api_ErrorDetail_Value.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="2b3c5442-3b0c-493c-b6c0-c7ae49b95f50" Title="ErrorQuery Class" Url="html/T_Bandwidth_Net_Api_ErrorQuery.htm">
+      <HelpTOCNode Id="26293ecc-62dc-428e-b2ef-f092b47504e3" Title="ErrorQuery Class" Url="html/T_Bandwidth_Net_Api_ErrorQuery.htm">
         <HelpTOCNode Title="ErrorQuery Constructor " Url="html/M_Bandwidth_Net_Api_ErrorQuery__ctor.htm" />
-        <HelpTOCNode Id="169c6f10-e49d-4f9f-b5a9-37a13811e13b" Title="ErrorQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_ErrorQuery.htm">
+        <HelpTOCNode Id="33a24d86-f08f-42fb-894e-21370c20f4cf" Title="ErrorQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_ErrorQuery.htm">
           <HelpTOCNode Title="Size Property " Url="html/P_Bandwidth_Net_Api_ErrorQuery_Size.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="aaa8d5c5-97c1-453f-8203-5c24edc5114e" Title="GatherPrompt Class" Url="html/T_Bandwidth_Net_Api_GatherPrompt.htm">
+      <HelpTOCNode Id="7dfa6eb4-9c18-455d-9696-25a3d44c0d66" Title="GatherPrompt Class" Url="html/T_Bandwidth_Net_Api_GatherPrompt.htm">
         <HelpTOCNode Title="GatherPrompt Constructor " Url="html/M_Bandwidth_Net_Api_GatherPrompt__ctor.htm" />
-        <HelpTOCNode Id="710de88c-51f9-4929-a57d-1f4b73572cb0" Title="GatherPrompt Properties" Url="html/Properties_T_Bandwidth_Net_Api_GatherPrompt.htm">
+        <HelpTOCNode Id="4fb80a39-06c3-47a5-ba39-8623e1289b09" Title="GatherPrompt Properties" Url="html/Properties_T_Bandwidth_Net_Api_GatherPrompt.htm">
           <HelpTOCNode Title="Bargeable Property " Url="html/P_Bandwidth_Net_Api_GatherPrompt_Bargeable.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="29ff8b44-258d-492a-8d63-2cfc9978a103" Title="IAccount Interface" Url="html/T_Bandwidth_Net_Api_IAccount.htm">
-        <HelpTOCNode Id="be8149b8-dc0c-4b3c-a713-1353469107c9" Title="IAccount Methods" Url="html/Methods_T_Bandwidth_Net_Api_IAccount.htm">
+      <HelpTOCNode Id="43d8151d-cb69-4491-953d-ac5240a2c85e" Title="IAccount Interface" Url="html/T_Bandwidth_Net_Api_IAccount.htm">
+        <HelpTOCNode Id="f7cdfc30-62d0-4c30-8139-b136d8bb51c8" Title="IAccount Methods" Url="html/Methods_T_Bandwidth_Net_Api_IAccount.htm">
           <HelpTOCNode Title="GetAsync Method " Url="html/M_Bandwidth_Net_Api_IAccount_GetAsync.htm" />
           <HelpTOCNode Title="GetTransactions Method " Url="html/M_Bandwidth_Net_Api_IAccount_GetTransactions.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="932f52cc-938f-4e84-b94f-83473d103e51" Title="IApplication Interface" Url="html/T_Bandwidth_Net_Api_IApplication.htm">
-        <HelpTOCNode Id="a0ca61af-51d5-463e-b8b1-c9452fca2d84" Title="IApplication Methods" Url="html/Methods_T_Bandwidth_Net_Api_IApplication.htm">
+      <HelpTOCNode Id="a3c89932-e12d-46ce-af48-b23d568b550b" Title="IApplication Interface" Url="html/T_Bandwidth_Net_Api_IApplication.htm">
+        <HelpTOCNode Id="f9fb3339-bd7d-403f-863f-007ff01c0785" Title="IApplication Methods" Url="html/Methods_T_Bandwidth_Net_Api_IApplication.htm">
           <HelpTOCNode Title="CreateAsync Method " Url="html/M_Bandwidth_Net_Api_IApplication_CreateAsync.htm" />
           <HelpTOCNode Title="DeleteAsync Method " Url="html/M_Bandwidth_Net_Api_IApplication_DeleteAsync.htm" />
           <HelpTOCNode Title="GetAsync Method " Url="html/M_Bandwidth_Net_Api_IApplication_GetAsync.htm" />
@@ -554,16 +554,16 @@
           <HelpTOCNode Title="UpdateAsync Method " Url="html/M_Bandwidth_Net_Api_IApplication_UpdateAsync.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="ae0e8de2-0d89-4c9b-9b73-7d230e949905" Title="IAvailableNumber Interface" Url="html/T_Bandwidth_Net_Api_IAvailableNumber.htm">
-        <HelpTOCNode Id="cf640c4c-fdc8-4261-a468-62e18d938259" Title="IAvailableNumber Methods" Url="html/Methods_T_Bandwidth_Net_Api_IAvailableNumber.htm">
+      <HelpTOCNode Id="9693f686-407e-4c8c-b789-1b96542752a1" Title="IAvailableNumber Interface" Url="html/T_Bandwidth_Net_Api_IAvailableNumber.htm">
+        <HelpTOCNode Id="6adf8592-e479-4353-b03f-24142f5471ec" Title="IAvailableNumber Methods" Url="html/Methods_T_Bandwidth_Net_Api_IAvailableNumber.htm">
           <HelpTOCNode Title="SearchAndOrderLocalAsync Method " Url="html/M_Bandwidth_Net_Api_IAvailableNumber_SearchAndOrderLocalAsync.htm" />
           <HelpTOCNode Title="SearchAndOrderTollFreeAsync Method " Url="html/M_Bandwidth_Net_Api_IAvailableNumber_SearchAndOrderTollFreeAsync.htm" />
           <HelpTOCNode Title="SearchLocalAsync Method " Url="html/M_Bandwidth_Net_Api_IAvailableNumber_SearchLocalAsync.htm" />
           <HelpTOCNode Title="SearchTollFreeAsync Method " Url="html/M_Bandwidth_Net_Api_IAvailableNumber_SearchTollFreeAsync.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="f45fab6f-0d5b-4b07-befa-ecf23f9c16ad" Title="IBridge Interface" Url="html/T_Bandwidth_Net_Api_IBridge.htm">
-        <HelpTOCNode Id="a18d56af-4386-4d96-b15f-02b2737522e3" Title="IBridge Methods" Url="html/Methods_T_Bandwidth_Net_Api_IBridge.htm">
+      <HelpTOCNode Id="32715537-6a31-4489-ac45-5b83603cccbb" Title="IBridge Interface" Url="html/T_Bandwidth_Net_Api_IBridge.htm">
+        <HelpTOCNode Id="9d85247a-f008-484e-a6ef-8ba97fd81c76" Title="IBridge Methods" Url="html/Methods_T_Bandwidth_Net_Api_IBridge.htm">
           <HelpTOCNode Title="CreateAsync Method " Url="html/M_Bandwidth_Net_Api_IBridge_CreateAsync.htm" />
           <HelpTOCNode Title="GetAsync Method " Url="html/M_Bandwidth_Net_Api_IBridge_GetAsync.htm" />
           <HelpTOCNode Title="GetCalls Method " Url="html/M_Bandwidth_Net_Api_IBridge_GetCalls.htm" />
@@ -571,8 +571,8 @@
           <HelpTOCNode Title="UpdateAsync Method " Url="html/M_Bandwidth_Net_Api_IBridge_UpdateAsync.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="59c5d883-9d1a-4424-86ad-db4f0c7b10e1" Title="ICall Interface" Url="html/T_Bandwidth_Net_Api_ICall.htm">
-        <HelpTOCNode Id="81a7e1af-9050-4aeb-9bc8-af5700f64bda" Title="ICall Methods" Url="html/Methods_T_Bandwidth_Net_Api_ICall.htm">
+      <HelpTOCNode Id="2138d641-6eec-467b-be48-58cf5d2cbb27" Title="ICall Interface" Url="html/T_Bandwidth_Net_Api_ICall.htm">
+        <HelpTOCNode Id="832ea51e-248b-4906-ad8e-d05e10d27a43" Title="ICall Methods" Url="html/Methods_T_Bandwidth_Net_Api_ICall.htm">
           <HelpTOCNode Title="CreateAsync Method " Url="html/M_Bandwidth_Net_Api_ICall_CreateAsync.htm" />
           <HelpTOCNode Title="CreateGatherAsync Method " Url="html/M_Bandwidth_Net_Api_ICall_CreateGatherAsync.htm" />
           <HelpTOCNode Title="GetAsync Method " Url="html/M_Bandwidth_Net_Api_ICall_GetAsync.htm" />
@@ -587,8 +587,8 @@
           <HelpTOCNode Title="UpdateGatherAsync Method " Url="html/M_Bandwidth_Net_Api_ICall_UpdateGatherAsync.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="3e9d56af-2aeb-41c3-9862-1ec5a1860091" Title="IConference Interface" Url="html/T_Bandwidth_Net_Api_IConference.htm">
-        <HelpTOCNode Id="e075bda8-fd6d-4795-84ae-038842223c07" Title="IConference Methods" Url="html/Methods_T_Bandwidth_Net_Api_IConference.htm">
+      <HelpTOCNode Id="9cc195d4-1479-4a5f-98fc-d0e362ce0b23" Title="IConference Interface" Url="html/T_Bandwidth_Net_Api_IConference.htm">
+        <HelpTOCNode Id="d82458c8-b541-4b1e-b01c-308cbe0fc859" Title="IConference Methods" Url="html/Methods_T_Bandwidth_Net_Api_IConference.htm">
           <HelpTOCNode Title="CreateAsync Method " Url="html/M_Bandwidth_Net_Api_IConference_CreateAsync.htm" />
           <HelpTOCNode Title="CreateMemberAsync Method " Url="html/M_Bandwidth_Net_Api_IConference_CreateMemberAsync.htm" />
           <HelpTOCNode Title="GetAsync Method " Url="html/M_Bandwidth_Net_Api_IConference_GetAsync.htm" />
@@ -599,15 +599,15 @@
           <HelpTOCNode Title="UpdateMemberAsync Method " Url="html/M_Bandwidth_Net_Api_IConference_UpdateMemberAsync.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="de484bc6-c60a-478b-a433-f302a3319b7e" Title="IDomain Interface" Url="html/T_Bandwidth_Net_Api_IDomain.htm">
-        <HelpTOCNode Id="74099000-4033-47e2-ace0-67495225b962" Title="IDomain Methods" Url="html/Methods_T_Bandwidth_Net_Api_IDomain.htm">
+      <HelpTOCNode Id="bea71160-52d6-4fdb-a013-e81c846618d0" Title="IDomain Interface" Url="html/T_Bandwidth_Net_Api_IDomain.htm">
+        <HelpTOCNode Id="b758b4a2-b808-4132-9bee-55f361558de6" Title="IDomain Methods" Url="html/Methods_T_Bandwidth_Net_Api_IDomain.htm">
           <HelpTOCNode Title="CreateAsync Method " Url="html/M_Bandwidth_Net_Api_IDomain_CreateAsync.htm" />
           <HelpTOCNode Title="DeleteAsync Method " Url="html/M_Bandwidth_Net_Api_IDomain_DeleteAsync.htm" />
           <HelpTOCNode Title="List Method " Url="html/M_Bandwidth_Net_Api_IDomain_List.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="2240eec6-3b2b-4cf3-b6e3-b0a5e22e36df" Title="IEndpoint Interface" Url="html/T_Bandwidth_Net_Api_IEndpoint.htm">
-        <HelpTOCNode Id="4da43445-bcb7-4b13-a478-08962e5259ae" Title="IEndpoint Methods" Url="html/Methods_T_Bandwidth_Net_Api_IEndpoint.htm">
+      <HelpTOCNode Id="8daa1893-c7e7-471c-bce3-bb2c5525f0af" Title="IEndpoint Interface" Url="html/T_Bandwidth_Net_Api_IEndpoint.htm">
+        <HelpTOCNode Id="9be4fd0b-98ce-4504-8b90-1ce57594b195" Title="IEndpoint Methods" Url="html/Methods_T_Bandwidth_Net_Api_IEndpoint.htm">
           <HelpTOCNode Title="CreateAsync Method " Url="html/M_Bandwidth_Net_Api_IEndpoint_CreateAsync.htm" />
           <HelpTOCNode Title="CreateAuthTokenAsync Method " Url="html/M_Bandwidth_Net_Api_IEndpoint_CreateAuthTokenAsync.htm" />
           <HelpTOCNode Title="DeleteAsync Method " Url="html/M_Bandwidth_Net_Api_IEndpoint_DeleteAsync.htm" />
@@ -616,37 +616,37 @@
           <HelpTOCNode Title="UpdateAsync Method " Url="html/M_Bandwidth_Net_Api_IEndpoint_UpdateAsync.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="5f24c3a4-61dd-494e-b918-27cfdd900e9f" Title="IError Interface" Url="html/T_Bandwidth_Net_Api_IError.htm">
-        <HelpTOCNode Id="f1ced479-0edb-4d6f-82a6-7e160c11f305" Title="IError Methods" Url="html/Methods_T_Bandwidth_Net_Api_IError.htm">
+      <HelpTOCNode Id="9bffa607-ab25-49d5-8ae0-5c8640c3239a" Title="IError Interface" Url="html/T_Bandwidth_Net_Api_IError.htm">
+        <HelpTOCNode Id="1659e51f-afe6-4579-a0a2-9d3a37c61eca" Title="IError Methods" Url="html/Methods_T_Bandwidth_Net_Api_IError.htm">
           <HelpTOCNode Title="GetAsync Method " Url="html/M_Bandwidth_Net_Api_IError_GetAsync.htm" />
           <HelpTOCNode Title="List Method " Url="html/M_Bandwidth_Net_Api_IError_List.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="f24556aa-7e1d-47fa-84e8-16e029e9d2a9" Title="IMedia Interface" Url="html/T_Bandwidth_Net_Api_IMedia.htm">
-        <HelpTOCNode Id="ffb6c6fc-feba-44c2-a0ef-79e799d956fd" Title="IMedia Methods" Url="html/Methods_T_Bandwidth_Net_Api_IMedia.htm">
+      <HelpTOCNode Id="58cc21f8-5d85-44af-9f64-f2f03107a43e" Title="IMedia Interface" Url="html/T_Bandwidth_Net_Api_IMedia.htm">
+        <HelpTOCNode Id="bafb9cc6-af14-41dd-ba81-cc835b4a088e" Title="IMedia Methods" Url="html/Methods_T_Bandwidth_Net_Api_IMedia.htm">
           <HelpTOCNode Title="DeleteAsync Method " Url="html/M_Bandwidth_Net_Api_IMedia_DeleteAsync.htm" />
           <HelpTOCNode Title="DownloadAsync Method " Url="html/M_Bandwidth_Net_Api_IMedia_DownloadAsync.htm" />
           <HelpTOCNode Title="List Method " Url="html/M_Bandwidth_Net_Api_IMedia_List.htm" />
           <HelpTOCNode Title="UploadAsync Method " Url="html/M_Bandwidth_Net_Api_IMedia_UploadAsync.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="1f197414-c1d8-4d2f-8b35-8e038eb72045" Title="IMessage Interface" Url="html/T_Bandwidth_Net_Api_IMessage.htm">
-        <HelpTOCNode Id="ed96ceec-71af-464a-afe6-6d20f3477e28" Title="IMessage Methods" Url="html/Methods_T_Bandwidth_Net_Api_IMessage.htm">
+      <HelpTOCNode Id="6fab003c-b810-4489-aa4e-052899aee5d6" Title="IMessage Interface" Url="html/T_Bandwidth_Net_Api_IMessage.htm">
+        <HelpTOCNode Id="3f436d6d-7273-45ec-96d0-bca4a298b351" Title="IMessage Methods" Url="html/Methods_T_Bandwidth_Net_Api_IMessage.htm">
           <HelpTOCNode Title="GetAsync Method " Url="html/M_Bandwidth_Net_Api_IMessage_GetAsync.htm" />
           <HelpTOCNode Title="List Method " Url="html/M_Bandwidth_Net_Api_IMessage_List.htm" />
-          <HelpTOCNode Id="bcff14b3-d9e2-4846-9b1a-2074f09702d7" Title="SendAsync Method " Url="html/Overload_Bandwidth_Net_Api_IMessage_SendAsync.htm">
+          <HelpTOCNode Id="0f22eb2b-8156-4800-b447-9ef3d4c9f782" Title="SendAsync Method " Url="html/Overload_Bandwidth_Net_Api_IMessage_SendAsync.htm">
             <HelpTOCNode Title="SendAsync Method (MessageData, Nullable(CancellationToken))" Url="html/M_Bandwidth_Net_Api_IMessage_SendAsync.htm" />
             <HelpTOCNode Title="SendAsync Method (MessageData[], Nullable(CancellationToken))" Url="html/M_Bandwidth_Net_Api_IMessage_SendAsync_1.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="93d1ebbd-c2cc-44a1-a795-c55b555e7959" Title="INumberInfo Interface" Url="html/T_Bandwidth_Net_Api_INumberInfo.htm">
-        <HelpTOCNode Id="ef4a458d-52ab-4c57-bebc-570c0f717228" Title="INumberInfo Methods" Url="html/Methods_T_Bandwidth_Net_Api_INumberInfo.htm">
+      <HelpTOCNode Id="e7bfd91e-2283-4aad-9040-3c3d48fcffc3" Title="INumberInfo Interface" Url="html/T_Bandwidth_Net_Api_INumberInfo.htm">
+        <HelpTOCNode Id="ef37443a-7178-4113-88ff-860aa12aa592" Title="INumberInfo Methods" Url="html/Methods_T_Bandwidth_Net_Api_INumberInfo.htm">
           <HelpTOCNode Title="GetAsync Method " Url="html/M_Bandwidth_Net_Api_INumberInfo_GetAsync.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="4fdf300d-b71d-42ba-aa1e-8e27103f82a6" Title="IPhoneNumber Interface" Url="html/T_Bandwidth_Net_Api_IPhoneNumber.htm">
-        <HelpTOCNode Id="2d6d6977-afac-41cc-95d5-7703e91744c9" Title="IPhoneNumber Methods" Url="html/Methods_T_Bandwidth_Net_Api_IPhoneNumber.htm">
+      <HelpTOCNode Id="4cce4fb1-9533-42bf-b83d-5f0bc47eca36" Title="IPhoneNumber Interface" Url="html/T_Bandwidth_Net_Api_IPhoneNumber.htm">
+        <HelpTOCNode Id="29cf8eb7-9041-494f-8d94-af15ac2725a1" Title="IPhoneNumber Methods" Url="html/Methods_T_Bandwidth_Net_Api_IPhoneNumber.htm">
           <HelpTOCNode Title="CreateAsync Method " Url="html/M_Bandwidth_Net_Api_IPhoneNumber_CreateAsync.htm" />
           <HelpTOCNode Title="DeleteAsync Method " Url="html/M_Bandwidth_Net_Api_IPhoneNumber_DeleteAsync.htm" />
           <HelpTOCNode Title="GetAsync Method " Url="html/M_Bandwidth_Net_Api_IPhoneNumber_GetAsync.htm" />
@@ -654,22 +654,22 @@
           <HelpTOCNode Title="UpdateAsync Method " Url="html/M_Bandwidth_Net_Api_IPhoneNumber_UpdateAsync.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="23c085da-9f2e-4f63-810f-2594f92cf224" Title="IRecording Interface" Url="html/T_Bandwidth_Net_Api_IRecording.htm">
-        <HelpTOCNode Id="84d0b89a-3078-4b3d-9b15-7d7d6dc0452f" Title="IRecording Methods" Url="html/Methods_T_Bandwidth_Net_Api_IRecording.htm">
+      <HelpTOCNode Id="23ff8cd8-5154-470f-8118-329c84fc6bab" Title="IRecording Interface" Url="html/T_Bandwidth_Net_Api_IRecording.htm">
+        <HelpTOCNode Id="84dcf1dc-a419-4ded-9beb-f82d3520db94" Title="IRecording Methods" Url="html/Methods_T_Bandwidth_Net_Api_IRecording.htm">
           <HelpTOCNode Title="GetAsync Method " Url="html/M_Bandwidth_Net_Api_IRecording_GetAsync.htm" />
           <HelpTOCNode Title="List Method " Url="html/M_Bandwidth_Net_Api_IRecording_List.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="fd13330c-69a4-44d6-afb2-9fcb1fd47aa2" Title="ITranscription Interface" Url="html/T_Bandwidth_Net_Api_ITranscription.htm">
-        <HelpTOCNode Id="f01fb88a-e128-4c59-8e1a-13a661a72133" Title="ITranscription Methods" Url="html/Methods_T_Bandwidth_Net_Api_ITranscription.htm">
+      <HelpTOCNode Id="dd2fdefd-ce37-41d3-8f10-23d41990901f" Title="ITranscription Interface" Url="html/T_Bandwidth_Net_Api_ITranscription.htm">
+        <HelpTOCNode Id="257914b3-d044-407f-b5fa-acef2950ca29" Title="ITranscription Methods" Url="html/Methods_T_Bandwidth_Net_Api_ITranscription.htm">
           <HelpTOCNode Title="CreateAsync Method " Url="html/M_Bandwidth_Net_Api_ITranscription_CreateAsync.htm" />
           <HelpTOCNode Title="GetAsync Method " Url="html/M_Bandwidth_Net_Api_ITranscription_GetAsync.htm" />
           <HelpTOCNode Title="List Method " Url="html/M_Bandwidth_Net_Api_ITranscription_List.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="4c47eb9a-3d42-4b80-808b-b62be09ab62c" Title="LocalNumberQuery Class" Url="html/T_Bandwidth_Net_Api_LocalNumberQuery.htm">
+      <HelpTOCNode Id="6c02555d-0c24-4c14-824b-2692d18b4e0a" Title="LocalNumberQuery Class" Url="html/T_Bandwidth_Net_Api_LocalNumberQuery.htm">
         <HelpTOCNode Title="LocalNumberQuery Constructor " Url="html/M_Bandwidth_Net_Api_LocalNumberQuery__ctor.htm" />
-        <HelpTOCNode Id="8f7007e4-3ae0-4239-8655-ca19891ab8c6" Title="LocalNumberQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_LocalNumberQuery.htm">
+        <HelpTOCNode Id="b8be3c7d-9753-410e-8b72-afa7c6fd3a4b" Title="LocalNumberQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_LocalNumberQuery.htm">
           <HelpTOCNode Title="AreaCode Property " Url="html/P_Bandwidth_Net_Api_LocalNumberQuery_AreaCode.htm" />
           <HelpTOCNode Title="City Property " Url="html/P_Bandwidth_Net_Api_LocalNumberQuery_City.htm" />
           <HelpTOCNode Title="InLocalCallingArea Property " Url="html/P_Bandwidth_Net_Api_LocalNumberQuery_InLocalCallingArea.htm" />
@@ -679,22 +679,22 @@
           <HelpTOCNode Title="Zip Property " Url="html/P_Bandwidth_Net_Api_LocalNumberQuery_Zip.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="65962788-5e88-41d0-945b-7b1be40d574d" Title="LocalNumberQueryForOrder Class" Url="html/T_Bandwidth_Net_Api_LocalNumberQueryForOrder.htm">
+      <HelpTOCNode Id="67bb635b-95df-4ea3-9ae3-7cc5d1025912" Title="LocalNumberQueryForOrder Class" Url="html/T_Bandwidth_Net_Api_LocalNumberQueryForOrder.htm">
         <HelpTOCNode Title="LocalNumberQueryForOrder Constructor " Url="html/M_Bandwidth_Net_Api_LocalNumberQueryForOrder__ctor.htm" />
-        <HelpTOCNode Id="ccfe9160-da76-43c0-93ed-81c0bcc4ed48" Title="LocalNumberQueryForOrder Properties" Url="html/Properties_T_Bandwidth_Net_Api_LocalNumberQueryForOrder.htm">
+        <HelpTOCNode Id="96f89fab-36e1-4683-92cf-b4e170331e4b" Title="LocalNumberQueryForOrder Properties" Url="html/Properties_T_Bandwidth_Net_Api_LocalNumberQueryForOrder.htm">
           <HelpTOCNode Title="Pattern Property " Url="html/P_Bandwidth_Net_Api_LocalNumberQueryForOrder_Pattern.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="71b0b328-e6d6-4c6d-9162-3ed40dc9a163" Title="MediaFile Class" Url="html/T_Bandwidth_Net_Api_MediaFile.htm">
+      <HelpTOCNode Id="fea59626-ed18-44a0-b333-0e1610af80fc" Title="MediaFile Class" Url="html/T_Bandwidth_Net_Api_MediaFile.htm">
         <HelpTOCNode Title="MediaFile Constructor " Url="html/M_Bandwidth_Net_Api_MediaFile__ctor.htm" />
-        <HelpTOCNode Id="51e3d245-e5ed-443c-a368-f55f930959f4" Title="MediaFile Properties" Url="html/Properties_T_Bandwidth_Net_Api_MediaFile.htm">
+        <HelpTOCNode Id="b48ab7cd-e4db-4290-892b-0c66a9a07095" Title="MediaFile Properties" Url="html/Properties_T_Bandwidth_Net_Api_MediaFile.htm">
           <HelpTOCNode Title="ContentLength Property " Url="html/P_Bandwidth_Net_Api_MediaFile_ContentLength.htm" />
           <HelpTOCNode Title="MediaName Property " Url="html/P_Bandwidth_Net_Api_MediaFile_MediaName.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="82742e54-3f77-4780-94ce-0bf5fb189355" Title="Message Class" Url="html/T_Bandwidth_Net_Api_Message.htm">
+      <HelpTOCNode Id="20838799-1933-4711-b0a8-7d0eb1e1ba6b" Title="Message Class" Url="html/T_Bandwidth_Net_Api_Message.htm">
         <HelpTOCNode Title="Message Constructor " Url="html/M_Bandwidth_Net_Api_Message__ctor.htm" />
-        <HelpTOCNode Id="82810040-83dc-4001-8021-dbcdc7750a67" Title="Message Properties" Url="html/Properties_T_Bandwidth_Net_Api_Message.htm">
+        <HelpTOCNode Id="68023bf8-0932-40be-a82a-95b75e30b890" Title="Message Properties" Url="html/Properties_T_Bandwidth_Net_Api_Message.htm">
           <HelpTOCNode Title="CallbackTimeout Property " Url="html/P_Bandwidth_Net_Api_Message_CallbackTimeout.htm" />
           <HelpTOCNode Title="CallbackUrl Property " Url="html/P_Bandwidth_Net_Api_Message_CallbackUrl.htm" />
           <HelpTOCNode Title="DeliveryCode Property " Url="html/P_Bandwidth_Net_Api_Message_DeliveryCode.htm" />
@@ -713,9 +713,9 @@
           <HelpTOCNode Title="To Property " Url="html/P_Bandwidth_Net_Api_Message_To.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="9cca3704-ec99-4e16-9ab6-3af4c63750d3" Title="MessageData Class" Url="html/T_Bandwidth_Net_Api_MessageData.htm">
+      <HelpTOCNode Id="c8b97155-0cd9-4f7f-925a-e68753e0cd35" Title="MessageData Class" Url="html/T_Bandwidth_Net_Api_MessageData.htm">
         <HelpTOCNode Title="MessageData Constructor " Url="html/M_Bandwidth_Net_Api_MessageData__ctor.htm" />
-        <HelpTOCNode Id="0e21f2c7-7174-4334-9c8f-544e9231cc48" Title="MessageData Properties" Url="html/Properties_T_Bandwidth_Net_Api_MessageData.htm">
+        <HelpTOCNode Id="9664dfbd-7595-48eb-9d47-132ace3146ae" Title="MessageData Properties" Url="html/Properties_T_Bandwidth_Net_Api_MessageData.htm">
           <HelpTOCNode Title="CallbackTimeout Property " Url="html/P_Bandwidth_Net_Api_MessageData_CallbackTimeout.htm" />
           <HelpTOCNode Title="CallbackUrl Property " Url="html/P_Bandwidth_Net_Api_MessageData_CallbackUrl.htm" />
           <HelpTOCNode Title="FallbackUrl Property " Url="html/P_Bandwidth_Net_Api_MessageData_FallbackUrl.htm" />
@@ -729,9 +729,9 @@
       </HelpTOCNode>
       <HelpTOCNode Title="MessageDeliveryState Enumeration" Url="html/T_Bandwidth_Net_Api_MessageDeliveryState.htm" />
       <HelpTOCNode Title="MessageDirection Enumeration" Url="html/T_Bandwidth_Net_Api_MessageDirection.htm" />
-      <HelpTOCNode Id="e1280697-a050-4838-ad04-4096f37d58cf" Title="MessageQuery Class" Url="html/T_Bandwidth_Net_Api_MessageQuery.htm">
+      <HelpTOCNode Id="5e4c964d-e75f-49c3-b585-ea87829ede1b" Title="MessageQuery Class" Url="html/T_Bandwidth_Net_Api_MessageQuery.htm">
         <HelpTOCNode Title="MessageQuery Constructor " Url="html/M_Bandwidth_Net_Api_MessageQuery__ctor.htm" />
-        <HelpTOCNode Id="2b8844f8-992b-4fa0-92ec-93e15a1a94d5" Title="MessageQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_MessageQuery.htm">
+        <HelpTOCNode Id="646b16b0-60b1-437a-b9a5-fa188ec0bcdc" Title="MessageQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_MessageQuery.htm">
           <HelpTOCNode Title="DeliveryState Property " Url="html/P_Bandwidth_Net_Api_MessageQuery_DeliveryState.htm" />
           <HelpTOCNode Title="Direction Property " Url="html/P_Bandwidth_Net_Api_MessageQuery_Direction.htm" />
           <HelpTOCNode Title="From Property " Url="html/P_Bandwidth_Net_Api_MessageQuery_From.htm" />
@@ -743,13 +743,13 @@
           <HelpTOCNode Title="ToDateTime Property " Url="html/P_Bandwidth_Net_Api_MessageQuery_ToDateTime.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="66338a19-6c49-4317-8e82-7887639de875" Title="MessageQueryDateTime Class" Url="html/T_Bandwidth_Net_Api_MessageQueryDateTime.htm">
+      <HelpTOCNode Id="e77a439c-8ced-439e-ac3e-380bfae3eceb" Title="MessageQueryDateTime Class" Url="html/T_Bandwidth_Net_Api_MessageQueryDateTime.htm">
         <HelpTOCNode Title="MessageQueryDateTime Constructor " Url="html/M_Bandwidth_Net_Api_MessageQueryDateTime__ctor.htm" />
-        <HelpTOCNode Id="c449bf66-bf7f-476d-81c8-11c1ba307f65" Title="MessageQueryDateTime Methods" Url="html/Methods_T_Bandwidth_Net_Api_MessageQueryDateTime.htm">
+        <HelpTOCNode Id="93ad829e-7710-4eaf-9e98-c10df6b7efb6" Title="MessageQueryDateTime Methods" Url="html/Methods_T_Bandwidth_Net_Api_MessageQueryDateTime.htm">
           <HelpTOCNode Title="ToString Method " Url="html/M_Bandwidth_Net_Api_MessageQueryDateTime_ToString.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="ca45db1d-86e0-49b9-912c-6c39f888463a" Title="MessageQueryDateTime Type Conversions" Url="html/Operators_T_Bandwidth_Net_Api_MessageQueryDateTime.htm">
-          <HelpTOCNode Id="5239039c-cd93-42b3-83f7-e898ccdc89fb" Title="Implicit Conversion Operators" Url="html/Overload_Bandwidth_Net_Api_MessageQueryDateTime_op_Implicit.htm">
+        <HelpTOCNode Id="73a6118e-b11f-48b8-8ab2-1783c9283e98" Title="MessageQueryDateTime Type Conversions" Url="html/Operators_T_Bandwidth_Net_Api_MessageQueryDateTime.htm">
+          <HelpTOCNode Id="5ba0385c-a8d7-46a2-9518-591fd9da8db0" Title="Implicit Conversion Operators" Url="html/Overload_Bandwidth_Net_Api_MessageQueryDateTime_op_Implicit.htm">
             <HelpTOCNode Title="Implicit Conversion (DateTime to MessageQueryDateTime)" Url="html/M_Bandwidth_Net_Api_MessageQueryDateTime_op_Implicit_1.htm" />
             <HelpTOCNode Title="Implicit Conversion (MessageQueryDateTime to DateTime)" Url="html/M_Bandwidth_Net_Api_MessageQueryDateTime_op_Implicit.htm" />
           </HelpTOCNode>
@@ -757,18 +757,18 @@
       </HelpTOCNode>
       <HelpTOCNode Title="MessageReceiptRequested Enumeration" Url="html/T_Bandwidth_Net_Api_MessageReceiptRequested.htm" />
       <HelpTOCNode Title="MessageState Enumeration" Url="html/T_Bandwidth_Net_Api_MessageState.htm" />
-      <HelpTOCNode Id="04f9ff24-dac3-4e58-ac97-712dffe52530" Title="NumberInfo Class" Url="html/T_Bandwidth_Net_Api_NumberInfo.htm">
+      <HelpTOCNode Id="176cdc7c-c612-4306-82e8-8e648adb8162" Title="NumberInfo Class" Url="html/T_Bandwidth_Net_Api_NumberInfo.htm">
         <HelpTOCNode Title="NumberInfo Constructor " Url="html/M_Bandwidth_Net_Api_NumberInfo__ctor.htm" />
-        <HelpTOCNode Id="13b2cff4-5104-438f-b27c-47d175cbce4b" Title="NumberInfo Properties" Url="html/Properties_T_Bandwidth_Net_Api_NumberInfo.htm">
+        <HelpTOCNode Id="58a1c562-dc5e-4ec3-b781-7f3faff2bc30" Title="NumberInfo Properties" Url="html/Properties_T_Bandwidth_Net_Api_NumberInfo.htm">
           <HelpTOCNode Title="Created Property " Url="html/P_Bandwidth_Net_Api_NumberInfo_Created.htm" />
           <HelpTOCNode Title="Name Property " Url="html/P_Bandwidth_Net_Api_NumberInfo_Name.htm" />
           <HelpTOCNode Title="Number Property " Url="html/P_Bandwidth_Net_Api_NumberInfo_Number.htm" />
           <HelpTOCNode Title="Updated Property " Url="html/P_Bandwidth_Net_Api_NumberInfo_Updated.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="9fc5040c-3a03-413c-bd37-fa642bc0f750" Title="OrderedNumber Class" Url="html/T_Bandwidth_Net_Api_OrderedNumber.htm">
+      <HelpTOCNode Id="59b762f2-e5c1-4f74-b2b9-1c4652b4f8a6" Title="OrderedNumber Class" Url="html/T_Bandwidth_Net_Api_OrderedNumber.htm">
         <HelpTOCNode Title="OrderedNumber Constructor " Url="html/M_Bandwidth_Net_Api_OrderedNumber__ctor.htm" />
-        <HelpTOCNode Id="a9fdf956-6108-4309-8ce7-f9dcb50b8d99" Title="OrderedNumber Properties" Url="html/Properties_T_Bandwidth_Net_Api_OrderedNumber.htm">
+        <HelpTOCNode Id="312a610f-6c96-4a56-94a8-7c14f50418bb" Title="OrderedNumber Properties" Url="html/Properties_T_Bandwidth_Net_Api_OrderedNumber.htm">
           <HelpTOCNode Title="Id Property " Url="html/P_Bandwidth_Net_Api_OrderedNumber_Id.htm" />
           <HelpTOCNode Title="Location Property " Url="html/P_Bandwidth_Net_Api_OrderedNumber_Location.htm" />
           <HelpTOCNode Title="NationalNumber Property " Url="html/P_Bandwidth_Net_Api_OrderedNumber_NationalNumber.htm" />
@@ -776,9 +776,9 @@
           <HelpTOCNode Title="Price Property " Url="html/P_Bandwidth_Net_Api_OrderedNumber_Price.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="1db83e4d-a2a6-4e95-b815-ce451e4079a2" Title="PhoneNumber Class" Url="html/T_Bandwidth_Net_Api_PhoneNumber.htm">
+      <HelpTOCNode Id="ce59ae8b-5294-4f28-bc79-ff4483c6fd22" Title="PhoneNumber Class" Url="html/T_Bandwidth_Net_Api_PhoneNumber.htm">
         <HelpTOCNode Title="PhoneNumber Constructor " Url="html/M_Bandwidth_Net_Api_PhoneNumber__ctor.htm" />
-        <HelpTOCNode Id="8a98c198-bb58-406d-9a2f-ca4502a32dff" Title="PhoneNumber Properties" Url="html/Properties_T_Bandwidth_Net_Api_PhoneNumber.htm">
+        <HelpTOCNode Id="e811c7d5-ab95-405c-a8bc-e7c785b2d3ff" Title="PhoneNumber Properties" Url="html/Properties_T_Bandwidth_Net_Api_PhoneNumber.htm">
           <HelpTOCNode Title="ApplicationId Property " Url="html/P_Bandwidth_Net_Api_PhoneNumber_ApplicationId.htm" />
           <HelpTOCNode Title="City Property " Url="html/P_Bandwidth_Net_Api_PhoneNumber_City.htm" />
           <HelpTOCNode Title="CreatedTime Property " Url="html/P_Bandwidth_Net_Api_PhoneNumber_CreatedTime.htm" />
@@ -792,9 +792,9 @@
           <HelpTOCNode Title="State Property " Url="html/P_Bandwidth_Net_Api_PhoneNumber_State.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="4860ce5d-256e-4f13-9142-b64da72c57ed" Title="PhoneNumberQuery Class" Url="html/T_Bandwidth_Net_Api_PhoneNumberQuery.htm">
+      <HelpTOCNode Id="3c1481db-e9bd-4d6d-ab03-de3e0d85ffd4" Title="PhoneNumberQuery Class" Url="html/T_Bandwidth_Net_Api_PhoneNumberQuery.htm">
         <HelpTOCNode Title="PhoneNumberQuery Constructor " Url="html/M_Bandwidth_Net_Api_PhoneNumberQuery__ctor.htm" />
-        <HelpTOCNode Id="5fa2a148-e3ff-4dca-ab66-bd8491c97b68" Title="PhoneNumberQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_PhoneNumberQuery.htm">
+        <HelpTOCNode Id="d63fc86a-91a1-4174-acd5-6ab14197c1d8" Title="PhoneNumberQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_PhoneNumberQuery.htm">
           <HelpTOCNode Title="ApplicationId Property " Url="html/P_Bandwidth_Net_Api_PhoneNumberQuery_ApplicationId.htm" />
           <HelpTOCNode Title="City Property " Url="html/P_Bandwidth_Net_Api_PhoneNumberQuery_City.htm" />
           <HelpTOCNode Title="Name Property " Url="html/P_Bandwidth_Net_Api_PhoneNumberQuery_Name.htm" />
@@ -805,9 +805,9 @@
       </HelpTOCNode>
       <HelpTOCNode Title="PhoneNumberState Enumeration" Url="html/T_Bandwidth_Net_Api_PhoneNumberState.htm" />
       <HelpTOCNode Title="ProductType Enumeration" Url="html/T_Bandwidth_Net_Api_ProductType.htm" />
-      <HelpTOCNode Id="3c89a4ff-3be2-4427-a9f5-58ad7b299182" Title="Recording Class" Url="html/T_Bandwidth_Net_Api_Recording.htm">
+      <HelpTOCNode Id="fe2305c7-dcbc-4840-80ce-aea22f2b39b4" Title="Recording Class" Url="html/T_Bandwidth_Net_Api_Recording.htm">
         <HelpTOCNode Title="Recording Constructor " Url="html/M_Bandwidth_Net_Api_Recording__ctor.htm" />
-        <HelpTOCNode Id="3a8e5b79-fdd9-4f4a-b05c-fb8813c36445" Title="Recording Properties" Url="html/Properties_T_Bandwidth_Net_Api_Recording.htm">
+        <HelpTOCNode Id="6b49e40d-6a0e-4c3a-a913-30710805c35b" Title="Recording Properties" Url="html/Properties_T_Bandwidth_Net_Api_Recording.htm">
           <HelpTOCNode Title="Call Property " Url="html/P_Bandwidth_Net_Api_Recording_Call.htm" />
           <HelpTOCNode Title="CallId Property " Url="html/P_Bandwidth_Net_Api_Recording_CallId.htm" />
           <HelpTOCNode Title="EndTime Property " Url="html/P_Bandwidth_Net_Api_Recording_EndTime.htm" />
@@ -818,22 +818,22 @@
           <HelpTOCNode Title="State Property " Url="html/P_Bandwidth_Net_Api_Recording_State.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="0f200f4c-1a9c-4cbc-b95d-b226842ef4c1" Title="RecordingQuery Class" Url="html/T_Bandwidth_Net_Api_RecordingQuery.htm">
+      <HelpTOCNode Id="86eafcbf-46ce-49e6-8bd8-3758349145cf" Title="RecordingQuery Class" Url="html/T_Bandwidth_Net_Api_RecordingQuery.htm">
         <HelpTOCNode Title="RecordingQuery Constructor " Url="html/M_Bandwidth_Net_Api_RecordingQuery__ctor.htm" />
-        <HelpTOCNode Id="1375d500-ea40-40d9-9349-3b556c0472f4" Title="RecordingQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_RecordingQuery.htm">
+        <HelpTOCNode Id="81bc6dc7-ee1f-444a-9183-f18176713125" Title="RecordingQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_RecordingQuery.htm">
           <HelpTOCNode Title="Size Property " Url="html/P_Bandwidth_Net_Api_RecordingQuery_Size.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="RecordingState Enumeration" Url="html/T_Bandwidth_Net_Api_RecordingState.htm" />
-      <HelpTOCNode Id="d8fca6e4-3244-4248-8bb7-cf849a2f8232" Title="SendDtmfData Class" Url="html/T_Bandwidth_Net_Api_SendDtmfData.htm">
+      <HelpTOCNode Id="f1426361-d32e-4ea1-bad8-b56db48a24f6" Title="SendDtmfData Class" Url="html/T_Bandwidth_Net_Api_SendDtmfData.htm">
         <HelpTOCNode Title="SendDtmfData Constructor " Url="html/M_Bandwidth_Net_Api_SendDtmfData__ctor.htm" />
-        <HelpTOCNode Id="18864a56-708c-4f47-a43b-6c2dc1b10e33" Title="SendDtmfData Properties" Url="html/Properties_T_Bandwidth_Net_Api_SendDtmfData.htm">
+        <HelpTOCNode Id="6a2a5a15-6b38-4179-8e51-29cec8a05458" Title="SendDtmfData Properties" Url="html/Properties_T_Bandwidth_Net_Api_SendDtmfData.htm">
           <HelpTOCNode Title="DtmfOut Property " Url="html/P_Bandwidth_Net_Api_SendDtmfData_DtmfOut.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="6b4633f8-e4cb-43d3-bd60-836b8e619108" Title="SendMessageResult Class" Url="html/T_Bandwidth_Net_Api_SendMessageResult.htm">
+      <HelpTOCNode Id="c212e936-5f45-4cb7-82ea-083e7a7173a5" Title="SendMessageResult Class" Url="html/T_Bandwidth_Net_Api_SendMessageResult.htm">
         <HelpTOCNode Title="SendMessageResult Constructor " Url="html/M_Bandwidth_Net_Api_SendMessageResult__ctor.htm" />
-        <HelpTOCNode Id="5cc075d4-6ead-40b9-9fa1-a3c52064118f" Title="SendMessageResult Properties" Url="html/Properties_T_Bandwidth_Net_Api_SendMessageResult.htm">
+        <HelpTOCNode Id="b6d60aa3-b0c9-45c2-8308-3c203b869bbd" Title="SendMessageResult Properties" Url="html/Properties_T_Bandwidth_Net_Api_SendMessageResult.htm">
           <HelpTOCNode Title="Error Property " Url="html/P_Bandwidth_Net_Api_SendMessageResult_Error.htm" />
           <HelpTOCNode Title="Id Property " Url="html/P_Bandwidth_Net_Api_SendMessageResult_Id.htm" />
           <HelpTOCNode Title="Location Property " Url="html/P_Bandwidth_Net_Api_SendMessageResult_Location.htm" />
@@ -843,21 +843,21 @@
       </HelpTOCNode>
       <HelpTOCNode Title="SendMessageResults Enumeration" Url="html/T_Bandwidth_Net_Api_SendMessageResults.htm" />
       <HelpTOCNode Title="SortOrder Enumeration" Url="html/T_Bandwidth_Net_Api_SortOrder.htm" />
-      <HelpTOCNode Id="a1caaf56-080b-4df2-ae03-1fbffd32cc1a" Title="TollFreeNumberQuery Class" Url="html/T_Bandwidth_Net_Api_TollFreeNumberQuery.htm">
+      <HelpTOCNode Id="716afda5-56b3-42cb-9009-5415b0c2b0c4" Title="TollFreeNumberQuery Class" Url="html/T_Bandwidth_Net_Api_TollFreeNumberQuery.htm">
         <HelpTOCNode Title="TollFreeNumberQuery Constructor " Url="html/M_Bandwidth_Net_Api_TollFreeNumberQuery__ctor.htm" />
-        <HelpTOCNode Id="c6bb210d-4792-4da5-b011-f5aea2283941" Title="TollFreeNumberQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_TollFreeNumberQuery.htm">
+        <HelpTOCNode Id="3353cf22-f281-420a-bc37-e103779d5ae4" Title="TollFreeNumberQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_TollFreeNumberQuery.htm">
           <HelpTOCNode Title="Pattern Property " Url="html/P_Bandwidth_Net_Api_TollFreeNumberQuery_Pattern.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="6700c374-f8b3-4bc3-917b-ee33a4ba3c43" Title="TollFreeNumberQueryForOrder Class" Url="html/T_Bandwidth_Net_Api_TollFreeNumberQueryForOrder.htm">
+      <HelpTOCNode Id="bc86c4c1-7e3b-413d-ad85-6f9b09caf336" Title="TollFreeNumberQueryForOrder Class" Url="html/T_Bandwidth_Net_Api_TollFreeNumberQueryForOrder.htm">
         <HelpTOCNode Title="TollFreeNumberQueryForOrder Constructor " Url="html/M_Bandwidth_Net_Api_TollFreeNumberQueryForOrder__ctor.htm" />
-        <HelpTOCNode Id="faf8eaa4-215a-4eff-895e-302bb555695e" Title="TollFreeNumberQueryForOrder Properties" Url="html/Properties_T_Bandwidth_Net_Api_TollFreeNumberQueryForOrder.htm">
+        <HelpTOCNode Id="738b85f3-5645-4b06-ae09-2ed2f7e2654b" Title="TollFreeNumberQueryForOrder Properties" Url="html/Properties_T_Bandwidth_Net_Api_TollFreeNumberQueryForOrder.htm">
           <HelpTOCNode Title="Quantity Property " Url="html/P_Bandwidth_Net_Api_TollFreeNumberQueryForOrder_Quantity.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="601123b1-db48-4a30-87cf-074757695659" Title="Transcription Class" Url="html/T_Bandwidth_Net_Api_Transcription.htm">
+      <HelpTOCNode Id="1ede66f2-b918-4c67-8198-1a7767711826" Title="Transcription Class" Url="html/T_Bandwidth_Net_Api_Transcription.htm">
         <HelpTOCNode Title="Transcription Constructor " Url="html/M_Bandwidth_Net_Api_Transcription__ctor.htm" />
-        <HelpTOCNode Id="9856fcab-12c0-46cd-8efd-75a1e84e3aa0" Title="Transcription Properties" Url="html/Properties_T_Bandwidth_Net_Api_Transcription.htm">
+        <HelpTOCNode Id="71fdd6b6-7a76-474a-8fd3-5115b6e76b63" Title="Transcription Properties" Url="html/Properties_T_Bandwidth_Net_Api_Transcription.htm">
           <HelpTOCNode Title="ChargeableDuration Property " Url="html/P_Bandwidth_Net_Api_Transcription_ChargeableDuration.htm" />
           <HelpTOCNode Title="Id Property " Url="html/P_Bandwidth_Net_Api_Transcription_Id.htm" />
           <HelpTOCNode Title="State Property " Url="html/P_Bandwidth_Net_Api_Transcription_State.htm" />
@@ -868,24 +868,24 @@
           <HelpTOCNode Title="Time Property " Url="html/P_Bandwidth_Net_Api_Transcription_Time.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="60c286fb-d6b9-4d6d-83ff-0c82b835ee46" Title="TranscriptionQuery Class" Url="html/T_Bandwidth_Net_Api_TranscriptionQuery.htm">
+      <HelpTOCNode Id="c2f9fdc7-eba8-43ec-a8fc-ec412e6773ff" Title="TranscriptionQuery Class" Url="html/T_Bandwidth_Net_Api_TranscriptionQuery.htm">
         <HelpTOCNode Title="TranscriptionQuery Constructor " Url="html/M_Bandwidth_Net_Api_TranscriptionQuery__ctor.htm" />
-        <HelpTOCNode Id="1fb60e2d-faa7-4421-b22d-df9b612e71a9" Title="TranscriptionQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_TranscriptionQuery.htm">
+        <HelpTOCNode Id="af486ec0-9213-4ade-b50e-fd583c64f1ee" Title="TranscriptionQuery Properties" Url="html/Properties_T_Bandwidth_Net_Api_TranscriptionQuery.htm">
           <HelpTOCNode Title="Size Property " Url="html/P_Bandwidth_Net_Api_TranscriptionQuery_Size.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="TranscriptionState Enumeration" Url="html/T_Bandwidth_Net_Api_TranscriptionState.htm" />
-      <HelpTOCNode Id="f12df48d-9588-4aa7-b1b9-4b20283ca7d2" Title="UpdateApplicationData Class" Url="html/T_Bandwidth_Net_Api_UpdateApplicationData.htm">
+      <HelpTOCNode Id="4bfbcb44-25eb-4784-b885-4eb15ef662ef" Title="UpdateApplicationData Class" Url="html/T_Bandwidth_Net_Api_UpdateApplicationData.htm">
         <HelpTOCNode Title="UpdateApplicationData Constructor " Url="html/M_Bandwidth_Net_Api_UpdateApplicationData__ctor.htm" />
         <HelpTOCNode Title="UpdateApplicationData Properties" Url="html/Properties_T_Bandwidth_Net_Api_UpdateApplicationData.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="d7c15180-966c-4625-94aa-9a2e79c7512d" Title="UpdateBridgeData Class" Url="html/T_Bandwidth_Net_Api_UpdateBridgeData.htm">
+      <HelpTOCNode Id="991ae4e9-a12c-4c67-8d5d-27e40f96991c" Title="UpdateBridgeData Class" Url="html/T_Bandwidth_Net_Api_UpdateBridgeData.htm">
         <HelpTOCNode Title="UpdateBridgeData Constructor " Url="html/M_Bandwidth_Net_Api_UpdateBridgeData__ctor.htm" />
         <HelpTOCNode Title="UpdateBridgeData Properties" Url="html/Properties_T_Bandwidth_Net_Api_UpdateBridgeData.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="1ffeb305-9c2c-4945-ab27-b01b920129fd" Title="UpdateCallData Class" Url="html/T_Bandwidth_Net_Api_UpdateCallData.htm">
+      <HelpTOCNode Id="fb239b3c-189d-4ef0-a3a0-a83fcb95cc3d" Title="UpdateCallData Class" Url="html/T_Bandwidth_Net_Api_UpdateCallData.htm">
         <HelpTOCNode Title="UpdateCallData Constructor " Url="html/M_Bandwidth_Net_Api_UpdateCallData__ctor.htm" />
-        <HelpTOCNode Id="0310b6ff-befd-4223-928c-815ac702fdd5" Title="UpdateCallData Properties" Url="html/Properties_T_Bandwidth_Net_Api_UpdateCallData.htm">
+        <HelpTOCNode Id="f94c421a-e99c-4cbe-8607-9225faa32e52" Title="UpdateCallData Properties" Url="html/Properties_T_Bandwidth_Net_Api_UpdateCallData.htm">
           <HelpTOCNode Title="CallbackUrl Property " Url="html/P_Bandwidth_Net_Api_UpdateCallData_CallbackUrl.htm" />
           <HelpTOCNode Title="RecordingEnabled Property " Url="html/P_Bandwidth_Net_Api_UpdateCallData_RecordingEnabled.htm" />
           <HelpTOCNode Title="RecordingFileFormat Property " Url="html/P_Bandwidth_Net_Api_UpdateCallData_RecordingFileFormat.htm" />
@@ -895,9 +895,9 @@
           <HelpTOCNode Title="WhisperAudio Property " Url="html/P_Bandwidth_Net_Api_UpdateCallData_WhisperAudio.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="ad07ff9e-8385-469d-8473-f8cf53727e38" Title="UpdateConferenceData Class" Url="html/T_Bandwidth_Net_Api_UpdateConferenceData.htm">
+      <HelpTOCNode Id="552c98b9-73e5-4285-a5f7-9730e68a45c3" Title="UpdateConferenceData Class" Url="html/T_Bandwidth_Net_Api_UpdateConferenceData.htm">
         <HelpTOCNode Title="UpdateConferenceData Constructor " Url="html/M_Bandwidth_Net_Api_UpdateConferenceData__ctor.htm" />
-        <HelpTOCNode Id="9b36f22b-ef50-4d89-a9fd-050041da59c6" Title="UpdateConferenceData Properties" Url="html/Properties_T_Bandwidth_Net_Api_UpdateConferenceData.htm">
+        <HelpTOCNode Id="6b8ca394-fe8f-4989-8b97-42a4115533ae" Title="UpdateConferenceData Properties" Url="html/Properties_T_Bandwidth_Net_Api_UpdateConferenceData.htm">
           <HelpTOCNode Title="CallbackHttpMethod Property " Url="html/P_Bandwidth_Net_Api_UpdateConferenceData_CallbackHttpMethod.htm" />
           <HelpTOCNode Title="CallbackTimeout Property " Url="html/P_Bandwidth_Net_Api_UpdateConferenceData_CallbackTimeout.htm" />
           <HelpTOCNode Title="CallbackUrl Property " Url="html/P_Bandwidth_Net_Api_UpdateConferenceData_CallbackUrl.htm" />
@@ -908,9 +908,9 @@
           <HelpTOCNode Title="Tag Property " Url="html/P_Bandwidth_Net_Api_UpdateConferenceData_Tag.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="eaba0552-acd8-4017-b90b-50c1bbbf5ada" Title="UpdateConferenceMemberData Class" Url="html/T_Bandwidth_Net_Api_UpdateConferenceMemberData.htm">
+      <HelpTOCNode Id="4f68c622-73df-4536-8f38-cd8bee3ea2bc" Title="UpdateConferenceMemberData Class" Url="html/T_Bandwidth_Net_Api_UpdateConferenceMemberData.htm">
         <HelpTOCNode Title="UpdateConferenceMemberData Constructor " Url="html/M_Bandwidth_Net_Api_UpdateConferenceMemberData__ctor.htm" />
-        <HelpTOCNode Id="250c22af-95db-4ab5-9e58-994b1eb167c4" Title="UpdateConferenceMemberData Properties" Url="html/Properties_T_Bandwidth_Net_Api_UpdateConferenceMemberData.htm">
+        <HelpTOCNode Id="1c681aa8-7040-43b4-9475-23e7d3328b48" Title="UpdateConferenceMemberData Properties" Url="html/Properties_T_Bandwidth_Net_Api_UpdateConferenceMemberData.htm">
           <HelpTOCNode Title="Hold Property " Url="html/P_Bandwidth_Net_Api_UpdateConferenceMemberData_Hold.htm" />
           <HelpTOCNode Title="JoinTone Property " Url="html/P_Bandwidth_Net_Api_UpdateConferenceMemberData_JoinTone.htm" />
           <HelpTOCNode Title="LeavingTone Property " Url="html/P_Bandwidth_Net_Api_UpdateConferenceMemberData_LeavingTone.htm" />
@@ -918,36 +918,36 @@
           <HelpTOCNode Title="State Property " Url="html/P_Bandwidth_Net_Api_UpdateConferenceMemberData_State.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="aaa80f2c-3286-464f-9191-5b01c357b429" Title="UpdateEndpointCredentials Class" Url="html/T_Bandwidth_Net_Api_UpdateEndpointCredentials.htm">
+      <HelpTOCNode Id="b3f175e1-55af-4c42-a505-c38bf78fc22e" Title="UpdateEndpointCredentials Class" Url="html/T_Bandwidth_Net_Api_UpdateEndpointCredentials.htm">
         <HelpTOCNode Title="UpdateEndpointCredentials Constructor " Url="html/M_Bandwidth_Net_Api_UpdateEndpointCredentials__ctor.htm" />
         <HelpTOCNode Title="UpdateEndpointCredentials Properties" Url="html/Properties_T_Bandwidth_Net_Api_UpdateEndpointCredentials.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="dfb2674e-7dc9-4eba-89cf-3f760dd79b85" Title="UpdateEndpointData Class" Url="html/T_Bandwidth_Net_Api_UpdateEndpointData.htm">
+      <HelpTOCNode Id="845ffa68-9bbe-4ac0-aaee-e616fd16b7c0" Title="UpdateEndpointData Class" Url="html/T_Bandwidth_Net_Api_UpdateEndpointData.htm">
         <HelpTOCNode Title="UpdateEndpointData Constructor " Url="html/M_Bandwidth_Net_Api_UpdateEndpointData__ctor.htm" />
-        <HelpTOCNode Id="e8471400-f110-4374-802c-4d671fb93b14" Title="UpdateEndpointData Properties" Url="html/Properties_T_Bandwidth_Net_Api_UpdateEndpointData.htm">
+        <HelpTOCNode Id="2d8339a1-f662-4a8f-bf67-2d39cebebefe" Title="UpdateEndpointData Properties" Url="html/Properties_T_Bandwidth_Net_Api_UpdateEndpointData.htm">
           <HelpTOCNode Title="ApplicationId Property " Url="html/P_Bandwidth_Net_Api_UpdateEndpointData_ApplicationId.htm" />
           <HelpTOCNode Title="Credentials Property " Url="html/P_Bandwidth_Net_Api_UpdateEndpointData_Credentials.htm" />
           <HelpTOCNode Title="Description Property " Url="html/P_Bandwidth_Net_Api_UpdateEndpointData_Description.htm" />
           <HelpTOCNode Title="Enabled Property " Url="html/P_Bandwidth_Net_Api_UpdateEndpointData_Enabled.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="dae43beb-ad42-41b6-90b3-d06d69dd66be" Title="UpdateGatherData Class" Url="html/T_Bandwidth_Net_Api_UpdateGatherData.htm">
+      <HelpTOCNode Id="f6ecf903-58ca-4d0d-9c60-e6c9cde74914" Title="UpdateGatherData Class" Url="html/T_Bandwidth_Net_Api_UpdateGatherData.htm">
         <HelpTOCNode Title="UpdateGatherData Constructor " Url="html/M_Bandwidth_Net_Api_UpdateGatherData__ctor.htm" />
-        <HelpTOCNode Id="1e1b7f21-2810-4b07-98f5-a902a78ba23f" Title="UpdateGatherData Properties" Url="html/Properties_T_Bandwidth_Net_Api_UpdateGatherData.htm">
+        <HelpTOCNode Id="840ce5d7-6a10-4b0e-a34f-1f8112761a52" Title="UpdateGatherData Properties" Url="html/Properties_T_Bandwidth_Net_Api_UpdateGatherData.htm">
           <HelpTOCNode Title="State Property " Url="html/P_Bandwidth_Net_Api_UpdateGatherData_State.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="e778218b-cfb4-4ac1-ad69-57712be2c945" Title="UpdatePhoneNumberData Class" Url="html/T_Bandwidth_Net_Api_UpdatePhoneNumberData.htm">
+      <HelpTOCNode Id="b35f6707-b295-4c5f-ab3d-cdf6b3b7cc78" Title="UpdatePhoneNumberData Class" Url="html/T_Bandwidth_Net_Api_UpdatePhoneNumberData.htm">
         <HelpTOCNode Title="UpdatePhoneNumberData Constructor " Url="html/M_Bandwidth_Net_Api_UpdatePhoneNumberData__ctor.htm" />
-        <HelpTOCNode Id="15025a4b-a937-48bc-8794-9cbee6f1e526" Title="UpdatePhoneNumberData Properties" Url="html/Properties_T_Bandwidth_Net_Api_UpdatePhoneNumberData.htm">
+        <HelpTOCNode Id="368cfc19-e15a-44a9-ad99-3013384967ea" Title="UpdatePhoneNumberData Properties" Url="html/Properties_T_Bandwidth_Net_Api_UpdatePhoneNumberData.htm">
           <HelpTOCNode Title="ApplicationId Property " Url="html/P_Bandwidth_Net_Api_UpdatePhoneNumberData_ApplicationId.htm" />
           <HelpTOCNode Title="FallbackNumber Property " Url="html/P_Bandwidth_Net_Api_UpdatePhoneNumberData_FallbackNumber.htm" />
           <HelpTOCNode Title="Name Property " Url="html/P_Bandwidth_Net_Api_UpdatePhoneNumberData_Name.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="b2db505c-8baa-42c2-b8a0-b8b9d0171305" Title="UploadMediaFileData Class" Url="html/T_Bandwidth_Net_Api_UploadMediaFileData.htm">
+      <HelpTOCNode Id="d82f0e0c-a330-4160-8094-ac61403ec403" Title="UploadMediaFileData Class" Url="html/T_Bandwidth_Net_Api_UploadMediaFileData.htm">
         <HelpTOCNode Title="UploadMediaFileData Constructor " Url="html/M_Bandwidth_Net_Api_UploadMediaFileData__ctor.htm" />
-        <HelpTOCNode Id="97930487-3797-4a25-a36d-01eca7abecfa" Title="UploadMediaFileData Properties" Url="html/Properties_T_Bandwidth_Net_Api_UploadMediaFileData.htm">
+        <HelpTOCNode Id="1bea062f-af81-4547-bf63-bf7b3ecb314b" Title="UploadMediaFileData Properties" Url="html/Properties_T_Bandwidth_Net_Api_UploadMediaFileData.htm">
           <HelpTOCNode Title="Buffer Property " Url="html/P_Bandwidth_Net_Api_UploadMediaFileData_Buffer.htm" />
           <HelpTOCNode Title="ContentType Property " Url="html/P_Bandwidth_Net_Api_UploadMediaFileData_ContentType.htm" />
           <HelpTOCNode Title="MediaName Property " Url="html/P_Bandwidth_Net_Api_UploadMediaFileData_MediaName.htm" />
@@ -956,9 +956,9 @@
           <HelpTOCNode Title="String Property " Url="html/P_Bandwidth_Net_Api_UploadMediaFileData_String.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="22b977b2-25d8-47b9-ad70-5082cba35a50" Title="WhisperAudio Class" Url="html/T_Bandwidth_Net_Api_WhisperAudio.htm">
+      <HelpTOCNode Id="0e79bd96-5220-4d44-b4af-a1ed276ce8fa" Title="WhisperAudio Class" Url="html/T_Bandwidth_Net_Api_WhisperAudio.htm">
         <HelpTOCNode Title="WhisperAudio Constructor " Url="html/M_Bandwidth_Net_Api_WhisperAudio__ctor.htm" />
-        <HelpTOCNode Id="5177ade5-ec9d-4d43-bd9c-f6332e81cfd6" Title="WhisperAudio Properties" Url="html/Properties_T_Bandwidth_Net_Api_WhisperAudio.htm">
+        <HelpTOCNode Id="bea2dc9f-6aba-479f-903e-e3e9ed1f2f71" Title="WhisperAudio Properties" Url="html/Properties_T_Bandwidth_Net_Api_WhisperAudio.htm">
           <HelpTOCNode Title="Gender Property " Url="html/P_Bandwidth_Net_Api_WhisperAudio_Gender.htm" />
           <HelpTOCNode Title="Locale Property " Url="html/P_Bandwidth_Net_Api_WhisperAudio_Locale.htm" />
           <HelpTOCNode Title="Sentence Property " Url="html/P_Bandwidth_Net_Api_WhisperAudio_Sentence.htm" />
@@ -966,27 +966,27 @@
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="0fc144da-98ad-4367-ac68-8440947db757" Title="Bandwidth.Net.Xml" Url="html/N_Bandwidth_Net_Xml.htm">
-      <HelpTOCNode Id="512d3fdc-4209-460a-8173-5763cdbff207" Title="BandwidthXmlContent Class" Url="html/T_Bandwidth_Net_Xml_BandwidthXmlContent.htm">
+    <HelpTOCNode Id="8f704144-9c1e-4050-b8ee-608e38e0f685" Title="Bandwidth.Net.Xml" Url="html/N_Bandwidth_Net_Xml.htm">
+      <HelpTOCNode Id="ef6f44bf-d387-424d-98c0-61c0419370fd" Title="BandwidthXmlContent Class" Url="html/T_Bandwidth_Net_Xml_BandwidthXmlContent.htm">
         <HelpTOCNode Title="BandwidthXmlContent Constructor " Url="html/M_Bandwidth_Net_Xml_BandwidthXmlContent__ctor.htm" />
         <HelpTOCNode Title="BandwidthXmlContent Methods" Url="html/Methods_T_Bandwidth_Net_Xml_BandwidthXmlContent.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="IVerb Interface" Url="html/T_Bandwidth_Net_Xml_IVerb.htm" />
-      <HelpTOCNode Id="b8033750-037f-4535-a8c4-d5078e25a095" Title="Response Class" Url="html/T_Bandwidth_Net_Xml_Response.htm">
-        <HelpTOCNode Id="33947d7c-ebe8-48bf-a8f0-d24ee21aec06" Title="Response Constructor " Url="html/Overload_Bandwidth_Net_Xml_Response__ctor.htm">
+      <HelpTOCNode Id="34ba2fa6-f9f3-49d1-86ae-92d7ba8e4536" Title="Response Class" Url="html/T_Bandwidth_Net_Xml_Response.htm">
+        <HelpTOCNode Id="c4d47275-2ba0-4dbf-8893-733133fd495e" Title="Response Constructor " Url="html/Overload_Bandwidth_Net_Xml_Response__ctor.htm">
           <HelpTOCNode Title="Response Constructor " Url="html/M_Bandwidth_Net_Xml_Response__ctor.htm" />
           <HelpTOCNode Title="Response Constructor (IVerb[])" Url="html/M_Bandwidth_Net_Xml_Response__ctor_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="22cde084-61e4-41f8-b312-c6ec940cff12" Title="Response Methods" Url="html/Methods_T_Bandwidth_Net_Xml_Response.htm">
+        <HelpTOCNode Id="7667f7bb-19a9-4073-ba78-48ec7ed9157a" Title="Response Methods" Url="html/Methods_T_Bandwidth_Net_Xml_Response.htm">
           <HelpTOCNode Title="Add Method " Url="html/M_Bandwidth_Net_Xml_Response_Add.htm" />
           <HelpTOCNode Title="ToXml Method " Url="html/M_Bandwidth_Net_Xml_Response_ToXml.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="67eee924-72bd-4eb6-9f88-3536f8223697" Title="Bandwidth.Net.Xml.Verbs" Url="html/N_Bandwidth_Net_Xml_Verbs.htm">
-      <HelpTOCNode Id="ab2147d4-80e1-41f0-95ad-a0341bf3f30e" Title="Call Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Call.htm">
+    <HelpTOCNode Id="89e35fd2-c736-49aa-9d83-b3ba973dafdc" Title="Bandwidth.Net.Xml.Verbs" Url="html/N_Bandwidth_Net_Xml_Verbs.htm">
+      <HelpTOCNode Id="40fe2df1-e203-4129-ae96-f768dc1a64b8" Title="Call Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Call.htm">
         <HelpTOCNode Title="Call Constructor " Url="html/M_Bandwidth_Net_Xml_Verbs_Call__ctor.htm" />
-        <HelpTOCNode Id="545df288-efe8-4f00-a2da-3af85e804d8b" Title="Call Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Call.htm">
+        <HelpTOCNode Id="5cb963d8-8ecf-4abe-b00d-de65ee6135d6" Title="Call Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Call.htm">
           <HelpTOCNode Title="From Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Call_From.htm" />
           <HelpTOCNode Title="PhoneNumbers Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Call_PhoneNumbers.htm" />
           <HelpTOCNode Title="PlayAudio Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Call_PlayAudio.htm" />
@@ -999,9 +999,9 @@
           <HelpTOCNode Title="To Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Call_To.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="a4e5b531-01bf-45b1-b212-bd30e7283d4b" Title="Conference Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Conference.htm">
+      <HelpTOCNode Id="ea6bc884-e387-464c-9648-554069fa72b8" Title="Conference Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Conference.htm">
         <HelpTOCNode Title="Conference Constructor " Url="html/M_Bandwidth_Net_Xml_Verbs_Conference__ctor.htm" />
-        <HelpTOCNode Id="1218fce1-ab54-4408-a030-fee17b2ee28b" Title="Conference Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Conference.htm">
+        <HelpTOCNode Id="57f968d4-f0e8-40ae-bd57-86f72c2aeb2e" Title="Conference Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Conference.htm">
           <HelpTOCNode Title="From Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_From.htm" />
           <HelpTOCNode Title="Hold Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_Hold.htm" />
           <HelpTOCNode Title="JoinTone Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_JoinTone.htm" />
@@ -1011,9 +1011,9 @@
           <HelpTOCNode Title="Tag Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_Tag.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="f5ad2b76-611a-4580-a8b2-4859e584b47e" Title="Gather Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Gather.htm">
+      <HelpTOCNode Id="4a440bb0-3598-4251-81a7-31bc6f7e1e44" Title="Gather Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Gather.htm">
         <HelpTOCNode Title="Gather Constructor " Url="html/M_Bandwidth_Net_Xml_Verbs_Gather__ctor.htm" />
-        <HelpTOCNode Id="b060de36-b8e2-4f1b-9c8a-d1381c0d1c93" Title="Gather Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Gather.htm">
+        <HelpTOCNode Id="19498d76-e1b2-40e2-8f20-522ae39c40fe" Title="Gather Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Gather.htm">
           <HelpTOCNode Title="Bargeable Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Gather_Bargeable.htm" />
           <HelpTOCNode Title="InterDigitTimeout Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Gather_InterDigitTimeout.htm" />
           <HelpTOCNode Title="MaxDigits Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Gather_MaxDigits.htm" />
@@ -1024,25 +1024,25 @@
           <HelpTOCNode Title="TerminatingDigits Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Gather_TerminatingDigits.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="26a6eeac-66c6-48a1-9c06-54fe779ae111" Title="Hangup Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Hangup.htm">
+      <HelpTOCNode Id="67b9b114-ffe8-4199-9936-41c5bb765780" Title="Hangup Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Hangup.htm">
         <HelpTOCNode Title="Hangup Constructor " Url="html/M_Bandwidth_Net_Xml_Verbs_Hangup__ctor.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="d20e0f05-9aed-4a1b-b191-57e328ebb3f7" Title="Pause Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Pause.htm">
+      <HelpTOCNode Id="2faab7ef-7fb4-42c1-b489-ca2ba8141e26" Title="Pause Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Pause.htm">
         <HelpTOCNode Title="Pause Constructor " Url="html/M_Bandwidth_Net_Xml_Verbs_Pause__ctor.htm" />
-        <HelpTOCNode Id="29efb6d3-a73c-4812-86f1-ba7a868a68f7" Title="Pause Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Pause.htm">
+        <HelpTOCNode Id="ca3ae36f-460f-4f95-8661-429fa6a7cf8e" Title="Pause Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Pause.htm">
           <HelpTOCNode Title="Duration Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Pause_Duration.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="e93df93e-09b0-4de6-baef-b7ef67baf5cc" Title="PlayAudio Class" Url="html/T_Bandwidth_Net_Xml_Verbs_PlayAudio.htm">
+      <HelpTOCNode Id="7be69b94-de0f-4c81-8a3d-12afc789703c" Title="PlayAudio Class" Url="html/T_Bandwidth_Net_Xml_Verbs_PlayAudio.htm">
         <HelpTOCNode Title="PlayAudio Constructor " Url="html/M_Bandwidth_Net_Xml_Verbs_PlayAudio__ctor.htm" />
-        <HelpTOCNode Id="8648f784-846d-4d7e-9256-8f04766c70c0" Title="PlayAudio Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_PlayAudio.htm">
+        <HelpTOCNode Id="3fac3e1c-006d-4f63-b366-0edfec818932" Title="PlayAudio Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_PlayAudio.htm">
           <HelpTOCNode Title="Digits Property " Url="html/P_Bandwidth_Net_Xml_Verbs_PlayAudio_Digits.htm" />
           <HelpTOCNode Title="Url Property " Url="html/P_Bandwidth_Net_Xml_Verbs_PlayAudio_Url.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="6d206f22-6f3d-44a3-90ac-20ef18053fa6" Title="Record Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Record.htm">
+      <HelpTOCNode Id="dc58896b-e18c-4adb-b8fc-254083ecec54" Title="Record Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Record.htm">
         <HelpTOCNode Title="Record Constructor " Url="html/M_Bandwidth_Net_Xml_Verbs_Record__ctor.htm" />
-        <HelpTOCNode Id="1806803b-c5b2-4a80-8809-0ee26d868af9" Title="Record Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Record.htm">
+        <HelpTOCNode Id="0e109255-628e-4a62-9e6b-c321b6c71081" Title="Record Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Record.htm">
           <HelpTOCNode Title="FileFormat Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Record_FileFormat.htm" />
           <HelpTOCNode Title="MaxDuration Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Record_MaxDuration.htm" />
           <HelpTOCNode Title="RequestUrl Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Record_RequestUrl.htm" />
@@ -1052,23 +1052,23 @@
           <HelpTOCNode Title="TranscribeCallbackUrl Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Record_TranscribeCallbackUrl.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="6018546d-7f60-45fc-bf04-f8eb05680f0f" Title="Redirect Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Redirect.htm">
+      <HelpTOCNode Id="f8dd4e49-9017-4f50-a302-75afeeef930f" Title="Redirect Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Redirect.htm">
         <HelpTOCNode Title="Redirect Constructor " Url="html/M_Bandwidth_Net_Xml_Verbs_Redirect__ctor.htm" />
-        <HelpTOCNode Id="2631e4c5-547e-417b-818b-54da1dc177c6" Title="Redirect Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Redirect.htm">
+        <HelpTOCNode Id="d7c932da-adc0-4df9-b482-1b26e56c7dcf" Title="Redirect Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Redirect.htm">
           <HelpTOCNode Title="Context Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Redirect_Context.htm" />
           <HelpTOCNode Title="RequestUrl Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Redirect_RequestUrl.htm" />
           <HelpTOCNode Title="RequestUrlTimeout Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Redirect_RequestUrlTimeout.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="d3d049a8-9f0c-4bf6-a883-5f42fb0b8e73" Title="Reject Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Reject.htm">
+      <HelpTOCNode Id="f9f912fa-ce1c-4663-8bf5-de9124c81eaa" Title="Reject Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Reject.htm">
         <HelpTOCNode Title="Reject Constructor " Url="html/M_Bandwidth_Net_Xml_Verbs_Reject__ctor.htm" />
-        <HelpTOCNode Id="a3d7df6a-3a4e-4494-a79d-9e2948ce94a9" Title="Reject Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Reject.htm">
+        <HelpTOCNode Id="7fa6fd18-ccf9-4d89-86a0-654e79ae72c1" Title="Reject Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Reject.htm">
           <HelpTOCNode Title="Reason Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Reject_Reason.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="1cc24396-b9f3-46bf-a5c9-972ce292c288" Title="SendMessage Class" Url="html/T_Bandwidth_Net_Xml_Verbs_SendMessage.htm">
+      <HelpTOCNode Id="a9d5cee5-0535-4c16-b623-c0376aecf78f" Title="SendMessage Class" Url="html/T_Bandwidth_Net_Xml_Verbs_SendMessage.htm">
         <HelpTOCNode Title="SendMessage Constructor " Url="html/M_Bandwidth_Net_Xml_Verbs_SendMessage__ctor.htm" />
-        <HelpTOCNode Id="2b6a0563-8b26-4d06-af17-441842ca4de4" Title="SendMessage Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_SendMessage.htm">
+        <HelpTOCNode Id="4d2446cb-6092-46b1-b8d1-cbb45ac57e33" Title="SendMessage Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_SendMessage.htm">
           <HelpTOCNode Title="From Property " Url="html/P_Bandwidth_Net_Xml_Verbs_SendMessage_From.htm" />
           <HelpTOCNode Title="RequestUrl Property " Url="html/P_Bandwidth_Net_Xml_Verbs_SendMessage_RequestUrl.htm" />
           <HelpTOCNode Title="RequestUrlTimeout Property " Url="html/P_Bandwidth_Net_Xml_Verbs_SendMessage_RequestUrlTimeout.htm" />
@@ -1077,18 +1077,18 @@
           <HelpTOCNode Title="To Property " Url="html/P_Bandwidth_Net_Xml_Verbs_SendMessage_To.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="a85b4b42-53d7-477e-a4de-c9b139caddcd" Title="SpeakSentence Class" Url="html/T_Bandwidth_Net_Xml_Verbs_SpeakSentence.htm">
+      <HelpTOCNode Id="90c303eb-d338-4094-8356-fe053edf7331" Title="SpeakSentence Class" Url="html/T_Bandwidth_Net_Xml_Verbs_SpeakSentence.htm">
         <HelpTOCNode Title="SpeakSentence Constructor " Url="html/M_Bandwidth_Net_Xml_Verbs_SpeakSentence__ctor.htm" />
-        <HelpTOCNode Id="fea755d8-0a48-423f-9c60-1a176f92dd77" Title="SpeakSentence Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_SpeakSentence.htm">
+        <HelpTOCNode Id="45d3c0e7-2352-4017-8a3b-fc9e7e70e941" Title="SpeakSentence Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_SpeakSentence.htm">
           <HelpTOCNode Title="Gender Property " Url="html/P_Bandwidth_Net_Xml_Verbs_SpeakSentence_Gender.htm" />
           <HelpTOCNode Title="Locale Property " Url="html/P_Bandwidth_Net_Xml_Verbs_SpeakSentence_Locale.htm" />
           <HelpTOCNode Title="Sentence Property " Url="html/P_Bandwidth_Net_Xml_Verbs_SpeakSentence_Sentence.htm" />
           <HelpTOCNode Title="Voice Property " Url="html/P_Bandwidth_Net_Xml_Verbs_SpeakSentence_Voice.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="0a300da2-25da-4db9-afee-5703022352bd" Title="Transfer Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Transfer.htm">
+      <HelpTOCNode Id="5cfcf0fc-285b-4578-a763-7e3d9c33ec5c" Title="Transfer Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Transfer.htm">
         <HelpTOCNode Title="Transfer Constructor " Url="html/M_Bandwidth_Net_Xml_Verbs_Transfer__ctor.htm" />
-        <HelpTOCNode Id="e65a9705-e66d-449a-93f8-b2098b213326" Title="Transfer Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Transfer.htm">
+        <HelpTOCNode Id="52365c9c-e332-427b-bc2f-c5c4ae954aaa" Title="Transfer Properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Transfer.htm">
           <HelpTOCNode Title="CallTimeout Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Transfer_CallTimeout.htm" />
           <HelpTOCNode Title="PhoneNumbers Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Transfer_PhoneNumbers.htm" />
           <HelpTOCNode Title="PlayAudio Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Transfer_PlayAudio.htm" />
