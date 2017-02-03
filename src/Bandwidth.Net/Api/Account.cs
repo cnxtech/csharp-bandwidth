@@ -247,13 +247,33 @@ namespace Bandwidth.Net.Api
     CnamSearch,
 
     /// <summary>
-    /// Tool free number per month
+    /// Toll Free DID
     /// </summary>
     ToolFreeNumberPerMonth,
 
     /// <summary>
-    /// Sms short codes
+    /// SMS Short Code Outbound
     /// </summary>
-    SmsWShortcodes
+    SmsWShortcodes,
+
+    /// <summary>
+    /// Toll Free SMS Inbound
+    /// </summary>
+    SmsInTollFree,
+
+    /// <summary>
+    /// Toll Free SMS Outbound
+    /// </summary>
+    SmsOutTollFree,
+
+    /// <summary>
+    /// Port In
+    /// </summary>
+    Portin,
+
+    /// <summary>
+    /// Imported Number
+    /// </summary>
+    ImportedNumber
   }
 }

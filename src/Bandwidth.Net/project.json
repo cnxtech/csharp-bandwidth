@@ -1,5 +1,5 @@
 {
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Bandwidth.Net is client library for the Bandwidth Application Platform",
   "buildOptions": {
     "debugType": "portable",
