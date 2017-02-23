@@ -317,14 +317,14 @@
   <HelpKINode Title="BridgeState enumeration" Url="html/T_Bandwidth_Net_Api_BridgeState.htm" />
   <HelpKINode Title="Buffer property" Url="html/P_Bandwidth_Net_Api_UploadMediaFileData_Buffer.htm" />
   <HelpKINode Title="Call class">
-    <HelpKINode Title="Call Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Call.htm" />
     <HelpKINode Title="Call Class" Url="html/T_Bandwidth_Net_Api_Call.htm" />
+    <HelpKINode Title="Call Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Call.htm" />
     <HelpKINode Title="about Call class" Url="html/T_Bandwidth_Net_Xml_Verbs_Call.htm" />
     <HelpKINode Title="about Call class" Url="html/T_Bandwidth_Net_Api_Call.htm" />
-    <HelpKINode Title="constructor" Url="html/M_Bandwidth_Net_Xml_Verbs_Call__ctor.htm" />
     <HelpKINode Title="constructor" Url="html/M_Bandwidth_Net_Api_Call__ctor.htm" />
-    <HelpKINode Title="properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Call.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Bandwidth_Net_Xml_Verbs_Call__ctor.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Bandwidth_Net_Api_Call.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Bandwidth_Net_Xml_Verbs_Call.htm" />
   </HelpKINode>
   <HelpKINode Title="Call property">
     <HelpKINode Title="CallGather.Call Property " Url="html/P_Bandwidth_Net_Api_CallGather_Call.htm" />
@@ -335,8 +335,8 @@
   <HelpKINode Title="Call.ActiveTime property" Url="html/P_Bandwidth_Net_Api_Call_ActiveTime.htm" />
   <HelpKINode Title="Call.BridgeId property" Url="html/P_Bandwidth_Net_Api_Call_BridgeId.htm" />
   <HelpKINode Title="Call.Call constructor">
-    <HelpKINode Title="Call Constructor " Url="html/M_Bandwidth_Net_Xml_Verbs_Call__ctor.htm" />
     <HelpKINode Title="Call Constructor " Url="html/M_Bandwidth_Net_Api_Call__ctor.htm" />
+    <HelpKINode Title="Call Constructor " Url="html/M_Bandwidth_Net_Xml_Verbs_Call__ctor.htm" />
   </HelpKINode>
   <HelpKINode Title="Call.CallbackHttpMethod property" Url="html/P_Bandwidth_Net_Api_Call_CallbackHttpMethod.htm" />
   <HelpKINode Title="Call.CallbackTimeout property" Url="html/P_Bandwidth_Net_Api_Call_CallbackTimeout.htm" />
@@ -365,13 +365,13 @@
   <HelpKINode Title="Call.StartTime property" Url="html/P_Bandwidth_Net_Api_Call_StartTime.htm" />
   <HelpKINode Title="Call.State property" Url="html/P_Bandwidth_Net_Api_Call_State.htm" />
   <HelpKINode Title="Call.Tag property">
-    <HelpKINode Title="Call.Tag Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Call_Tag.htm" />
     <HelpKINode Title="Call.Tag Property " Url="html/P_Bandwidth_Net_Api_Call_Tag.htm" />
+    <HelpKINode Title="Call.Tag Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Call_Tag.htm" />
   </HelpKINode>
   <HelpKINode Title="Call.Timeout property" Url="html/P_Bandwidth_Net_Xml_Verbs_Call_Timeout.htm" />
   <HelpKINode Title="Call.To property">
-    <HelpKINode Title="Call.To Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Call_To.htm" />
     <HelpKINode Title="Call.To Property " Url="html/P_Bandwidth_Net_Api_Call_To.htm" />
+    <HelpKINode Title="Call.To Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Call_To.htm" />
   </HelpKINode>
   <HelpKINode Title="Call.TranscriptionEnabled property" Url="html/P_Bandwidth_Net_Api_Call_TranscriptionEnabled.htm" />
   <HelpKINode Title="Call.TransferCallerId property" Url="html/P_Bandwidth_Net_Api_Call_TransferCallerId.htm" />
@@ -599,8 +599,8 @@
     <HelpKINode Title="Conference.CompletedTime Property " Url="html/P_Bandwidth_Net_Api_Conference_CompletedTime.htm" />
   </HelpKINode>
   <HelpKINode Title="Conference class">
-    <HelpKINode Title="Conference Class" Url="html/T_Bandwidth_Net_Api_Conference.htm" />
     <HelpKINode Title="Conference Class" Url="html/T_Bandwidth_Net_Xml_Verbs_Conference.htm" />
+    <HelpKINode Title="Conference Class" Url="html/T_Bandwidth_Net_Api_Conference.htm" />
     <HelpKINode Title="about Conference class" Url="html/T_Bandwidth_Net_Xml_Verbs_Conference.htm" />
     <HelpKINode Title="about Conference class" Url="html/T_Bandwidth_Net_Api_Conference.htm" />
     <HelpKINode Title="constructor" Url="html/M_Bandwidth_Net_Api_Conference__ctor.htm" />
@@ -616,31 +616,31 @@
   <HelpKINode Title="Conference.CallbackUrl property" Url="html/P_Bandwidth_Net_Api_Conference_CallbackUrl.htm" />
   <HelpKINode Title="Conference.CompletedTime property" Url="html/P_Bandwidth_Net_Api_Conference_CompletedTime.htm" />
   <HelpKINode Title="Conference.Conference constructor">
-    <HelpKINode Title="Conference Constructor " Url="html/M_Bandwidth_Net_Xml_Verbs_Conference__ctor.htm" />
     <HelpKINode Title="Conference Constructor " Url="html/M_Bandwidth_Net_Api_Conference__ctor.htm" />
+    <HelpKINode Title="Conference Constructor " Url="html/M_Bandwidth_Net_Xml_Verbs_Conference__ctor.htm" />
   </HelpKINode>
   <HelpKINode Title="Conference.CreatedTime property" Url="html/P_Bandwidth_Net_Api_Conference_CreatedTime.htm" />
   <HelpKINode Title="Conference.FallbackUrl property" Url="html/P_Bandwidth_Net_Api_Conference_FallbackUrl.htm" />
   <HelpKINode Title="Conference.From property">
-    <HelpKINode Title="Conference.From Property " Url="html/P_Bandwidth_Net_Api_Conference_From.htm" />
     <HelpKINode Title="Conference.From Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_From.htm" />
+    <HelpKINode Title="Conference.From Property " Url="html/P_Bandwidth_Net_Api_Conference_From.htm" />
   </HelpKINode>
   <HelpKINode Title="Conference.Hold property">
-    <HelpKINode Title="Conference.Hold Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_Hold.htm" />
     <HelpKINode Title="Conference.Hold Property " Url="html/P_Bandwidth_Net_Api_Conference_Hold.htm" />
+    <HelpKINode Title="Conference.Hold Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_Hold.htm" />
   </HelpKINode>
   <HelpKINode Title="Conference.Id property" Url="html/P_Bandwidth_Net_Api_Conference_Id.htm" />
   <HelpKINode Title="Conference.JoinTone property" Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_JoinTone.htm" />
   <HelpKINode Title="Conference.LeavingTone property" Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_LeavingTone.htm" />
   <HelpKINode Title="Conference.Mute property">
-    <HelpKINode Title="Conference.Mute Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_Mute.htm" />
     <HelpKINode Title="Conference.Mute Property " Url="html/P_Bandwidth_Net_Api_Conference_Mute.htm" />
+    <HelpKINode Title="Conference.Mute Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_Mute.htm" />
   </HelpKINode>
   <HelpKINode Title="Conference.State property" Url="html/P_Bandwidth_Net_Api_Conference_State.htm" />
   <HelpKINode Title="Conference.StatusCallbackUrl property" Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_StatusCallbackUrl.htm" />
   <HelpKINode Title="Conference.Tag property">
-    <HelpKINode Title="Conference.Tag Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_Tag.htm" />
     <HelpKINode Title="Conference.Tag Property " Url="html/P_Bandwidth_Net_Api_Conference_Tag.htm" />
+    <HelpKINode Title="Conference.Tag Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_Tag.htm" />
   </HelpKINode>
   <HelpKINode Title="ConferenceExtensions class">
     <HelpKINode Title="ConferenceExtensions Class" Url="html/T_Bandwidth_Net_Api_ConferenceExtensions.htm" />
@@ -1078,8 +1078,8 @@
   <HelpKINode Title="FileFormat property" Url="html/P_Bandwidth_Net_Xml_Verbs_Record_FileFormat.htm" />
   <HelpKINode Title="FileUrl property" Url="html/P_Bandwidth_Net_PlayAudioData_FileUrl.htm" />
   <HelpKINode Title="From property">
-    <HelpKINode Title="Call.From Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Call_From.htm" />
     <HelpKINode Title="Call.From Property " Url="html/P_Bandwidth_Net_Api_Call_From.htm" />
+    <HelpKINode Title="Call.From Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Call_From.htm" />
     <HelpKINode Title="CallbackEvent.From Property " Url="html/P_Bandwidth_Net_CallbackEvent_From.htm" />
     <HelpKINode Title="CallQuery.From Property " Url="html/P_Bandwidth_Net_Api_CallQuery_From.htm" />
     <HelpKINode Title="Conference.From Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_From.htm" />
@@ -1574,8 +1574,8 @@
   <HelpKINode Title="MmsOut enumeration member" Url="html/T_Bandwidth_Net_Api_ProductType.htm" />
   <HelpKINode Title="Mute property">
     <HelpKINode Title="CallbackEvent.Mute Property " Url="html/P_Bandwidth_Net_CallbackEvent_Mute.htm" />
-    <HelpKINode Title="Conference.Mute Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_Mute.htm" />
     <HelpKINode Title="Conference.Mute Property " Url="html/P_Bandwidth_Net_Api_Conference_Mute.htm" />
+    <HelpKINode Title="Conference.Mute Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Conference_Mute.htm" />
     <HelpKINode Title="ConferenceMember.Mute Property " Url="html/P_Bandwidth_Net_Api_ConferenceMember_Mute.htm" />
     <HelpKINode Title="CreateConferenceMemberData.Mute Property " Url="html/P_Bandwidth_Net_Api_CreateConferenceMemberData_Mute.htm" />
     <HelpKINode Title="UpdateConferenceData.Mute Property " Url="html/P_Bandwidth_Net_Api_UpdateConferenceData_Mute.htm" />
@@ -2098,8 +2098,8 @@
   <HelpKINode Title="Timeout enumeration member" Url="html/T_Bandwidth_Net_CallbackEventType.htm" />
   <HelpKINode Title="Timeout property" Url="html/P_Bandwidth_Net_Xml_Verbs_Call_Timeout.htm" />
   <HelpKINode Title="To property">
-    <HelpKINode Title="Call.To Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Call_To.htm" />
     <HelpKINode Title="Call.To Property " Url="html/P_Bandwidth_Net_Api_Call_To.htm" />
+    <HelpKINode Title="Call.To Property " Url="html/P_Bandwidth_Net_Xml_Verbs_Call_To.htm" />
     <HelpKINode Title="CallbackEvent.To Property " Url="html/P_Bandwidth_Net_CallbackEvent_To.htm" />
     <HelpKINode Title="CallQuery.To Property " Url="html/P_Bandwidth_Net_Api_CallQuery_To.htm" />
     <HelpKINode Title="CreateCallData.To Property " Url="html/P_Bandwidth_Net_Api_CreateCallData_To.htm" />
