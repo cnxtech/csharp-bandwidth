@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -99,6 +100,22 @@ namespace Bandwidth.Net.Test
         }
       });
       Assert.Equal(HttpStatusCode.BadRequest, ex.Code);
+    }
+
+    [Fact]
+    public async void TestCheckResponseWithRateLimitError()
+    {
+      var ex = await Assert.ThrowsAsync<RateLimitException>(() =>
+      {
+        using (var response = new HttpResponseMessage((HttpStatusCode)429))
+        {
+          response.Headers.Add("X-RateLimit-Reset", "1479308598680");
+          return response.CheckResponseAsync();
+        }
+      });
+      Assert.Equal(429, (int)ex.Code);
+      var time = (ex.ResetTime.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
+      Assert.Equal(1479308598680, time);
     }
 
     [Fact]
