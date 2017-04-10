@@ -41,9 +41,8 @@
         "LightMock.vNext": "1.0.1"
       },
       "imports": [
-        "dotnet5.4",
-        "dnxcore50",
-        "portable-net451+win8"
+        "dotnet",
+        "dnxcore50"
       ]
     }
   }
