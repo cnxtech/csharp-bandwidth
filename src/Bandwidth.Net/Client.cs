@@ -19,7 +19,6 @@ namespace Bandwidth.Net
     private static readonly ProductInfoHeaderValue UserAgent = BuildUserAgent();
     private readonly AuthenticationHeaderValue _authentication;
     private readonly string _baseUrl;
-    private const string Version = "v1";
 
     /// <summary>
     /// Constructor
@@ -100,11 +99,11 @@ namespace Bandwidth.Net
       return Convert.ToString(value);
     }
 
-    internal HttpRequestMessage CreateRequest(HttpMethod method, string path, object query = null)
+    internal HttpRequestMessage CreateRequest(HttpMethod method, string path, object query = null, string version = "v1")
     {
       var url = new UriBuilder(_baseUrl)
       {
-        Path = $"/{Version}{path}",
+        Path = $"/{version}{path}",
         Query = BuildQueryString(query)
       };
       var message = new HttpRequestMessage(method, url.Uri);
@@ -128,17 +127,17 @@ namespace Bandwidth.Net
       return response;
     }
 
-    internal async Task<T> MakeJsonRequestAsync<T>(HttpMethod method, string path, CancellationToken? cancellationToken = null, object query = null, object body = null)
+    internal async Task<T> MakeJsonRequestAsync<T>(HttpMethod method, string path, CancellationToken? cancellationToken = null, object query = null, object body = null, version = "v1")
     {
-      using (var response = await MakeJsonRequestAsync(method, path, cancellationToken, query, body))
+      using (var response = await MakeJsonRequestAsync(method, path, cancellationToken, query, body, version))
       {
         return await response.Content.ReadAsJsonAsync<T>();
       }
     }
 
-    internal async Task<HttpResponseMessage> MakeJsonRequestAsync(HttpMethod method, string path, CancellationToken? cancellationToken = null, object query = null, object body = null)
+    internal async Task<HttpResponseMessage> MakeJsonRequestAsync(HttpMethod method, string path, CancellationToken? cancellationToken = null, object query = null, object body = null, string version = "v1")
     {
-      var request = CreateRequest(method, path, query);
+      var request = CreateRequest(method, path, query, version);
       request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
       if (body != null)
       {
@@ -148,16 +147,16 @@ namespace Bandwidth.Net
     }
 
     internal async Task MakeJsonRequestWithoutResponseAsync(HttpMethod method, string path,
-      CancellationToken? cancellationToken = null, object query = null, object body = null)
+      CancellationToken? cancellationToken = null, object query = null, object body = null, string version = "v1")
     {
-      using (await MakeJsonRequestAsync(method, path, cancellationToken, query, body))
+      using (await MakeJsonRequestAsync(method, path, cancellationToken, query, body, version))
       {
       }
     }
 
-    internal async Task<string> MakePostJsonRequestAsync(string path, CancellationToken? cancellationToken = null, object body = null)
+    internal async Task<string> MakePostJsonRequestAsync(string path, CancellationToken? cancellationToken = null, object body = null, string version = "v1")
     {
-      using (var response = await MakeJsonRequestAsync(HttpMethod.Post, path, cancellationToken, null, body))
+      using (var response = await MakeJsonRequestAsync(HttpMethod.Post, path, cancellationToken, null, body, version))
       {
         return (response.Headers.Location ?? new Uri("http://localhost")).AbsolutePath.Split('/').LastOrDefault();
       }
