@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Bandwidth.Net.Api;
@@ -38,15 +39,49 @@ namespace Bandwidth.Net.ApiV2
     public string Description { get; set; }
 
     /// <summary>
+    ///   Event target phone number
+    /// </summary>
+    public string To { get; set; }
+
+    /// <summary>
     ///   Message data
     /// </summary>
-    public Message Message { get; set; }
+    public IncomingMessage Message { get; set; }
+
+
+    /// <summary>
+    ///   Phone numbers for answer
+    /// </summary>
+    public string ReplyTo { get; set; }
+
 
     /// <summary>
     ///   Parse callback eevent data from JSON
     /// </summary>
-    public static CallbackEvent CreateFromJson(string json)
-      => JsonConvert.DeserializeObject<CallbackEvent>(json, JsonHelpers.GetSerializerSettings());
+    public static CallbackEvent[] CreateFromJson(string json)
+      => JsonConvert.DeserializeObject<CallbackEvent[]>(json, JsonHelpers.GetSerializerSettings()).Select(SetReplyTo).ToArray();
+
+   private static CallbackEvent SetReplyTo(CallbackEvent callbackEvent)
+   {
+      if (callbackEvent.Message != null && !string.IsNullOrEmpty(callbackEvent.To)) 
+      {
+        callbackEvent.Message.ReplyTo = callbackEvent.Message.To
+          .Where(n => n != callbackEvent.To)
+          .Union(new[]{callbackEvent.Message.From}).ToArray();
+      }
+      return callbackEvent;
+   }   
+
+  }
+
+  /// <summary>
+  ///   Incoming message
+  /// </summary>
+  public class IncomingMessage: Message {
+    /// <summary>
+    ///   Phone numbers for answer
+    /// </summary>
+    public string[] ReplyTo { get; internal set; }  
   }
 
   /// <summary>
