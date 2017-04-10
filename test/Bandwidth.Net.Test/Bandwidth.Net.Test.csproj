@@ -15,19 +15,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0-preview-20170106-08" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0-beta5-build1225" />
-    <PackageReference Include="xunit" Version="2.2.0-beta5-build3474" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
+    <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
+    <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
+    <PackageReference Include="xunit" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
-    <PackageReference Include="LightMock" Version="1.0.0.6" />
+    <PackageReference Include="LightMock" Version="1.0.1" />
     <PackageReference Include="OpenCover" Version="4.6.519" />
-    <PackageReference Include="coveralls.net" Version="0.6.0" />
-    <PackageReference Include="ReportGenerator" Version="2.4.5" />
-    <PackageReference Include="xunit.runner.console" Version="2.1.0" />
-    <PackageReference Include="System.Runtime" Version="4.1.0" />
-    <PackageReference Include="System.Threading.Tasks" Version="4.0.11" />
+    <PackageReference Include="coveralls.net" Version="0.7.0" />
+    <PackageReference Include="ReportGenerator" Version="2.5.6" />
+    <PackageReference Include="xunit.runner.console" Version="2.2.0" />
+    <PackageReference Include="System.Runtime" Version="4.3.0" />
+    <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Serialization" />
     <Reference Include="System" />
