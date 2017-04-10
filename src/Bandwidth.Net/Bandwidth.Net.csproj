@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Bandwidth.Net is client library for the Bandwidth Application Platform</Description>
+    <VersionPrefix>3.0.2</VersionPrefix>
+    <TargetFrameworks>netstandard1.4;net45</TargetFrameworks>
+    <DebugType>portable</DebugType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Bandwidth.Net</AssemblyName>
+    <PackageId>Bandwidth.Net</PackageId>
+    <PackageTags>bandwidth;catapult</PackageTags>
+    <PackageIconUrl>http://bandwidth.com/sites/all/themes/bandwidth/images/logo.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/bandwidthcom/csharp-bandwidth</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/bandwidthcom/csharp-bandwidth</RepositoryUrl>
+    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.4' ">1.6.0</NetStandardImplicitPackageVersion>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.4' ">
+    <PackageReference Include="System.Xml.XmlSerializer" Version="4.0.11" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Serialization" />
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="EWSoftware.SHFB" Version="2016.5.28" />
+    <DotNetCliToolReference Include="EWSoftware.SHFB.NETFramework" Version="4.6.1" />
+  </ItemGroup>
+
+</Project>
