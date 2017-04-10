@@ -81,10 +81,6 @@ namespace Bandwidth.Net
     /// </summary>
     public IEndpoint Endpoint { get; private set; }
 
-    /// <summary>
-    /// API v2 features
-    /// </summary>
-    public ApiV2 V2 {get; private set;}
 
     private void SetupApis()
     {
@@ -103,19 +99,6 @@ namespace Bandwidth.Net
       Transcription = new TranscriptionApi { Client = this };
       Media = new MediaApi { Client = this };
       Endpoint = new EndpointApi { Client = this };
-      V2 = new ApiV2 {
-        Message = new ApiV2.MessageApi { Client = this };
-      }
-    }
-
-    /// <summary>
-    /// APIs v2
-    /// </summary>
-    public class ApiV2 {
-      /// <summary>
-      /// Access to Message Api
-      /// </summary>
-      public ApiV2.IMessage Message { get; private set; }
     }
   }
 }
