@@ -127,7 +127,7 @@ namespace Bandwidth.Net
       return response;
     }
 
-    internal async Task<T> MakeJsonRequestAsync<T>(HttpMethod method, string path, CancellationToken? cancellationToken = null, object query = null, object body = null, version = "v1")
+    internal async Task<T> MakeJsonRequestAsync<T>(HttpMethod method, string path, CancellationToken? cancellationToken = null, object query = null, object body = null, string version = "v1")
     {
       using (var response = await MakeJsonRequestAsync(method, path, cancellationToken, query, body, version))
       {

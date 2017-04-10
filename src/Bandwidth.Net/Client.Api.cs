@@ -104,8 +104,8 @@ namespace Bandwidth.Net
       Media = new MediaApi { Client = this };
       Endpoint = new EndpointApi { Client = this };
       V2 = new ApiV2 {
-        Message = new ApiV2.MessageApi { Client = this };
-      }
+        Message = new Bandwidth.Net.ApiV2.MessageApi { Client = this }
+      };
     }
 
     /// <summary>
@@ -115,7 +115,7 @@ namespace Bandwidth.Net
       /// <summary>
       /// Access to Message Api
       /// </summary>
-      public ApiV2.IMessage Message { get; private set; }
+      public Bandwidth.Net.ApiV2.IMessage Message { get; internal set; }
     }
   }
 }

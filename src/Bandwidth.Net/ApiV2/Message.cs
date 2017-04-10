@@ -24,16 +24,16 @@ namespace Bandwidth.Net.ApiV2
     /// var message = await client.Message.SendAsync(new MessageData{ From = "from", To = new[] {"to"}, Text = "Hello"});
     /// </code>
     /// </example>
-    Task<SendMessageResult> SendAsync(MessageData data, CancellationToken? cancellationToken = null);
+    Task<Message> SendAsync(MessageData data, CancellationToken? cancellationToken = null);
 
   }
 
   internal class MessageApi : ApiBase, IMessage
   {
-    public Task<SendMessageResult> SendAsync(MessageData data,
+    public Task<Message> SendAsync(MessageData data,
       CancellationToken? cancellationToken = null)
     {
-      return Client.MakePostJsonRequestAsync<SendMessageResult>($"/users/{Client.UserId}/messages", cancellationToken, data, "v2");
+      return Client.MakeJsonRequestAsync<Message>(HttpMethod.Post, $"/users/{Client.UserId}/messages", cancellationToken, null, data, "v2");
     }
   }
 
