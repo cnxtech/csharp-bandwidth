@@ -6,7 +6,7 @@ Response class for Bandwidth XML
 
 ## Inheritance Hierarchy
 <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">System.Object</a><br />&nbsp;&nbsp;Bandwidth.Net.Xml.Response<br />
-**Namespace:**&nbsp;<a href ="N_Bandwidth_Net_Xml.md">Bandwidth.Net.Xml</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.0-beta4
+**Namespace:**&nbsp;<a href ="N_Bandwidth_Net_Xml.md">Bandwidth.Net.Xml</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.3
 
 ## Syntax
 

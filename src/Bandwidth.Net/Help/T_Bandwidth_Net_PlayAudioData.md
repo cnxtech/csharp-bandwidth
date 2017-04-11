@@ -6,7 +6,7 @@ Data for play audio operation
 
 ## Inheritance Hierarchy
 <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">System.Object</a><br />&nbsp;&nbsp;Bandwidth.Net.PlayAudioData<br />&nbsp;&nbsp;&nbsp;&nbsp;<a href ="T_Bandwidth_Net_Api_GatherPrompt.md">Bandwidth.Net.Api.GatherPrompt</a><br />
-**Namespace:**&nbsp;<a href ="N_Bandwidth_Net.md">Bandwidth.Net</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.0-beta4
+**Namespace:**&nbsp;<a href ="N_Bandwidth_Net.md">Bandwidth.Net</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.3
 
 ## Syntax
 

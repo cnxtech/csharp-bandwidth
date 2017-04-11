@@ -6,7 +6,7 @@ Parameters of a bridge to change
 
 ## Inheritance Hierarchy
 <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">System.Object</a><br />&nbsp;&nbsp;<a href ="T_Bandwidth_Net_Api_CreateBridgeData.md">Bandwidth.Net.Api.CreateBridgeData</a><br />&nbsp;&nbsp;&nbsp;&nbsp;Bandwidth.Net.Api.UpdateBridgeData<br />
-**Namespace:**&nbsp;<a href ="N_Bandwidth_Net_Api.md">Bandwidth.Net.Api</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.0-beta4
+**Namespace:**&nbsp;<a href ="N_Bandwidth_Net_Api.md">Bandwidth.Net.Api</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.3
 
 ## Syntax
 

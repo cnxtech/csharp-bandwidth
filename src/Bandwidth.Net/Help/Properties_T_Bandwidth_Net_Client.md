@@ -20,7 +20,8 @@ Access to Message Api</td></tr><tr><td>![Public property](media/pubproperty.gif 
 Access to NumberInfo Api</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Client_PhoneNumber.md">PhoneNumber</a></td><td>
 Access to PhoneNumber Api</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Client_Recording.md">Recording</a></td><td>
 Access to Recording Api</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Client_Transcription.md">Transcription</a></td><td>
-Access to Transcription Api</td></tr></table>&nbsp;
+Access to Transcription Api</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Client_V2.md">V2</a></td><td>
+API v2 features</td></tr></table>&nbsp;
 <a href="#client-properties">Back to Top</a>
 
 ## See Also

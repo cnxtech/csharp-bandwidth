@@ -16,14 +16,14 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
-    <OutputPath>.\Help\</OutputPath>
+    <OutputPath>..\Help\</OutputPath>
     <HtmlHelpName>API</HtmlHelpName>
     <Language>en-US</Language>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
-    <BuildAssemblerVerbosity>OnlyErrors</BuildAssemblerVerbosity>
-    <HelpFileFormat>Website</HelpFileFormat>
+    <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
+    <HelpFileFormat>Markdown</HelpFileFormat>
     <IndentHtml>False</IndentHtml>
-    <KeepLogFile>False</KeepLogFile>
+    <KeepLogFile>True</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <CleanIntermediates>True</CleanIntermediates>
     <HelpFileVersion>1.0.0.0</HelpFileVersion>
@@ -32,33 +32,21 @@
     <SyntaxFilters>C#</SyntaxFilters>
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <RootNamespaceContainer>True</RootNamespaceContainer>
-    <PresentationStyle>VS2013</PresentationStyle>
+    <PresentationStyle>Markdown</PresentationStyle>
     <Preliminary>False</Preliminary>
     <NamingMethod>MemberName</NamingMethod>
     <HelpTitle>Bandwidth.Net</HelpTitle>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <VisibleItems>InheritedMembers, Protected, ProtectedInternalAsProtected</VisibleItems>
     <DocumentationSources>
-      <DocumentationSource sourceFile="bin\$(Configuration)\net45\Bandwidth.Net.xml" />
-      <DocumentationSource sourceFile="bin\$(Configuration)\net45\Bandwidth.Net.dll" />
+      <DocumentationSource sourceFile="..\bin\$(Configuration)\net45\Bandwidth.Net.xml" />
+      <DocumentationSource sourceFile="..\bin\$(Configuration)\net45\Bandwidth.Net.dll" />
     </DocumentationSources>
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, TypeParameter, AutoDocumentDispose</MissingTags>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="Bandwidth.Net" isDocumented="True" xmlns="">Base classes</NamespaceSummaryItem>
-      <NamespaceSummaryItem name="Bandwidth.Net.Api" isDocumented="True" xmlns="">Api classes</NamespaceSummaryItem>
-    </NamespaceSummaries>
+<NamespaceSummaryItem name="Bandwidth.Net.Api" isDocumented="True" xmlns="">Api classes</NamespaceSummaryItem></NamespaceSummaries>
     <RootNamespaceTitle>Bandwidth.Net namespaces</RootNamespaceTitle>
-    <TransformComponentArguments>
-      <Argument Key="logoFile" Value="" xmlns="" />
-      <Argument Key="logoHeight" Value="" xmlns="" />
-      <Argument Key="logoWidth" Value="" xmlns="" />
-      <Argument Key="logoAltText" Value="" xmlns="" />
-      <Argument Key="logoPlacement" Value="left" xmlns="" />
-      <Argument Key="logoAlignment" Value="left" xmlns="" />
-      <Argument Key="maxVersionParts" Value="" xmlns="" />
-      <Argument Key="defaultLanguage" Value="cs" xmlns="" />
-      <Argument Key="includeEnumValues" Value="false" xmlns="" />
-    </TransformComponentArguments>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
@@ -85,12 +73,8 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>del /q .\Help\*.php
-del /q .\Help\*.aspx
-del /q .\Help\Web.Config
-del /q .\Help\search.html
-rd /s /q .\Help\fti
-echo form#SearchForm { display: none;}  &gt;&gt; .\Help\styles\branding-Website.css</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
 </Project>

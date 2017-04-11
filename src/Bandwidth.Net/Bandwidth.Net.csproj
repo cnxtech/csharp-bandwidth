@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>Bandwidth.Net is client library for the Bandwidth Application Platform</Description>
-    <VersionPrefix>3.0.2</VersionPrefix>
+    <VersionPrefix>3.0.3</VersionPrefix>
     <TargetFrameworks>netstandard1.4;net45</TargetFrameworks>
     <DebugType>portable</DebugType>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

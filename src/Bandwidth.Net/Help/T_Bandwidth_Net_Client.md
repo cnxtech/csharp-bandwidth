@@ -6,7 +6,7 @@ Catapult API client
 
 ## Inheritance Hierarchy
 <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">System.Object</a><br />&nbsp;&nbsp;Bandwidth.Net.Client<br />
-**Namespace:**&nbsp;<a href ="N_Bandwidth_Net.md">Bandwidth.Net</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.0-beta4
+**Namespace:**&nbsp;<a href ="N_Bandwidth_Net.md">Bandwidth.Net</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.3
 
 ## Syntax
 
@@ -39,7 +39,8 @@ Access to Message Api</td></tr><tr><td>![Public property](media/pubproperty.gif 
 Access to NumberInfo Api</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Client_PhoneNumber.md">PhoneNumber</a></td><td>
 Access to PhoneNumber Api</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Client_Recording.md">Recording</a></td><td>
 Access to Recording Api</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Client_Transcription.md">Transcription</a></td><td>
-Access to Transcription Api</td></tr></table>&nbsp;
+Access to Transcription Api</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Client_V2.md">V2</a></td><td>
+API v2 features</td></tr></table>&nbsp;
 <a href="#client-class">Back to Top</a>
 
 ## See Also

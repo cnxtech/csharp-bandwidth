@@ -1,4 +1,4 @@
-%SystemRoot%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe Bandwidth.Net.shfbproj
+%SystemRoot%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe doc\Bandwidth.Net.shfbproj
 
 
 

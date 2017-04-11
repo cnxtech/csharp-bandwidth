@@ -6,7 +6,7 @@ Parameters of an application to change
 
 ## Inheritance Hierarchy
 <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">System.Object</a><br />&nbsp;&nbsp;<a href ="T_Bandwidth_Net_Api_CreateApplicationData.md">Bandwidth.Net.Api.CreateApplicationData</a><br />&nbsp;&nbsp;&nbsp;&nbsp;Bandwidth.Net.Api.UpdateApplicationData<br />
-**Namespace:**&nbsp;<a href ="N_Bandwidth_Net_Api.md">Bandwidth.Net.Api</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.0-beta4
+**Namespace:**&nbsp;<a href ="N_Bandwidth_Net_Api.md">Bandwidth.Net.Api</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.3
 
 ## Syntax
 
@@ -40,6 +40,8 @@ The URL used to send the callback event if the request to incomingMessageUrl fai
 A URL where message events will be sent for an inbound message.
  (Inherited from <a href ="T_Bandwidth_Net_Api_CreateApplicationData.md">CreateApplicationData</a>.)</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Api_CreateApplicationData_IncomingMessageUrlCallbackTimeout.md">IncomingMessageUrlCallbackTimeout</a></td><td>
 Determine how long should the platform wait for incomingMessageUrl's response before timing out in milliseconds.
+ (Inherited from <a href ="T_Bandwidth_Net_Api_CreateApplicationData.md">CreateApplicationData</a>.)</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Api_CreateApplicationData_MessageApiVersion.md">MessageApiVersion</a></td><td>
+Message API version to use. Set "V2" to use abilities of Messages API v2
  (Inherited from <a href ="T_Bandwidth_Net_Api_CreateApplicationData.md">CreateApplicationData</a>.)</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Api_CreateApplicationData_Name.md">Name</a></td><td>
 A name you choose for this application.
  (Inherited from <a href ="T_Bandwidth_Net_Api_CreateApplicationData.md">CreateApplicationData</a>.)</td></tr></table>&nbsp;

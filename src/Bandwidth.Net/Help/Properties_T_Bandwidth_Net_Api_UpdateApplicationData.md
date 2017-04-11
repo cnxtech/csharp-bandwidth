@@ -21,6 +21,8 @@ The URL used to send the callback event if the request to incomingMessageUrl fai
 A URL where message events will be sent for an inbound message.
  (Inherited from <a href ="T_Bandwidth_Net_Api_CreateApplicationData.md">CreateApplicationData</a>.)</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Api_CreateApplicationData_IncomingMessageUrlCallbackTimeout.md">IncomingMessageUrlCallbackTimeout</a></td><td>
 Determine how long should the platform wait for incomingMessageUrl's response before timing out in milliseconds.
+ (Inherited from <a href ="T_Bandwidth_Net_Api_CreateApplicationData.md">CreateApplicationData</a>.)</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Api_CreateApplicationData_MessageApiVersion.md">MessageApiVersion</a></td><td>
+Message API version to use. Set "V2" to use abilities of Messages API v2
  (Inherited from <a href ="T_Bandwidth_Net_Api_CreateApplicationData.md">CreateApplicationData</a>.)</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Api_CreateApplicationData_Name.md">Name</a></td><td>
 A name you choose for this application.
  (Inherited from <a href ="T_Bandwidth_Net_Api_CreateApplicationData.md">CreateApplicationData</a>.)</td></tr></table>&nbsp;

@@ -7,7 +7,7 @@ The <a href ="T_Bandwidth_Net_DefaultConverter.md">DefaultConverter</a> type exp
 ## Methods
 &nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href ="M_Bandwidth_Net_DefaultConverter_CanConvert.md">CanConvert</a></td><td>
 CanConvert
- (Overrides JsonConverter.CanConvert(Type).)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td>GetSchema</td><td> **Obsolete. ** (Inherited from JsonConverter.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href ="M_Bandwidth_Net_DefaultConverter_ReadJson.md">ReadJson</a></td><td>
+ (Overrides JsonConverter.CanConvert(Type).)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href ="M_Bandwidth_Net_DefaultConverter_ReadJson.md">ReadJson</a></td><td>
 ReadJson
  (Overrides JsonConverter.ReadJson(JsonReader, Type, Object, JsonSerializer).)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href ="M_Bandwidth_Net_DefaultConverter_WriteJson.md">WriteJson</a></td><td>
 WriteJson

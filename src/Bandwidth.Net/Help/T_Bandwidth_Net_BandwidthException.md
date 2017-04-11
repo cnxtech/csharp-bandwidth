@@ -5,14 +5,14 @@ BandwidthException
 
 
 ## Inheritance Hierarchy
-<a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">System.Object</a><br />&nbsp;&nbsp;<a href="http://msdn2.microsoft.com/en-us/library/c18k6c59" target="_blank">System.Exception</a><br />&nbsp;&nbsp;&nbsp;&nbsp;Bandwidth.Net.BandwidthException<br />
-**Namespace:**&nbsp;<a href ="N_Bandwidth_Net.md">Bandwidth.Net</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.0-beta4
+<a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">System.Object</a><br />&nbsp;&nbsp;<a href="http://msdn2.microsoft.com/en-us/library/c18k6c59" target="_blank">System.Exception</a><br />&nbsp;&nbsp;&nbsp;&nbsp;Bandwidth.Net.BandwidthException<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href ="T_Bandwidth_Net_RateLimitException.md">Bandwidth.Net.RateLimitException</a><br />
+**Namespace:**&nbsp;<a href ="N_Bandwidth_Net.md">Bandwidth.Net</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.3
 
 ## Syntax
 
 **C#**<br />
 ``` C#
-public sealed class BandwidthException : Exception
+public class BandwidthException : Exception
 ```
 
 The BandwidthException type exposes the following members.

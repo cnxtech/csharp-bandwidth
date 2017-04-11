@@ -6,7 +6,7 @@ Default Json converter (without changing names)
 
 ## Inheritance Hierarchy
 <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">System.Object</a><br />&nbsp;&nbsp;JsonConverter<br />&nbsp;&nbsp;&nbsp;&nbsp;Bandwidth.Net.DefaultConverter<br />
-**Namespace:**&nbsp;<a href ="N_Bandwidth_Net.md">Bandwidth.Net</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.0-beta4
+**Namespace:**&nbsp;<a href ="N_Bandwidth_Net.md">Bandwidth.Net</a><br />**Assembly:**&nbsp;Bandwidth.Net (in Bandwidth.Net.dll) Version: 3.0.3
 
 ## Syntax
 
@@ -30,7 +30,7 @@ Initializes a new instance of the DefaultConverter class</td></tr></table>&nbsp;
 ## Methods
 &nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href ="M_Bandwidth_Net_DefaultConverter_CanConvert.md">CanConvert</a></td><td>
 CanConvert
- (Overrides JsonConverter.CanConvert(Type).)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td>GetSchema</td><td> **Obsolete. ** (Inherited from JsonConverter.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href ="M_Bandwidth_Net_DefaultConverter_ReadJson.md">ReadJson</a></td><td>
+ (Overrides JsonConverter.CanConvert(Type).)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href ="M_Bandwidth_Net_DefaultConverter_ReadJson.md">ReadJson</a></td><td>
 ReadJson
  (Overrides JsonConverter.ReadJson(JsonReader, Type, Object, JsonSerializer).)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href ="M_Bandwidth_Net_DefaultConverter_WriteJson.md">WriteJson</a></td><td>
 WriteJson
