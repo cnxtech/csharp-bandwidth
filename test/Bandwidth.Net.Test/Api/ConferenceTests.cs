@@ -104,6 +104,7 @@ namespace Bandwidth.Net.Test.Api
       var api = Helpers.GetClient(context).Conference;
       var member = await api.GetMemberAsync("id", "memberId");
       Assert.Equal("memberId", member.Id);
+      Assert.Equal("callId1", member.CallId);
     }
 
     [Fact]
