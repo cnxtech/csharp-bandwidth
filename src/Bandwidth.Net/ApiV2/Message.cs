@@ -19,7 +19,7 @@ namespace Bandwidth.Net.ApiV2
     /// <returns>Created message</returns>
     /// <example>
     ///   <code>
-    /// var message = await client.Message.SendAsync(new MessageData{ From = "from", To = new[] {"to"}, Text = "Hello"});
+    /// var message = await client.V2.Message.SendAsync(new MessageData{ From = "from", To = new[] {"to"}, Text = "Hello"});
     /// </code>
     /// </example>
     Task<Message> SendAsync(MessageData data, CancellationToken? cancellationToken = null);

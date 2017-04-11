@@ -33,7 +33,8 @@ A URL where call events will be sent for an inbound call. This is the endpoint w
 Determine how long should the platform wait for incomingCallUrl's response before timing out in milliseconds.</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Api_Application_IncomingMessageFallbackUrl.md">IncomingMessageFallbackUrl</a></td><td>
 The URL used to send the callback event if the request to incomingMessageUrl fails.</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Api_Application_IncomingMessageUrl.md">IncomingMessageUrl</a></td><td>
 A URL where message events will be sent for an inbound message.</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Api_Application_IncomingMessageUrlCallbackTimeout.md">IncomingMessageUrlCallbackTimeout</a></td><td>
-Determine how long should the platform wait for incomingMessageUrl's response before timing out in milliseconds.</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Api_Application_Name.md">Name</a></td><td>
+Determine how long should the platform wait for incomingMessageUrl's response before timing out in milliseconds.</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Api_Application_MessageApiVersion.md">MessageApiVersion</a></td><td>
+Message API version to use.</td></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href ="P_Bandwidth_Net_Api_Application_Name.md">Name</a></td><td>
 A name you choose for this application.</td></tr></table>&nbsp;
 <a href="#application-class">Back to Top</a>
 

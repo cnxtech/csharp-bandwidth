@@ -152,6 +152,7 @@
         - [Application.IncomingMessageFallbackUrl Property](P_Bandwidth_Net_Api_Application_IncomingMessageFallbackUrl)
         - [Application.IncomingMessageUrl Property](P_Bandwidth_Net_Api_Application_IncomingMessageUrl)
         - [Application.IncomingMessageUrlCallbackTimeout Property](P_Bandwidth_Net_Api_Application_IncomingMessageUrlCallbackTimeout)
+        - [Application.MessageApiVersion Property](P_Bandwidth_Net_Api_Application_MessageApiVersion)
         - [Application.Name Property](P_Bandwidth_Net_Api_Application_Name)
     - [ApplicationQuery Class](T_Bandwidth_Net_Api_ApplicationQuery)
       - [ApplicationQuery Constructor](M_Bandwidth_Net_Api_ApplicationQuery__ctor)

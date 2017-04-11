@@ -169,6 +169,11 @@ namespace Bandwidth.Net.Api
     ///   Determines whether or not an incoming call should be automatically answered.
     /// </summary>
     public bool AutoAnswer { get; set; }
+
+    /// <summary>
+    ///   Message API version to use. 
+    /// </summary>
+    public string MessageApiVersion { get; set; }
   }
 
   /// <summary>

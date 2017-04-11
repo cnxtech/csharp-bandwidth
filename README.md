@@ -25,10 +25,7 @@ The current version is v3.0, released 1 February, 2017. Version 2.15 is availabl
 |---------|---------------|
 | <4.5 | Unsupported |
 | 4.5 | Supported |
-| 4.6 | Supported |
-| .Net Core (netstandard1.6)  | Supported |
-| PCL (Profile111) | Supported |
-| Xamarin (IOS, Android, MonoTouch) | Supported |
+| netstandard1.4 (.net 4.6+, .net core 1.0+, etc)  | Supported |
 
 
 ## Client initialization
@@ -109,6 +106,16 @@ var message = await client.Message.SendAsync(new MessageData {
 	Text = "Hello world."
 });
 Console.WriteLine($"Message Id is {message.Id}");
+
+// Using Message API v2
+
+// don't forget set MessageApiVersion of Application object to "V2" before use this method
+var message = await client.V2.Message.SendAsync(new MessageData{ 
+    From = "+12345678901", 
+    To = new[] {"+12345678902"}, 
+    Text = "Hello world"
+});
+
 ```
 
 Make a call

@@ -25,7 +25,7 @@ Type: <a href="http://msdn2.microsoft.com/en-us/library/dd321424" target="_blank
 ## Examples
 
 ```
-var message = await client.Message.SendAsync(new MessageData{ From = "from", To = new[] {"to"}, Text = "Hello"});
+var message = await client.V2.Message.SendAsync(new MessageData{ From = "from", To = new[] {"to"}, Text = "Hello"});
 ```
 
 
