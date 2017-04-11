@@ -63,11 +63,18 @@ namespace Bandwidth.Net.ApiV2
 
    private static CallbackEvent SetReplyTo(CallbackEvent callbackEvent)
    {
-      if (callbackEvent.Message != null && !string.IsNullOrEmpty(callbackEvent.To)) 
+      if (callbackEvent.Message != null) 
       {
-        callbackEvent.Message.ReplyTo = callbackEvent.Message.To
-          .Where(n => n != callbackEvent.To)
-          .Union(new[]{callbackEvent.Message.From}).ToArray();
+        if (string.IsNullOrEmpty(callbackEvent.To))
+        {
+          callbackEvent.Message.ReplyTo = new[] { callbackEvent.Message.From };
+        }
+        else
+        {
+          callbackEvent.Message.ReplyTo = callbackEvent.Message.To
+            .Where(n => n != callbackEvent.To)
+            .Union(new[] { callbackEvent.Message.From }).ToArray();
+        }
       }
       return callbackEvent;
    }   

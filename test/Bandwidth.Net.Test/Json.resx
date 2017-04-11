@@ -364,4 +364,66 @@
     "time": "2014-12-23T23:08:59Z"
 }</value>
   </data>
+  <data name="IncomingGroupMessage2" xml:space="preserve">
+    <value>[
+  {
+    "type": "message-received",
+    "time": "2016-09-14T18:20:16Z",
+    "description": "Incoming message received",
+    "to": "+12345678902",
+    "message": {
+      "id": "14762070468292kw2fuqty55yp2b2",
+      "time": "2016-09-14T18:20:16Z",
+      "to": [
+        "+12345678902",
+        "+12345678903"
+      ],
+      "from": "+12345678901",
+      "text": "Hey, check this out!",
+      "media": [
+        "https://s3.amazonaws.com/bw-v2-api/demo.jpg"
+      ],
+      "owner": "+12345678902",
+      "direction": "in"
+    }
+  }
+]</value>
+  </data>
+  <data name="IncomingMessage2" xml:space="preserve">
+    <value>[
+  {
+    "type": "message-received",
+    "time": "2016-09-14T18:20:16Z",
+    "description": "Incoming message received",
+    "message": {
+      "id": "14762070468292kw2fuqty55yp2b2",
+      "time": "2016-09-14T18:20:16Z",
+      "to": [
+        "+12345678902"
+      ],
+      "from": "+12345678901",
+      "text": "Hey, check this out!",
+      "media": [
+        "https://s3.amazonaws.com/bw-v2-api/demo.jpg"
+      ],
+      "owner": "+12345678902",
+      "direction": "in"
+    }
+  }
+]</value>
+  </data>
+  <data name="SendMessageResponse2" xml:space="preserve">
+    <value>{
+  "id": "14762070468292kw2fuqty55yp2b2",
+  "time": "2016-09-14T18:20:16Z",
+  "to": [
+    "+12345678902",
+  ],
+  "from": "+12345678901",
+  "text": "Hey, check this out!",
+  "tag": "test message",
+  "owner": "+12345678901",
+  "direction": "out"
+}</value>
+  </data>
 </root>
