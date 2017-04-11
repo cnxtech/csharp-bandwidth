@@ -56,8 +56,10 @@ Your `client` object is now ready to use the API.
 ### Lazy evalutions
 
 This library uses lazy evalutions in next cases:
-    - Object creation,
-    - Get list of objects
+    
+- Object creation,
+    
+- Get list of objects
 
 #### Object Creation
 
