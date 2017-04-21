@@ -165,7 +165,7 @@ namespace Bandwidth.Net
     /// <summary>
     ///   The digit pressed
     /// </summary>
-    public string DtmfDigit { get; set; }
+    public string Digits { get; set; }
 
     /// <summary>
     ///   Id of gather
