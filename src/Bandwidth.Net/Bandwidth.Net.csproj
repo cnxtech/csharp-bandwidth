@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>Bandwidth.Net is client library for the Bandwidth Application Platform</Description>
-    <VersionPrefix>3.0.4</VersionPrefix>
+    <VersionPrefix>$(VERSION)</VersionPrefix>
     <TargetFrameworks>netstandard1.4;net45</TargetFrameworks>
     <DebugType>portable</DebugType>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -36,6 +36,9 @@
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(VERSION)' == '' ">
+    <VersionPrefix>3.0.4</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
