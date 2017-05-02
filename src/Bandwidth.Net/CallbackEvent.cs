@@ -138,7 +138,7 @@ namespace Bandwidth.Net
     public DateTime CompletedTime { get; set; }
 
     /// <summary>
-    ///   Active mebers count of the conference
+    ///   Active members count of the conference
     /// </summary>
     public int ActiveMembers { get; set; }
 
@@ -191,6 +191,17 @@ namespace Bandwidth.Net
     ///   Url to the recording
     /// </summary>
     public string RecordingUri { get; set; }
+
+    /// <summary>
+    ///   Created time of the recording
+    /// </summary>
+    public DateTime StartTime { get; set; }
+
+    /// <summary>
+    ///   Completed time of the recording
+    /// </summary>
+    public DateTime EndTime { get; set; }
+
 
     /// <summary>
     ///   Id of transcription
