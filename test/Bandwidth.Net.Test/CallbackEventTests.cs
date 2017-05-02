@@ -32,7 +32,7 @@ namespace Bandwidth.Net.Test
     [Fact]
     public void TestSmsEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("SmsEvent"));
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("SmsEvent"));
       Assert.Equal(CallbackEventType.Sms, callbackEvent.EventType);
       Assert.Equal("{messageId}", callbackEvent.MessageId);
     }
@@ -40,7 +40,7 @@ namespace Bandwidth.Net.Test
     [Fact]
     public void TestMmsEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("MmsEvent"));
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("MmsEvent"));
       Assert.Equal(CallbackEventType.Mms, callbackEvent.EventType);
       Assert.Equal("m-dr4mcch2wfb6frcls677glq", callbackEvent.MessageId);
     }
@@ -48,15 +48,15 @@ namespace Bandwidth.Net.Test
     [Fact]
     public void TestAnswerEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("AnswerEvent"));
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("AnswerEvent"));
       Assert.Equal(CallbackEventType.Answer, callbackEvent.EventType);
-      Assert.Equal("m-dr4mcch2wfb6frcls677glq", callbackEvent.MessageId);
+      Assert.Equal("{callId}", callbackEvent.CallId);
     }
 
     [Fact]
     public void TestPlaybackEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("PlaybackEvent"));
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("PlaybackEvent"));
       Assert.Equal(CallbackEventType.Playback, callbackEvent.EventType);
       Assert.Equal("{callId}", callbackEvent.CallId);
     }
@@ -64,7 +64,7 @@ namespace Bandwidth.Net.Test
     [Fact]
     public void TestTimeoutEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("TimeoutEvent"));
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("TimeoutEvent"));
       Assert.Equal(CallbackEventType.Timeout, callbackEvent.EventType);
       Assert.Equal("{callId}", callbackEvent.CallId);
     }
@@ -72,7 +72,7 @@ namespace Bandwidth.Net.Test
     [Fact]
     public void TestConferenceEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("ConferenceEvent"));
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("ConferenceEvent"));
       Assert.Equal(CallbackEventType.Conference, callbackEvent.EventType);
       Assert.Equal("{conferenceId}", callbackEvent.ConferenceId);
     }
@@ -80,7 +80,7 @@ namespace Bandwidth.Net.Test
     [Fact]
     public void TestConferencePlaybackEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("ConferencePlaybackEvent"));
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("ConferencePlaybackEvent"));
       Assert.Equal(CallbackEventType.ConferencePlayback, callbackEvent.EventType);
       Assert.Equal("{conferenceId}", callbackEvent.ConferenceId);
     }
@@ -88,7 +88,7 @@ namespace Bandwidth.Net.Test
     [Fact]
     public void TestConferenceMemberEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("ConferenceMemberEvent"));
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("ConferenceMemberEvent"));
       Assert.Equal(CallbackEventType.ConferenceMember, callbackEvent.EventType);
       Assert.Equal("{conferenceId}", callbackEvent.ConferenceId);
       Assert.Equal("{callId}", callbackEvent.CallId);
@@ -97,7 +97,7 @@ namespace Bandwidth.Net.Test
     [Fact]
     public void TestConferenceSpeakEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("ConferenceSpeakEvent"));
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("ConferenceSpeakEvent"));
       Assert.Equal(CallbackEventType.ConferenceSpeak, callbackEvent.EventType);
       Assert.Equal("{conferenceId}", callbackEvent.ConferenceId);
     }
@@ -105,16 +105,16 @@ namespace Bandwidth.Net.Test
     [Fact]
     public void TestDtmfEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("DtmfEvent"));
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("DtmfEvent"));
       Assert.Equal(CallbackEventType.Dtmf, callbackEvent.EventType);
       Assert.Equal("{callId}", callbackEvent.CallId);
-      Assert.Equal("5", callbackEvent.DtmfDigits);
+      Assert.Equal("5", callbackEvent.DtmfDigit);
     }
 
     [Fact]
     public void TestGatherEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("GatherEvent"));
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("GatherEvent"));
       Assert.Equal(CallbackEventType.Gather, callbackEvent.EventType);
       Assert.Equal("{callId}", callbackEvent.CallId);
       Assert.Equal("25", callbackEvent.Digits);
@@ -123,8 +123,8 @@ namespace Bandwidth.Net.Test
     [Fact]
     public void TestIncomingCallEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("IncomingCallEvent"));
-      Assert.Equal(CallbackEventType.IncomingCall, callbackEvent.EventType);
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("IncomingCallEvent"));
+      Assert.Equal(CallbackEventType.Incomingcall, callbackEvent.EventType);
       Assert.Equal("{callId}", callbackEvent.CallId);
       Assert.Equal("{appId}", callbackEvent.ApplicationId);
     }
@@ -132,7 +132,7 @@ namespace Bandwidth.Net.Test
     [Fact]
     public void TestHangupEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("HangupEvent"));
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("HangupEvent"));
       Assert.Equal(CallbackEventType.Hangup, callbackEvent.EventType);
       Assert.Equal("{callId}", callbackEvent.CallId);
       Assert.Equal("NORMAL_CLEARING", callbackEvent.Cause);
@@ -141,7 +141,7 @@ namespace Bandwidth.Net.Test
     [Fact]
     public void TestRecordingEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("RecordingEvent"));
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("RecordingEvent"));
       Assert.Equal(CallbackEventType.Recording, callbackEvent.EventType);
       Assert.Equal("{callId}", callbackEvent.CallId);
       Assert.Equal("{recordingId}", callbackEvent.RecordingId);
@@ -150,7 +150,7 @@ namespace Bandwidth.Net.Test
     [Fact]
     public void TestRejectEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("RejectEvent"));
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("RejectEvent"));
       Assert.Equal(CallbackEventType.Hangup, callbackEvent.EventType);
       Assert.Equal("{callId}", callbackEvent.CallId);
       Assert.Equal("CALL_REJECTED", callbackEvent.Cause);
@@ -159,32 +159,21 @@ namespace Bandwidth.Net.Test
     [Fact]
     public void TestSpeakEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("SpeakEvent"));
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("SpeakEvent"));
       Assert.Equal(CallbackEventType.Speak, callbackEvent.EventType);
       Assert.Equal("{callId}", callbackEvent.CallId);
-      Assert.Equal(CallbackEventState.PlaybackStart, callbackEvent.State);
-    }
-
-    [Fact]
-    public void TestSpeakEvent()
-    {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("SpeakEvent"));
-      Assert.Equal(CallbackEventType.Speak, callbackEvent.EventType);
-      Assert.Equal("{callId}", callbackEvent.CallId);
-      Assert.Equal(CallbackEventState.PlaybackStart, callbackEvent.State);
+      Assert.Equal(CallbackEventStatus.Started, callbackEvent.Status);
     }
 
     [Fact]
     public void TestTranscriptionEvent()
     {
-      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonContent("TranscriptionEvent"));
+      var callbackEvent = CallbackEvent.CreateFromJson(Helpers.GetJsonResourse("TranscriptionEvent"));
       Assert.Equal(CallbackEventType.Transcription, callbackEvent.EventType);
-      Assert.Equal("{callId}", callbackEvent.CallId);
+      Assert.Equal("{recordingId}", callbackEvent.RecordingId);
       Assert.Equal("{transcriptionId}", callbackEvent.TranscriptionId);
       Assert.Equal(CallbackEventState.Completed, callbackEvent.State);
     }
-
-
   }
 
   public class CallbackEventHelpersTests

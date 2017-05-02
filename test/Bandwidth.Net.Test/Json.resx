@@ -639,5 +639,18 @@
 }
     </value>
   </data>
+  <data name="AnswerEvent" xml:space="preserve">
+    <value>
+{
+    "eventType":"answer",
+    "from":"+15753222083",
+    "to":"+13865245000",
+    "callId":"{callId}",
+    "callUri": "https://api.catapult.inetwork.com/v1/users/{user-id}/calls/{call-id}",
+    "callState":"active",
+    "time":"2012-11-14T16:28:31.536Z"
+}
+    </value>
+  </data>
 
 </root>

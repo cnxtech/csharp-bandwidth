@@ -163,9 +163,15 @@ namespace Bandwidth.Net
     public bool Mute { get; set; }
 
     /// <summary>
-    ///   The digit pressed
+    ///   The digits pressed
     /// </summary>
     public string Digits { get; set; }
+
+    /// <summary>
+    ///   The digit pressed (for DTMF event)
+    /// </summary>
+    public string DtmfDigit { get; set; }
+
 
     /// <summary>
     ///   Id of gather
