@@ -129,6 +129,25 @@ var call = await client.Call.CreateAsync(new CreateCallData {
 });
 Console.WriteLine($"Call Id is {call.Id}");
 ```
+
+Extracting callback event data from string
+
+```csharp
+var callbackEvent = CallbackEvent.CreateFromJson("{\"eventType\": \"sms\"}");
+```
+
+Extracting callback event data from http content (useful for ASP.Net and other web applications)
+
+```csharp
+// In ASP.Net action
+var callbackEvent = await Request.Content.ReadAsCallbackEventAsync();
+
+// anywhere
+var callbackEvent = await content.ReadAsCallbackEventAsync(); // content is instance of HttpContent
+
+```
+
+
 ## Providing feedback
 
 For current discussions on 3.0 please see the [3.0 issues section on GitHub](https://github.com/bandwidthcom/csharp-bandwidth/labels/3.0). To start a new topic on 3.0, please open an issue and use the `3.0` tag. Your feedback is greatly appreciated!

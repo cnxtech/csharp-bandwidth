@@ -459,7 +459,7 @@ namespace Bandwidth.Net
     /// <returns>Callback event data or null if response content is not json</returns>
     /// <example>
     /// <code>
-    /// var callbackEvent = await response.Content.ReadAsCallbackEventAsync(); // response is instance of HttpResponseMessage
+    /// var callbackEvent = await request.Content.ReadAsCallbackEventAsync(); // response is instance of HttpRequestMessage
     /// switch(callbackEvent.EventType)
     /// {
     ///   case CallbackEventType.Sms:
