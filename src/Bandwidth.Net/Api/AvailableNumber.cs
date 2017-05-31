@@ -84,14 +84,14 @@ namespace Bandwidth.Net.Api
       CancellationToken? cancellationToken = null)
     {
       return Client.MakeJsonRequestAsync<OrderedNumber[]>(HttpMethod.Post, "/availableNumbers/local", cancellationToken,
-        query);
+        query, "");
     }
 
     public Task<OrderedNumber[]> SearchAndOrderTollFreeAsync(TollFreeNumberQueryForOrder query,
       CancellationToken? cancellationToken = null)
     {
       return Client.MakeJsonRequestAsync<OrderedNumber[]>(HttpMethod.Post, "/availableNumbers/tollFree",
-        cancellationToken, query);
+        cancellationToken, query, "");
     }
   }
 
