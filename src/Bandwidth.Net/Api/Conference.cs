@@ -407,6 +407,12 @@ namespace Bandwidth.Net.Api
     public string FallbackUrl { get; set; }
 
     /// <summary>
+    ///   The conference profile that determines how DTMF is used.
+    /// </summary>
+    public ConferenceDtmfProfile? Profile {get; set;}
+
+
+    /// <summary>
     ///   A string that will be included in the callback events of the conference.
     /// </summary>
     public string Tag { get; set; }
@@ -463,6 +469,11 @@ namespace Bandwidth.Net.Api
     ///   The URL used to send the callback event if the request to callbackUrl fails.
     /// </summary>
     public string FallbackUrl { get; set; }
+
+    /// <summary>
+    ///   The conference profile that determines how DTMF is used.
+    /// </summary>
+    public ConferenceDtmfProfile? Profile {get; set;}
 
     /// <summary>
     ///   A string that will be included in the callback events of the conference.
@@ -623,6 +634,11 @@ namespace Bandwidth.Net.Api
     public string FallbackUrl { get; set; }
 
     /// <summary>
+    ///   The conference profile that determines how DTMF is used.
+    /// </summary>
+    public ConferenceDtmfProfile? Profile {get; set;}
+
+    /// <summary>
     ///   A string that will be included in the callback events of the conference.
     /// </summary>
     public string Tag { get; set; }
@@ -660,5 +676,22 @@ namespace Bandwidth.Net.Api
     ///   leaves the conference.
     /// </summary>
     public bool LeavingTone { get; set; }
+  }
+
+  
+  /// <summary>
+  /// The conference profile that determines how DTMF is used
+  /// </summary>
+  public enum ConferenceDtmfProfile
+  {
+    /// <summary>
+    ///  The conference will handle DTMF with the default behavior
+    /// </summary>
+    InterpretDigits,
+    
+    /// <summary>
+    /// Allows the application to receive DTMF events and use the gather API.
+    /// </summary>
+    PassthruDigits
   }
 }
