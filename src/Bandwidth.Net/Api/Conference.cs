@@ -409,7 +409,7 @@ namespace Bandwidth.Net.Api
     /// <summary>
     ///   The conference profile that determines how DTMF is used.
     /// </summary>
-    public ConferenceDtmfProfile? Profile {get; set;}
+    public ConferenceDtmfProfile Profile {get; set;}
 
 
     /// <summary>
@@ -632,11 +632,6 @@ namespace Bandwidth.Net.Api
     ///   The URL used to send the callback event if the request to callbackUrl fails.
     /// </summary>
     public string FallbackUrl { get; set; }
-
-    /// <summary>
-    ///   The conference profile that determines how DTMF is used.
-    /// </summary>
-    public ConferenceDtmfProfile? Profile {get; set;}
 
     /// <summary>
     ///   A string that will be included in the callback events of the conference.
