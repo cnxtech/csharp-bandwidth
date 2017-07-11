@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Bandwidth.Net.Api
 {
@@ -409,6 +410,7 @@ namespace Bandwidth.Net.Api
     /// <summary>
     ///   The conference profile that determines how DTMF is used.
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumConverter), '_')]
     public ConferenceDtmfProfile Profile {get; set;}
 
 
@@ -473,6 +475,7 @@ namespace Bandwidth.Net.Api
     /// <summary>
     ///   The conference profile that determines how DTMF is used.
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumConverter), '_')]
     public ConferenceDtmfProfile? Profile {get; set;}
 
     /// <summary>

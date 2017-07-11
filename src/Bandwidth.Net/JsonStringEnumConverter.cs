@@ -8,6 +8,16 @@ namespace Bandwidth.Net
 {
   internal sealed class JsonStringEnumConverter: StringEnumConverter
   {
+    public char Delimiter {get; set;}
+    public JsonStringEnumConverter():base()
+    {
+        Delimiter = '-';
+    }
+    public JsonStringEnumConverter(char delimiter):base()
+    {
+        Delimiter = delimiter;
+    }
+
     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
       // convert string like "enum-value" and "eNUM-VALUE" to EnumType.EnumValue
@@ -33,7 +43,7 @@ namespace Bandwidth.Net
           }
           else
           {
-            result.Append('-');
+            result.Append(Delimiter);
           }
           result.Append(char.ToLowerInvariant(s));
         }

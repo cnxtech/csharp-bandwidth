@@ -23,7 +23,7 @@ namespace Bandwidth.Net.Test.Api
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
       var api = Helpers.GetClient(context).Conference;
-      var conferenceId = await api.CreateAsync(new CreateConferenceData{From = "+1234567980"});
+      var conferenceId = await api.CreateAsync(new CreateConferenceData{From = "+1234567980", Profile=ConferenceDtmfProfile.PassthruDigits});
       context.Assert(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
@@ -154,7 +154,7 @@ namespace Bandwidth.Net.Test.Api
     {
       return request.Method == HttpMethod.Post && request.RequestUri.PathAndQuery == "/v1/users/userId/conferences" &&
              request.Content.Headers.ContentType.MediaType == "application/json" &&
-             request.Content.ReadAsStringAsync().Result == "{\"from\":\"+1234567980\"}";
+             request.Content.ReadAsStringAsync().Result == "{\"from\":\"+1234567980\",\"profile\":\"passthru_digits\"}";
     }
 
     public static bool IsValidGetRequest(HttpRequestMessage request)
