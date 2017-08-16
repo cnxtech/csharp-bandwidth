@@ -25,7 +25,8 @@ The current version is v3.0, released 1 February, 2017. Version 2.15 is availabl
 |---------|---------------|
 | <4.5 | Unsupported |
 | 4.5 | Supported |
-| netstandard1.4 (.net 4.6+, .net core 1.0+, etc)  | Supported |
+| netstandard1.6 (.net 4.6+, .net core 1.0+, etc)  | Supported |
+| netstandard2.0 (.net core 2.0+, etc)  | Supported |
 
 
 ## Client initialization
