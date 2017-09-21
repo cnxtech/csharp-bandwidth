@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace Bandwidth.Net.ApiV2
 {
@@ -429,6 +430,15 @@ namespace Bandwidth.Net.ApiV2
   {
     public string RateCenter {get; set;}
     public string State {get; set;}
+
+    public override XElement ToXElement()
+    {
+      return new XElement("RateCenterSearchAndOrderType", 
+        new XElement("RateCenter", this.RateCenter),
+        new XElement("State", this.State),
+        new XElement("Quantity", this.Quantity)
+      );
+    }
   }
 
   public class NpaNxxSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
@@ -436,37 +446,95 @@ namespace Bandwidth.Net.ApiV2
     public string NpaNxx {get; set;}
     public bool EnableTnDetail {get; set;}
     public bool EnableLca {get; set;}
+
+    public override XElement ToXElement()
+    {
+      return new XElement("NPANXXSearchAndOrderType", 
+        new XElement("NpaNxx", this.NpaNxx),
+        new XElement("EnableTNDetail", this.EnableTnDetail),
+        new XElement("EnableLCA", this.EnableLca),
+        new XElement("Quantity", this.Quantity)
+      );
+    }
   }
 
   public class TollFreeVanitySearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
   {
     public string TollFreeVanity {get; set;}
+
+    public override XElement ToXElement()
+    {
+      return new XElement("TollFreeVanitySearchAndOrderType", 
+        new XElement("TollFreeVanity", this.TollFreeVanity),
+        new XElement("Quantity", this.Quantity)
+      );
+    }
   }
 
   public class TollFreeWildCharSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
   {
     public string TollFreeWildCardPattern {get; set;}
+
+    public override XElement ToXElement()
+    {
+      return new XElement("TollFreeWildCharSearchAndOrderType", 
+        new XElement("TollFreeWildCardPattern", this.TollFreeWildCardPattern),
+        new XElement("Quantity", this.Quantity)
+      );
+    }
   }
 
   public class StateSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
   {
     public string State {get; set;}
+
+    public override XElement ToXElement()
+    {
+      return new XElement("StateSearchAndOrderType", 
+        new XElement("State", this.State),
+        new XElement("Quantity", this.Quantity)
+      );
+    }
   }
 
   public class CitySearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
   {
     public string State {get; set;}
     public string City {get; set;}
+
+    public override XElement ToXElement()
+    {
+      return new XElement("CitySearchAndOrderType", 
+        new XElement("State", this.State),
+        new XElement("City", this.City),
+        new XElement("Quantity", this.Quantity)
+      );
+    }
   }
 
   public class ZipSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
   {
     public string Zip {get; set;}
+    public override XElement ToXElement()
+    {
+      return new XElement("ZIPSearchAndOrderType", 
+        new XElement("Zip", this.Zip),
+        new XElement("Quantity", this.Quantity)
+      );
+    }
   }
 
   public class LataSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
   {
     public string Lata {get; set;}
+
+    public override XElement ToXElement()
+    {
+      return new XElement("LATASearchAndOrderType", 
+        new XElement("Lata", this.Lata),
+        new XElement("Quantity", this.Quantity)
+      );
+    }
   }
 
   public class CombinedSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
@@ -474,13 +542,52 @@ namespace Bandwidth.Net.ApiV2
     public string AreaCode {get; set;}
     public string RateCenter {get; set;}
     public string NpaNxx {get; set;}
-    public bool EnableTnDetail {get; set;}
-    public bool EnableLca {get; set;}
+    public bool? EnableTnDetail {get; set;}
+    public bool? EnableLca {get; set;}
     public string TollFreeVanity {get; set;}
     public string TollFreeWildCardPattern {get; set;}
     public string State {get; set;}
     public string City {get; set;}
     public string Zip {get; set;}
     public string Lata {get; set;}
+
+    public override XElement ToXElement()
+    {
+      var elements = new List<XElement>(new[] {new XElement("Quantity", this.Quantity)});
+      if (this.AreaCode != null) {
+        elements.Add(new XElement("AreaCode", this.AreaCode));
+      }
+      if (this.RateCenter != null) {
+        elements.Add(new XElement("RateCenter", this.RateCenter));
+      }
+      if (this.NpaNxx != null) {
+        elements.Add(new XElement("NpaNxx", this.NpaNxx));
+      }
+      if (this.EnableTnDetail != null) {
+        elements.Add(new XElement("EnableTNDetail", this.EnableTnDetail.Value));
+      }
+      if (this.EnableLca != null) {
+        elements.Add(new XElement("EnableLCA", this.EnableLca.Value));
+      }
+      if (this.TollFreeVanity != null) {
+        elements.Add(new XElement("TollFreeVanity", this.TollFreeVanity));
+      }
+      if (this.TollFreeWildCardPattern != null) {
+        elements.Add(new XElement("TollFreeWildCardPattern", this.TollFreeWildCardPattern));
+      }
+      if (this.State != null) {
+        elements.Add(new XElement("State", this.State));
+      }
+      if (this.City != null) {
+        elements.Add(new XElement("City", this.City));
+      }
+      if (this.Zip != null) {
+        elements.Add(new XElement("Zip", this.Zip));
+      }
+      if (this.Lata != null) {
+        elements.Add(new XElement("Lata", this.Lata));
+      }
+      return new XElement("CombinedSearchAndOrderType", elements.ToArray());
+    }
   }
 }
