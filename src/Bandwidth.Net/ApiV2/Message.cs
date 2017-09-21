@@ -176,8 +176,8 @@ namespace Bandwidth.Net.ApiV2
     {
       var xml = new XDocument(
         new XElement("SipPeer", 
-          new XElement("PeerName", data.PeerName),
-          new XElement("IsDefaultPeer", data.IsDefaultPeer)
+          new XElement("PeerName", data.LocationName),
+          new XElement("IsDefaultPeer", data.IsDefaultLocation)
         )
       );
       var (_, response) = await MakeRequestAsync(authData, HttpMethod.Post, $"/sites/{authData.SubaccountId}/sippeers", xml, false, cancellationToken);
@@ -427,12 +427,12 @@ namespace Bandwidth.Net.ApiV2
     /// Location name
     /// </summary>
     /// <returns></returns>
-    public string PeerName {get; set;}
+    public string LocationName {get; set;}
 
     /// <summary>
     /// Is created location default
     /// </summary>
-    public bool IsDefaultPeer {get; set;}
+    public bool IsDefaultLocation {get; set;}
 
     /// <summary>
     /// Options for SMS
