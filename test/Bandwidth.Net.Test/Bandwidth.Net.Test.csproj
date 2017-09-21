@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;netcoreapp1.0</TargetFrameworks>
+    <TargetFrameworks>net45;netcoreapp1.0;netcoreapp2.0</TargetFrameworks>
     <DebugType>portable</DebugType>
     <AssemblyName>Bandwidth.Net.Test</AssemblyName>
     <PackageId>Bandwidth.Net.Test</PackageId>
@@ -46,6 +46,12 @@
     <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.1.1" />
     <PackageReference Include="System.Xml.XmlSerializer" Version="4.0.11" />
     <PackageReference Include="LightMock.vNext" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
+    <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.1.1" />
+    <PackageReference Include="System.Xml.XmlSerializer" Version="4.0.11" />
+    <PackageReference Include="LightMock" Version="1.0.1" />
   </ItemGroup>
 
 </Project>
