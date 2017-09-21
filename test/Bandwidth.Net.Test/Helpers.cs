@@ -24,6 +24,11 @@ namespace Bandwidth.Net.Test
     {
       return new JsonContent(GetJsonResourse(name));
     }
+
+    public static StringContent GetXmlContent(string name)
+    {
+      return new StringContent(ResourceManager.GetString(name), Encoding.UTF8, "application/xml");
+    }
   }
 
   public class JsonContent : StringContent

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Collections.Generic;
+using System.Net;
 
 namespace Bandwidth.Net.ApiV2
 {
@@ -62,7 +63,7 @@ namespace Bandwidth.Net.ApiV2
     /// <returns>Created message</returns>
     /// <example>
     ///   <code>
-    /// var message = await client.V2.Message.SendAsync(new MessageData{ From = "from", To = new[] {"to"}, Text = "Hello"});
+    /// var message = await client.V2.Message.SendAsync(new MessageData{ From = "from", To = new[] {"to"}, Text = "Hello", ApplicationId = "appId"});
     /// </code>
     /// </example>
     Task<Message> SendAsync(MessageData data, CancellationToken? cancellationToken = null);
@@ -265,15 +266,33 @@ namespace Bandwidth.Net.ApiV2
         );
         var (doc, _) = await MakeRequestAsync(authData, HttpMethod.Post, "/orders", xml, true, cancellationToken);
         var orderId = doc.Descendants("Order").First().Element("id").Value;
-        //TODO add timeout support
-        while(true) 
+        var successStatuses = new[]{"COMPLETE", "PARTIAL"};
+        var stopwatch = Stopwatch.StartNew();
+        var timeout = TimeSpan.FromMinutes(1);
+        try
         {
-          await Task.Delay(500, cancellationToken ?? default(CancellationToken));
-          var (result, _) = await MakeRequestAsync(authData, HttpMethod.Get, $"/orders/{orderId}", null, true, cancellationToken);
-          if(result.Descendants("OrderStatus").First().Value == "COMPLETE")
+          while(true) 
           {
-            return result.Descendants("FullNumber").Select(n => n.Value).ToArray();
+            await Task.Delay(500, cancellationToken ?? default(CancellationToken));
+            if(stopwatch.Elapsed >= timeout)
+            {
+              throw new TimeoutException();
+            }
+            var (result, _) = await MakeRequestAsync(authData, HttpMethod.Get, $"/orders/{orderId}", null, true, cancellationToken);
+            var status = result.Descendants("OrderStatus").First().Value;
+            if(successStatuses.Contains(status))
+            {
+              return result.Descendants("FullNumber").Select(n => n.Value).ToArray();
+            }
+            if (status == "FAILED")
+            {
+              throw new BandwidthException("Error on reserving phone numbers", HttpStatusCode.BadRequest);
+            }
           }
+        }
+        finally
+        {
+          stopwatch.Stop();
         }
     }
 
