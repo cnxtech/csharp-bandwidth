@@ -19,7 +19,39 @@ namespace Bandwidth.Net.ApiV2
   public interface IMessage
   {
 
+    /// <summary>
+    /// Create messaging application on Bandwidth Dashboard (its id is required to send messages)
+    /// </summary>
+    /// <param name="authData">Bandwidth Dashboard auth data</param>
+    /// <param name="data">Options of new application</param>
+    /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <returns>Created application data</returns>
+    /// <example>
+    /// <code>
+    /// var application = await client.V2.Message.CreateMessagingApplicationAsync(authData, new CreateMessagingApplicationData {
+    ///   Name = "My Messaging App",
+    ///   CallbackUrl = "http://your/callback/handler",
+    ///   PearName = "Current",
+    ///   SmsOptions = new SmsOptions {TollFreeEnabled = true},
+    ///   MmsOptions = new MmsOptions {Enabled = true}
+    /// });
+    /// </code>
+    /// </example>
     Task<MessagingApplication> CreateMessagingApplicationAsync(IrisAuthData authData, CreateMessagingApplicationData data, CancellationToken? cancellationToken = null);
+
+    /// <summary>
+    /// Look for and reserve phone numbers on Bandwidth Dashboard
+    /// </summary>
+    /// <param name="authData">Bandwidth Dashboard auth data</param>
+    /// <param name="application">Messaging application data (result of CreateMessagingApplicationAsync())</param>
+    /// <param name="query">Search query</param>
+    /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <returns>Array of reserved phone numbers</returns>
+    /// <example>
+    /// <code>
+    /// var numbers = await client.V2.Message.SearchAndOrderNumbersAsync(authData, application, new AreaCodeSearchAndOrderNumbersQuery {AreaCode = "910"});
+    /// </code>
+    /// </example>
     Task<string[]> SearchAndOrderNumbersAsync(IrisAuthData authData, MessagingApplication application, SearchAndOrderNumbersQuery query, CancellationToken? cancellationToken = null);
 
     /// <summary>
@@ -355,69 +387,163 @@ namespace Bandwidth.Net.ApiV2
     Out
   }
 
+  /// <summary>
+  /// MessagingApplication
+  /// </summary>
   public class MessagingApplication 
   {
+    /// <summary>
+    /// Messaging application id
+    /// </summary>
     public string ApplicationId {get; set;}
+    
+    /// <summary>
+    /// Location (pear) id
+    /// </summary>
     public string LocationId {get; set;}
   }
 
+  /// <summary>
+  /// Data to create messagin application
+  /// </summary>
   public class CreateMessagingApplicationData
   {
+    /// <summary>
+    /// Application name
+    /// </summary>
     public string Name {get; set;}
 
+    /// <summary>
+    /// Callback url to receive messages events
+    /// </summary>
     public string CallbackUrl {get; set;}
 
+    /// <summary>
+    /// Optional auth data for http requests to CallbackUrl
+    /// </summary>
     public CallbackAuthData CallbackAuthData {get; set;}
 
+    /// <summary>
+    /// Location name
+    /// </summary>
+    /// <returns></returns>
     public string PeerName {get; set;}
 
+    /// <summary>
+    /// Is created location default
+    /// </summary>
     public bool IsDefaultPeer {get; set;}
 
+    /// <summary>
+    /// Options for SMS
+    /// </summary>
     public SmsOptions SmsOptions {get; set;}
 
+    /// <summary>
+    /// Options for MMS
+    /// </summary>
     public MmsOptions MmsOptions {get; set;}
   }
 
+  /// <summary>
+  /// Auth data for Bandwidth Dashboard
+  /// </summary>
   public class IrisAuthData
   {
+    /// <summary>
+    /// Account id
+    /// </summary>
+    /// <returns></returns>
     public string AccountId {get; set;}
 
+    /// <summary>
+    /// Subaccount (site) id
+    /// </summary>
     public string SubaccountId {get; set;}
 
+    /// <summary>
+    /// User name
+    /// </summary>
     public string UserName {get; set;}
 
+    /// <summary>
+    /// Password
+    /// </summary>
     public string Password {get; set;}
   }
 
+  /// <summary>
+  /// Callback auth data
+  /// </summary>
   public class CallbackAuthData
   {
+    /// <summary>
+    /// User name
+    /// </summary>
     public string UserName {get; set;}
+    
+    /// <summary>
+    /// Password
+    /// </summary>
     public string Password {get; set;}
   }
 
+  /// <summary>
+  /// Options for SMS
+  /// </summary>
   public class SmsOptions
   {
+    /// <summary>
+    /// Enabled
+    /// </summary>
     public bool Enabled {get; set;} = true;
+
+    /// <summary>
+    /// TollFreeEnabled
+    /// </summary>
     public bool TollFreeEnabled {get; set;}
 
+    /// <summary>
+    /// ShortCodeEnabled
+    /// </summary>
     public bool ShortCodeEnabled {get; set;}
   }
+  
+  /// <summary>
+  /// Options for MMS
+  /// </summary>
   public class MmsOptions
   {
+    /// <summary>
+    /// Enabled
+    /// </summary>
     public bool Enabled {get; set;} = true;
   }
 
+  /// <summary>
+  ///  Query to search phone numbers
+  /// </summary>
   public abstract class SearchAndOrderNumbersQuery
   {
+    /// <summary>
+    /// Quantity
+    /// </summary>
+    /// <returns></returns>
     public int Quantity {get; set;} = 10;
-    public abstract XElement ToXElement();
+    internal abstract XElement ToXElement();
   }
 
+  /// <summary>
+  /// Area code query to search phone numbers
+  /// </summary>
   public class AreaCodeSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
   {
+    /// <summary>
+    /// Area code
+    /// </summary>
     public string AreaCode {get; set;}
 
-    public override XElement ToXElement()
+    internal override XElement ToXElement()
     {
       return new XElement("AreaCodeSearchAndOrderType", 
         new XElement("AreaCode", this.AreaCode),
@@ -426,12 +552,22 @@ namespace Bandwidth.Net.ApiV2
     }
   }
 
+  /// <summary>
+  /// Rate center query to search phone numbers
+  /// </summary>
   public class RateCenterSearchAndOrdeNumbersQuery: SearchAndOrderNumbersQuery
   {
+    /// <summary>
+    /// Rate center
+    /// </summary>
     public string RateCenter {get; set;}
+    
+    /// <summary>
+    /// State
+    /// </summary>
     public string State {get; set;}
 
-    public override XElement ToXElement()
+    internal override XElement ToXElement()
     {
       return new XElement("RateCenterSearchAndOrderType", 
         new XElement("RateCenter", this.RateCenter),
@@ -441,13 +577,27 @@ namespace Bandwidth.Net.ApiV2
     }
   }
 
+  /// <summary>
+  /// Npa Nxx query to search phone numbers
+  /// </summary>
   public class NpaNxxSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
   {
+    /// <summary>
+    /// NpaNxx
+    /// </summary>
     public string NpaNxx {get; set;}
+    
+    /// <summary>
+    /// EnableTnDetail
+    /// </summary>
     public bool EnableTnDetail {get; set;}
+
+    /// <summary>
+    /// EnableLca
+    /// </summary>
     public bool EnableLca {get; set;}
 
-    public override XElement ToXElement()
+    internal override XElement ToXElement()
     {
       return new XElement("NPANXXSearchAndOrderType", 
         new XElement("NpaNxx", this.NpaNxx),
@@ -458,11 +608,17 @@ namespace Bandwidth.Net.ApiV2
     }
   }
 
+  /// <summary>
+  /// Toll free vanity query to search phone numbers
+  /// </summary>
   public class TollFreeVanitySearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
   {
+    /// <summary>
+    /// TollFreeVanity
+    /// </summary>
     public string TollFreeVanity {get; set;}
 
-    public override XElement ToXElement()
+    internal override XElement ToXElement()
     {
       return new XElement("TollFreeVanitySearchAndOrderType", 
         new XElement("TollFreeVanity", this.TollFreeVanity),
@@ -471,11 +627,17 @@ namespace Bandwidth.Net.ApiV2
     }
   }
 
+  /// <summary>
+  /// Toll free wild сhar query to search phone numbers
+  /// </summary>
   public class TollFreeWildCharSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
   {
+    /// <summary>
+    /// TollFreeWildCardPattern
+    /// </summary>
     public string TollFreeWildCardPattern {get; set;}
 
-    public override XElement ToXElement()
+    internal override XElement ToXElement()
     {
       return new XElement("TollFreeWildCharSearchAndOrderType", 
         new XElement("TollFreeWildCardPattern", this.TollFreeWildCardPattern),
@@ -484,11 +646,18 @@ namespace Bandwidth.Net.ApiV2
     }
   }
 
+  /// <summary>
+  /// State query to search phone numbers
+  /// </summary>
+
   public class StateSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
   {
+    /// <summary>
+    /// State
+    /// </summary>
     public string State {get; set;}
 
-    public override XElement ToXElement()
+    internal override XElement ToXElement()
     {
       return new XElement("StateSearchAndOrderType", 
         new XElement("State", this.State),
@@ -497,12 +666,23 @@ namespace Bandwidth.Net.ApiV2
     }
   }
 
+  /// <summary>
+  /// City query to search phone numbers
+  /// </summary>
+
   public class CitySearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
   {
+    /// <summary>
+    /// State
+    /// </summary>
     public string State {get; set;}
+
+    /// <summary>
+    /// City
+    /// </summary>
     public string City {get; set;}
 
-    public override XElement ToXElement()
+    internal override XElement ToXElement()
     {
       return new XElement("CitySearchAndOrderType", 
         new XElement("State", this.State),
@@ -512,10 +692,16 @@ namespace Bandwidth.Net.ApiV2
     }
   }
 
+  /// <summary>
+  /// Zip query to search phone numbers
+  /// </summary>
   public class ZipSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
   {
+    /// <summary>
+    /// Zip
+    /// </summary>
     public string Zip {get; set;}
-    public override XElement ToXElement()
+    internal override XElement ToXElement()
     {
       return new XElement("ZIPSearchAndOrderType", 
         new XElement("Zip", this.Zip),
@@ -524,11 +710,17 @@ namespace Bandwidth.Net.ApiV2
     }
   }
 
+  /// <summary>
+  /// Lata query to search phone numbers
+  /// </summary>
   public class LataSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
   {
+    /// <summary>
+    /// Lata
+    /// </summary>
     public string Lata {get; set;}
 
-    public override XElement ToXElement()
+    internal override XElement ToXElement()
     {
       return new XElement("LATASearchAndOrderType", 
         new XElement("Lata", this.Lata),
@@ -537,21 +729,68 @@ namespace Bandwidth.Net.ApiV2
     }
   }
 
+  /// <summary>
+  /// Combined query to search phone numbers
+  /// </summary>
+
   public class CombinedSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
   {
+    /// <summary>
+    /// AreaCode
+    /// </summary>
     public string AreaCode {get; set;}
+    
+    /// <summary>
+    /// RateCenter
+    /// </summary>
     public string RateCenter {get; set;}
+    
+    /// <summary>
+    /// NpaNxx
+    /// </summary>
     public string NpaNxx {get; set;}
+    
+    /// <summary>
+    /// EnableTnDetail
+    /// </summary>
     public bool? EnableTnDetail {get; set;}
+    
+    /// <summary>
+    /// EnableLca
+    /// </summary>
     public bool? EnableLca {get; set;}
+    
+    /// <summary>
+    /// TollFreeVanity
+    /// </summary>
     public string TollFreeVanity {get; set;}
+    
+    /// <summary>
+    /// TollFreeWildCardPattern
+    /// </summary>
     public string TollFreeWildCardPattern {get; set;}
+    
+    /// <summary>
+    /// State
+    /// </summary>
     public string State {get; set;}
+    
+    /// <summary>
+    /// City
+    /// </summary>
     public string City {get; set;}
+    
+    /// <summary>
+    /// Zip
+    /// </summary>
     public string Zip {get; set;}
+    
+    /// <summary>
+    /// Lata
+    /// </summary>
     public string Lata {get; set;}
 
-    public override XElement ToXElement()
+    internal override XElement ToXElement()
     {
       var elements = new List<XElement>(new[] {new XElement("Quantity", this.Quantity)});
       if (this.AreaCode != null) {
