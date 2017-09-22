@@ -24,8 +24,8 @@ namespace Bandwidth.Net.Test.ApiV2
       return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/api/accounts/AccountId/applications"
              && request.Method == HttpMethod.Post
              && request.Headers.Authorization.Parameter == "VXNlck5hbWU6UGFzc3dvcmQ="
-             && request.Content.ReadAsStringAsync().Result ==
-             "<Application>\r\n  <AppName>App1</AppName>\r\n  <CallbackUrl>url</CallbackUrl>\r\n  <CallBackCreds />\r\n</Application>";
+             && request.Content.ReadAsStringAsync().Result.NormilizeLineEnds() ==
+             "<Application>\r\n  <AppName>App1</AppName>\r\n  <CallbackUrl>url</CallbackUrl>\r\n  <CallBackCreds />\r\n</Application>".NormilizeLineEnds();
     }
 
     public static bool IsValidCreateLocationRequest(HttpRequestMessage request)
@@ -42,8 +42,8 @@ namespace Bandwidth.Net.Test.ApiV2
       return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/api/accounts/AccountId/sites/SubaccountId/sippeers/LocationId/products/messaging/features/sms"
              && request.Method == HttpMethod.Post
              && request.Headers.Authorization.Parameter == "VXNlck5hbWU6UGFzc3dvcmQ="
-             && request.Content.ReadAsStringAsync().Result ==
-             "<SipPeerSmsFeature>\r\n  <SipPeerSmsFeatureSettings>\r\n    <TollFree>true</TollFree>\r\n    <ShortCode>false</ShortCode>\r\n    <Protocol>HTTP</Protocol>\r\n    <Zone1>true</Zone1>\r\n    <Zone2>false</Zone2>\r\n    <Zone3>false</Zone3>\r\n    <Zone4>false</Zone4>\r\n    <Zone5>false</Zone5>\r\n  </SipPeerSmsFeatureSettings>\r\n  <HttpSettings>\r\n    <ProxyPeerId>539692</ProxyPeerId>\r\n  </HttpSettings>\r\n</SipPeerSmsFeature>";
+             && request.Content.ReadAsStringAsync().Result.NormilizeLineEnds() ==
+             "<SipPeerSmsFeature>\r\n  <SipPeerSmsFeatureSettings>\r\n    <TollFree>true</TollFree>\r\n    <ShortCode>false</ShortCode>\r\n    <Protocol>HTTP</Protocol>\r\n    <Zone1>true</Zone1>\r\n    <Zone2>false</Zone2>\r\n    <Zone3>false</Zone3>\r\n    <Zone4>false</Zone4>\r\n    <Zone5>false</Zone5>\r\n  </SipPeerSmsFeatureSettings>\r\n  <HttpSettings>\r\n    <ProxyPeerId>539692</ProxyPeerId>\r\n  </HttpSettings>\r\n</SipPeerSmsFeature>".NormilizeLineEnds();
     }
 
     public static bool IsEnableMms(HttpRequestMessage request)
@@ -51,8 +51,8 @@ namespace Bandwidth.Net.Test.ApiV2
       return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/api/accounts/AccountId/sites/SubaccountId/sippeers/LocationId/products/messaging/features/mms"
              && request.Method == HttpMethod.Post
              && request.Headers.Authorization.Parameter == "VXNlck5hbWU6UGFzc3dvcmQ="
-             && request.Content.ReadAsStringAsync().Result ==
-             "<MmsFeature>\r\n  <MmsSettings>\r\n    <protocol>HTTP</protocol>\r\n  </MmsSettings>\r\n  <Protocols>\r\n    <HTTP>\r\n      <HttpSettings>\r\n        <ProxyPeerId>539692</ProxyPeerId>\r\n      </HttpSettings>\r\n    </HTTP>\r\n  </Protocols>\r\n</MmsFeature>";
+             && request.Content.ReadAsStringAsync().Result.NormilizeLineEnds() ==
+             "<MmsFeature>\r\n  <MmsSettings>\r\n    <protocol>HTTP</protocol>\r\n  </MmsSettings>\r\n  <Protocols>\r\n    <HTTP>\r\n      <HttpSettings>\r\n        <ProxyPeerId>539692</ProxyPeerId>\r\n      </HttpSettings>\r\n    </HTTP>\r\n  </Protocols>\r\n</MmsFeature>".NormilizeLineEnds();
     }
 
     public static bool IsAssignApplicationToLocationRequest(HttpRequestMessage request)
@@ -60,8 +60,8 @@ namespace Bandwidth.Net.Test.ApiV2
       return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/api/accounts/AccountId/sites/SubaccountId/sippeers/LocationId/products/messaging/applicationSettings"
              && request.Method == HttpMethod.Put
              && request.Headers.Authorization.Parameter == "VXNlck5hbWU6UGFzc3dvcmQ="
-             && request.Content.ReadAsStringAsync().Result ==
-             "<ApplicationsSettings>\r\n  <HttpMessagingV2AppId>ApplicationId</HttpMessagingV2AppId>\r\n</ApplicationsSettings>";
+             && request.Content.ReadAsStringAsync().Result.NormilizeLineEnds() ==
+             "<ApplicationsSettings>\r\n  <HttpMessagingV2AppId>ApplicationId</HttpMessagingV2AppId>\r\n</ApplicationsSettings>".NormilizeLineEnds();
 
     }
 
@@ -70,8 +70,8 @@ namespace Bandwidth.Net.Test.ApiV2
       return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/api/accounts/AccountId/orders"
              && request.Method == HttpMethod.Post
              && request.Headers.Authorization.Parameter == "VXNlck5hbWU6UGFzc3dvcmQ="
-             && request.Content.ReadAsStringAsync().Result ==
-             "<Order>\r\n  <AreaCodeSearchAndOrderType>\r\n    <AreaCode>910</AreaCode>\r\n    <Quantity>2</Quantity>\r\n  </AreaCodeSearchAndOrderType>\r\n  <SiteId>SubaccountId</SiteId>\r\n  <PeerId>LocationId</PeerId>\r\n</Order>";
+             && request.Content.ReadAsStringAsync().Result.NormilizeLineEnds() ==
+             "<Order>\r\n  <AreaCodeSearchAndOrderType>\r\n    <AreaCode>910</AreaCode>\r\n    <Quantity>2</Quantity>\r\n  </AreaCodeSearchAndOrderType>\r\n  <SiteId>SubaccountId</SiteId>\r\n  <PeerId>LocationId</PeerId>\r\n</Order>".NormilizeLineEnds();
 
     }
 
@@ -462,70 +462,78 @@ namespace Bandwidth.Net.Test.ApiV2
     public void TestAreaCodeSearchAndOrderNumbersQuery()
     {
       var query = new AreaCodeSearchAndOrderNumbersQuery {AreaCode = "910", Quantity = 1};
-      Assert.Equal("<AreaCodeSearchAndOrderType>\r\n  <AreaCode>910</AreaCode>\r\n  <Quantity>1</Quantity>\r\n</AreaCodeSearchAndOrderType>", query.ToXElement().ToString());
+      Assert.Equal("<AreaCodeSearchAndOrderType>\r\n  <AreaCode>910</AreaCode>\r\n  <Quantity>1</Quantity>\r\n</AreaCodeSearchAndOrderType>".NormilizeLineEnds(), query.ToXElement().ToString().NormilizeLineEnds());
     }
 
     [Fact]
     public void TestRateCenterSearchAndOrdeNumbersQuery()
     {
       var query = new RateCenterSearchAndOrdeNumbersQuery { RateCenter = "NC", Quantity = 1 };
-      Assert.Equal("<RateCenterSearchAndOrderType>\r\n  <RateCenter>NC</RateCenter>\r\n  <State />\r\n  <Quantity>1</Quantity>\r\n</RateCenterSearchAndOrderType>", query.ToXElement().ToString());
+      Assert.Equal("<RateCenterSearchAndOrderType>\r\n  <RateCenter>NC</RateCenter>\r\n  <State />\r\n  <Quantity>1</Quantity>\r\n</RateCenterSearchAndOrderType>".NormilizeLineEnds(), query.ToXElement().ToString().NormilizeLineEnds());
     }
 
     [Fact]
     public void TestNpaNxxSearchAndOrderNumbersQuery()
     {
       var query = new NpaNxxSearchAndOrderNumbersQuery { NpaNxx = "911", Quantity = 1 };
-      Assert.Equal("<NPANXXSearchAndOrderType>\r\n  <NpaNxx>911</NpaNxx>\r\n  <EnableTNDetail>false</EnableTNDetail>\r\n  <EnableLCA>false</EnableLCA>\r\n  <Quantity>1</Quantity>\r\n</NPANXXSearchAndOrderType>", query.ToXElement().ToString());
+      Assert.Equal("<NPANXXSearchAndOrderType>\r\n  <NpaNxx>911</NpaNxx>\r\n  <EnableTNDetail>false</EnableTNDetail>\r\n  <EnableLCA>false</EnableLCA>\r\n  <Quantity>1</Quantity>\r\n</NPANXXSearchAndOrderType>".NormilizeLineEnds(), query.ToXElement().ToString().NormilizeLineEnds());
     }
 
     [Fact]
     public void TestTollFreeVanitySearchAndOrderNumbersQuery()
     {
       var query = new TollFreeVanitySearchAndOrderNumbersQuery { TollFreeVanity = "0", Quantity = 1 };
-      Assert.Equal("<TollFreeVanitySearchAndOrderType>\r\n  <TollFreeVanity>0</TollFreeVanity>\r\n  <Quantity>1</Quantity>\r\n</TollFreeVanitySearchAndOrderType>", query.ToXElement().ToString());
+      Assert.Equal("<TollFreeVanitySearchAndOrderType>\r\n  <TollFreeVanity>0</TollFreeVanity>\r\n  <Quantity>1</Quantity>\r\n</TollFreeVanitySearchAndOrderType>".NormilizeLineEnds(), query.ToXElement().ToString().NormilizeLineEnds());
     }
 
     [Fact]
     public void TestTollFreeWildCharSearchAndOrderNumbersQuery()
     {
       var query = new TollFreeWildCharSearchAndOrderNumbersQuery { TollFreeWildCardPattern = "*", Quantity = 1 };
-      Assert.Equal("<TollFreeWildCharSearchAndOrderType>\r\n  <TollFreeWildCardPattern>*</TollFreeWildCardPattern>\r\n  <Quantity>1</Quantity>\r\n</TollFreeWildCharSearchAndOrderType>", query.ToXElement().ToString());
+      Assert.Equal("<TollFreeWildCharSearchAndOrderType>\r\n  <TollFreeWildCardPattern>*</TollFreeWildCardPattern>\r\n  <Quantity>1</Quantity>\r\n</TollFreeWildCharSearchAndOrderType>".NormilizeLineEnds(), query.ToXElement().ToString().NormilizeLineEnds());
     }
 
     [Fact]
     public void TestStateSearchAndOrderNumbersQuery()
     {
       var query = new StateSearchAndOrderNumbersQuery { State = "NC", Quantity = 1 };
-      Assert.Equal("<StateSearchAndOrderType>\r\n  <State>NC</State>\r\n  <Quantity>1</Quantity>\r\n</StateSearchAndOrderType>", query.ToXElement().ToString());
+      Assert.Equal("<StateSearchAndOrderType>\r\n  <State>NC</State>\r\n  <Quantity>1</Quantity>\r\n</StateSearchAndOrderType>".NormilizeLineEnds(), query.ToXElement().ToString().NormilizeLineEnds());
     }
 
     [Fact]
     public void TestCitySearchAndOrderNumbersQuery()
     {
       var query = new CitySearchAndOrderNumbersQuery { State = "NC", City = "Cary", Quantity = 1 };
-      Assert.Equal("<CitySearchAndOrderType>\r\n  <State>NC</State>\r\n  <City>Cary</City>\r\n  <Quantity>1</Quantity>\r\n</CitySearchAndOrderType>", query.ToXElement().ToString());
+      Assert.Equal("<CitySearchAndOrderType>\r\n  <State>NC</State>\r\n  <City>Cary</City>\r\n  <Quantity>1</Quantity>\r\n</CitySearchAndOrderType>".NormilizeLineEnds(), query.ToXElement().ToString().NormilizeLineEnds());
     }
 
     [Fact]
     public void TestZipSearchAndOrderNumbersQuery()
     {
       var query = new ZipSearchAndOrderNumbersQuery { Zip = "000", Quantity = 1 };
-      Assert.Equal("<ZIPSearchAndOrderType>\r\n  <Zip>000</Zip>\r\n  <Quantity>1</Quantity>\r\n</ZIPSearchAndOrderType>", query.ToXElement().ToString());
+      Assert.Equal("<ZIPSearchAndOrderType>\r\n  <Zip>000</Zip>\r\n  <Quantity>1</Quantity>\r\n</ZIPSearchAndOrderType>".NormilizeLineEnds(), query.ToXElement().ToString().NormilizeLineEnds());
     }
 
     [Fact]
     public void TestLataSearchAndOrderNumbersQuery()
     {
       var query = new LataSearchAndOrderNumbersQuery { Lata = "000"};
-      Assert.Equal("<LATASearchAndOrderType>\r\n  <Lata>000</Lata>\r\n  <Quantity>10</Quantity>\r\n</LATASearchAndOrderType>", query.ToXElement().ToString());
+      Assert.Equal("<LATASearchAndOrderType>\r\n  <Lata>000</Lata>\r\n  <Quantity>10</Quantity>\r\n</LATASearchAndOrderType>".NormilizeLineEnds(), query.ToXElement().ToString().NormilizeLineEnds());
     }
 
     [Fact]
     public void TestCombinedSearchAndOrderNumbersQuery()
     {
       var query = new CombinedSearchAndOrderNumbersQuery { AreaCode = "900" };
-      Assert.Equal("<CombinedSearchAndOrderType>\r\n  <Quantity>10</Quantity>\r\n  <AreaCode>900</AreaCode>\r\n</CombinedSearchAndOrderType>", query.ToXElement().ToString());
+      Assert.Equal("<CombinedSearchAndOrderType>\r\n  <Quantity>10</Quantity>\r\n  <AreaCode>900</AreaCode>\r\n</CombinedSearchAndOrderType>".NormilizeLineEnds(), query.ToXElement().ToString().NormilizeLineEnds());
+    }
+  }
+
+  internal static class StringExtensions
+  {
+    public static string NormilizeLineEnds(this string text)
+    {
+      return text.Replace("\r\n", "\n");
     }
   }
 }
