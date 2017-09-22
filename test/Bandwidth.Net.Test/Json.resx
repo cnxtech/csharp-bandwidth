@@ -507,7 +507,7 @@
 }
     </value>
   </data>
-<data name="ConferenceMemberEvent" xml:space="preserve">
+  <data name="ConferenceMemberEvent" xml:space="preserve">
     <value>
     {
     "activeMembers": 1,
@@ -523,7 +523,6 @@
 }
     </value>
   </data>
-
   <data name="ConferenceSpeakEvent" xml:space="preserve">
     <value>
     {
@@ -546,7 +545,7 @@
 }
     </value>
   </data>
-<data name="GatherEvent" xml:space="preserve">
+  <data name="GatherEvent" xml:space="preserve">
     <value>
     {
     "eventType":"gather",
@@ -652,5 +651,16 @@
 }
     </value>
   </data>
-
+  <data name="CreateMessagingApplicationResponse" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;ApplicationProvisioningResponse&gt;
+  &lt;Application&gt;
+    &lt;ApplicationId&gt;ApplicationId&lt;/ApplicationId&gt;
+    &lt;ServiceType&gt;Messaging-V2&lt;/ServiceType&gt;
+    &lt;AppName&gt;Demo Server&lt;/AppName&gt;
+    &lt;CallbackUrl&gt;https://requestb.in/1m009f61&lt;/CallbackUrl&gt;
+    &lt;CallbackCreds/&gt;
+  &lt;/Application&gt;
+&lt;/ApplicationProvisioningResponse&gt;</value>
+  </data>
 </root>

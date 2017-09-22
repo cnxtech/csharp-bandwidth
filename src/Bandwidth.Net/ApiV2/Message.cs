@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Diagnostics;
 using System.IO;
@@ -74,9 +74,9 @@ namespace Bandwidth.Net.ApiV2
   {
     private HttpRequestMessage CreateIrisRequest(IrisAuthData authData, HttpMethod method, string path, object query = null)
     {
-      var url = new UriBuilder($"https://dashboard.bandwidth.com/api/accounts/{authData.AccountId}")
+      var url = new UriBuilder("https://dashboard.bandwidth.com")
       {
-        Path = path,
+        Path = $"/api/accounts/{authData.AccountId}{path}",
         Query = Client.BuildQueryString(query)
       };
       var message = new HttpRequestMessage(method, url.Uri);
