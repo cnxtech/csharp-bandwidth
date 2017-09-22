@@ -1,16 +1,14 @@
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using System.Xml.Serialization;
-using System.Collections.Generic;
-using System.Net;
 
 namespace Bandwidth.Net.ApiV2
 {
@@ -19,16 +17,15 @@ namespace Bandwidth.Net.ApiV2
   /// </summary>
   public interface IMessage
   {
-
     /// <summary>
-    /// Create messaging application on Bandwidth Dashboard (its id is required to send messages)
+    ///   Create messaging application on Bandwidth Dashboard (its id is required to send messages)
     /// </summary>
     /// <param name="authData">Bandwidth Dashboard auth data</param>
     /// <param name="data">Options of new application</param>
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Created application data</returns>
     /// <example>
-    /// <code>
+    ///   <code>
     /// var application = await client.V2.Message.CreateMessagingApplicationAsync(authData, new CreateMessagingApplicationData {
     ///   Name = "My Messaging App",
     ///   CallbackUrl = "http://your/callback/handler",
@@ -38,10 +35,11 @@ namespace Bandwidth.Net.ApiV2
     /// });
     /// </code>
     /// </example>
-    Task<MessagingApplication> CreateMessagingApplicationAsync(IrisAuthData authData, CreateMessagingApplicationData data, CancellationToken? cancellationToken = null);
+    Task<MessagingApplication> CreateMessagingApplicationAsync(IrisAuthData authData,
+      CreateMessagingApplicationData data, CancellationToken? cancellationToken = null);
 
     /// <summary>
-    /// Look for and reserve phone numbers on Bandwidth Dashboard
+    ///   Look for and reserve phone numbers on Bandwidth Dashboard
     /// </summary>
     /// <param name="authData">Bandwidth Dashboard auth data</param>
     /// <param name="application">Messaging application data (result of CreateMessagingApplicationAsync())</param>
@@ -49,11 +47,12 @@ namespace Bandwidth.Net.ApiV2
     /// <param name="cancellationToken">Optional token to cancel async operation</param>
     /// <returns>Array of reserved phone numbers</returns>
     /// <example>
-    /// <code>
+    ///   <code>
     /// var numbers = await client.V2.Message.SearchAndOrderNumbersAsync(authData, application, new AreaCodeSearchAndOrderNumbersQuery {AreaCode = "910"});
     /// </code>
     /// </example>
-    Task<string[]> SearchAndOrderNumbersAsync(IrisAuthData authData, MessagingApplication application, SearchAndOrderNumbersQuery query, CancellationToken? cancellationToken = null);
+    Task<string[]> SearchAndOrderNumbersAsync(IrisAuthData authData, MessagingApplication application,
+      SearchAndOrderNumbersQuery query, CancellationToken? cancellationToken = null);
 
     /// <summary>
     ///   Send a message.
@@ -67,12 +66,67 @@ namespace Bandwidth.Net.ApiV2
     /// </code>
     /// </example>
     Task<Message> SendAsync(MessageData data, CancellationToken? cancellationToken = null);
-
   }
 
   internal class MessageApi : ApiBase, IMessage
   {
-    private HttpRequestMessage CreateIrisRequest(IrisAuthData authData, HttpMethod method, string path, object query = null)
+    public async Task<MessagingApplication> CreateMessagingApplicationAsync(IrisAuthData authData,
+      CreateMessagingApplicationData data, CancellationToken? cancellationToken = null)
+    {
+      var app = new MessagingApplication
+      {
+        ApplicationId = await CreateApplication(authData, data, cancellationToken),
+        LocationId = await CreateLocation(authData, data, cancellationToken)
+      };
+      await EnableSms(authData, data.SmsOptions, app, cancellationToken);
+      await EnableMms(authData, data.MmsOptions, app, cancellationToken);
+      await AssignApplicationToLocation(authData, app, cancellationToken);
+      return app;
+    }
+
+    public async Task<string[]> SearchAndOrderNumbersAsync(IrisAuthData authData, MessagingApplication application,
+      SearchAndOrderNumbersQuery query, CancellationToken? cancellationToken = null)
+    {
+      var xml = new XDocument(
+        new XElement("Order", query.ToXElement(),
+          new XElement("SiteId", authData.SubaccountId),
+          new XElement("PeerId", application.LocationId))
+      );
+      var (doc, _) = await MakeRequestAsync(authData, HttpMethod.Post, "/orders", xml, true, cancellationToken);
+      var orderId = doc.Descendants("Order").First().Element("id").Value;
+      var successStatuses = new[] {"COMPLETE", "PARTIAL"};
+      var stopwatch = Stopwatch.StartNew();
+      try
+      {
+        while (true)
+        {
+          await Task.Delay(500, cancellationToken ?? default(CancellationToken));
+          if (stopwatch.Elapsed >= query.Timeout)
+            throw new TimeoutException();
+          var (result, _) = await MakeRequestAsync(authData, HttpMethod.Get, $"/orders/{orderId}", null, true,
+            cancellationToken);
+          var status = (result.Descendants("OrderStatus").FirstOrDefault() ?? new XElement("OrderStatus")).Value;
+          if (successStatuses.Contains(status))
+            return (result.Descendants("CompletedNumbers").FirstOrDefault() ?? new XElement("CompletedNumbers")).Descendants("FullNumber").Select(n => n.Value).ToArray();
+          if (status == "FAILED")
+            throw new BandwidthException("Error on reserving phone numbers", HttpStatusCode.BadRequest);
+        }
+      }
+      finally
+      {
+        stopwatch.Stop();
+      }
+    }
+
+    public Task<Message> SendAsync(MessageData data,
+      CancellationToken? cancellationToken = null)
+    {
+      return Client.MakeJsonRequestAsync<Message>(HttpMethod.Post, $"/users/{Client.UserId}/messages",
+        cancellationToken, null, data, "v2");
+    }
+
+    private HttpRequestMessage CreateIrisRequest(IrisAuthData authData, HttpMethod method, string path,
+      object query = null)
     {
       var url = new UriBuilder("https://dashboard.bandwidth.com")
       {
@@ -88,114 +142,116 @@ namespace Bandwidth.Net.ApiV2
 
     private async Task<XDocument> CheckResponse(HttpResponseMessage response)
     {
-        try
+      try
+      {
+        var xml = await response.Content.ReadAsStringAsync();
+        if (xml.Length > 0)
         {
-            var xml = await response.Content.ReadAsStringAsync();
-            if (xml.Length > 0)
-            {
-                var doc = XDocument.Parse(xml);
-                var code = doc.Descendants("ErrorCode").FirstOrDefault();
-                var description = doc.Descendants("Description").FirstOrDefault();
-                if (code == null)
-                {
-                    var error = doc.Descendants("Error").FirstOrDefault();
-                    if (error == null)
-                    {
-                        var exceptions =
-                            (from item in doc.Descendants("Errors")
-                                select
-                                    (Exception) new BandwidthIrisException(item.Element("Code").Value,
-                                        item.Element("Description").Value, response.StatusCode)).ToArray();
-                        if (exceptions.Length > 0)
-                        {
-                            throw new AggregateException(exceptions);
-                        }
-                        code = doc.Descendants("resultCode").FirstOrDefault();
-                        description = doc.Descendants("resultMessage").FirstOrDefault();
-                    }
-                    else
-                    {
-                        code = error.Element("Code");
-                        description = error.Element("Description");    
-                    }
-                }
-                if (code != null && description != null && !string.IsNullOrEmpty(code.Value) && code.Value != "0")
-                {
-                    throw new BandwidthIrisException(code.Value, description.Value, response.StatusCode);
-                }
-                return doc;
-            }
-        }
-        catch (Exception ex)
-        {
-            if (ex is BandwidthIrisException || ex is AggregateException) throw;
-            Debug.WriteLine(ex.Message);
-        }
-        if (!response.IsSuccessStatusCode)
-        {
-            throw new BandwidthIrisException("", string.Format("Http code {0}", response.StatusCode), response.StatusCode);
-        }
-        return new XDocument();
-    }
-
-    internal async Task<(XDocument, HttpResponseMessage)> MakeRequestAsync(IrisAuthData authData, HttpMethod method, string path, XDocument doc, bool disposeResponse = false, CancellationToken? cancellationToken = null)
-    {
-        var request = CreateIrisRequest(authData, method, path);
-        if (doc != null)
-        {
-          var xml = doc.ToString();
-          request.Content = new StringContent(xml, Encoding.UTF8, "application/xml");
-        }
-        var response = await Client.Http.SendAsync(request, HttpCompletionOption.ResponseContentRead, cancellationToken);
-        try
-        {
-          return  (await CheckResponse(response), response);
-        }
-        finally
-        {
-          if(disposeResponse)
+          var doc = XDocument.Parse(xml);
+          var code = doc.Descendants("ErrorCode").FirstOrDefault();
+          var description = doc.Descendants("Description").FirstOrDefault();
+          if (code == null)
           {
-            response.Dispose();
+            var error = doc.Descendants("Error").FirstOrDefault();
+            if (error == null)
+            {
+              var exceptions =
+              (from item in doc.Descendants("Errors")
+                select
+                  (Exception) new BandwidthIrisException(item.Element("Code").Value,
+                    item.Element("Description").Value, response.StatusCode)).ToArray();
+              if (exceptions.Length > 0)
+                throw new AggregateException(exceptions);
+              code = doc.Descendants("resultCode").FirstOrDefault();
+              description = doc.Descendants("resultMessage").FirstOrDefault();
+            }
+            else
+            {
+              code = error.Element("Code");
+              description = error.Element("Description");
+            }
           }
+          if (code != null && description != null && !string.IsNullOrEmpty(code.Value) && code.Value != "0")
+            throw new BandwidthIrisException(code.Value, description.Value, response.StatusCode);
+          return doc;
         }
+      }
+      catch (Exception ex)
+      {
+        if (ex is BandwidthIrisException || ex is AggregateException) throw;
+        Debug.WriteLine(ex.Message);
+      }
+      if (!response.IsSuccessStatusCode)
+        throw new BandwidthIrisException("", string.Format("Http code {0}", response.StatusCode), response.StatusCode);
+      return new XDocument();
     }
 
-    internal async Task<string> CreateApplication(IrisAuthData authData, CreateMessagingApplicationData data, CancellationToken? cancellationToken = null)
+    internal async Task<(XDocument, HttpResponseMessage)> MakeRequestAsync(IrisAuthData authData, HttpMethod method,
+      string path, XDocument doc, bool disposeResponse = false, CancellationToken? cancellationToken = null)
+    {
+      var request = CreateIrisRequest(authData, method, path);
+      if (doc != null)
+      {
+        var xml = doc.ToString();
+        request.Content = new StringContent(xml, Encoding.UTF8, "application/xml");
+      }
+      var response = await Client.Http.SendAsync(request, HttpCompletionOption.ResponseContentRead, cancellationToken);
+      try
+      {
+        return (await CheckResponse(response), response);
+      }
+      finally
+      {
+        if (disposeResponse)
+          response.Dispose();
+      }
+    }
+
+    internal async Task<string> CreateApplication(IrisAuthData authData, CreateMessagingApplicationData data,
+      CancellationToken? cancellationToken = null)
     {
       var xml = new XDocument(
-        new XElement("Application", 
+        new XElement("Application",
           new XElement("AppName", data.Name),
           new XElement("CallbackUrl", data.CallbackUrl),
-          new XElement("CallBackCreds", data.CallbackAuthData == null ? null : new[] {new XElement("UserId", data.CallbackAuthData.UserName), new XElement("Password", data.CallbackAuthData.Password)})
+          new XElement("CallBackCreds",
+            data.CallbackAuthData == null
+              ? null
+              : new[]
+              {
+                new XElement("UserId", data.CallbackAuthData.UserName),
+                new XElement("Password", data.CallbackAuthData.Password)
+              })
         )
       );
       var (doc, _) = await MakeRequestAsync(authData, HttpMethod.Post, "/applications", xml, true, cancellationToken);
       return doc.Descendants("ApplicationId").First().Value;
     }
 
-    internal async Task<string> CreateLocation(IrisAuthData authData, CreateMessagingApplicationData data, CancellationToken? cancellationToken = null)
+    internal async Task<string> CreateLocation(IrisAuthData authData, CreateMessagingApplicationData data,
+      CancellationToken? cancellationToken = null)
     {
       var xml = new XDocument(
-        new XElement("SipPeer", 
+        new XElement("SipPeer",
           new XElement("PeerName", data.LocationName),
           new XElement("IsDefaultPeer", data.IsDefaultLocation)
         )
       );
-      var (_, response) = await MakeRequestAsync(authData, HttpMethod.Post, $"/sites/{authData.SubaccountId}/sippeers", xml, false, cancellationToken);
-      using (response) 
+      var (_, response) = await MakeRequestAsync(authData, HttpMethod.Post, $"/sites/{authData.SubaccountId}/sippeers",
+        xml, false, cancellationToken);
+      using (response)
       {
         return (response.Headers.Location ?? new Uri("http://localhost")).AbsolutePath.Split('/').LastOrDefault();
       }
     }
 
-    internal async Task EnableSms(IrisAuthData authData, SmsOptions options, MessagingApplication application, CancellationToken? cancellationToken = null)
+    internal async Task EnableSms(IrisAuthData authData, SmsOptions options, MessagingApplication application,
+      CancellationToken? cancellationToken = null)
     {
-      if (options == null || !options.Enabled) {
-        return;
-      }
+      if (options == null || !options.Enabled) return;
       var xml = new XDocument(
         new XElement("SipPeerSmsFeature",
-          new XElement("SipPeerSmsFeatureSettings", 
+          new XElement("SipPeerSmsFeatureSettings",
             new XElement("TollFree", options.TollFreeEnabled),
             new XElement("ShortCode", options.ShortCodeEnabled),
             new XElement("Protocol", "HTTP"),
@@ -210,17 +266,18 @@ namespace Bandwidth.Net.ApiV2
           )
         )
       );
-      await MakeRequestAsync(authData, HttpMethod.Post, $"/sites/{authData.SubaccountId}/sippeers/{application.LocationId}/products/messaging/features/sms", xml, true, cancellationToken);
+      await MakeRequestAsync(authData, HttpMethod.Post,
+        $"/sites/{authData.SubaccountId}/sippeers/{application.LocationId}/products/messaging/features/sms", xml, true,
+        cancellationToken);
     }
 
-    internal async Task EnableMms(IrisAuthData authData, MmsOptions options, MessagingApplication application, CancellationToken? cancellationToken = null)
+    internal async Task EnableMms(IrisAuthData authData, MmsOptions options, MessagingApplication application,
+      CancellationToken? cancellationToken = null)
     {
-      if (options == null || !options.Enabled) {
-        return;
-      }
+      if (options == null || !options.Enabled) return;
       var xml = new XDocument(
         new XElement("MmsFeature",
-          new XElement("MmsSettings", 
+          new XElement("MmsSettings",
             new XElement("protocol", "HTTP")
           ),
           new XElement("Protocols",
@@ -232,74 +289,22 @@ namespace Bandwidth.Net.ApiV2
           )
         )
       );
-      await MakeRequestAsync(authData, HttpMethod.Post, $"/sites/{authData.SubaccountId}/sippeers/{application.LocationId}/products/messaging/features/mms", xml, true, cancellationToken);
+      await MakeRequestAsync(authData, HttpMethod.Post,
+        $"/sites/{authData.SubaccountId}/sippeers/{application.LocationId}/products/messaging/features/mms", xml, true,
+        cancellationToken);
     }
 
-    internal async Task AssignApplicationToLocation(IrisAuthData authData, MessagingApplication application, CancellationToken? cancellationToken = null)
+    internal async Task AssignApplicationToLocation(IrisAuthData authData, MessagingApplication application,
+      CancellationToken? cancellationToken = null)
     {
       var xml = new XDocument(
         new XElement("ApplicationsSettings",
           new XElement("HttpMessagingV2AppId", application.ApplicationId)
         )
       );
-      await MakeRequestAsync(authData, HttpMethod.Put, $"/sites/{authData.SubaccountId}/sippeers/{application.LocationId}/products/messaging/applicationSettings", xml, true, cancellationToken);
-    }
-    
-    public async Task<MessagingApplication> CreateMessagingApplicationAsync(IrisAuthData authData, CreateMessagingApplicationData data, CancellationToken? cancellationToken = null)
-    {
-        var app = new MessagingApplication {
-          ApplicationId = await CreateApplication(authData, data, cancellationToken),
-          LocationId = await CreateLocation(authData, data, cancellationToken)
-        };
-        await EnableSms(authData, data.SmsOptions, app, cancellationToken);
-        await EnableMms(authData, data.MmsOptions, app, cancellationToken);
-        await AssignApplicationToLocation(authData, app, cancellationToken);
-        return app;
-    }
-
-    public async  Task<string[]> SearchAndOrderNumbersAsync(IrisAuthData authData, MessagingApplication application, SearchAndOrderNumbersQuery query, CancellationToken? cancellationToken = null)
-    {
-        var xml = new XDocument(
-          new XElement("Order", query.ToXElement()),
-          new XElement("SiteId", authData.SubaccountId),
-          new XElement("PeerId", application.LocationId)
-        );
-        var (doc, _) = await MakeRequestAsync(authData, HttpMethod.Post, "/orders", xml, true, cancellationToken);
-        var orderId = doc.Descendants("Order").First().Element("id").Value;
-        var successStatuses = new[]{"COMPLETE", "PARTIAL"};
-        var stopwatch = Stopwatch.StartNew();
-        var timeout = TimeSpan.FromMinutes(1);
-        try
-        {
-          while(true) 
-          {
-            await Task.Delay(500, cancellationToken ?? default(CancellationToken));
-            if(stopwatch.Elapsed >= timeout)
-            {
-              throw new TimeoutException();
-            }
-            var (result, _) = await MakeRequestAsync(authData, HttpMethod.Get, $"/orders/{orderId}", null, true, cancellationToken);
-            var status = result.Descendants("OrderStatus").First().Value;
-            if(successStatuses.Contains(status))
-            {
-              return result.Descendants("FullNumber").Select(n => n.Value).ToArray();
-            }
-            if (status == "FAILED")
-            {
-              throw new BandwidthException("Error on reserving phone numbers", HttpStatusCode.BadRequest);
-            }
-          }
-        }
-        finally
-        {
-          stopwatch.Stop();
-        }
-    }
-
-    public Task<Message> SendAsync(MessageData data,
-      CancellationToken? cancellationToken = null)
-    {
-      return Client.MakeJsonRequestAsync<Message>(HttpMethod.Post, $"/users/{Client.UserId}/messages", cancellationToken, null, data, "v2");
+      await MakeRequestAsync(authData, HttpMethod.Put,
+        $"/sites/{authData.SubaccountId}/sippeers/{application.LocationId}/products/messaging/applicationSettings", xml,
+        true, cancellationToken);
     }
   }
 
@@ -309,542 +314,525 @@ namespace Bandwidth.Net.ApiV2
   public class MessageData
   {
     /// <summary>
-    /// The message sender's telephone number (or short code).
+    ///   The message sender's telephone number (or short code).
     /// </summary>
     public string From { get; set; }
 
     /// <summary>
-    /// Message recipient telephone number (or short code).
+    ///   Message recipient telephone number (or short code).
     /// </summary>
     public string[] To { get; set; }
 
     /// <summary>
-    /// The message contents.
+    ///   The message contents.
     /// </summary>
     public string Text { get; set; }
 
     /// <summary>
-    /// Array containing list of media urls to be sent as content for an mms.
+    ///   Array containing list of media urls to be sent as content for an mms.
     /// </summary>
     public string[] Media { get; set; }
 
     /// <summary>
-    /// The complete URL where the events related to the outgoing message will be sent.
+    ///   The complete URL where the events related to the outgoing message will be sent.
     /// </summary>
     public string Tag { get; set; }
 
     /// <summary>
-    /// Messaging application id
+    ///   Messaging application id
     /// </summary>
     public string ApplicationId { get; set; }
   }
 
   /// <summary>
-  /// Rsult of batch send of some messages
+  ///   Rsult of batch send of some messages
   /// </summary>
   public class Message
   {
     /// <summary>
-    /// Id of the message
+    ///   Id of the message
     /// </summary>
     public string Id { get; set; }
 
     /// <summary>
-    /// The message sender's telephone number (or short code).
+    ///   The message sender's telephone number (or short code).
     /// </summary>
     public string From { get; set; }
 
     /// <summary>
-    /// Message recipient telephone number (or short code).
+    ///   Message recipient telephone number (or short code).
     /// </summary>
     public string[] To { get; set; }
 
     /// <summary>
-    /// The message contents.
+    ///   The message contents.
     /// </summary>
     public string Text { get; set; }
 
     /// <summary>
-    /// Array containing list of media urls to be sent as content for an mms.
+    ///   Array containing list of media urls to be sent as content for an mms.
     /// </summary>
     public string[] Media { get; set; }
 
     /// <summary>
-    /// The complete URL where the events related to the outgoing message will be sent.
+    ///   The complete URL where the events related to the outgoing message will be sent.
     /// </summary>
     public string Tag { get; set; }
 
     /// <summary>
-    /// The message owner
+    ///   The message owner
     /// </summary>
     public string Owner { get; set; }
 
     /// <summary>
-    /// Direction of the message
+    ///   Direction of the message
     /// </summary>
     public MessageDirection Direction { get; set; }
 
     /// <summary>
-    /// The message creation time
+    ///   The message creation time
     /// </summary>
     public DateTime Time { get; set; }
   }
 
   /// <summary>
-  /// Directions of message
+  ///   Directions of message
   /// </summary>
   public enum MessageDirection
   {
     /// <summary>
-    /// A message that came from the telephone network to one of your numbers (an "inbound" message)
+    ///   A message that came from the telephone network to one of your numbers (an "inbound" message)
     /// </summary>
     In,
 
     /// <summary>
-    /// A message that was sent from one of your numbers to the telephone network (an "outbound" message)
+    ///   A message that was sent from one of your numbers to the telephone network (an "outbound" message)
     /// </summary>
     Out
   }
 
   /// <summary>
-  /// MessagingApplication
+  ///   MessagingApplication
   /// </summary>
-  public class MessagingApplication 
+  public class MessagingApplication
   {
     /// <summary>
-    /// Messaging application id
+    ///   Messaging application id
     /// </summary>
-    public string ApplicationId {get; set;}
-    
+    public string ApplicationId { get; set; }
+
     /// <summary>
-    /// Location (pear) id
+    ///   Location (pear) id
     /// </summary>
-    public string LocationId {get; set;}
+    public string LocationId { get; set; }
   }
 
   /// <summary>
-  /// Data to create messagin application
+  ///   Data to create messagin application
   /// </summary>
   public class CreateMessagingApplicationData
   {
     /// <summary>
-    /// Application name
+    ///   Application name
     /// </summary>
-    public string Name {get; set;}
+    public string Name { get; set; }
 
     /// <summary>
-    /// Callback url to receive messages events
+    ///   Callback url to receive messages events
     /// </summary>
-    public string CallbackUrl {get; set;}
+    public string CallbackUrl { get; set; }
 
     /// <summary>
-    /// Optional auth data for http requests to CallbackUrl
+    ///   Optional auth data for http requests to CallbackUrl
     /// </summary>
-    public CallbackAuthData CallbackAuthData {get; set;}
+    public CallbackAuthData CallbackAuthData { get; set; }
 
     /// <summary>
-    /// Location name
+    ///   Location name
     /// </summary>
     /// <returns></returns>
-    public string LocationName {get; set;}
+    public string LocationName { get; set; }
 
     /// <summary>
-    /// Is created location default
+    ///   Is created location default
     /// </summary>
-    public bool IsDefaultLocation {get; set;}
+    public bool IsDefaultLocation { get; set; }
 
     /// <summary>
-    /// Options for SMS
+    ///   Options for SMS
     /// </summary>
-    public SmsOptions SmsOptions {get; set;}
+    public SmsOptions SmsOptions { get; set; }
 
     /// <summary>
-    /// Options for MMS
+    ///   Options for MMS
     /// </summary>
-    public MmsOptions MmsOptions {get; set;}
+    public MmsOptions MmsOptions { get; set; }
   }
 
   /// <summary>
-  /// Auth data for Bandwidth Dashboard
+  ///   Auth data for Bandwidth Dashboard
   /// </summary>
   public class IrisAuthData
   {
     /// <summary>
-    /// Account id
+    ///   Account id
     /// </summary>
     /// <returns></returns>
-    public string AccountId {get; set;}
+    public string AccountId { get; set; }
 
     /// <summary>
-    /// Subaccount (site) id
+    ///   Subaccount (site) id
     /// </summary>
-    public string SubaccountId {get; set;}
+    public string SubaccountId { get; set; }
 
     /// <summary>
-    /// User name
+    ///   User name
     /// </summary>
-    public string UserName {get; set;}
+    public string UserName { get; set; }
 
     /// <summary>
-    /// Password
+    ///   Password
     /// </summary>
-    public string Password {get; set;}
+    public string Password { get; set; }
   }
 
   /// <summary>
-  /// Callback auth data
+  ///   Callback auth data
   /// </summary>
   public class CallbackAuthData
   {
     /// <summary>
-    /// User name
+    ///   User name
     /// </summary>
-    public string UserName {get; set;}
-    
+    public string UserName { get; set; }
+
     /// <summary>
-    /// Password
+    ///   Password
     /// </summary>
-    public string Password {get; set;}
+    public string Password { get; set; }
   }
 
   /// <summary>
-  /// Options for SMS
+  ///   Options for SMS
   /// </summary>
   public class SmsOptions
   {
     /// <summary>
-    /// Enabled
+    ///   Enabled
     /// </summary>
-    public bool Enabled {get; set;} = true;
+    public bool Enabled { get; set; } = true;
 
     /// <summary>
-    /// TollFreeEnabled
+    ///   TollFreeEnabled
     /// </summary>
-    public bool TollFreeEnabled {get; set;}
+    public bool TollFreeEnabled { get; set; }
 
     /// <summary>
-    /// ShortCodeEnabled
+    ///   ShortCodeEnabled
     /// </summary>
-    public bool ShortCodeEnabled {get; set;}
+    public bool ShortCodeEnabled { get; set; }
   }
-  
+
   /// <summary>
-  /// Options for MMS
+  ///   Options for MMS
   /// </summary>
   public class MmsOptions
   {
     /// <summary>
-    /// Enabled
+    ///   Enabled
     /// </summary>
-    public bool Enabled {get; set;} = true;
+    public bool Enabled { get; set; } = true;
   }
 
   /// <summary>
-  ///  Query to search phone numbers
+  ///   Query to search phone numbers
   /// </summary>
   public abstract class SearchAndOrderNumbersQuery
   {
     /// <summary>
-    /// Quantity
+    ///   Quantity
     /// </summary>
     /// <returns></returns>
-    public int Quantity {get; set;} = 10;
+    public int Quantity { get; set; } = 10;
+
+    /// <summary>
+    /// Request timeout
+    /// </summary>
+    public TimeSpan Timeout { get; set; } = TimeSpan.FromMinutes(1);
+
     internal abstract XElement ToXElement();
   }
 
   /// <summary>
-  /// Area code query to search phone numbers
+  ///   Area code query to search phone numbers
   /// </summary>
-  public class AreaCodeSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
+  public class AreaCodeSearchAndOrderNumbersQuery : SearchAndOrderNumbersQuery
   {
     /// <summary>
-    /// Area code
+    ///   Area code
     /// </summary>
-    public string AreaCode {get; set;}
+    public string AreaCode { get; set; }
 
     internal override XElement ToXElement()
     {
-      return new XElement("AreaCodeSearchAndOrderType", 
-        new XElement("AreaCode", this.AreaCode),
-        new XElement("Quantity", this.Quantity)
+      return new XElement("AreaCodeSearchAndOrderType",
+        new XElement("AreaCode", AreaCode),
+        new XElement("Quantity", Quantity)
       );
     }
   }
 
   /// <summary>
-  /// Rate center query to search phone numbers
+  ///   Rate center query to search phone numbers
   /// </summary>
-  public class RateCenterSearchAndOrdeNumbersQuery: SearchAndOrderNumbersQuery
+  public class RateCenterSearchAndOrdeNumbersQuery : SearchAndOrderNumbersQuery
   {
     /// <summary>
-    /// Rate center
+    ///   Rate center
     /// </summary>
-    public string RateCenter {get; set;}
-    
+    public string RateCenter { get; set; }
+
     /// <summary>
-    /// State
+    ///   State
     /// </summary>
-    public string State {get; set;}
+    public string State { get; set; }
 
     internal override XElement ToXElement()
     {
-      return new XElement("RateCenterSearchAndOrderType", 
-        new XElement("RateCenter", this.RateCenter),
-        new XElement("State", this.State),
-        new XElement("Quantity", this.Quantity)
+      return new XElement("RateCenterSearchAndOrderType",
+        new XElement("RateCenter", RateCenter),
+        new XElement("State", State),
+        new XElement("Quantity", Quantity)
       );
     }
   }
 
   /// <summary>
-  /// Npa Nxx query to search phone numbers
+  ///   Npa Nxx query to search phone numbers
   /// </summary>
-  public class NpaNxxSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
+  public class NpaNxxSearchAndOrderNumbersQuery : SearchAndOrderNumbersQuery
   {
     /// <summary>
-    /// NpaNxx
+    ///   NpaNxx
     /// </summary>
-    public string NpaNxx {get; set;}
-    
-    /// <summary>
-    /// EnableTnDetail
-    /// </summary>
-    public bool EnableTnDetail {get; set;}
+    public string NpaNxx { get; set; }
 
     /// <summary>
-    /// EnableLca
+    ///   EnableTnDetail
     /// </summary>
-    public bool EnableLca {get; set;}
+    public bool EnableTnDetail { get; set; }
+
+    /// <summary>
+    ///   EnableLca
+    /// </summary>
+    public bool EnableLca { get; set; }
 
     internal override XElement ToXElement()
     {
-      return new XElement("NPANXXSearchAndOrderType", 
-        new XElement("NpaNxx", this.NpaNxx),
-        new XElement("EnableTNDetail", this.EnableTnDetail),
-        new XElement("EnableLCA", this.EnableLca),
-        new XElement("Quantity", this.Quantity)
+      return new XElement("NPANXXSearchAndOrderType",
+        new XElement("NpaNxx", NpaNxx),
+        new XElement("EnableTNDetail", EnableTnDetail),
+        new XElement("EnableLCA", EnableLca),
+        new XElement("Quantity", Quantity)
       );
     }
   }
 
   /// <summary>
-  /// Toll free vanity query to search phone numbers
+  ///   Toll free vanity query to search phone numbers
   /// </summary>
-  public class TollFreeVanitySearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
+  public class TollFreeVanitySearchAndOrderNumbersQuery : SearchAndOrderNumbersQuery
   {
     /// <summary>
-    /// TollFreeVanity
+    ///   TollFreeVanity
     /// </summary>
-    public string TollFreeVanity {get; set;}
+    public string TollFreeVanity { get; set; }
 
     internal override XElement ToXElement()
     {
-      return new XElement("TollFreeVanitySearchAndOrderType", 
-        new XElement("TollFreeVanity", this.TollFreeVanity),
-        new XElement("Quantity", this.Quantity)
+      return new XElement("TollFreeVanitySearchAndOrderType",
+        new XElement("TollFreeVanity", TollFreeVanity),
+        new XElement("Quantity", Quantity)
       );
     }
   }
 
   /// <summary>
-  /// Toll free wild сhar query to search phone numbers
+  ///   Toll free wild сhar query to search phone numbers
   /// </summary>
-  public class TollFreeWildCharSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
+  public class TollFreeWildCharSearchAndOrderNumbersQuery : SearchAndOrderNumbersQuery
   {
     /// <summary>
-    /// TollFreeWildCardPattern
+    ///   TollFreeWildCardPattern
     /// </summary>
-    public string TollFreeWildCardPattern {get; set;}
+    public string TollFreeWildCardPattern { get; set; }
 
     internal override XElement ToXElement()
     {
-      return new XElement("TollFreeWildCharSearchAndOrderType", 
-        new XElement("TollFreeWildCardPattern", this.TollFreeWildCardPattern),
-        new XElement("Quantity", this.Quantity)
+      return new XElement("TollFreeWildCharSearchAndOrderType",
+        new XElement("TollFreeWildCardPattern", TollFreeWildCardPattern),
+        new XElement("Quantity", Quantity)
       );
     }
   }
 
   /// <summary>
-  /// State query to search phone numbers
+  ///   State query to search phone numbers
   /// </summary>
-
-  public class StateSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
+  public class StateSearchAndOrderNumbersQuery : SearchAndOrderNumbersQuery
   {
     /// <summary>
-    /// State
+    ///   State
     /// </summary>
-    public string State {get; set;}
+    public string State { get; set; }
 
     internal override XElement ToXElement()
     {
-      return new XElement("StateSearchAndOrderType", 
-        new XElement("State", this.State),
-        new XElement("Quantity", this.Quantity)
+      return new XElement("StateSearchAndOrderType",
+        new XElement("State", State),
+        new XElement("Quantity", Quantity)
       );
     }
   }
 
   /// <summary>
-  /// City query to search phone numbers
+  ///   City query to search phone numbers
   /// </summary>
-
-  public class CitySearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
+  public class CitySearchAndOrderNumbersQuery : SearchAndOrderNumbersQuery
   {
     /// <summary>
-    /// State
+    ///   State
     /// </summary>
-    public string State {get; set;}
+    public string State { get; set; }
 
     /// <summary>
-    /// City
+    ///   City
     /// </summary>
-    public string City {get; set;}
+    public string City { get; set; }
 
     internal override XElement ToXElement()
     {
-      return new XElement("CitySearchAndOrderType", 
-        new XElement("State", this.State),
-        new XElement("City", this.City),
-        new XElement("Quantity", this.Quantity)
+      return new XElement("CitySearchAndOrderType",
+        new XElement("State", State),
+        new XElement("City", City),
+        new XElement("Quantity", Quantity)
       );
     }
   }
 
   /// <summary>
-  /// Zip query to search phone numbers
+  ///   Zip query to search phone numbers
   /// </summary>
-  public class ZipSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
+  public class ZipSearchAndOrderNumbersQuery : SearchAndOrderNumbersQuery
   {
     /// <summary>
-    /// Zip
+    ///   Zip
     /// </summary>
-    public string Zip {get; set;}
+    public string Zip { get; set; }
+
     internal override XElement ToXElement()
     {
-      return new XElement("ZIPSearchAndOrderType", 
-        new XElement("Zip", this.Zip),
-        new XElement("Quantity", this.Quantity)
+      return new XElement("ZIPSearchAndOrderType",
+        new XElement("Zip", Zip),
+        new XElement("Quantity", Quantity)
       );
     }
   }
 
   /// <summary>
-  /// Lata query to search phone numbers
+  ///   Lata query to search phone numbers
   /// </summary>
-  public class LataSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
+  public class LataSearchAndOrderNumbersQuery : SearchAndOrderNumbersQuery
   {
     /// <summary>
-    /// Lata
+    ///   Lata
     /// </summary>
-    public string Lata {get; set;}
+    public string Lata { get; set; }
 
     internal override XElement ToXElement()
     {
-      return new XElement("LATASearchAndOrderType", 
-        new XElement("Lata", this.Lata),
-        new XElement("Quantity", this.Quantity)
+      return new XElement("LATASearchAndOrderType",
+        new XElement("Lata", Lata),
+        new XElement("Quantity", Quantity)
       );
     }
   }
 
   /// <summary>
-  /// Combined query to search phone numbers
+  ///   Combined query to search phone numbers
   /// </summary>
-
-  public class CombinedSearchAndOrderNumbersQuery: SearchAndOrderNumbersQuery
+  public class CombinedSearchAndOrderNumbersQuery : SearchAndOrderNumbersQuery
   {
     /// <summary>
-    /// AreaCode
+    ///   AreaCode
     /// </summary>
-    public string AreaCode {get; set;}
-    
+    public string AreaCode { get; set; }
+
     /// <summary>
-    /// RateCenter
+    ///   RateCenter
     /// </summary>
-    public string RateCenter {get; set;}
-    
+    public string RateCenter { get; set; }
+
     /// <summary>
-    /// NpaNxx
+    ///   NpaNxx
     /// </summary>
-    public string NpaNxx {get; set;}
-    
+    public string NpaNxx { get; set; }
+
     /// <summary>
-    /// EnableTnDetail
+    ///   EnableTnDetail
     /// </summary>
-    public bool? EnableTnDetail {get; set;}
-    
+    public bool? EnableTnDetail { get; set; }
+
     /// <summary>
-    /// EnableLca
+    ///   EnableLca
     /// </summary>
-    public bool? EnableLca {get; set;}
-    
+    public bool? EnableLca { get; set; }
+
     /// <summary>
-    /// TollFreeVanity
+    ///   TollFreeVanity
     /// </summary>
-    public string TollFreeVanity {get; set;}
-    
+    public string TollFreeVanity { get; set; }
+
     /// <summary>
-    /// TollFreeWildCardPattern
+    ///   TollFreeWildCardPattern
     /// </summary>
-    public string TollFreeWildCardPattern {get; set;}
-    
+    public string TollFreeWildCardPattern { get; set; }
+
     /// <summary>
-    /// State
+    ///   State
     /// </summary>
-    public string State {get; set;}
-    
+    public string State { get; set; }
+
     /// <summary>
-    /// City
+    ///   City
     /// </summary>
-    public string City {get; set;}
-    
+    public string City { get; set; }
+
     /// <summary>
-    /// Zip
+    ///   Zip
     /// </summary>
-    public string Zip {get; set;}
-    
+    public string Zip { get; set; }
+
     /// <summary>
-    /// Lata
+    ///   Lata
     /// </summary>
-    public string Lata {get; set;}
+    public string Lata { get; set; }
 
     internal override XElement ToXElement()
     {
-      var elements = new List<XElement>(new[] {new XElement("Quantity", this.Quantity)});
-      if (this.AreaCode != null) {
-        elements.Add(new XElement("AreaCode", this.AreaCode));
-      }
-      if (this.RateCenter != null) {
-        elements.Add(new XElement("RateCenter", this.RateCenter));
-      }
-      if (this.NpaNxx != null) {
-        elements.Add(new XElement("NpaNxx", this.NpaNxx));
-      }
-      if (this.EnableTnDetail != null) {
-        elements.Add(new XElement("EnableTNDetail", this.EnableTnDetail.Value));
-      }
-      if (this.EnableLca != null) {
-        elements.Add(new XElement("EnableLCA", this.EnableLca.Value));
-      }
-      if (this.TollFreeVanity != null) {
-        elements.Add(new XElement("TollFreeVanity", this.TollFreeVanity));
-      }
-      if (this.TollFreeWildCardPattern != null) {
-        elements.Add(new XElement("TollFreeWildCardPattern", this.TollFreeWildCardPattern));
-      }
-      if (this.State != null) {
-        elements.Add(new XElement("State", this.State));
-      }
-      if (this.City != null) {
-        elements.Add(new XElement("City", this.City));
-      }
-      if (this.Zip != null) {
-        elements.Add(new XElement("Zip", this.Zip));
-      }
-      if (this.Lata != null) {
-        elements.Add(new XElement("Lata", this.Lata));
-      }
+      var elements = new List<XElement>(new[] {new XElement("Quantity", Quantity)});
+      if (AreaCode != null) elements.Add(new XElement("AreaCode", AreaCode));
+      if (RateCenter != null) elements.Add(new XElement("RateCenter", RateCenter));
+      if (NpaNxx != null) elements.Add(new XElement("NpaNxx", NpaNxx));
+      if (EnableTnDetail != null) elements.Add(new XElement("EnableTNDetail", EnableTnDetail.Value));
+      if (EnableLca != null) elements.Add(new XElement("EnableLCA", EnableLca.Value));
+      if (TollFreeVanity != null) elements.Add(new XElement("TollFreeVanity", TollFreeVanity));
+      if (TollFreeWildCardPattern != null)
+        elements.Add(new XElement("TollFreeWildCardPattern", TollFreeWildCardPattern));
+      if (State != null) elements.Add(new XElement("State", State));
+      if (City != null) elements.Add(new XElement("City", City));
+      if (Zip != null) elements.Add(new XElement("Zip", Zip));
+      if (Lata != null) elements.Add(new XElement("Lata", Lata));
       return new XElement("CombinedSearchAndOrderType", elements.ToArray());
     }
   }

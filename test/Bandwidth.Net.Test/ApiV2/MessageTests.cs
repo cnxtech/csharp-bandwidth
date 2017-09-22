@@ -64,6 +64,24 @@ namespace Bandwidth.Net.Test.ApiV2
 
     }
 
+    public static bool IsValidSearchAndOrderNumbersRequest(HttpRequestMessage request)
+    {
+      return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/api/accounts/AccountId/orders"
+             && request.Method == HttpMethod.Post
+             && request.Headers.Authorization.Parameter == "VXNlck5hbWU6UGFzc3dvcmQ="
+             && request.Content.ReadAsStringAsync().Result ==
+             "<Order>\r\n  <AreaCodeSearchAndOrderType>\r\n    <AreaCode>910</AreaCode>\r\n    <Quantity>2</Quantity>\r\n  </AreaCodeSearchAndOrderType>\r\n  <SiteId>SubaccountId</SiteId>\r\n  <PeerId>LocationId</PeerId>\r\n</Order>";
+
+    }
+
+    public static bool IsValidGetOrderRequest(HttpRequestMessage request)
+    {
+      return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/api/accounts/AccountId/orders/OrderId"
+             && request.Method == HttpMethod.Get
+             && request.Headers.Authorization.Parameter == "VXNlck5hbWU6UGFzc3dvcmQ=";
+
+    }
+
     [Fact]
     public async void TestCreateMessagingApplicationAsync()
     {
@@ -115,6 +133,158 @@ namespace Bandwidth.Net.Test.ApiV2
       Assert.Equal("ApplicationId", application.ApplicationId);
       Assert.Equal("LocationId", application.LocationId);
     }
+
+    [Fact]
+    public async void TestCreateMessagingApplicationWithoutSmsAndMmsAsync()
+    {
+      var authData = new IrisAuthData
+      {
+        AccountId = "AccountId",
+        UserName = "UserName",
+        Password = "Password",
+        SubaccountId = "SubaccountId"
+      };
+      var context = new MockContext<IHttp>();
+      var api = Helpers.GetClient(context).V2.Message;
+
+      context.Arrange(m => m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateApplicationRequest(r)),
+        HttpCompletionOption.ResponseContentRead,
+        null)).Returns(Task.FromResult(new HttpResponseMessage
+        {
+          Content = Helpers.GetXmlContent("CreateMessagingApplicationResponse")
+        }));
+      var response = new HttpResponseMessage();
+      response.Headers.Location = new Uri("http://localhost/LocationId");
+      context.Arrange(m => m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateLocationRequest(r)),
+        HttpCompletionOption.ResponseContentRead,
+        null)).Returns(Task.FromResult(response));
+      context.Arrange(m => m.SendAsync(The<HttpRequestMessage>.Is(r => IsAssignApplicationToLocationRequest(r)),
+        HttpCompletionOption.ResponseContentRead,
+        null)).Returns(Task.FromResult(new HttpResponseMessage()));
+
+      var application = await api.CreateMessagingApplicationAsync(authData, new CreateMessagingApplicationData
+      {
+        Name = "App1",
+        CallbackUrl = "url",
+        LocationName = "Location1"
+      });
+      Assert.Equal("ApplicationId", application.ApplicationId);
+      Assert.Equal("LocationId", application.LocationId);
+    }
+
+    [Fact]
+    public async void TestSearchAndOrderNumbersAsync()
+    {
+      var authData = new IrisAuthData
+      {
+        AccountId = "AccountId",
+        UserName = "UserName",
+        Password = "Password",
+        SubaccountId = "SubaccountId"
+      };
+      var context = new MockContext<IHttp>();
+      var api = Helpers.GetClient(context).V2.Message;
+
+      context.Arrange(m => m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidSearchAndOrderNumbersRequest(r)),
+        HttpCompletionOption.ResponseContentRead,
+        null)).Returns(Task.FromResult(new HttpResponseMessage
+      {
+        Content = Helpers.GetXmlContent("OrderNumbersResponse")
+      }));
+      context.Arrange(m => m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetOrderRequest(r)),
+        HttpCompletionOption.ResponseContentRead,
+        null)).Returns(Task.FromResult(new HttpResponseMessage
+      {
+        Content = Helpers.GetXmlContent("OrderResponse")
+      }));
+
+      var numbers = await api.SearchAndOrderNumbersAsync(authData, new MessagingApplication
+      {
+        ApplicationId = "ApplicationId",
+        LocationId = "LocationId"
+      }, new AreaCodeSearchAndOrderNumbersQuery
+      {
+        AreaCode = "910",
+        Quantity = 2
+      });
+      Assert.Equal(2, numbers.Length);
+    }
+
+    [Fact]
+    public async void TestSearchAndOrderNumbersAsyncFail()
+    {
+      var authData = new IrisAuthData
+      {
+        AccountId = "AccountId",
+        UserName = "UserName",
+        Password = "Password",
+        SubaccountId = "SubaccountId"
+      };
+      var context = new MockContext<IHttp>();
+      var api = Helpers.GetClient(context).V2.Message;
+
+      context.Arrange(m => m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidSearchAndOrderNumbersRequest(r)),
+        HttpCompletionOption.ResponseContentRead,
+        null)).Returns(Task.FromResult(new HttpResponseMessage
+      {
+        Content = Helpers.GetXmlContent("OrderNumbersResponse")
+      }));
+      context.Arrange(m => m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetOrderRequest(r)),
+        HttpCompletionOption.ResponseContentRead,
+        null)).Returns(Task.FromResult(new HttpResponseMessage
+      {
+        Content = Helpers.GetXmlContent("FailedOrderResponse")
+      }));
+
+      await Assert.ThrowsAsync<BandwidthException>(() => api.SearchAndOrderNumbersAsync(authData, new MessagingApplication
+      {
+        ApplicationId = "ApplicationId",
+        LocationId = "LocationId"
+      }, new AreaCodeSearchAndOrderNumbersQuery
+      {
+        AreaCode = "910",
+        Quantity = 2
+      }));
+    }
+
+    [Fact]
+    public async void TestSearchAndOrderNumbersAsyncTimeout()
+    {
+      var authData = new IrisAuthData
+      {
+        AccountId = "AccountId",
+        UserName = "UserName",
+        Password = "Password",
+        SubaccountId = "SubaccountId"
+      };
+      var context = new MockContext<IHttp>();
+      var api = Helpers.GetClient(context).V2.Message;
+
+      context.Arrange(m => m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidSearchAndOrderNumbersRequest(r)),
+        HttpCompletionOption.ResponseContentRead,
+        null)).Returns(Task.FromResult(new HttpResponseMessage
+      {
+        Content = Helpers.GetXmlContent("OrderNumbersResponse")
+      }));
+      context.Arrange(m => m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetOrderRequest(r)),
+        HttpCompletionOption.ResponseContentRead,
+        null)).Returns(Task.FromResult(new HttpResponseMessage
+      {
+        Content = Helpers.GetXmlContent("OrderNumbersResponse")
+      }));
+
+      await Assert.ThrowsAsync<TimeoutException>(() => api.SearchAndOrderNumbersAsync(authData, new MessagingApplication
+      {
+        ApplicationId = "ApplicationId",
+        LocationId = "LocationId"
+      }, new AreaCodeSearchAndOrderNumbersQuery
+      {
+        AreaCode = "910",
+        Quantity = 2,
+        Timeout = TimeSpan.FromMilliseconds(1)
+      }));
+    }
+
 
     [Fact]
     public async void TestSend()
