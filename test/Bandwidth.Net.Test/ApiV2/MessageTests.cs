@@ -33,8 +33,8 @@ namespace Bandwidth.Net.Test.ApiV2
       return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/api/accounts/AccountId/sites/SubaccountId/sippeers"
              && request.Method == HttpMethod.Post
              && request.Headers.Authorization.Parameter == "VXNlck5hbWU6UGFzc3dvcmQ="
-             && request.Content.ReadAsStringAsync().Result ==
-             "<SipPeer>\r\n  <PeerName>Location1</PeerName>\r\n  <IsDefaultPeer>false</IsDefaultPeer>\r\n</SipPeer>";
+             && request.Content.ReadAsStringAsync().Result.NormilizeLineEnds() ==
+             "<SipPeer>\r\n  <PeerName>Location1</PeerName>\r\n  <IsDefaultPeer>false</IsDefaultPeer>\r\n</SipPeer>".NormilizeLineEnds();
     }
 
     public static bool IsEnableSms(HttpRequestMessage request)
