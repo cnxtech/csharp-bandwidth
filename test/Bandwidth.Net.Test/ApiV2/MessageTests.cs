@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -171,6 +172,155 @@ namespace Bandwidth.Net.Test.ApiV2
       Assert.Equal("ApplicationId", application.ApplicationId);
       Assert.Equal("LocationId", application.LocationId);
     }
+
+    [Fact]
+    public async void TestCheckResponse()
+    {
+      var authData = new IrisAuthData
+      {
+        AccountId = "AccountId",
+        UserName = "UserName",
+        Password = "Password",
+        SubaccountId = "SubaccountId"
+      };
+      var context = new MockContext<IHttp>();
+      var api = Helpers.GetClient(context).V2.Message;
+
+      context.Arrange(m => m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateApplicationRequest(r)),
+        HttpCompletionOption.ResponseContentRead,
+        null)).Returns(Task.FromResult(new HttpResponseMessage
+        {
+          Content = new StringContent("<Response><ErrorCode>Code</ErrorCode><Description>Description</Description></Response>")
+        }));
+
+      var err = await Assert.ThrowsAsync<BandwidthIrisException>(() => api.CreateMessagingApplicationAsync(authData, new CreateMessagingApplicationData
+      {
+        Name = "App1",
+        CallbackUrl = "url",
+        LocationName = "Location1"
+      }));
+      Assert.Equal("Code", err.Code);
+      Assert.Equal("Description", err.Message);
+    }
+
+    [Fact]
+    public async void TestCheckResponse2()
+    {
+      var authData = new IrisAuthData
+      {
+        AccountId = "AccountId",
+        UserName = "UserName",
+        Password = "Password",
+        SubaccountId = "SubaccountId"
+      };
+      var context = new MockContext<IHttp>();
+      var api = Helpers.GetClient(context).V2.Message;
+
+      context.Arrange(m => m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateApplicationRequest(r)),
+        HttpCompletionOption.ResponseContentRead,
+        null)).Returns(Task.FromResult(new HttpResponseMessage
+      {
+        Content = new StringContent("<Response><Error><Code>Code</Code><Description>Description</Description></Error></Response>")
+      }));
+
+      var err = await Assert.ThrowsAsync<BandwidthIrisException>(() => api.CreateMessagingApplicationAsync(authData, new CreateMessagingApplicationData
+      {
+        Name = "App1",
+        CallbackUrl = "url",
+        LocationName = "Location1"
+      }));
+      Assert.Equal("Code", err.Code);
+      Assert.Equal("Description", err.Message);
+    }
+
+    [Fact]
+    public async void TestCheckResponse3()
+    {
+      var authData = new IrisAuthData
+      {
+        AccountId = "AccountId",
+        UserName = "UserName",
+        Password = "Password",
+        SubaccountId = "SubaccountId"
+      };
+      var context = new MockContext<IHttp>();
+      var api = Helpers.GetClient(context).V2.Message;
+
+      context.Arrange(m => m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateApplicationRequest(r)),
+        HttpCompletionOption.ResponseContentRead,
+        null)).Returns(Task.FromResult(new HttpResponseMessage
+      {
+        Content = new StringContent("<Response><Errors><Code>Code</Code><Description>Description</Description></Errors></Response>")
+      }));
+
+      var err = (await Assert.ThrowsAsync<AggregateException>(() => api.CreateMessagingApplicationAsync(authData, new CreateMessagingApplicationData
+      {
+        Name = "App1",
+        CallbackUrl = "url",
+        LocationName = "Location1"
+      }))).InnerExceptions.First() as BandwidthIrisException;
+      Assert.Equal("Code", err.Code);
+      Assert.Equal("Description", err.Message);
+    }
+
+    [Fact]
+    public async void TestCheckResponse4()
+    {
+      var authData = new IrisAuthData
+      {
+        AccountId = "AccountId",
+        UserName = "UserName",
+        Password = "Password",
+        SubaccountId = "SubaccountId"
+      };
+      var context = new MockContext<IHttp>();
+      var api = Helpers.GetClient(context).V2.Message;
+
+      context.Arrange(m => m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateApplicationRequest(r)),
+        HttpCompletionOption.ResponseContentRead,
+        null)).Returns(Task.FromResult(new HttpResponseMessage
+      {
+        Content = new StringContent("<Response><resultCode>Code</resultCode><resultMessage>Description</resultMessage></Response>")
+      }));
+
+      var err = await Assert.ThrowsAsync<BandwidthIrisException>(() => api.CreateMessagingApplicationAsync(authData, new CreateMessagingApplicationData
+      {
+        Name = "App1",
+        CallbackUrl = "url",
+        LocationName = "Location1"
+      }));
+      Assert.Equal("Code", err.Code);
+      Assert.Equal("Description", err.Message);
+    }
+
+    [Fact]
+    public async void TestCheckResponse5()
+    {
+      var authData = new IrisAuthData
+      {
+        AccountId = "AccountId",
+        UserName = "UserName",
+        Password = "Password",
+        SubaccountId = "SubaccountId"
+      };
+      var context = new MockContext<IHttp>();
+      var api = Helpers.GetClient(context).V2.Message;
+
+      context.Arrange(m => m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidCreateApplicationRequest(r)),
+        HttpCompletionOption.ResponseContentRead,
+        null)).Returns(Task.FromResult(new HttpResponseMessage
+      {
+        StatusCode = HttpStatusCode.NotFound
+      }));
+
+      await Assert.ThrowsAsync<BandwidthIrisException>(() => api.CreateMessagingApplicationAsync(authData, new CreateMessagingApplicationData
+      {
+        Name = "App1",
+        CallbackUrl = "url",
+        LocationName = "Location1"
+      }));
+    }
+
 
     [Fact]
     public async void TestSearchAndOrderNumbersAsync()

@@ -107,7 +107,8 @@ namespace Bandwidth.Net.ApiV2
             cancellationToken);
           var status = (result.Descendants("OrderStatus").FirstOrDefault() ?? new XElement("OrderStatus")).Value;
           if (successStatuses.Contains(status))
-            return (result.Descendants("CompletedNumbers").FirstOrDefault() ?? new XElement("CompletedNumbers")).Descendants("FullNumber").Select(n => n.Value).ToArray();
+            return (result.Descendants("CompletedNumbers").FirstOrDefault() ?? new XElement("CompletedNumbers"))
+              .Descendants("FullNumber").Select(n => n.Value).ToArray();
           if (status == "FAILED")
             throw new BandwidthException("Error on reserving phone numbers", HttpStatusCode.BadRequest);
         }
@@ -556,7 +557,7 @@ namespace Bandwidth.Net.ApiV2
     public int Quantity { get; set; } = 10;
 
     /// <summary>
-    /// Request timeout
+    ///   Request timeout
     /// </summary>
     public TimeSpan Timeout { get; set; } = TimeSpan.FromMinutes(1);
 
