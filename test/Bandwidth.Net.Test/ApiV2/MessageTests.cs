@@ -253,12 +253,12 @@ namespace Bandwidth.Net.Test.ApiV2
         Content = new StringContent("<Response><Errors><Code>Code</Code><Description>Description</Description></Errors></Response>")
       }));
 
-      var err = (await Assert.ThrowsAsync<AggregateException>(() => api.CreateMessagingApplicationAsync(authData, new CreateMessagingApplicationData
+      var err = (BandwidthIrisException)(await Assert.ThrowsAsync<AggregateException>(() => api.CreateMessagingApplicationAsync(authData, new CreateMessagingApplicationData
       {
         Name = "App1",
         CallbackUrl = "url",
         LocationName = "Location1"
-      }))).InnerExceptions.First() as BandwidthIrisException;
+      }))).InnerExceptions.First();
       Assert.Equal("Code", err.Code);
       Assert.Equal("Description", err.Message);
     }
@@ -456,6 +456,76 @@ namespace Bandwidth.Net.Test.ApiV2
       });
       Assert.Equal("14762070468292kw2fuqty55yp2b2", message.Id);
       Assert.Equal(MessageDirection.Out, message.Direction);
+    }
+
+    [Fact]
+    public void TestAreaCodeSearchAndOrderNumbersQuery()
+    {
+      var query = new AreaCodeSearchAndOrderNumbersQuery {AreaCode = "910", Quantity = 1};
+      Assert.Equal("<AreaCodeSearchAndOrderType>\r\n  <AreaCode>910</AreaCode>\r\n  <Quantity>1</Quantity>\r\n</AreaCodeSearchAndOrderType>", query.ToXElement().ToString());
+    }
+
+    [Fact]
+    public void TestRateCenterSearchAndOrdeNumbersQuery()
+    {
+      var query = new RateCenterSearchAndOrdeNumbersQuery { RateCenter = "NC", Quantity = 1 };
+      Assert.Equal("<RateCenterSearchAndOrderType>\r\n  <RateCenter>NC</RateCenter>\r\n  <State />\r\n  <Quantity>1</Quantity>\r\n</RateCenterSearchAndOrderType>", query.ToXElement().ToString());
+    }
+
+    [Fact]
+    public void TestNpaNxxSearchAndOrderNumbersQuery()
+    {
+      var query = new NpaNxxSearchAndOrderNumbersQuery { NpaNxx = "911", Quantity = 1 };
+      Assert.Equal("<NPANXXSearchAndOrderType>\r\n  <NpaNxx>911</NpaNxx>\r\n  <EnableTNDetail>false</EnableTNDetail>\r\n  <EnableLCA>false</EnableLCA>\r\n  <Quantity>1</Quantity>\r\n</NPANXXSearchAndOrderType>", query.ToXElement().ToString());
+    }
+
+    [Fact]
+    public void TestTollFreeVanitySearchAndOrderNumbersQuery()
+    {
+      var query = new TollFreeVanitySearchAndOrderNumbersQuery { TollFreeVanity = "0", Quantity = 1 };
+      Assert.Equal("<TollFreeVanitySearchAndOrderType>\r\n  <TollFreeVanity>0</TollFreeVanity>\r\n  <Quantity>1</Quantity>\r\n</TollFreeVanitySearchAndOrderType>", query.ToXElement().ToString());
+    }
+
+    [Fact]
+    public void TestTollFreeWildCharSearchAndOrderNumbersQuery()
+    {
+      var query = new TollFreeWildCharSearchAndOrderNumbersQuery { TollFreeWildCardPattern = "*", Quantity = 1 };
+      Assert.Equal("<TollFreeWildCharSearchAndOrderType>\r\n  <TollFreeWildCardPattern>*</TollFreeWildCardPattern>\r\n  <Quantity>1</Quantity>\r\n</TollFreeWildCharSearchAndOrderType>", query.ToXElement().ToString());
+    }
+
+    [Fact]
+    public void TestStateSearchAndOrderNumbersQuery()
+    {
+      var query = new StateSearchAndOrderNumbersQuery { State = "NC", Quantity = 1 };
+      Assert.Equal("<StateSearchAndOrderType>\r\n  <State>NC</State>\r\n  <Quantity>1</Quantity>\r\n</StateSearchAndOrderType>", query.ToXElement().ToString());
+    }
+
+    [Fact]
+    public void TestCitySearchAndOrderNumbersQuery()
+    {
+      var query = new CitySearchAndOrderNumbersQuery { State = "NC", City = "Cary", Quantity = 1 };
+      Assert.Equal("<CitySearchAndOrderType>\r\n  <State>NC</State>\r\n  <City>Cary</City>\r\n  <Quantity>1</Quantity>\r\n</CitySearchAndOrderType>", query.ToXElement().ToString());
+    }
+
+    [Fact]
+    public void TestZipSearchAndOrderNumbersQuery()
+    {
+      var query = new ZipSearchAndOrderNumbersQuery { Zip = "000", Quantity = 1 };
+      Assert.Equal("<ZIPSearchAndOrderType>\r\n  <Zip>000</Zip>\r\n  <Quantity>1</Quantity>\r\n</ZIPSearchAndOrderType>", query.ToXElement().ToString());
+    }
+
+    [Fact]
+    public void TestLataSearchAndOrderNumbersQuery()
+    {
+      var query = new LataSearchAndOrderNumbersQuery { Lata = "000"};
+      Assert.Equal("<LATASearchAndOrderType>\r\n  <Lata>000</Lata>\r\n  <Quantity>10</Quantity>\r\n</LATASearchAndOrderType>", query.ToXElement().ToString());
+    }
+
+    [Fact]
+    public void TestCombinedSearchAndOrderNumbersQuery()
+    {
+      var query = new CombinedSearchAndOrderNumbersQuery { AreaCode = "900" };
+      Assert.Equal("<CombinedSearchAndOrderType>\r\n  <Quantity>10</Quantity>\r\n  <AreaCode>900</AreaCode>\r\n</CombinedSearchAndOrderType>", query.ToXElement().ToString());
     }
   }
 }
