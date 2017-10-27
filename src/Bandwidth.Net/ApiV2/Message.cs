@@ -131,7 +131,7 @@ namespace Bandwidth.Net.ApiV2
     {
       var url = new UriBuilder("https://dashboard.bandwidth.com")
       {
-        Path = $"/api/accounts/{authData.AccountId}{path}",
+        Path = $"/v1.0/api/accounts/{authData.AccountId}{path}",
         Query = Client.BuildQueryString(query)
       };
       var message = new HttpRequestMessage(method, url.Uri);

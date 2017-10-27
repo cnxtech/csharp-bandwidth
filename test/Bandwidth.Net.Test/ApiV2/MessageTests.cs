@@ -21,7 +21,7 @@ namespace Bandwidth.Net.Test.ApiV2
 
     public static bool IsValidCreateApplicationRequest(HttpRequestMessage request)
     {
-      return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/api/accounts/AccountId/applications"
+      return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/v1.0/api/accounts/AccountId/applications"
              && request.Method == HttpMethod.Post
              && request.Headers.Authorization.Parameter == "VXNlck5hbWU6UGFzc3dvcmQ="
              && request.Content.ReadAsStringAsync().Result.NormilizeLineEnds() ==
@@ -30,7 +30,7 @@ namespace Bandwidth.Net.Test.ApiV2
 
     public static bool IsValidCreateLocationRequest(HttpRequestMessage request)
     {
-      return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/api/accounts/AccountId/sites/SubaccountId/sippeers"
+      return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/v1.0/api/accounts/AccountId/sites/SubaccountId/sippeers"
              && request.Method == HttpMethod.Post
              && request.Headers.Authorization.Parameter == "VXNlck5hbWU6UGFzc3dvcmQ="
              && request.Content.ReadAsStringAsync().Result.NormilizeLineEnds() ==
@@ -39,7 +39,7 @@ namespace Bandwidth.Net.Test.ApiV2
 
     public static bool IsEnableSms(HttpRequestMessage request)
     {
-      return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/api/accounts/AccountId/sites/SubaccountId/sippeers/LocationId/products/messaging/features/sms"
+      return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/v1.0/api/accounts/AccountId/sites/SubaccountId/sippeers/LocationId/products/messaging/features/sms"
              && request.Method == HttpMethod.Post
              && request.Headers.Authorization.Parameter == "VXNlck5hbWU6UGFzc3dvcmQ="
              && request.Content.ReadAsStringAsync().Result.NormilizeLineEnds() ==
@@ -48,7 +48,7 @@ namespace Bandwidth.Net.Test.ApiV2
 
     public static bool IsEnableMms(HttpRequestMessage request)
     {
-      return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/api/accounts/AccountId/sites/SubaccountId/sippeers/LocationId/products/messaging/features/mms"
+      return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/v1.0/api/accounts/AccountId/sites/SubaccountId/sippeers/LocationId/products/messaging/features/mms"
              && request.Method == HttpMethod.Post
              && request.Headers.Authorization.Parameter == "VXNlck5hbWU6UGFzc3dvcmQ="
              && request.Content.ReadAsStringAsync().Result.NormilizeLineEnds() ==
@@ -57,7 +57,7 @@ namespace Bandwidth.Net.Test.ApiV2
 
     public static bool IsAssignApplicationToLocationRequest(HttpRequestMessage request)
     {
-      return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/api/accounts/AccountId/sites/SubaccountId/sippeers/LocationId/products/messaging/applicationSettings"
+      return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/v1.0/api/accounts/AccountId/sites/SubaccountId/sippeers/LocationId/products/messaging/applicationSettings"
              && request.Method == HttpMethod.Put
              && request.Headers.Authorization.Parameter == "VXNlck5hbWU6UGFzc3dvcmQ="
              && request.Content.ReadAsStringAsync().Result.NormilizeLineEnds() ==
@@ -67,7 +67,7 @@ namespace Bandwidth.Net.Test.ApiV2
 
     public static bool IsValidSearchAndOrderNumbersRequest(HttpRequestMessage request)
     {
-      return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/api/accounts/AccountId/orders"
+      return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/v1.0/api/accounts/AccountId/orders"
              && request.Method == HttpMethod.Post
              && request.Headers.Authorization.Parameter == "VXNlck5hbWU6UGFzc3dvcmQ="
              && request.Content.ReadAsStringAsync().Result.NormilizeLineEnds() ==
@@ -77,7 +77,7 @@ namespace Bandwidth.Net.Test.ApiV2
 
     public static bool IsValidGetOrderRequest(HttpRequestMessage request)
     {
-      return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/api/accounts/AccountId/orders/OrderId"
+      return request.RequestUri.AbsoluteUri == "https://dashboard.bandwidth.com/v1.0/api/accounts/AccountId/orders/OrderId"
              && request.Method == HttpMethod.Get
              && request.Headers.Authorization.Parameter == "VXNlck5hbWU6UGFzc3dvcmQ=";
 
