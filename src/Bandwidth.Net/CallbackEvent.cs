@@ -444,7 +444,12 @@ namespace Bandwidth.Net
     /// <summary>
     ///   Hung up
     /// </summary>
-    HungUp
+    HungUp,
+
+    /// <summary>
+    ///  Cancelled
+    /// </summary>
+    Cancelled
   }
 
   /// <summary>
