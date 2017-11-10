@@ -10,13 +10,6 @@ namespace Bandwidth.Net.XmlV2.Verbs
   /// <seealso href="http://ap.bandwidth.com/docs/xml/record/" />
   public class Record : IVerb
   {
-    /// <summary>
-    ///   Constructor
-    /// </summary>
-    public Record()
-    {
-      MaxDuration = 300;
-    }
 
     /// <summary>
     ///   Relative or absolute URL to send event and request new BaML

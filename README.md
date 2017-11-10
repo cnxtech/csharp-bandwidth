@@ -148,6 +148,21 @@ var callbackEvent = await content.ReadAsCallbackEventAsync(); // content is inst
 
 ```
 
+Using BXMLv2
+
+```csharp
+using Bandwidth.Net.XmlV2.Verbs;
+using Bandwidth.Net.Xml;
+
+var response = new Response(new SpeakSentence{
+	Gender = "female",
+	Locale = "en_UK",
+	Sentence = "Hello",
+	Voice = "kate"
+});
+
+var xml = response.ToXml(); // will build string <?xml version="1.0" encoding="utf-8"?><Response><SpeakSentence gender="female" locale="en_UK" voice="kate">Hello</SpeakSentence></Response>
+```
 
 ## Providing feedback
 
