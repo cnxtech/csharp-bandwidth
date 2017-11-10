@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Xml.Serialization;
 
 namespace Bandwidth.Net.Xml.Verbs
@@ -7,6 +8,7 @@ namespace Bandwidth.Net.Xml.Verbs
   ///   The Gather verb is used to collect digits for some period of time.
   /// </summary>
   /// <seealso href="http://ap.bandwidth.com/docs/xml/gather/" />
+  [Obsolete("Use verb from namspace Bandwidth.Net.XmlV2.Verbs")]
   public class Gather : IVerb
   {
     /// <summary>

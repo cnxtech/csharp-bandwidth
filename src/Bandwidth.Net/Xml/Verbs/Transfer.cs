@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Xml.Serialization;
 
 namespace Bandwidth.Net.Xml.Verbs
@@ -7,6 +8,7 @@ namespace Bandwidth.Net.Xml.Verbs
   ///   The Transfer verb is used to transfer the call to another number.
   /// </summary>
   /// <seealso href="http://ap.bandwidth.com/docs/xml/transfer/" />
+  [Obsolete("Use verb from namspace Bandwidth.Net.XmlV2.Verbs")]
   public class Transfer : IVerb
   {
     /// <summary>

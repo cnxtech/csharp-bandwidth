@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 
 namespace Bandwidth.Net.Xml.Verbs
 {
@@ -6,6 +7,7 @@ namespace Bandwidth.Net.Xml.Verbs
   ///   The Reject verb is used to reject incoming calls
   /// </summary>
   /// <seealso href="http://ap.bandwidth.com/docs/xml/reject/" />
+  [Obsolete("This verb was removed in BXMLv2")]
   public class Reject : IVerb
   {
     /// <summary>
