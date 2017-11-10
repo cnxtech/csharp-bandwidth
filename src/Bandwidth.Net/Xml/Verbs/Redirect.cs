@@ -8,7 +8,7 @@ namespace Bandwidth.Net.Xml.Verbs
   ///   The Redirect verb is used to redirect the current XML execution to another URL.
   /// </summary>
   /// <seealso href="http://ap.bandwidth.com/docs/xml/redirect/" />
-  [Obsolete("Use verb from namspace Bandwidth.Net.XmlV2.Verbs")]
+  [Obsolete("Use verb from namespace Bandwidth.Net.XmlV2.Verbs")]
   public class Redirect : IVerb
   {
     /// <summary>

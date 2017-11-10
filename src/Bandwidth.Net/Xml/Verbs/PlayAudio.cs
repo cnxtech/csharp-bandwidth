@@ -9,7 +9,7 @@ namespace Bandwidth.Net.Xml.Verbs
   ///   The PlayAudio verb is used to play an audio file in the call.
   /// </summary>
   /// <seealso href="http://ap.bandwidth.com/docs/xml/playaudio/" />
-  [Obsolete("Use verb from namspace Bandwidth.Net.XmlV2.Verbs")]
+  [Obsolete("Use verb from namespace Bandwidth.Net.XmlV2.Verbs")]
   public class PlayAudio : IXmlSerializable, IVerb
   {
     /// <summary>

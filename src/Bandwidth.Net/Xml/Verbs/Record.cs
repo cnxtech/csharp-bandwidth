@@ -8,7 +8,7 @@ namespace Bandwidth.Net.Xml.Verbs
   ///   The Record verb allow call recording.
   /// </summary>
   /// <seealso href="http://ap.bandwidth.com/docs/xml/record/" />
-  [Obsolete("Use verb from namspace Bandwidth.Net.XmlV2.Verbs")]
+  [Obsolete("Use verb from namespace Bandwidth.Net.XmlV2.Verbs")]
   public class Record : IVerb
   {
     /// <summary>
