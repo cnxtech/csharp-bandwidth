@@ -10,6 +10,7 @@ namespace Bandwidth.Net.Xml.Verbs
   ///   The SendMessage is used to send a text message.
   /// </summary>
   /// <seealso href="http://ap.bandwidth.com/docs/xml/message/" />
+  [Obsolete("This verb was removed in BXMLv2")]
   public class SendMessage : IXmlSerializable, IVerb
   {
     /// <summary>

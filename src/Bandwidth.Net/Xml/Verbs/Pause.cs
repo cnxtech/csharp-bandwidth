@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 
 namespace Bandwidth.Net.Xml.Verbs
 {
@@ -6,6 +7,7 @@ namespace Bandwidth.Net.Xml.Verbs
   ///   Pause is a verb to specify the length of seconds to wait before executing the next verb.
   /// </summary>
   /// <seealso href="http://ap.bandwidth.com/docs/xml/pause/" />
+  [Obsolete("This verb was removed in BXMLv2")]
   public class Pause : IVerb
   {
     /// <summary>

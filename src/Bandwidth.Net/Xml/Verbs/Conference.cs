@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 
 namespace Bandwidth.Net.Xml.Verbs
 {
@@ -6,6 +7,8 @@ namespace Bandwidth.Net.Xml.Verbs
   ///   The Conference verb is used to create conferences.
   /// </summary>
   /// <seealso href="http://ap.bandwidth.com/docs/xml/conference/" />
+  
+  [Obsolete("This verb was removed in BXMLv2")]
   public class Conference : IVerb
   {
     /// <summary>

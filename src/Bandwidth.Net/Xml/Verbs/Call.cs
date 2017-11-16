@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Xml.Serialization;
 
 namespace Bandwidth.Net.Xml.Verbs
@@ -7,6 +8,7 @@ namespace Bandwidth.Net.Xml.Verbs
   ///   The Call verb is used to create call to another number.
   /// </summary>
   /// <seealso href="http://ap.bandwidth.com/docs/xml/call/" />
+  [Obsolete("This verb was removed in BXMLv2")]
   public class Call : IVerb
   {
     /// <summary>

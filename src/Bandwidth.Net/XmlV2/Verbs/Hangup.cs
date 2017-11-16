@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Bandwidth.Net.Xml;
 
-namespace Bandwidth.Net.Xml.Verbs
+namespace Bandwidth.Net.XmlV2.Verbs
 {
   /// <summary>
   ///   The Hangup verb is used to hangup current call.
   /// </summary>
   /// <seealso href="http://ap.bandwidth.com/docs/xml/hangup/" />
-  [Obsolete("Use verb from namespace Bandwidth.Net.XmlV2.Verbs")]
   public class Hangup : IVerb
   {
   }

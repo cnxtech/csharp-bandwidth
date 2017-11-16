@@ -1,14 +1,13 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
+using Bandwidth.Net.Xml;
 
-namespace Bandwidth.Net.Xml.Verbs
+namespace Bandwidth.Net.XmlV2.Verbs
 {
   /// <summary>
   ///   The Redirect verb is used to redirect the current XML execution to another URL.
   /// </summary>
   /// <seealso href="http://ap.bandwidth.com/docs/xml/redirect/" />
-  [Obsolete("Use verb from namespace Bandwidth.Net.XmlV2.Verbs")]
   public class Redirect : IVerb
   {
     /// <summary>
@@ -23,10 +22,5 @@ namespace Bandwidth.Net.Xml.Verbs
     [XmlAttribute("requestUrlTimeout"), DefaultValue(0)]
     public int RequestUrlTimeout { get; set; }
 
-    /// <summary>
-    ///   Specify any call Id or message Id where the redirect will be applied to.
-    /// </summary>
-    [XmlAttribute("context")]
-    public string Context { get; set; }
   }
 }
