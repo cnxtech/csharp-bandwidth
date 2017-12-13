@@ -122,7 +122,7 @@ namespace Bandwidth.Net.Api
       if (string.IsNullOrEmpty(mediaName)) throw new ArgumentNullException(nameof(mediaName));
       var request = Client.CreateRequest(HttpMethod.Get,
         $"/users/{Client.UserId}/media/{Uri.EscapeDataString(mediaName)}");
-      var response = await Client.MakeRequestAsync(request, cancellationToken, HttpCompletionOption.ResponseHeadersRead);
+      var response = await Client.MakeRequestAsync(request, cancellationToken);
       response.EnsureSuccessStatusCode();
       return new DownloadMediaFileData(response);
     }
