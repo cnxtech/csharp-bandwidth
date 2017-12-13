@@ -145,7 +145,7 @@ namespace Bandwidth.Net.Test.Api
       };
       context.Arrange(
         m =>
-          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidDownloadRequest(r)), HttpCompletionOption.ResponseHeadersRead,
+          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidDownloadRequest(r)), HttpCompletionOption.ResponseContentRead,
             null)).Returns(Task.FromResult(response));
       var api = Helpers.GetClient(context).Media;
       using (var data = await api.DownloadAsync("file"))
