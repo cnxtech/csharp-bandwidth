@@ -75,4 +75,32 @@ namespace Bandwidth.Net
       ResetTime = resetTime;
     }
   }
+
+  /// <summary>
+  /// BandwidthIrisException
+  /// </summary>
+  public class BandwidthIrisException: Exception
+  {
+      /// <summary>
+      /// Error code
+      /// </summary>
+      public string Code { get; private set; }
+      
+      /// <summary>
+      /// Status code
+      /// </summary>
+      public HttpStatusCode HttpStatusCode { get; private set; }
+
+      /// <summary>
+      /// BandwidthIrisException
+      /// </summary>
+      /// <param name="code">Error code</param>
+      /// <param name="message">Error message</param>
+      /// <param name="statusCode">Status code</param>
+      public BandwidthIrisException(string code, string message, HttpStatusCode statusCode): base(message)
+      {
+          Code = code;
+          HttpStatusCode = statusCode;
+      }
+  }
 }

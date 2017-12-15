@@ -16,7 +16,7 @@ The current version is v3.0, released 1 February, 2017. Version 2.15 is availabl
 
 `Bandwidth.Net` is available on Nuget (Nuget 3.0+ is required):
 
-	Install-Package Bandwidth.Net -Pre
+    Install-Package Bandwidth.Net -Pre
 
 ## Supported Versions
 `Bandwidth.Net` should work on all levels of .Net Framework 4.5+.
@@ -46,9 +46,9 @@ To initialize the `Client` instance, provide your API credentials which can be f
 using Bandwidth.Net;
 
 var client = new Client(
-	"YOUR_USER_ID", // <-- note, this is not the same as the username you used to login to the portal
-	"YOUR_API_TOKEN",
-	"YOUR_API_SECRET"
+    "YOUR_USER_ID", // <-- note, this is not the same as the username you used to login to the portal
+    "YOUR_API_TOKEN",
+    "YOUR_API_SECRET"
 );
 ```
 
@@ -104,19 +104,50 @@ Send a SMS
 
 ```csharp
 var message = await client.Message.SendAsync(new MessageData {
-	From = "+12345678901", // This must be a Bandwidth number on your account
-	To   = "+12345678902",
-	Text = "Hello world."
+    From = "+12345678901", // This must be a Bandwidth number on your account
+    To   = "+12345678902",
+    Text = "Hello world."
 });
 Console.WriteLine($"Message Id is {message.Id}");
 
 // Using Message API v2
 
-// don't forget set MessageApiVersion of Application object to "V2" before use this method
+// Create a messaging application
+var dashboardAuthData = new IrisAuthData
+{
+    AccountId = "AccountId",
+    UserName = "UserName",
+    Password = "Password",
+    SubaccountId = "SubaccountId"
+};
+var messagingApplication = await api.CreateMessagingApplicationAsync(dashboardAuthData, new CreateMessagingApplicationData
+{
+    Name = "My Messaging App",
+    CallbackUrl = "http://my-callback",
+    LocationName = "My Location",
+    SmsOptions = new SmsOptions
+    {
+        TollFreeEnabled = true
+    },
+    MmsOptions = new MmsOptions
+    {
+        Enabled = true
+    }
+});
+
+// Reserve a phone number for messaging
+var numbers = await api.SearchAndOrderNumbersAsync(dashboardAuthData, messagingApplication, new AreaCodeSearchAndOrderNumbersQuery
+{
+    AreaCode = "910",
+    Quantity = 1
+});
+
+// Now you can send meessages via API v2
 var message = await client.V2.Message.SendAsync(new MessageData{ 
-    From = "+12345678901", 
-    To = new[] {"+12345678902"}, 
-    Text = "Hello world"
+    From = numbers[0],  //use only numbers reserved by SearchAndOrderNumbersAsync()
+    To = new[] {"+12345678902"},
+    Text = "Hello world",
+    ApplicationId = messagingApplication.ApplicationId
 });
 
 ```
@@ -125,8 +156,8 @@ Make a call
 
 ```csharp
 var call = await client.Call.CreateAsync(new CreateCallData {
-	From = "+12345678901", // This must be a Bandwidth number on your account
-	To   = "+12345678902"
+    From = "+12345678901", // This must be a Bandwidth number on your account
+    To   = "+12345678902"
 });
 Console.WriteLine($"Call Id is {call.Id}");
 ```

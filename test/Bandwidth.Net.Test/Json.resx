@@ -507,7 +507,7 @@
 }
     </value>
   </data>
-<data name="ConferenceMemberEvent" xml:space="preserve">
+  <data name="ConferenceMemberEvent" xml:space="preserve">
     <value>
     {
     "activeMembers": 1,
@@ -523,7 +523,6 @@
 }
     </value>
   </data>
-
   <data name="ConferenceSpeakEvent" xml:space="preserve">
     <value>
     {
@@ -546,7 +545,7 @@
 }
     </value>
   </data>
-<data name="GatherEvent" xml:space="preserve">
+  <data name="GatherEvent" xml:space="preserve">
     <value>
     {
     "eventType":"gather",
@@ -652,5 +651,85 @@
 }
     </value>
   </data>
-
+  <data name="CreateMessagingApplicationResponse" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;ApplicationProvisioningResponse&gt;
+  &lt;Application&gt;
+    &lt;ApplicationId&gt;ApplicationId&lt;/ApplicationId&gt;
+    &lt;ServiceType&gt;Messaging-V2&lt;/ServiceType&gt;
+    &lt;AppName&gt;Demo Server&lt;/AppName&gt;
+    &lt;CallbackUrl&gt;https://requestb.in/1m009f61&lt;/CallbackUrl&gt;
+    &lt;CallbackCreds/&gt;
+  &lt;/Application&gt;
+&lt;/ApplicationProvisioningResponse&gt;</value>
+  </data>
+  <data name="FailedOrderResponse" xml:space="preserve">
+    <value>&lt;OrderResponse&gt;
+  &lt;CompletedQuantity&gt;1&lt;/CompletedQuantity&gt;
+  &lt;CreatedByUser&gt;lorem&lt;/CreatedByUser&gt;
+  &lt;LastModifiedDate&gt;2017-09-18T17:36:57.411Z&lt;/LastModifiedDate&gt;
+  &lt;OrderCompleteDate&gt;2017-09-18T17:36:57.410Z&lt;/OrderCompleteDate&gt;
+  &lt;Order&gt;
+    &lt;OrderCreateDate&gt;2017-09-18T17:36:57.274Z&lt;/OrderCreateDate&gt;
+    &lt;PeerId&gt;{{location}}&lt;/PeerId&gt;
+    &lt;BackOrderRequested&gt;false&lt;/BackOrderRequested&gt;
+    &lt;AreaCodeSearchAndOrderType&gt;
+      &lt;AreaCode&gt;910&lt;/AreaCode&gt;
+      &lt;Quantity&gt;1&lt;/Quantity&gt;
+    &lt;/AreaCodeSearchAndOrderType&gt;
+    &lt;PartialAllowed&gt;true&lt;/PartialAllowed&gt;
+    &lt;SiteId&gt;{{subaccount}}&lt;/SiteId&gt;
+  &lt;/Order&gt;
+  &lt;OrderStatus&gt;FAILED&lt;/OrderStatus&gt;
+  &lt;Summary&gt;1 number ordered in (910)&lt;/Summary&gt;
+  &lt;FailedQuantity&gt;0&lt;/FailedQuantity&gt;
+&lt;/OrderResponse&gt;</value>
+  </data>
+  <data name="OrderNumbersResponse" xml:space="preserve">
+    <value>&lt;OrderResponse&gt;
+  &lt;Order&gt;
+    &lt;OrderCreateDate&gt;2017-09-18T17:36:57.274Z&lt;/OrderCreateDate&gt;
+    &lt;PeerId&gt;{{location}}&lt;/PeerId&gt;
+    &lt;BackOrderRequested&gt;false&lt;/BackOrderRequested&gt;
+    &lt;id&gt;OrderId&lt;/id&gt;
+    &lt;AreaCodeSearchAndOrderType&gt;
+      &lt;AreaCode&gt;910&lt;/AreaCode&gt;
+      &lt;Quantity&gt;1&lt;/Quantity&gt;
+    &lt;/AreaCodeSearchAndOrderType&gt;
+    &lt;PartialAllowed&gt;true&lt;/PartialAllowed&gt;
+    &lt;SiteId&gt;{{subaccount}}&lt;/SiteId&gt;
+  &lt;/Order&gt;
+  &lt;OrderStatus&gt;RECEIVED&lt;/OrderStatus&gt;
+&lt;/OrderResponse&gt;</value>
+  </data>
+  <data name="OrderResponse" xml:space="preserve">
+    <value>&lt;OrderResponse&gt;
+  &lt;CompletedQuantity&gt;1&lt;/CompletedQuantity&gt;
+  &lt;CreatedByUser&gt;lorem&lt;/CreatedByUser&gt;
+  &lt;LastModifiedDate&gt;2017-09-18T17:36:57.411Z&lt;/LastModifiedDate&gt;
+  &lt;OrderCompleteDate&gt;2017-09-18T17:36:57.410Z&lt;/OrderCompleteDate&gt;
+  &lt;Order&gt;
+    &lt;OrderCreateDate&gt;2017-09-18T17:36:57.274Z&lt;/OrderCreateDate&gt;
+    &lt;PeerId&gt;{{location}}&lt;/PeerId&gt;
+    &lt;BackOrderRequested&gt;false&lt;/BackOrderRequested&gt;
+    &lt;AreaCodeSearchAndOrderType&gt;
+      &lt;AreaCode&gt;910&lt;/AreaCode&gt;
+      &lt;Quantity&gt;1&lt;/Quantity&gt;
+    &lt;/AreaCodeSearchAndOrderType&gt;
+    &lt;PartialAllowed&gt;true&lt;/PartialAllowed&gt;
+    &lt;SiteId&gt;{{subaccount}}&lt;/SiteId&gt;
+  &lt;/Order&gt;
+  &lt;OrderStatus&gt;COMPLETE&lt;/OrderStatus&gt;
+  &lt;CompletedNumbers&gt;
+    &lt;TelephoneNumber&gt;
+      &lt;FullNumber&gt;9102398766&lt;/FullNumber&gt;
+    &lt;/TelephoneNumber&gt;
+    &lt;TelephoneNumber&gt;
+      &lt;FullNumber&gt;9102398767&lt;/FullNumber&gt;
+    &lt;/TelephoneNumber&gt;
+  &lt;/CompletedNumbers&gt;
+  &lt;Summary&gt;1 number ordered in (910)&lt;/Summary&gt;
+  &lt;FailedQuantity&gt;0&lt;/FailedQuantity&gt;
+&lt;/OrderResponse&gt;</value>
+  </data>
 </root>

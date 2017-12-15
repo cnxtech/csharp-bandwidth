@@ -15,8 +15,8 @@ namespace Bandwidth.Net
   public partial class Client
   {
     internal readonly string UserId;
-    private readonly IHttp _http;
-    private static readonly ProductInfoHeaderValue UserAgent = BuildUserAgent();
+    internal readonly IHttp Http;
+    internal static readonly ProductInfoHeaderValue UserAgent = BuildUserAgent();
     private readonly AuthenticationHeaderValue _authentication;
     private readonly string _baseUrl;
 
@@ -56,7 +56,7 @@ namespace Bandwidth.Net
       }
       UserId = userId;
       _baseUrl = baseUrl;
-      _http = http ?? new Http<HttpClientHandler>();
+      Http = http ?? new Http<HttpClientHandler>();
       _authentication =
           new AuthenticationHeaderValue("Basic",
               Convert.ToBase64String(Encoding.UTF8.GetBytes($"{apiToken}:{apiSecret}")));
@@ -70,7 +70,7 @@ namespace Bandwidth.Net
       return new ProductInfoHeaderValue("csharp-bandwidth", $"v{assemblyName.Version.Major}.{assemblyName.Version.Minor}");
     }
 
-    private static string BuildQueryString(object query)
+    internal static string BuildQueryString(object query)
     {
       if (query == null)
       {
@@ -122,7 +122,7 @@ namespace Bandwidth.Net
 
     internal async Task<HttpResponseMessage> MakeRequestAsync(HttpRequestMessage request, CancellationToken? cancellationToken = null, HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
     {
-      var response = await _http.SendAsync(request, completionOption, cancellationToken);
+      var response = await Http.SendAsync(request, completionOption, cancellationToken);
       await response.CheckResponseAsync();
       return response;
     }
