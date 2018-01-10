@@ -109,7 +109,11 @@ var message = await client.Message.SendAsync(new MessageData {
     Text = "Hello world."
 });
 Console.WriteLine($"Message Id is {message.Id}");
+```
 
+#### Messaging 2.0
+
+```csharp
 // Using Message API v2
 
 // Create a messaging application
