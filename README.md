@@ -5,9 +5,9 @@ A .Net client library for the [Bandwidth Application Platform](http://bandwidth.
 The current version is v3.0, released 1 February, 2017. Version 2.15 is available  [here](https://github.com/bandwidthcom/csharp-bandwidth/tree/v2.15).
 
 
-[![Build on .Net 4.5 (Windows)](https://ci.appveyor.com/api/projects/status/bhv8hs3fx9k6c33i?svg=true)](https://ci.appveyor.com/project/avbel/csharp-bandwidth)
-[![Build on .Net Core (Linux)](https://travis-ci.org/bandwidthcom/csharp-bandwidth.svg)](https://travis-ci.org/bandwidthcom/csharp-bandwidth)
-[![Coverage Status](https://coveralls.io/repos/github/bandwidthcom/csharp-bandwidth/badge.svg)](https://coveralls.io/github/bandwidthcom/csharp-bandwidth)
+[![Build on .Net 4.5 (Windows)](https://ci.appveyor.com/api/projects/status/bhv8hs3fx9k6c33i?svg=true)](https://ci.appveyor.com/project/Bandwidth/csharp-bandwidth)
+[![Build on .Net Core (Linux)](https://travis-ci.org/Bandwidth/csharp-bandwidth.svg)](https://travis-ci.org/Bandwidth/csharp-bandwidth)
+[![Coverage Status](https://coveralls.io/repos/github/Bandwidth/csharp-bandwidth/badge.svg)](https://coveralls.io/github/Bandwidth/csharp-bandwidth)
 
 
 [Full API Reference](src/Bandwidth.Net/Help/Home.md)
@@ -201,5 +201,5 @@ var xml = response.ToXml(); // will build string <?xml version="1.0" encoding="u
 
 ## Providing feedback
 
-For current discussions on 3.0 please see the [3.0 issues section on GitHub](https://github.com/bandwidthcom/csharp-bandwidth/labels/3.0). To start a new topic on 3.0, please open an issue and use the `3.0` tag. Your feedback is greatly appreciated!
+For current discussions on 3.0 please see the [3.0 issues section on GitHub](https://github.com/Bandwidth/csharp-bandwidth/labels/3.0). To start a new topic on 3.0, please open an issue and use the `3.0` tag. Your feedback is greatly appreciated!
 
