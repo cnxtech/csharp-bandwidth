@@ -27,7 +27,6 @@ The current version is v3.0, released 1 February, 2017. Version 2.15 is availabl
 | netstandard1.6 (.net 4.6+, .net core 1.0+, etc)  | Supported |
 | netstandard2.0 (.net core 2.0+, etc)  | Supported |
 
-
 ## Client initialization
 
 All interaction with the API is done through a class `Client`. The `Client` constructor takes an next options:
