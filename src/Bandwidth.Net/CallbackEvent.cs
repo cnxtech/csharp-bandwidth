@@ -326,7 +326,12 @@ namespace Bandwidth.Net
     /// <summary>
     ///   Transcription
     /// </summary>
-    Transcription
+    Transcription, 
+
+    /// <summary>
+    ///   Transfer complete
+    /// </summary>
+    TransferComplete
   }
 
   /// <summary>
