@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -24,7 +25,7 @@ namespace Bandwidth.Net
       var rawString = (string)reader.Value;
       var result = string.Join("",
         rawString.ToLowerInvariant().Replace('_', '-').Split('-').Select(v => $"{char.ToUpperInvariant(v[0])}{v.Substring(1)}"));
-      return Enum.Parse(objectType, result);
+      return Enum.Parse(objectType, result, true);
     }
 
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
