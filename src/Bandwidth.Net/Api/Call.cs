@@ -548,6 +548,11 @@ namespace Bandwidth.Net.Api
     /// The locale used to get the accent of the voice used to synthesize the sentence
     /// </summary>
     public string Locale { get; set; }
+
+    /// <summary>
+    /// The location of an audio file to play (WAV and MP3 supported)
+    /// </summary>
+    public string FileUrl { get; set; }
   }
 
   /// <summary>
