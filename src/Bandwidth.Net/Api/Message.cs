@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -38,7 +38,7 @@ namespace Bandwidth.Net.Api
     /// </code>
     /// </example>
     Task<string> SendAsync(MessageData data, CancellationToken? cancellationToken = null);
-    
+
     /// <summary>
     ///   Send a message.
     /// </summary>
@@ -66,6 +66,20 @@ namespace Bandwidth.Net.Api
     /// </example>
     Task<Message> GetAsync(string messageId, CancellationToken? cancellationToken = null);
 
+    /// <summary>
+    ///  Redact the text of a previously sent message
+    /// </summary>
+    /// <param name="messageId">Id of message to update</param>
+    /// <param name="data">data to redact</param>
+    /// <param name="cancellationToken">Optional token to cancel async operation</param>
+    /// <returns>Task instance for async operation</returns>
+    /// <example>
+    ///   <code>
+    /// await client.Message.PatchAsync("messageId", new PatchMessageData{Text = ""});
+    /// </code>
+    /// </example>
+    Task PatchAsync(string messageId, PatchMessageData data, CancellationToken? cancellationToken = null);
+
   }
 
   internal class MessageApi : ApiBase, IMessage
@@ -86,9 +100,10 @@ namespace Bandwidth.Net.Api
     public async Task<SendMessageResult[]> SendAsync(MessageData[] data,
       CancellationToken? cancellationToken = null)
     {
-      var list =  await Client.MakeJsonRequestAsync<SendMessageResult[]>(HttpMethod.Post,  $"/users/{Client.UserId}/messages", cancellationToken, null, data);
+      var list = await Client.MakeJsonRequestAsync<SendMessageResult[]>(HttpMethod.Post,
+        $"/users/{Client.UserId}/messages", cancellationToken, null, data);
       var l = data.Length;
-      for (var i = 0; i < l; i ++)
+      for (var i = 0; i < l; i++)
       {
         list[i].Message = data[i];
       }
@@ -99,6 +114,12 @@ namespace Bandwidth.Net.Api
     {
       return Client.MakeJsonRequestAsync<Message>(HttpMethod.Get,
         $"/users/{Client.UserId}/messages/{messageId}", cancellationToken);
+    }
+
+    public Task PatchAsync(string messageId, PatchMessageData data, CancellationToken? cancellationToken = null)
+    {
+      return Client.MakeJsonRequestWithoutResponseAsync(new HttpMethod("PATCH"),
+        $"/users/{Client.UserId}/messages/{messageId}", cancellationToken, null, data);
     }
   }
 
@@ -454,7 +475,7 @@ namespace Bandwidth.Net.Api
     {
       return time._time;
     }
-    
+
     /// <summary>
     /// DateTime -> MessageQueryDateTime implicit convert
     /// </summary>
@@ -472,5 +493,16 @@ namespace Bandwidth.Net.Api
     {
       return _time.ToString("yyyy-MM-dd HH:mm:ss");
     }
+  }
+
+  /// <summary>
+  ///   Parameters to patch a message
+  /// </summary>
+  public class PatchMessageData
+  {
+    /// <summary>
+    /// The contents of the text must be the empty string (""). Any other value will fail.
+    /// </summary>
+    public string Text { get; set; }
   }
 }

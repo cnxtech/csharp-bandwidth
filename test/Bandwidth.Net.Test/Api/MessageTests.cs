@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -83,6 +83,18 @@ namespace Bandwidth.Net.Test.Api
       ValidateMessage(message);
     }
 
+    [Fact]
+    public async void TestPatch()
+    {
+      var context = new MockContext<IHttp>();
+      context.Arrange(
+        m =>
+          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidPatchRequest(r)), HttpCompletionOption.ResponseContentRead,
+            null)).Returns(Task.FromResult(new HttpResponseMessage()));
+      var api = Helpers.GetClient(context).Message;
+      await api.PatchAsync("id", new PatchMessageData{Text = ""});
+    }
+
 
     public static bool IsValidListRequest(HttpRequestMessage request)
     {
@@ -106,6 +118,13 @@ namespace Bandwidth.Net.Test.Api
     public static bool IsValidGetRequest(HttpRequestMessage request)
     {
       return request.Method == HttpMethod.Get && request.RequestUri.PathAndQuery == "/v1/users/userId/messages/id";
+    }
+
+    public static bool IsValidPatchRequest(HttpRequestMessage request)
+    {
+      return request.Method.ToString() == "PATCH" && request.RequestUri.PathAndQuery == "/v1/users/userId/messages/id" &&
+             request.Content.Headers.ContentType.MediaType == "application/json" &&
+             request.Content.ReadAsStringAsync().Result == "{\"text\":\"\"}";
     }
 
 
