@@ -6,36 +6,36 @@ using System;
 
 namespace Bandwidth.Net.Test.XmlV2.Verbs
 {
-  public class DtmfTests
+  public class SendDtmfTests
   {
     [Fact]
     public void TestConstructor()
     {
-      new Dtmf();
+      new SendDtmf();
     }
 
     [Fact]
     public void TestReadXml()
     {
-      var instance = new Dtmf() as IXmlSerializable;
+      var instance = new SendDtmf() as IXmlSerializable;
       Assert.Throws<NotImplementedException>(() => instance.ReadXml(null));
     }
 
     [Fact]
     public void TestGetSchema()
     {
-      var instance = new Dtmf() as IXmlSerializable;
+      var instance = new SendDtmf() as IXmlSerializable;
       Assert.Null(instance.GetSchema());
     }
 
     [Fact]
     public void TestWriteXml()
     {
-      var response = new Response(new Dtmf
+      var response = new Response(new SendDtmf
       {
         Digits = "5"
       });
-      Assert.Equal("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<Response>\n  <DTMF>5</DTMF>\n</Response>", response.ToXml().Replace("\r\n", "\n"));
+      Assert.Equal("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<Response>\n  <SendDtmf>5</SendDtmf>\n</Response>", response.ToXml().Replace("\r\n", "\n"));
     }
   }
 }

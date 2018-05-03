@@ -7,14 +7,13 @@ using Bandwidth.Net.Xml;
 namespace Bandwidth.Net.XmlV2.Verbs
 {
   /// <summary>
-  /// Send digits on a live call
+  ///   Send digits on a live call
   /// </summary>
   /// <seealso href="http://ap.bandwidth.com/docs/xml/dtmf/" />
-  [XmlRoot("DTMF")]
-  public class Dtmf: IXmlSerializable, IVerb
+  public class SendDtmf : IXmlSerializable, IVerb
   {
     /// <summary>
-    /// String containing the DTMF characters to be sent in a call (maximum of 92 characters)
+    ///   String containing the DTMF characters to be sent in a call (maximum of 92 characters)
     /// </summary>
     public string Digits { get; set; }
 
