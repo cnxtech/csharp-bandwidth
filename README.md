@@ -199,5 +199,5 @@ var xml = response.ToXml(); // will build string <?xml version="1.0" encoding="u
 
 ## Providing feedback
 
-Please open an [issue](https://github.com/Bandwidth/csharp-bandwidth/issues) on this repository and we'll take a look. Thansk!
+Please open an [issue](https://github.com/Bandwidth/csharp-bandwidth/issues) on this repository and we'll take a look. Thanks!
 
