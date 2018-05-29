@@ -77,7 +77,7 @@ Console.WriteLine(application.Instance.Name); //will use cached application's da
 
 #### Get list of objects
 
-Executing of methods which returns collections of objects will not execute Catapult API request immediately. THis request will be executed only when you try enumerate items of the collection.
+Executing of methods which returns collections of objects will not execute Catapult API request immediately. This request will be executed only when you try enumerate items of the collection.
 
 ```csharp
 var calls = client.Call.List(); // will not execute any requests to Catapult API here
@@ -93,7 +93,15 @@ var list = calls.ToList(); // a request to Catapult API will be executed here
 
 ```
 
-####
+**Note:** All methods `List()` used async request execution and locking current thread for waiting for results. Calling `List()` in main UI thread of application (WinForm, WPF, ASP.Net) can be cause of "freezes".
+Use `List()` only inside non-main threads. For example in another async task like in next demo
+```csharp
+await Task.Run(() => {
+    var calls = client.Call.List();
+    // rest code here
+})
+```
+
 
 
 ### Examples
