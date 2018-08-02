@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Xml.Serialization;
 using Bandwidth.Net.Xml;
 
@@ -57,6 +57,12 @@ namespace Bandwidth.Net.XmlV2.Verbs
     /// </summary>
     [XmlAttribute("bargeable"), DefaultValue(true)]
     public bool Bargeable { get; set; }
+
+    /// <summary>
+    ///  A string that will be included in the callback events of the gather.
+    /// </summary>
+    [XmlAttribute("tag")]
+    public string Tag { get; set; }
 
     /// <summary>
     ///  Using the SpeakSentence inside the Gather verb will speak the text to the callee.

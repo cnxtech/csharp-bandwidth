@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Xml.Serialization;
 using Bandwidth.Net.Xml;
 
@@ -10,6 +10,15 @@ namespace Bandwidth.Net.XmlV2.Verbs
   /// <seealso href="http://ap.bandwidth.com/docs/xml/record/" />
   public class Record : IVerb
   {
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    public Record()
+    {
+      MaxDuration = 60;
+      SilenceThreshold = 100;
+      SilenceTimeout = 3;
+    }
 
     /// <summary>
     ///   Relative or absolute URL to send event and request new BaML
@@ -41,5 +50,35 @@ namespace Bandwidth.Net.XmlV2.Verbs
     /// </summary>
     [XmlAttribute("transcribeCallbackUrl")]
     public string TranscribeCallbackUrl { get; set; }
+
+    /// <summary>
+    /// Record the caller and called party voices on 2 separate channels in the same file
+    /// </summary>
+    [XmlAttribute("multiChannel")]
+    public bool MultiChannel { get; set; }
+
+    /// <summary>
+    /// Number of seconds to record the caller’s voice
+    /// </summary>
+    [XmlAttribute("maxDuration"), DefaultValue(60)]
+    public int MaxDuration { get; set; }
+
+    /// <summary>
+    /// Number of seconds of silence detected before ending the recording.
+    /// </summary>
+    [XmlAttribute("silenceTimeout"), DefaultValue(3)]
+    public int SilenceTimeout { get; set; }
+
+    /// <summary>
+    /// This setting controls when the silence timeout is effective. Set this number higher in noisy environments to detect voice and “silence”. 
+    /// </summary>
+    [XmlAttribute("silenceThreshold"), DefaultValue(100)]
+    public int SilenceThreshold { get; set; }
+
+    /// <summary>
+    /// Digit that the caller presses to indicate that the recording can be stopped. It can be any one of 0-9*#. 
+    /// </summary>
+    [XmlAttribute("terminatingDigits")]
+    public string TerminatingDigits { get; set; }
   }
 }
