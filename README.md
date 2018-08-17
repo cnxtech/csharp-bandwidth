@@ -65,13 +65,7 @@ This library uses lazy evalutions in next cases:
 When you create a bridge, call, message, etc. you will receive instance of `ILazyInstance<>` as result. It allow you to get `Id` of created object and created object on demand via property `Instance`.
 
 ```csharp
-var application = await client.Application.CreateAsync(new CreateApplicationData {Name = "MyFirstApp"});
-
-Console.WriteLine(application.Id); //will return Id of created application
-
-Console.WriteLine(application.Instance.Name); //will make request to Catapult API to get application data
-
-Console.WriteLine(application.Instance.Name); //will use cached application's data
+var applicationId = await client.Application.CreateAsync(new CreateApplicationData {Name = "MyFirstApp"});
 
 ```
 
@@ -109,12 +103,12 @@ await Task.Run(() => {
 Send a SMS
 
 ```csharp
-var message = await client.Message.SendAsync(new MessageData {
+var messageId = await client.Message.SendAsync(new MessageData {
     From = "+12345678901", // This must be a Bandwidth number on your account
     To   = "+12345678902",
     Text = "Hello world."
 });
-Console.WriteLine($"Message Id is {message.Id}");
+Console.WriteLine($"Message Id is {messageId}");
 ```
 
 #### Messaging 2.0
@@ -165,7 +159,7 @@ var message = await client.V2.Message.SendAsync(new MessageData{
 Make a call
 
 ```csharp
-var call = await client.Call.CreateAsync(new CreateCallData {
+var callId = await client.Call.CreateAsync(new CreateCallData {
     From = "+12345678901", // This must be a Bandwidth number on your account
     To   = "+12345678902"
 });
