@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -41,6 +42,28 @@ namespace Bandwidth.Net.Test.Api
             null)).Returns(Task.FromResult(response));
       var api = Helpers.GetClient(context).PhoneNumber;
       var phoneNumberId = await api.CreateAsync(new CreatePhoneNumberData {Number = "+1234567890"});
+      context.Assert(
+        m =>
+          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
+            null), Invoked.Never);
+      Assert.Equal("id", phoneNumberId);
+    }
+
+    [Fact]
+    public async void TestImport()
+    {
+      var response = new HttpResponseMessage(HttpStatusCode.Created);
+      response.Headers.Location = new Uri("http://localhost/path/id");
+      var context = new MockContext<IHttp>();
+      context.Arrange(
+        m =>
+          m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidImportRequest(r)), HttpCompletionOption.ResponseContentRead,
+            null)).Returns(Task.FromResult(response));
+      var api = Helpers.GetClient(context).PhoneNumber;
+      var phoneNumberId = await api.CreateAsync(new CreatePhoneNumberData { Number = "+1234567890", ApplicationId = "appId", Name = "text messaging TN", Provider = new PhoneNumberProvider
+      {
+        Properties = new Dictionary<string, object> { { "accountId",  "someId" }, { "userName", "bob" }, { "password", "XXXXXXX" } }
+      }});
       context.Assert(
         m =>
           m.SendAsync(The<HttpRequestMessage>.Is(r => IsValidGetRequest(r)), HttpCompletionOption.ResponseContentRead,
@@ -99,6 +122,14 @@ namespace Bandwidth.Net.Test.Api
       return request.Method == HttpMethod.Post && request.RequestUri.PathAndQuery == "/v1/users/userId/phoneNumbers" &&
              request.Content.Headers.ContentType.MediaType == "application/json" &&
              request.Content.ReadAsStringAsync().Result == "{\"number\":\"+1234567890\"}";
+    }
+
+    public static bool IsValidImportRequest(HttpRequestMessage request)
+    {
+      return request.Method == HttpMethod.Post && request.RequestUri.PathAndQuery == "/v1/users/userId/phoneNumbers" &&
+             request.Content.Headers.ContentType.MediaType == "application/json" &&
+             request.Content.ReadAsStringAsync().Result == "{\"name\":\"text messaging TN\",\"number\":\"+1234567890\",\"applicationId\":\"appId\",\"provider\":{\"providerName\":\"bandwidth-dashboard\",\"properties\":{\"accountId\":\"someId\",\"userName\":\"bob\",\"password\":\"XXXXXXX\"}}}";
+
     }
 
     public static bool IsValidGetRequest(HttpRequestMessage request)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
@@ -203,6 +203,28 @@ namespace Bandwidth.Net.Api
     ///   Number to transfer an incoming call when the callback/fallback events can't be delivered.
     /// </summary>
     public string FallbackNumber { get; set; }
+
+    /// <summary>
+    ///   Phone number provider to import number (only bandwidth-dashboard is supported for now)
+    /// </summary>
+    public PhoneNumberProvider Provider { get; set; }
+  }
+
+
+  /// <summary>
+  ///   Phone number provider to import number (only bandwidth-dashboard is supported for now)
+  /// </summary>
+  public class PhoneNumberProvider
+  {
+    /// <summary>
+    /// Provider name (only bandwidth-dashboard is supported for now)
+    /// </summary>
+    public string ProviderName { get; set; } = "bandwidth-dashboard";
+
+    /// <summary>
+    /// Properties
+    /// </summary>
+    public IDictionary<string, object> Properties { get; set; }
   }
 
   /// <summary>
