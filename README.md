@@ -4,6 +4,7 @@ A .Net client library for the [Bandwidth Application Platform](http://bandwidth.
 
 The current version is v3.0, released 1 February, 2017. Version 2.15 is available  [here](https://github.com/bandwidthcom/csharp-bandwidth/tree/v2.15).
 
+Notice: As of April 2019, versions of csharp-bandwidth less than 4.0.0 will not be compatible with Bandwidth's V2 Messaging. If you are using Bandwidth's V2 Messaging, you will need to update your csharp-bandwidth package version to 4.0.0 or above. If you are not using Bandwidth's V2 Messaging, you do not need to update. 
 
 [![Build on .Net 4.5 (Windows)](https://ci.appveyor.com/api/projects/status/bhv8hs3fx9k6c33i?svg=true)](https://ci.appveyor.com/project/Bandwidth/csharp-bandwidth)
 [![Build on .Net Core (Linux)](https://travis-ci.org/Bandwidth/csharp-bandwidth.svg)](https://travis-ci.org/Bandwidth/csharp-bandwidth)
