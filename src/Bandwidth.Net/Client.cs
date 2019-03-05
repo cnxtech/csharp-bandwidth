@@ -101,11 +101,22 @@ namespace Bandwidth.Net
 
     internal HttpRequestMessage CreateRequest(HttpMethod method, string path, object query = null, string version = "v1")
     {
-      var url = new UriBuilder(_baseUrl)
+      //Workaround for V1/V2 base url split
+      var urlToUse = "";
+      
+      if (version.Equals("v1")) {
+          urlToUse = _baseUrl;
+      }
+      else {
+          urlToUse = "https://messaging.bandwidth.com/api";
+      }
+
+      var url = new UriBuilder(urlToUse)
       {
         Path = $"/{version}{path}",
         Query = BuildQueryString(query)
       };
+
       var message = new HttpRequestMessage(method, url.Uri);
       message.Headers.UserAgent.Add(UserAgent);
       message.Headers.Authorization = _authentication;
