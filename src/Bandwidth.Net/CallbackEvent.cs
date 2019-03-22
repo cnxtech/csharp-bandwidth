@@ -88,6 +88,11 @@ namespace Bandwidth.Net
     public string DeliveryDescription { get; set; }
 
     /// <summary>
+    /// Number of segments the message sent as
+    /// </summary>
+    public int SegmentCount { get; set; }
+
+    /// <summary>
     ///   Urls to attached media files to message
     /// </summary>
     public string[] Media { get; set; }
