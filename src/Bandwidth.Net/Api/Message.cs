@@ -209,6 +209,11 @@ namespace Bandwidth.Net.Api
     /// Message delivery description for the respective delivery code
     /// </summary>
     public string DeliveryDescription { get; set; }
+
+    /// <summary>
+    /// Number of segments the message sent as
+    /// </summary>
+    public int SegmentCount { get; set; }
   }
 
   /// <summary>
