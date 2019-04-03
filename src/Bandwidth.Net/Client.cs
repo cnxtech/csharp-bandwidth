@@ -103,17 +103,19 @@ namespace Bandwidth.Net
     {
       //Workaround for V1/V2 base url split
       var urlToUse = "";
+      var urlExtension = "";
       
       if (version.Equals("v1")) {
-          urlToUse = _baseUrl;
+        urlToUse = _baseUrl;
       }
       else {
-          urlToUse = "https://messaging.bandwidth.com/api";
+        urlToUse = "https://messaging.bandwidth.com";
+        urlExtension = "api/";
       }
 
       var url = new UriBuilder(urlToUse)
       {
-        Path = $"/{version}{path}",
+        Path = $"/{urlExtension}{version}{path}",
         Query = BuildQueryString(query)
       };
 
