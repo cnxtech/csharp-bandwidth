@@ -394,6 +394,11 @@ namespace Bandwidth.Net.ApiV2
     ///   The message creation time
     /// </summary>
     public DateTime Time { get; set; }
+    
+    /// <summary>
+    /// Number of segments the message sent as
+    /// </summary>
+    public int SegmentCount { get; set; }
   }
 
   /// <summary>
