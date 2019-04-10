@@ -53,6 +53,12 @@ namespace Bandwidth.Net.ApiV2
     ///   Phone numbers for answer
     /// </summary>
     public string ReplyTo { get; set; }
+    
+    
+    /// <summary>
+    /// Number of segments the message sent as
+    /// </summary>
+    public int SegmentCount { get; set; }
 
 
     /// <summary>
