@@ -13,7 +13,7 @@ namespace Bandwidth.Net.Test.ApiV2
   {
     public static bool IsValidSendRequest(HttpRequestMessage request)
     {
-      return request.Method == HttpMethod.Post && request.RequestUri.PathAndQuery == "/v2/users/userId/messages" &&
+      return request.Method == HttpMethod.Post && request.RequestUri.PathAndQuery == "/api/v2/users/userId/messages" &&
              request.Content.Headers.ContentType.MediaType == "application/json" &&
              request.Content.ReadAsStringAsync().Result ==
              "{\"from\":\"+12345678901\",\"to\":[\"+12345678902\"],\"text\":\"Hey, check this out!\",\"applicationId\":\"id\"}";
