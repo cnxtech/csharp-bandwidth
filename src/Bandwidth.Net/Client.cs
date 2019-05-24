@@ -101,28 +101,28 @@ namespace Bandwidth.Net
 
     internal HttpRequestMessage CreateRequest(HttpMethod method, string path, object query = null, string version = "v1")
     {
-      //Workaround for V1/V2 base url split
-      var urlToUse = "";
-      var urlExtension = "";
-      
-      if (version.Equals("v1")) {
-        urlToUse = _baseUrl;
+      if (version.Equals("v2")) {
+        var url = new UriBuilder("https://messaging.bandwidth.com")
+        {
+          Path = $"/api/{version}{path}",
+          Query = BuildQueryString(query)
+        };
+        var message = new HttpRequestMessage(method, url.Uri);
+        message.Headers.UserAgent.Add(UserAgent);
+        message.Headers.Authorization = _authentication;
+        return message;
       }
       else {
-        urlToUse = "https://messaging.bandwidth.com";
-        urlExtension = "api/";
+        var url = new UriBuilder(_baseUrl)
+        {
+          Path = $"/{version}{path}",
+          Query = BuildQueryString(query)
+        };
+        var message = new HttpRequestMessage(method, url.Uri);
+        message.Headers.UserAgent.Add(UserAgent);
+        message.Headers.Authorization = _authentication;
+        return message;
       }
-
-      var url = new UriBuilder(urlToUse)
-      {
-        Path = $"/{urlExtension}{version}{path}",
-        Query = BuildQueryString(query)
-      };
-
-      var message = new HttpRequestMessage(method, url.Uri);
-      message.Headers.UserAgent.Add(UserAgent);
-      message.Headers.Authorization = _authentication;
-      return message;
     }
 
     internal HttpRequestMessage CreateGetRequest(string url)
