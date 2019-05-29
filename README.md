@@ -12,6 +12,11 @@ Notice: As of April 2019, versions of csharp-bandwidth less than 4.0.0 will not 
 
 [Full API Reference](src/Bandwidth.Net/Help/Home.md)
 
+## Release Notes
+| Version | Notes |
+|:---|:---|
+| 4.x.x | In order to use versions 4.x.x for Bandwidth's V2 messaging, the following line of code must be included before sending a message `System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;` |
+
 ## Installing the SDK
 
 `Bandwidth.Net` is available on Nuget (Nuget 3.0+ is required):
