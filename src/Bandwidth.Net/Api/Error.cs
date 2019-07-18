@@ -140,7 +140,12 @@ namespace Bandwidth.Net.Api
     /// <summary>
     ///   Payment
     /// </summary>
-    Payment
+    Payment,
+
+    /// <summary>
+    ///   Forbidden
+    /// </summary>
+    Forbidden
   }
 
   /// <summary>
